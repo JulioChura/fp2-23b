@@ -6,38 +6,38 @@ import java.util.*;
 public class VideoJuego{
     public static void main(String[] args){
 	Scanner sc = new Scanner(System.in);
-	String soldado1, soldado2, soldado3, soldado4, soldado5;
-	int vida1, vida2, vida3, vida4, vida5;
+	String soldier1, soldier2, soldier3, soldier4, soldier5;
+	int life1, life2, life3, life4, life5;
 
         System.out.println("Ingrese el nombre del soldado 1");
-	soldado1 = sc.next();
+	soldier1 = sc.next();
         System.out.println("Ingrese el nivel de vida del soldado 1");
-	vida1 = sc.nextInt();
+	life1 = sc.nextInt();
 	
         System.out.println("Ingrese el nombre del soldado 2");
-	soldado2 = sc.next();
+	soldier2 = sc.next();
         System.out.println("Ingrese el nivel de vida del soldado 2");
-	vida2 = sc.nextInt();
+	life2 = sc.nextInt();
 
         System.out.println("Ingrese el nombre del soldado 3");
-	soldado3 = sc.next();
+	soldier3 = sc.next();
         System.out.println("Ingrese el nivel de vida del soldado 3");
-	vida3 = sc.nextInt();
+	life3 = sc.nextInt();
 	
         System.out.println("Ingrese el nombre del soldado 4");
-	soldado4 = sc.next();
+	soldier4 = sc.next();
         System.out.println("Ingrese el nombre del soldado 4");
-	vida4 = sc.nextInt();
+	life4 = sc.nextInt();
 
         System.out.println("Ingrese el nombre del soldado 5");
-	soldado5 = sc.next();
+	soldier5 = sc.next();
         System.out.println("Ingrese el nivel de vida del soldado 5");
-	vida5 = sc.nextInt();
+	life5 = sc.nextInt();
 
-	System.out.println("El soldado 1 se llama: "+ soldado1 + "  Nivel de vida: "+ vida1);     
-	System.out.println("El soldado 2 se llama: "+ soldado2 + "  Nivel de vida: "+ vida2);     
-	System.out.println("El soldado 3 se llama: "+ soldado3 + "  Nivel de vida: "+ vida3);     
-	System.out.println("El soldado 4 se llama: "+ soldado4 + "  Nivel de vida: "+ vida4);     
-	System.out.println("El soldado 5 se llama: "+ soldado5 + "  Nivel de vida: "+ vida5);     
+	System.out.println("El soldado 1 se llama: "+ soldier1 + "  Nivel de vida: "+ life1);     
+	System.out.println("El soldado 2 se llama: "+ soldier2 + "  Nivel de vida: "+ life2);     
+	System.out.println("El soldado 3 se llama: "+ soldier3 + "  Nivel de vida: "+ life3);     
+	System.out.println("El soldado 4 se llama: "+ soldier4 + "  Nivel de vida: "+ life4);     
+	System.out.println("El soldado 5 se llama: "+ soldier5 + "  Nivel de vida: "+ life5);     
    }       
 }
