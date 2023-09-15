@@ -27,11 +27,9 @@ public class VideoJuego{
     public static String[] generateArmy(){
         Random random = new Random();
 	int amount = random.nextInt(5)+1;
-	String[] army = new String[amount];
-	String soldier = "";		
+	String[] army = new String[amount];		
 	for(int i = 0; i < army.length; i++){
-	    soldier = "Soldier"+(i+1);
-	    army[i] = soldier;
+	    army[i] = "Soldier"+(i+1);
 	}
 	return army;
     }
