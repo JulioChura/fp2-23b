@@ -14,6 +14,12 @@ public class VideoJuego{
 	}
 	for(int i = 0; i < army.length; i++){
 	    System.out.println("Soldier "+(i+1)+": "+ army[i]);
-	}    
-   }       
+	    System.out.println("Life: "+ life()+"\t");
+	}
+     
+    }
+    public static int life(){
+    	Random lifePoints = new Random();
+	return lifePoints.nextInt(10)+1;
+    } 
 }
