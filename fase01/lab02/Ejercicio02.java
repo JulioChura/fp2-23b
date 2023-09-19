@@ -96,8 +96,9 @@ public class Ejercicio02 {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Ingrese letra: ");
 		laLetra = sc.next();
-		while(laLetra.length()!= 1){
-            System.out.println("Ingrese letra: "); //COMPLETAR PARA VALIDAR CARACTERES PERMITIDOS
+		while(laLetra.length()!= 1 || !Character.isLetter(laLetra.charAt(0))){
+            System.out.println("Ingrese letra: "); 
+		//COMPLETAR PARA VALIDAR CARACTERES PERMITIDOS
             laLetra = sc.next();
 		}
 		return laLetra;
