@@ -1,3 +1,7 @@
+//Laboratorio Nro 2 - Ejercicio2
+//Autor: Julio Chura
+//Colaboró: Nadie
+//Tiempo:
 import java.util.Scanner;
 
 public class Ejercicio02 {
@@ -97,14 +101,16 @@ public class Ejercicio02 {
 		System.out.println("Ingrese letra: ");
 		laLetra = sc.next();
 		while(laLetra.length()!= 1 || !Character.isLetter(laLetra.charAt(0))){
-            System.out.println("Ingrese letra: "); 
-		//COMPLETAR PARA VALIDAR CARACTERES PERMITIDOS
+            System.out.println("Ingrese letra: ");
             laLetra = sc.next();
 		}
 		return laLetra;
     }
     public static boolean letraEnPalabraSecreta(String letra, String palSecreta ){
-		//COMPLETAR
+		for(int i = 0; i < palSecreta.length();i++){
+            if(Character.toString(palSecreta.charAt(i)).equalsIgnoreCase(letra))
+                return true;		
+		}
         return false;
     }
     public static void mostrarBlancosActualizados(String letra){
