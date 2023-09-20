@@ -1,7 +1,7 @@
 //Laboratorio Nro 2 - Ejercicio2
 //Autor: Julio Chura
 //Colaboró: Nadie
-//Tiempo:
+//Tiempo: 2 horas
 import java.util.Scanner;
 
 public class Ejercicio02 {
@@ -70,24 +70,37 @@ public class Ejercicio02 {
         String palSecreta = getPalabraSecreta(palabras);
         System.out.println(figuras[0]);
         mostrarBlancos(palSecreta);
+        
+        String[] arregloGuiones = arregloVacio(palSecreta);
+        
         System.out.println("\n");
         while(contador <= 6){
             letra = ingreseLetra();
-            if (letraEnPalabraSecreta(letra, palSecreta))
-                mostrarBlancosActualizados(letra);
-            else
+            if (letraEnPalabraSecreta(letra, palSecreta)){
+                mostrarBlancosActualizados(palSecreta, letra, arregloGuiones );
+                if(!String.join("", arregloGuiones).contains("_")) {
+                    System.out.println("FELICIDADES, GANÓ EN "+ contador+ " turnos");
+                    break;
+                }
+            }else{
                 System.out.println(figuras[contador]);
                 contador = contador +1;
+                mostrarBlancosActualizados(palSecreta, letra, arregloGuiones);
+            }
+            if(contador == 7){
+                System.out.println("PERDIÓ");
+            }
+            
         }
-		//COMPLETAR PARA INDICAR SI GANÓ, PERDIÓ Y CUÁNTOS TURNOS NECESITÓ
         System.out.println("\n");
+        
     }
     public static String getPalabraSecreta(String [] lasPalabras){
         String palSecreta;
 	int ind;
 	int indiceMayor = lasPalabras.length -1;
 	int indiceMenor =0;
-        ind = (int) ((Math.random() * (indiceMayor - indiceMenor + 1) + indiceMenor));
+	ind = (int) ((Math.random() * (indiceMayor - indiceMenor + 1) + indiceMenor));
 	return lasPalabras[ind];
     }
 
@@ -102,7 +115,7 @@ public class Ejercicio02 {
 	System.out.println("Ingrese letra: ");
 	laLetra = sc.next();
 	while(laLetra.length()!= 1 || !Character.isLetter(laLetra.charAt(0))){
-            System.out.println("Ingrese letra: ");
+            System.out.print("\nIngrese letra: ");
             laLetra = sc.next();
 	}
 	return laLetra;
@@ -110,15 +123,15 @@ public class Ejercicio02 {
 
     public static boolean letraEnPalabraSecreta(String letra, String palSecreta ){
 	for(int i = 0; i < palSecreta.length();i++){
-        if(Character.toString(palSecreta.charAt(i)).equalsIgnoreCase(letra))
-            return true;		
+       	    if(Character.toString(palSecreta.charAt(i)).equalsIgnoreCase(letra))
+           return true;		
 	}
         return false;
     }
 
-    public static void mostrarBlancosActualizados(String palabrajuego, String letra, String[] array){
-	System.out.println("PROCESANDO.....");
-	for(int i =0; i< palabraJuego.length();i++){
+    public static void mostrarBlancosActualizados(String palabraJuego, String letra, String[] arregloVacio){
+        System.out.println("PROCESANDO.....");
+        for(int i =0; i< palabraJuego.length();i++){
             if(Character.toString(palabraJuego.charAt(i)).equals(letra) ){
                 arregloVacio[i] = letra;
             }
@@ -126,14 +139,15 @@ public class Ejercicio02 {
         for( int i = 0; i < arregloVacio.length; i++){
             System.out.print(arregloVacio[i]+" " );
         }
+        System.out.println();
+        
     }
-
-    public static String[] arregDeSubguiones(String str){
-    	String[] arraySubguiones = new String[str.length()];
-	for(int i = 0; i <str.length();i++){
-	    arraySubguiones[i] = "_ ";
-	}
-	return arraySubguiones 
+    public static String[] arregloVacio(String str){
+        String[] arraySubGuiones = new String[str.length()];
+        for(int i = 0; i < str.length(); i++){
+            arraySubGuiones[i] = "_ ";      
+        }
+        return arraySubGuiones;
     }
-
 }
+
