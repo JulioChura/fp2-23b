@@ -116,9 +116,16 @@ public class Ejercicio02 {
         return false;
     }
 
-    public static void mostrarBlancosActualizados(String letra){
-	//COMPLETAR
+    public static void mostrarBlancosActualizados(String palabrajuego, String letra, String[] array){
 	System.out.println("PROCESANDO.....");
+	for(int i =0; i< palabraJuego.length();i++){
+            if(Character.toString(palabraJuego.charAt(i)).equals(letra) ){
+                arregloVacio[i] = letra;
+            }
+        }
+        for( int i = 0; i < arregloVacio.length; i++){
+            System.out.print(arregloVacio[i]+" " );
+        }
     }
 
     public static String[] arregDeSubguiones(String str){
