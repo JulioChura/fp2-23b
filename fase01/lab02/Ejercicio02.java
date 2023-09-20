@@ -84,37 +84,49 @@ public class Ejercicio02 {
     }
     public static String getPalabraSecreta(String [] lasPalabras){
         String palSecreta;
-		int ind;
-		int indiceMayor = lasPalabras.length -1;
-		int indiceMenor =0;
+	int ind;
+	int indiceMayor = lasPalabras.length -1;
+	int indiceMenor =0;
         ind = (int) ((Math.random() * (indiceMayor - indiceMenor + 1) + indiceMenor));
-		return lasPalabras[ind];
+	return lasPalabras[ind];
     }
+
     public static void mostrarBlancos(String palabra){
-		for(int i=0; i< palabra.length(); i++)
-		System.out.print("_ " );
+        for(int i=0; i< palabra.length(); i++)
+        System.out.print("_ " );
 
     }
     public static String ingreseLetra(){
-		String laLetra;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Ingrese letra: ");
-		laLetra = sc.next();
-		while(laLetra.length()!= 1 || !Character.isLetter(laLetra.charAt(0))){
+	String laLetra;
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Ingrese letra: ");
+	laLetra = sc.next();
+	while(laLetra.length()!= 1 || !Character.isLetter(laLetra.charAt(0))){
             System.out.println("Ingrese letra: ");
             laLetra = sc.next();
-		}
-		return laLetra;
+	}
+	return laLetra;
     }
+
     public static boolean letraEnPalabraSecreta(String letra, String palSecreta ){
-		for(int i = 0; i < palSecreta.length();i++){
-            if(Character.toString(palSecreta.charAt(i)).equalsIgnoreCase(letra))
-                return true;		
-		}
+	for(int i = 0; i < palSecreta.length();i++){
+        if(Character.toString(palSecreta.charAt(i)).equalsIgnoreCase(letra))
+            return true;		
+	}
         return false;
     }
+
     public static void mostrarBlancosActualizados(String letra){
-		//COMPLETAR
-		System.out.println("PROCESANDO.....");
+	//COMPLETAR
+	System.out.println("PROCESANDO.....");
     }
+
+    public static String[] arregDeSubguiones(String str){
+    	String[] arraySubguiones = new String[str.length()];
+	for(int i = 0; i <str.length();i++){
+	    arraySubguiones[i] = "_ ";
+	}
+	return arraySubguiones 
+    }
+
 }
