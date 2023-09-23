@@ -61,7 +61,7 @@ public class DemoBatalla {
 	//al número de puntos que se pide por teclado
 	public static void mostrarPorPuntos(Nave [] flota){
 	    Scanner sc = new Scanner(System.in);
-            System.out.println("Ingrese los puntos para hacer la búsqueda de resultados menores o igual ");
+            System.out.println("Ingrese los puntos para hacer la búsqueda de resultados menores o igual");
             int puntos = sc.nextInt();
             Boolean encontrado = false;
             for(int i = 0; i < flota.length; i++) {
