@@ -1,4 +1,4 @@
-// Laboratorio Nro 1 - Ejercicio 5
+// Laboratorio Nro 3 - Ejercicio 5
 // Autor: Julio
 // Tiempo: 20 minutos
 // No hubo colaboradores
