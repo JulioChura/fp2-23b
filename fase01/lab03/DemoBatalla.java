@@ -1,7 +1,11 @@
+// Laboratorio Nro 3 - Ejercicio 1
+// Autor: Julio
+// Tiempo: 4 horas
+// No hubo colaboradores
 import java.util.*;
 public class DemoBatalla {
 	public static void main(String [] args){
-		Nave [] misNaves = new Nave[2];
+		Nave [] misNaves = new Nave[10];
 		Scanner sc = new Scanner(System.in);
 		String nomb, col;
 		int fil, punt;
@@ -32,8 +36,8 @@ public class DemoBatalla {
         System.out.println();
 		mostrarPorPuntos(misNaves);
 		System.out.println("Nave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
-        //Nave[] navesAleatorias = copiarNavesAleatoriamente(misNaves);
-        //mostrarNaves(navesAleatorias);
+        Nave[] navesAleatorias = copiarNavesAleatoriamente(misNaves);
+        mostrarNaves(navesAleatorias);
 	}
 	//Método para mostrar todas las naves
 	public static void mostrarNaves(Nave [] flota){
@@ -90,7 +94,15 @@ public class DemoBatalla {
 	//Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos previamente ingresados		
 	//pero aleatoriamente desordenados
     public static Nave[] copiarNavesAleatoriamente(Nave[] naves){
-
-        return null;
+        Nave[] arrayCopia = new Nave[naves.length];
+        System.arraycopy(naves,0,arrayCopia,0,naves.length);
+        Random random = new Random();
+        for (int i = arrayCopia.length - 1; i > 0; i--) {
+            int indiceAleatorio = random.nextInt(i + 1);
+            Nave temporal = arrayCopia[indiceAleatorio];
+            arrayCopia[indiceAleatorio] = arrayCopia[i];
+            arrayCopia[i] = temporal;
+        }
+        return arrayCopia;
     }
 }
