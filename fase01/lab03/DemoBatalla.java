@@ -77,11 +77,20 @@ public class DemoBatalla {
 	}
 	//Método que devuelve la Nave con mayor número de Puntos
 	public static Nave mostrarMayorPuntos(Nave [] flota){
-        return null;
+	    int puntosMaximos = flota[0].getPuntos();
+        int indice = 0;
+        for(int i = 1; i < flota.length; i++ ){
+            if(puntosMaximos < flota[i].getPuntos()){
+                puntosMaximos = flota[i].getPuntos();
+                indice = i;
+            }  
+        }
+        return flota[indice];
 	}
 	//Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos previamente ingresados		
 	//pero aleatoriamente desordenados
     public static Nave[] copiarNavesAleatoriamente(Nave[] naves){
+
         return null;
     }
 }
