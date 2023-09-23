@@ -22,7 +22,7 @@ public class DemoBatalla {
 			misNaves[i].setNombre(nomb);
 			misNaves[i].setFila(fil);
 			misNaves[i].setColumna(col);
-			misNaves[i].setEstado(est);
+    		misNaves[i].setEstado(est);
 			misNaves[i].setPuntos(punt);
 		}
 		System.out.println("Naves creadas:");
@@ -32,15 +32,18 @@ public class DemoBatalla {
         System.out.println();
 		mostrarPorPuntos(misNaves);
 		System.out.println("Nave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
-        Nave[] navesAleatorias = copiarNavesAleatoriamente(misNaves);
-        mostrarNaves(navesAleatorias);
+        //Nave[] navesAleatorias = copiarNavesAleatoriamente(misNaves);
+        //mostrarNaves(navesAleatorias);
 	}
 	//Método para mostrar todas las naves
 	public static void mostrarNaves(Nave [] flota){
-	}
+	    for(int i = 0; i < flota.length; i++){
+            System.out.println("Nave "+(i+1)+": "+flota[i]);        
+        }
+    }
 	//Método para mostrar todas las naves de un nombre que se pide por teclado
 	public static void mostrarPorNombre(Nave [] flota){
-	
+
 	}
 	//Método para mostrar todas las naves con un número de puntos inferior o igual
 	//al número de puntos que se pide por teclado
@@ -48,10 +51,11 @@ public class DemoBatalla {
 	}
 	//Método que devuelve la Nave con mayor número de Puntos
 	public static Nave mostrarMayorPuntos(Nave [] flota){
+        return null;
 	}
 	//Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos previamente ingresados		
 	//pero aleatoriamente desordenados
     public static Nave[] copiarNavesAleatoriamente(Nave[] naves){
-
+        return null;
     }
 }
