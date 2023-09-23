@@ -1,7 +1,7 @@
 import java.util.*;
 public class DemoBatalla {
 	public static void main(String [] args){
-		Nave [] misNaves = new Nave[1];
+		Nave [] misNaves = new Nave[2];
 		Scanner sc = new Scanner(System.in);
 		String nomb, col;
 		int fil, punt;
@@ -43,7 +43,19 @@ public class DemoBatalla {
     }
 	//Método para mostrar todas las naves de un nombre que se pide por teclado
 	public static void mostrarPorNombre(Nave [] flota){
-
+        Scanner sc = new Scanner(System.in);
+	    System.out.println("Ingrese el nombre de la nave que desea buscar");
+		String naveNombre = sc.nextLine();
+		Boolean encontrado = false;
+		for(int i = 0; i < flota.length; i++){
+            if(naveNombre.equalsIgnoreCase(flota[i].getNombre() ) ){
+                System.out.println(flota[i].toString());
+                encontrado = true;
+             }                
+         }
+         if(encontrado == false){
+            System.out.println("No fue encontrada");
+         }
 	}
 	//Método para mostrar todas las naves con un número de puntos inferior o igual
 	//al número de puntos que se pide por teclado
