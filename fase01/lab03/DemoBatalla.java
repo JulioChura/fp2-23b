@@ -1,7 +1,7 @@
 import java.util.*;
 public class DemoBatalla {
 	public static void main(String [] args){
-		Nave [] misNaves = new Nave[10];
+		Nave [] misNaves = new Nave[1];
 		Scanner sc = new Scanner(System.in);
 		String nomb, col;
 		int fil, punt;
