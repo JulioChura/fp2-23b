@@ -38,6 +38,9 @@ public class Nave {
 	public int getPuntos(){
 		return puntos;
 	}
-	
 	// Completar con otros métodos necesarios
+	 public String toString() {
+            return "Nombre: " + nombre + ", Fila: " + fila + ", Columna: " + 
+		    columna + ", Estado; "+ estado + ", Puntos: "+ puntos;
+        }
 }
