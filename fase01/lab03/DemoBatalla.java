@@ -60,6 +60,20 @@ public class DemoBatalla {
 	//Método para mostrar todas las naves con un número de puntos inferior o igual
 	//al número de puntos que se pide por teclado
 	public static void mostrarPorPuntos(Nave [] flota){
+	    Scanner sc = new Scanner(System.in);
+            System.out.println("Ingrese los puntos para hacer la búsqueda de resultados menores o igual ");
+            int puntos = sc.nextInt();
+            Boolean encontrado = false;
+            for(int i = 0; i < flota.length; i++) {
+                if(puntos >= flota[i].getPuntos()){
+                    System.out.println(flota[i].toString());
+                    encontrado = true;
+                }           
+            }
+            if(encontrado==false){
+                System.out.println("No fue encontrado");
+            }
+            System.out.println();
 	}
 	//Método que devuelve la Nave con mayor número de Puntos
 	public static Nave mostrarMayorPuntos(Nave [] flota){
