@@ -25,13 +25,17 @@ public class DemoBatalla {
 			misNaves[i].setEstado(est);
 			misNaves[i].setPuntos(punt);
 		}
-		System.out.println("\nNaves creadas:");
+		System.out.println("Naves creadas:");
 		mostrarNaves(misNaves);
+        System.out.println();
 		mostrarPorNombre(misNaves);
+        System.out.println();
 		mostrarPorPuntos(misNaves);
-		System.out.println("\nNave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
+		System.out.println("Nave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
+        Nave[] navesAleatorias = copiarNavesAleatoriamente(misNaves);
+        mostrarNaves(navesAleatorias);
 	}
-		//Método para mostrar todas las naves
+	//Método para mostrar todas las naves
 	public static void mostrarNaves(Nave [] flota){
 	}
 	//Método para mostrar todas las naves de un nombre que se pide por teclado
@@ -47,4 +51,7 @@ public class DemoBatalla {
 	}
 	//Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos previamente ingresados		
 	//pero aleatoriamente desordenados
+    public static Nave[] copiarNavesAleatoriamente(Nave[] naves){
+
+    }
 }
