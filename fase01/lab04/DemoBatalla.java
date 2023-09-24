@@ -7,13 +7,13 @@ public class DemoBatalla {
 	public static void main(String [] args){
 		Nave [] misNaves = new Nave[10];
 		Scanner sc = new Scanner(System.in);
-		String nomb, col;
+		String nombre, col;
 		int fil, punt;
 		boolean est;
 		for (int i = 0; i < misNaves.length; i++) {
 			System.out.println("Nave " + (i+1));
 			System.out.print("Nombre: ");
-			nomb = sc.next();
+			nombre = sc.next();
 			System.out.println("Fila ");
 			fil = sc.nextInt();
 			System.out.print("Columna: ");
@@ -23,7 +23,7 @@ public class DemoBatalla {
 			System.out.print("Puntos: ");
 			punt = sc.nextInt();
 			misNaves[i] = new Nave(); //Se crea un objeto Nave y se asigna su referencia a misNaves
-			misNaves[i].setNombre(nomb);
+			misNaves[i].setNombre(nombre);
 			misNaves[i].setFila(fil);
 			misNaves[i].setColumna(col);
     		misNaves[i].setEstado(est);
@@ -37,6 +37,8 @@ public class DemoBatalla {
 
   		//leer un nombre
 		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
+		System.out.println("Ingrese algun nombre de una nave");
+        nombre = sc.nextLine();
 		int pos=busquedaLinealNombre(misNaves,nombre);
 
 		ordenarPorPuntosBurbuja(misNaves);
@@ -113,7 +115,12 @@ public class DemoBatalla {
 
 	//Método para buscar la primera nave con un nombre que se pidió por teclado
 	public static int busquedaLinealNombre(Nave[] flota, String s){
-		return null;
+		for(int i = 0; i < flota.length; i++){
+        	if(s.equalsIgnoreCase(flota[i].getNombre())){
+            	return i;
+           	}
+      	}
+        return -1;
 	}
 
 	//Método que ordena por número de puntos de menor a mayor
@@ -130,7 +137,7 @@ public class DemoBatalla {
 
 	//Método para buscar la primera nave con un nombre que se pidió por teclado
 	public static int busquedaBinariaNombre(Nave[] flota, String s){
-		return null;
+		return -1;
 	}
 
 	//Método que ordena por número de puntos de menor a mayor
