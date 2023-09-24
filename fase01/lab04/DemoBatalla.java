@@ -8,7 +8,7 @@ public class DemoBatalla {
 		Nave [] misNaves = new Nave[3];
 		Scanner sc = new Scanner(System.in);
 		String nombre, col;
-		int fil, punt;
+		int fil, punt, pos;
 		boolean est;
 		for (int i = 0; i < misNaves.length; i++) {
 			System.out.println("Nave " + (i+1));
@@ -40,19 +40,23 @@ public class DemoBatalla {
 		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
 		System.out.println("Ingrese algun nombre de una nave");
         nombre = sc.next();
-		int pos=busquedaLinealNombre(misNaves,nombre);
+		pos=busquedaLinealNombre(misNaves,nombre);
+		if(pos==-1) 
+	        System.out.println("Nave no encontrada");
+		else 
+	        System.out.println("Nave encontrada "+ misNaves[pos].toString());
+
+		//ordenarPorPuntosBurbuja(misNaves);
+		//mostrarNaves(misNaves);
+		//ordenarPorNombreBurbuja(misNaves);
+		//mostrarNaves(misNaves);
+		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
+		pos=busquedaBinariaNombre(misNaves,nombre);
 		if(pos==-1) 
 	        System.out.println("Nave no encontrada");
 		else 
 	        System.out.println("Nave encontrada"+ misNaves[pos].toString());
 
-
-		//ordenarPorPuntosBurbuja(misNaves);
-		//mostrarNaves(misNaves);
-		ordenarPorNombreBurbuja(misNaves);
-		mostrarNaves(misNaves);
-		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
-		pos=busquedaBinariaNombre(misNaves,nombre);
 		ordenarPorPuntosSeleccion(misNaves);
 		//mostrarNaves(misNaves);
 		ordenarPorPuntosInsercion(misNaves);
@@ -143,15 +147,15 @@ public class DemoBatalla {
 	}
 	//Método que ordena por nombre de A a Z
 	public static void ordenarPorNombreBurbuja(Nave[] flota){
-            for(int i = 0; i < flota.length-1;i++){
-                for(int j = 0; j < flota.length-1; j++){
-                    if(flota[j].getNombre().compareTo(flota[j+1].getNombre())>0){
-                        Nave aux = flota[j];
-                        flota[j] = flota[j+1];
-                        flota[j+1] = aux;
-                    }
+    	for(int i = 0; i < flota.length-1;i++){
+        	for(int j = 0; j < flota.length-1; j++){
+            	if(flota[j].getNombre().compareTo(flota[j+1].getNombre())>0){
+                	Nave aux = flota[j];
+                	flota[j] = flota[j+1];
+                	flota[j+1] = aux;
                 }
             }
+        }
 	}
 	//Método para buscar la primera nave con un nombre que se pidió por teclado
 	public static int busquedaBinariaNombre(Nave[] flota, String s){
