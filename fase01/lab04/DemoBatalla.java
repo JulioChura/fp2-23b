@@ -47,13 +47,10 @@ public class DemoBatalla {
 	        System.out.println("Nave encontrada"+ misNaves[pos].toString());
 
 
-		mostrarNaves(misNaves);
-
-
-		ordenarPorPuntosBurbuja(misNaves);
-		mostrarNaves(misNaves);
-		ordenarPorNombreBurbuja(misNaves);
+		//ordenarPorPuntosBurbuja(misNaves);
 		//mostrarNaves(misNaves);
+		ordenarPorNombreBurbuja(misNaves);
+		mostrarNaves(misNaves);
 		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
 		pos=busquedaBinariaNombre(misNaves,nombre);
 		ordenarPorPuntosSeleccion(misNaves);
@@ -139,18 +136,23 @@ public class DemoBatalla {
             	if(flota[j].getPuntos() > flota[j+1].getPuntos()){
                 	Nave auxiliar = flota[j];
                     flota[j] = flota[j+1];
-                    flota[j+1] = auxiliar;                 
-                    
+                    flota[j+1] = auxiliar;                                   
                 }
             }
 		}
 	}
 	//Método que ordena por nombre de A a Z
 	public static void ordenarPorNombreBurbuja(Nave[] flota){
-		
-
+            for(int i = 0; i < flota.length-1;i++){
+                for(int j = 0; j < flota.length-1; j++){
+                    if(flota[j].getNombre().compareTo(flota[j+1].getNombre())>0){
+                        Nave aux = flota[j];
+                        flota[j] = flota[j+1];
+                        flota[j+1] = aux;
+                    }
+                }
+            }
 	}
-
 	//Método para buscar la primera nave con un nombre que se pidió por teclado
 	public static int busquedaBinariaNombre(Nave[] flota, String s){
 		return -1;
