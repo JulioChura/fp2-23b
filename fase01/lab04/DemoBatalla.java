@@ -38,25 +38,27 @@ public class DemoBatalla {
 		*/
   		//leer un nombre
 		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
-		System.out.println("Ingrese algun nombre de una nave");
-        nombre = sc.next();
-		pos=busquedaLinealNombre(misNaves,nombre);
-		if(pos==-1) 
+		//System.out.println("Ingrese algun nombre de una nave");
+        //nombre = sc.next();
+		//pos=busquedaLinealNombre(misNaves,nombre);
+		/*if(pos==-1) 
 	        System.out.println("Nave no encontrada");
 		else 
-	        System.out.println("Nave encontrada "+ misNaves[pos].toString());
+	        System.out.println("Nave encontrada "+ misNaves[pos].toString());*/
 
 		//ordenarPorPuntosBurbuja(misNaves);
 		//mostrarNaves(misNaves);
 		//ordenarPorNombreBurbuja(misNaves);
 		//mostrarNaves(misNaves);
 		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
+		System.out.println("Ingrese la nave que desea buscar");
+		nombre = sc.next();
 		pos=busquedaBinariaNombre(misNaves,nombre);
 		if(pos==-1) 
 	        System.out.println("Nave no encontrada");
 		else 
 	        System.out.println("Nave encontrada"+ misNaves[pos].toString());
-
+	
 		ordenarPorPuntosSeleccion(misNaves);
 		//mostrarNaves(misNaves);
 		ordenarPorPuntosInsercion(misNaves);
@@ -159,11 +161,23 @@ public class DemoBatalla {
 	}
 	//Método para buscar la primera nave con un nombre que se pidió por teclado
 	public static int busquedaBinariaNombre(Nave[] flota, String s){
-		return -1;
+    	int baja = 0;
+        int alta = flota.length-1;
+        while(baja <= alta ){
+        	int media = (baja+alta)/2;
+                if (flota[media].getNombre().equals(s)){
+                    return media;                      
+                }else{
+                    if(flota[media].getNombre().compareTo(s)  < 0){
+                        alta = media-1;
+                    }else{
+                        baja = media+1;
+                    }
+                }
+		}
+        return -1;
 	}
-
 	//Método que ordena por número de puntos de menor a mayor
-	
 	public static void ordenarPorPuntosSeleccion(Nave[] flota){
 		
 	}
