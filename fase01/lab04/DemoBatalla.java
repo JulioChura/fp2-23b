@@ -51,16 +51,16 @@ public class DemoBatalla {
 		//ordenarPorNombreBurbuja(misNaves);
 		//mostrarNaves(misNaves);
 		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
-		System.out.println("Ingrese la nave que desea buscar");
+		/*System.out.println("Ingrese la nave que desea buscar");
 		nombre = sc.next();
 		pos=busquedaBinariaNombre(misNaves,nombre);
 		if(pos==-1) 
 	        System.out.println("Nave no encontrada");
 		else 
 	        System.out.println("Nave encontrada"+ misNaves[pos].toString());
-	
+		*/
 		ordenarPorPuntosSeleccion(misNaves);
-		//mostrarNaves(misNaves);
+		mostrarNaves(misNaves);
 		ordenarPorPuntosInsercion(misNaves);
 		//mostrarNaves(misNaves);
 		ordenarPorNombreSeleccion(misNaves);
@@ -179,12 +179,22 @@ public class DemoBatalla {
 	}
 	//Método que ordena por número de puntos de menor a mayor
 	public static void ordenarPorPuntosSeleccion(Nave[] flota){
-		
+		for(int i = 0; i < flota.length-1; i++){
+			int minIndex = i;
+			for(int j = i+1; j < flota.length; j++){
+				if(flota[j].getPuntos() < flota[minIndex].getPuntos()){
+					minIndex = j;
+				}
+			}
+			Nave auxiliar = flota[minIndex];
+			flota[minIndex] = flota[i];
+			flota[i] = auxiliar;
+		}	
 	}
 
 	//Método que ordena por nombre de A a Z
 	public static void ordenarPorNombreSeleccion(Nave[] flota){
-	
+		
 	}
 
 	//Método que muestra las naves ordenadas por número de puntos de mayor a menor
