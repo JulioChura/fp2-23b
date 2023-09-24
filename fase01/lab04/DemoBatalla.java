@@ -29,15 +29,31 @@ public class DemoBatalla {
     		misNaves[i].setEstado(est);
 			misNaves[i].setPuntos(punt);
 		}
-		System.out.println("Naves creadas:");
+		System.out.println("\nNaves creadas:");
 		mostrarNaves(misNaves);
-        System.out.println();
 		mostrarPorNombre(misNaves);
-        System.out.println();
 		mostrarPorPuntos(misNaves);
-		System.out.println("Nave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
-        Nave[] navesAleatorias = copiarNavesAleatoriamente(misNaves);
-        mostrarNaves(navesAleatorias);
+		System.out.println("\nNave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
+
+  		//leer un nombre
+		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
+		int pos=busquedaLinealNombre(misNaves,nombre);
+
+		ordenarPorPuntosBurbuja(misNaves);
+		mostrarNaves(misNaves);
+		ordenarPorNombreBurbuja(misNaves);
+		mostrarNaves(misNaves);
+		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
+		pos=busquedaBinariaNombre(misNaves,nombre);
+		ordenarPorPuntosSeleccion(misNaves);
+		mostrarNaves(misNaves);
+		ordenarPorPuntosInsercion(misNaves);
+		mostrarNaves(misNaves);
+		ordenarPorNombreSeleccion(misNaves);
+		mostrarNaves(misNaves);
+		ordenarPorNombreInsercion(misNaves);
+		mostrarNaves(misNaves);
+
 	}
 	//Método para mostrar todas las naves
 	public static void mostrarNaves(Nave [] flota){
@@ -45,6 +61,7 @@ public class DemoBatalla {
             System.out.println("Nave "+(i+1)+": "+flota[i]);        
         }
     }
+
 	//Método para mostrar todas las naves de un nombre que se pide por teclado
 	public static void mostrarPorNombre(Nave [] flota){
         Scanner sc = new Scanner(System.in);
@@ -61,6 +78,7 @@ public class DemoBatalla {
             System.out.println("No fue encontrada");
          }
 	}
+
 	//Método para mostrar todas las naves con un número de puntos inferior o igual
 	//al número de puntos que se pide por teclado
 	public static void mostrarPorPuntos(Nave [] flota){
@@ -79,6 +97,7 @@ public class DemoBatalla {
             }
             System.out.println();
 	}
+
 	//Método que devuelve la Nave con mayor número de Puntos
 	public static Nave mostrarMayorPuntos(Nave [] flota){
 	    int puntosMaximos = flota[0].getPuntos();
@@ -91,18 +110,50 @@ public class DemoBatalla {
         }
         return flota[indice];
 	}
-	//Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos previamente ingresados		
-	//pero aleatoriamente desordenados
-    public static Nave[] copiarNavesAleatoriamente(Nave[] naves){
-        Nave[] arrayCopia = new Nave[naves.length];
-        System.arraycopy(naves,0,arrayCopia,0,naves.length);
-        Random random = new Random();
-        for (int i = arrayCopia.length - 1; i > 0; i--) {
-            int indiceAleatorio = random.nextInt(i + 1);
-            Nave temporal = arrayCopia[indiceAleatorio];
-            arrayCopia[indiceAleatorio] = arrayCopia[i];
-            arrayCopia[i] = temporal;
-        }
-        return arrayCopia;
-    }
+
+	//Método para buscar la primera nave con un nombre que se pidió por teclado
+	public static int busquedaLinealNombre(Nave[] flota, String s){
+		return null;
+	}
+
+	//Método que ordena por número de puntos de menor a mayor
+	public static void ordenarPorPuntosBurbuja(Nave[] flota){
+		
+
+	}
+
+	//Método que ordena por nombre de A a Z
+	public static void ordenarPorNombreBurbuja(Nave[] flota){
+		
+
+	}
+
+	//Método para buscar la primera nave con un nombre que se pidió por teclado
+	public static int busquedaBinariaNombre(Nave[] flota, String s){
+		return null;
+	}
+
+	//Método que ordena por número de puntos de menor a mayor
+	
+	public static void ordenarPorPuntosSeleccion(Nave[] flota){
+		
+	}
+
+	//Método que ordena por nombre de A a Z
+	public static void ordenarPorNombreSeleccion(Nave[] flota){
+	
+	}
+
+	//Método que muestra las naves ordenadas por número de puntos de mayor a menor
+	public static void ordenarPorPuntosInsercion(Nave[] flota){
+	}
+
+	//Método que muestra las naves ordenadas por nombre de Z a A
+	public static void ordenarPorNombreInsercion(Nave[] flota){
+
+	}
+
+
+	
+
 }
