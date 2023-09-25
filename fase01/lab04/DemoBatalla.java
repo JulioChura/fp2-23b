@@ -60,11 +60,11 @@ public class DemoBatalla {
 	        System.out.println("Nave encontrada"+ misNaves[pos].toString());
 		*/
 		ordenarPorPuntosSeleccion(misNaves);
-		//mostrarNaves(misNaves);
+		mostrarNaves(misNaves);
 		ordenarPorPuntosInsercion(misNaves);
 		//mostrarNaves(misNaves);
 		ordenarPorNombreSeleccion(misNaves);
-		mostrarNaves(misNaves);
+		//mostrarNaves(misNaves);
 		ordenarPorNombreInsercion(misNaves);
 		//mostrarNaves(misNaves);
 
@@ -207,6 +207,19 @@ public class DemoBatalla {
 	}
 	//Método que muestra las naves ordenadas por número de puntos de mayor a menor
 	public static void ordenarPorPuntosInsercion(Nave[] flota){
+		int posicion;
+		Nave auxiliar;
+		for(int i = 0; i < flota.length; i++){
+			posicion = i;
+			auxiliar = flota[i];
+			while(0 < posicion && auxiliar.getPuntos() < flota[posicion-1].getPuntos()){
+				flota[posicion] = flota[posicion-1];
+				posicion--;
+			}
+			flota[posicion] = auxiliar;
+		}
+
+
 	}
 
 	//Método que muestra las naves ordenadas por nombre de Z a A
