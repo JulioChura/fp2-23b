@@ -5,7 +5,7 @@
 import java.util.*;
 public class DemoBatalla {
 	public static void main(String [] args){
-		Nave [] misNaves = new Nave[3];
+		Nave [] misNaves = new Nave[4];
 		Scanner sc = new Scanner(System.in);
 		String nombre, col;
 		int fil, punt, pos;
@@ -60,13 +60,13 @@ public class DemoBatalla {
 	        System.out.println("Nave encontrada"+ misNaves[pos].toString());
 		*/
 		ordenarPorPuntosSeleccion(misNaves);
-		mostrarNaves(misNaves);
+		//mostrarNaves(misNaves);
 		ordenarPorPuntosInsercion(misNaves);
 		//mostrarNaves(misNaves);
 		ordenarPorNombreSeleccion(misNaves);
 		//mostrarNaves(misNaves);
 		ordenarPorNombreInsercion(misNaves);
-		//mostrarNaves(misNaves);
+		mostrarNaves(misNaves);
 
 	}
 	//Método para mostrar todas las naves
@@ -218,16 +218,21 @@ public class DemoBatalla {
 			}
 			flota[posicion] = auxiliar;
 		}
-
-
 	}
 
 	//Método que muestra las naves ordenadas por nombre de Z a A
 	public static void ordenarPorNombreInsercion(Nave[] flota){
-
+    	int posicion;
+        Nave auxiliar;
+        for(int i = 0; i < flota.length; i++){
+        	posicion = i;
+            auxiliar = flota[i];
+            while(posicion > 0 && auxiliar.getNombre().compareTo(flota[posicion-1].getNombre())<0){
+            	flota[posicion] = flota[posicion-1];
+                posicion--;
+            }
+            flota[posicion] = auxiliar;
+        }
 	}
-
-
-	
 
 }
