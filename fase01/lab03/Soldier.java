@@ -18,7 +18,6 @@ public class Soldier {
         this.lifePoints = lifePoints;
     }
 
-    @Override
     public String toString() {
         return "Soldier{" + "name=" + name + ", lifePoints=" + lifePoints + '}';
     }  

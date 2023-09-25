@@ -22,13 +22,13 @@ public class Nave {
 	}
 	// Metodos accesores
 	public String getNombre(){
-	return nombre;
+	    return nombre;
 	}
 	public int getFila(){
 		return fila;
 	}
 	public String getColumna(){
-		return columna;
+	   	return columna;
 
 	}
 
@@ -36,11 +36,11 @@ public class Nave {
 		return estado;
 	}
 	public int getPuntos(){
-		return puntos;
+        return puntos;
 	}
 	// Completar con otros métodos necesarios
-	 public String toString() {
-            return "Nombre: " + nombre + ", Fila: " + fila + ", Columna: " + 
-		    columna + ", Estado; "+ estado + ", Puntos: "+ puntos;
-        }
+    public String toString() {
+        return "Nombre: " + nombre + ", Fila: " + fila + ", Columna: " + 
+    columna + ", Estado; "+ estado + ", Puntos: "+ puntos;
+    }
 }
