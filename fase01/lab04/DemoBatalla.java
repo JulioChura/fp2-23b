@@ -1,11 +1,11 @@
-// Laboratorio Nro 3 - Ejercicio 1
+// Laboratorio Nro 4 
 // Autor: Julio
-// Tiempo: 4 horas
+// Tiempo: 5 horas
 // No hubo colaboradores
 import java.util.*;
 public class DemoBatalla {
 	public static void main(String [] args){
-		Nave [] misNaves = new Nave[4];
+		Nave [] misNaves = new Nave[10];
 		Scanner sc = new Scanner(System.in);
 		String nombre, col;
 		int fil, punt, pos;
@@ -29,42 +29,55 @@ public class DemoBatalla {
     		misNaves[i].setEstado(est);
 			misNaves[i].setPuntos(punt);
 		}
-		/*
+		
 		System.out.println("\nNaves creadas:");
 		mostrarNaves(misNaves);
 		mostrarPorNombre(misNaves);
 		mostrarPorPuntos(misNaves);
 		System.out.println("\nNave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
-		*/
+		
   		//leer un nombre
 		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
-		//System.out.println("Ingrese algun nombre de una nave");
-        //nombre = sc.next();
-		//pos=busquedaLinealNombre(misNaves,nombre);
-		/*if(pos==-1) 
+		System.out.println("Se usara busqueda lineal para encontrar el nombre solicitado");
+		System.out.println("Ingrese algun nombre de una nave");
+        nombre = sc.next();
+		pos=busquedaLinealNombre(misNaves,nombre);
+		if(pos==-1) 
 	        System.out.println("Nave no encontrada");
 		else 
-	        System.out.println("Nave encontrada "+ misNaves[pos].toString());*/
+	        System.out.println("Nave encontrada "+ misNaves[pos].toString());
+		
+		System.out.println("Se usara ordenamiento burbuja para ordenar los puntos");
+		ordenarPorPuntosBurbuja(misNaves);
+		mostrarNaves(misNaves);
 
-		//ordenarPorPuntosBurbuja(misNaves);
-		//mostrarNaves(misNaves);
-		//ordenarPorNombreBurbuja(misNaves);
-		//mostrarNaves(misNaves);
+		System.out.println("Se usara ordenamiento burbuja para ordenar los nombres");
+		ordenarPorNombreBurbuja(misNaves);
+		mostrarNaves(misNaves);
+		
 		//mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
-		/*System.out.println("Ingrese la nave que desea buscar");
+		System.out.println("Se usara busqueda binaria para encontrar el nombre de la nave a buscar");
+		System.out.println("Ingrese la nave que desea buscar");
 		nombre = sc.next();
 		pos=busquedaBinariaNombre(misNaves,nombre);
 		if(pos==-1) 
 	        System.out.println("Nave no encontrada");
 		else 
 	        System.out.println("Nave encontrada"+ misNaves[pos].toString());
-		*/
+
+		System.out.println("Se empleara orden por seleccion en los puntos");
 		ordenarPorPuntosSeleccion(misNaves);
-		//mostrarNaves(misNaves);
+		mostrarNaves(misNaves);
+
+		System.out.println("Se empleara orden por insercion en los puntos");
 		ordenarPorPuntosInsercion(misNaves);
-		//mostrarNaves(misNaves);
+		mostrarNaves(misNaves);
+
+	    System.out.println("Se empleara orden por seleccion en los nombres");
 		ordenarPorNombreSeleccion(misNaves);
-		//mostrarNaves(misNaves);
+		mostrarNaves(misNaves);
+
+		System.out.println("Se empleara orden por insercion en los nombres");
 		ordenarPorNombreInsercion(misNaves);
 		mostrarNaves(misNaves);
 
@@ -219,7 +232,6 @@ public class DemoBatalla {
 			flota[posicion] = auxiliar;
 		}
 	}
-
 	//Método que muestra las naves ordenadas por nombre de Z a A
 	public static void ordenarPorNombreInsercion(Nave[] flota){
     	int posicion;
