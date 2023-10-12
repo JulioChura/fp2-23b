@@ -7,8 +7,20 @@ import java.util.*;
 
 public class VideoJuego {
 	public static void main(String[] args) {
+
 		Soldier[][] army = generateArmy();
 		printArray(army);
+		String[][] tablero = miTablero();
+
+		System.out.print("    A    B    C    D    E   F    G    H    I    J \n");
+		for (int i = 0; i < tablero.length; i++) {
+			System.out.printf("%2d", (i + 1));
+			for (int j = 0; j < tablero[i].length; j++) {
+				System.out.print(tablero[i][j]);
+			}
+			System.out.println();
+		}
+
 	}
 
 	public static void printArray(Soldier[][] a) {
