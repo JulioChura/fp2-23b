@@ -8,11 +8,16 @@ import java.util.*;
 public class VideoJuego {
 	public static void main(String[] args) {
 		Soldier[][] army = generateArmy();
+		printArray(army);
 	}
 
-	public static void printArray(Soldier[] a) {
+	public static void printArray(Soldier[][] a) {
 		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i].toString());
+			for (int j = 0; j < a[i].length; j++) {
+				if (a[i][j] != null) {
+					System.out.println(a[i][j].toString());
+				}
+			}
 		}
 	}
 
@@ -38,7 +43,6 @@ public class VideoJuego {
 				i++;
 			}
 		} while (i < amount);
-
 		return myArmy;
 	}
 
