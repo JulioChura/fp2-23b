@@ -10,25 +10,8 @@ public class VideoJuego {
 
 		Soldier[][] army = generateArmy();
 		printArray(army);
-		String[][] tablero = miTablero();
 
-		for (int i = 0; i < army.length; i++) {
-			for (int j = 0; j < army[i].length; j++) {
-				if (army[i][j] != null) {
-					tablero[i][j] = "|_s_|";
-				}
-			}
-		}
-
-		System.out.print("    A    B    C    D    E   F    G    H    I    J \n");
-		for (int i = 0; i < tablero.length; i++) {
-			System.out.printf("%2d", (i + 1));
-			for (int j = 0; j < tablero[i].length; j++) {
-				System.out.print(tablero[i][j]);
-			}
-			System.out.println();
-		}
-
+		miTablero(army);
 	}
 
 	public static void printArray(Soldier[][] a) {
@@ -66,14 +49,31 @@ public class VideoJuego {
 		return myArmy;
 	}
 
-	public static String[][] miTablero() {
+	public static void miTablero(Soldier[][] a) {
 		String[][] tablero = new String[10][10];
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero[i].length; j++) {
 				tablero[i][j] = "|___|";
 			}
 		}
-		return tablero;
+
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < a[i].length; j++) {
+				if (a[i][j] != null) {
+					tablero[i][j] = "|_s_|";
+				}
+			}
+		}
+
+		System.out.print("    A    B    C    D    E   F    G    H    I    J \n");
+		for (int i = 0; i < tablero.length; i++) {
+			System.out.printf("%2d", (i + 1));
+			for (int j = 0; j < tablero[i].length; j++) {
+				System.out.print(tablero[i][j]);
+			}
+			System.out.println();
+		}
+
 	}
 
 }
