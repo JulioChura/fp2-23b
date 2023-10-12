@@ -11,11 +11,14 @@ public class VideoJuego {
 		Soldier[][] army = generateArmy();
 		Soldier[] armyU = arrayUnidimensional(army);
 		miTablero(army);
+		System.out.println("Mostrando soldados por orden de creacion");
 		mostrarPorCreacion(armyU);
 		mayorVida(armyU);
 		totalLifeAndAverage(armyU);
-
 		System.out.println("El soldado con mayor vida: " + armyU[armyU.length - 1]);
+		System.out.println("Mostrando soldados por ranking de poder");
+		orderByPower(armyU);
+
 	}
 
 	public static Soldier[] arrayUnidimensional(Soldier[][] s) {
@@ -119,6 +122,30 @@ public class VideoJuego {
 		}
 		System.out.println("El promedio de vida del ejercito es: " + (double) addition / sol.length);
 		System.out.println("El total de vida del ejercito es: " + addition);
+	}
+
+	// Por condiciones del problema se solicitan dos metodos de ordenamiento, por lo
+	// que este seria el segundo
+	public static void orderByPower(Soldier[] ar) {
+		boolean swapped;
+		Soldier temp;
+		for (int i = 0; i < ar.length - 1; i++) {
+			swapped = false;
+			for (int j = 0; j < ar.length - 1 - i; j++) {
+				temp = ar[j];
+				ar[j] = ar[j + 1];
+				ar[j + 1] = temp;
+				swapped = true;
+
+			}
+			if (swapped == false) {
+				break;
+			}
+		}
+		for (int i = 0; i < ar.length; i++) {
+			System.out.println(ar[i]);
+		}
+
 	}
 
 }
