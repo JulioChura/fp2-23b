@@ -13,6 +13,7 @@ public class VideoJuego {
 		miTablero(army);
 		mostrarPorCreacion(armyU);
 		mayorVida(armyU);
+		totalLifeAndAverage(armyU);
 
 		System.out.println("El soldado con mayor vida: " + armyU[armyU.length - 1]);
 	}
@@ -110,4 +111,14 @@ public class VideoJuego {
 			System.out.println(sol[i]);
 		}
 	}
+
+	public static void totalLifeAndAverage(Soldier[] sol) {
+		int addition = 0;
+		for (int i = 0; i < sol.length; i++) {
+			addition = addition + sol[i].getLifePoints();
+		}
+		System.out.println("El promedio de vida del ejercito es: " + (double) addition / sol.length);
+		System.out.println("El total de vida del ejercito es: " + addition);
+	}
+
 }
