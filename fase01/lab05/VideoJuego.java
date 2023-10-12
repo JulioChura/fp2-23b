@@ -1,6 +1,6 @@
 // Laboratorio Nro 5
 // Autor: Julio
-// Tiempo: 20
+// Tiempo: 7
 // No hubo colaboradores
 
 import java.util.*;
@@ -44,6 +44,16 @@ public class VideoJuego {
 			}
 		} while (i < amount);
 		return myArmy;
+	}
+
+	public static String[][] miTablero() {
+		String[][] tablero = new String[10][10];
+		for (int i = 0; i < tablero.length; i++) {
+			for (int j = 0; j < tablero[i].length; j++) {
+				tablero[i][j] = "|___|";
+			}
+		}
+		return tablero;
 	}
 
 }
