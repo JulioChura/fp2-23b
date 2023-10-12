@@ -96,7 +96,7 @@ public class VideoJuego {
 			}
 		}
 
-		for (int i = 0; i < armyU.length; i++) {
+		for (int i = 0; i < armyU.length; i++ ) {
 			int maxIndex = i;
 			for (int j = i + 1; j < armyU.length; j++) {
 				if (armyU[j].getLifePoints() > armyU[maxIndex].getLifePoints()) {
