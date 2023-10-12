@@ -125,7 +125,7 @@ public class VideoJuego {
 	}
 
 	// Por condiciones del problema se solicitan dos metodos de ordenamiento, por lo
-	// que este seria el segundo
+	// que este seria el segundo. Se usara el burbuja
 	public static void orderByPower(Soldier[] ar) {
 		boolean swapped;
 		Soldier temp;
