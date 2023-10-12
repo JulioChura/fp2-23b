@@ -1,6 +1,6 @@
 // Laboratorio Nro 5
 // Autor: Julio
-// Tiempo: 7
+// Tiempo: 20
 // No hubo colaboradores
 
 import java.util.*;
@@ -11,6 +11,14 @@ public class VideoJuego {
 		Soldier[][] army = generateArmy();
 		printArray(army);
 		String[][] tablero = miTablero();
+
+		for (int i = 0; i < army.length; i++) {
+			for (int j = 0; j < army[i].length; j++) {
+				if (army[i][j] != null) {
+					tablero[i][j] = "|_s_|";
+				}
+			}
+		}
 
 		System.out.print("    A    B    C    D    E   F    G    H    I    J \n");
 		for (int i = 0; i < tablero.length; i++) {
