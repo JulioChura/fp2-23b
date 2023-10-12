@@ -86,5 +86,22 @@ public class VideoJuego {
 			System.out.println();
 		}
 	}
+	
+	// Se hará uso del ordenamiento por inserción
+	public static void mayorVida(Soldier[] s) {
+
+		for (int i = 0; i < s.length; i++) {
+			int maxIndex = i;
+			for (int j = i + 1; j < s.length; j++) {
+				if (s[j].getLifePoints() > s[maxIndex].getLifePoints()) {
+					maxIndex = j;
+				}
+				Soldier auxiliar = s[maxIndex];
+				s[maxIndex] = s[i];
+				s[i] = auxiliar;
+			}
+		}
+
+	}
 
 }
