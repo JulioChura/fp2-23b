@@ -1,4 +1,5 @@
 public class Soldier {
+	
     private String name;
     private int lifePoints;
     private int row;
@@ -37,7 +38,7 @@ public class Soldier {
     }
 
     public String toString() {
-        return "Soldier{" + "name=" + name + ", lifePoints=" + lifePoints + '}';
+        return "Soldier [name=" + name + ", lifePoints=" + lifePoints + ", row=" + row + ", column=" + column + "]";
     }
 
 }
