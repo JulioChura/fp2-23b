@@ -11,6 +11,10 @@ public class VideoJuego {
 		Soldier[][] army = generateArmy();
 		Soldier[] armyU = arrayUnidimensional(army);
 		miTablero(army);
+		mostrarPorCreacion(armyU);
+		mayorVida(armyU);
+
+		System.out.println("El soldado con mayor vida: " + armyU[armyU.length - 1]);
 	}
 
 	public static Soldier[] arrayUnidimensional(Soldier[][] s) {
@@ -86,22 +90,24 @@ public class VideoJuego {
 			System.out.println();
 		}
 	}
-	
+
 	// Se hará uso del ordenamiento por inserción
 	public static void mayorVida(Soldier[] s) {
-
-		for (int i = 0; i < s.length; i++) {
-			int maxIndex = i;
-			for (int j = i + 1; j < s.length; j++) {
-				if (s[j].getLifePoints() > s[maxIndex].getLifePoints()) {
-					maxIndex = j;
-				}
-				Soldier auxiliar = s[maxIndex];
-				s[maxIndex] = s[i];
-				s[i] = auxiliar;
+		int n = s.length;
+		for (int i = 1; i < n; i++) {
+			Soldier key = s[i];
+			int j = i - 1;
+			while (j >= 0 && s[j].getLifePoints() > key.getLifePoints()) {
+				s[j + 1] = s[j];
+				j--;
 			}
+			s[j + 1] = key;
 		}
-
 	}
 
+	public static void mostrarPorCreacion(Soldier[] sol) {
+		for (int i = 0; i < sol.length; i++) {
+			System.out.println(sol[i]);
+		}
+	}
 }
