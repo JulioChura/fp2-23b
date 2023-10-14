@@ -1,6 +1,6 @@
 // Laboratorio Nro 5
 // Autor: Julio
-// Tiempo: 20
+// Tiempo: 3 horas
 // No hubo colaboradores
 
 import java.util.*;
@@ -13,12 +13,12 @@ public class VideoJuego {
 		miTablero(army);
 		System.out.println("Mostrando soldados por orden de creacion");
 		mostrarPorCreacion(armyU);
-		mayorVida(armyU);
-		totalLifeAndAverage(armyU);
+		mayorVida(armyU);	
 		System.out.println("El soldado con mayor vida: " + armyU[armyU.length - 1]);
+		totalLifeAndAverage(armyU);
 		System.out.println("Mostrando soldados por ranking de poder");
 		orderByPower(armyU);
-
+		
 	}
 
 	public static Soldier[] arrayUnidimensional(Soldier[][] s) {
