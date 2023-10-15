@@ -17,15 +17,15 @@ public class VideoJuego3 {
 		System.out.println("Mostrando estadisticas de cada ejercito" + "\n");
 		System.out.println("Mostrando soldados por orden de creacion");
 		System.out.println("DATOS DEL DEL EJERCITO A");
-		mostrarPorCreacion(armyAU);
+		showByCreation(armyAU);
 
 		System.out.println();
 		System.out.println("DATOS DEL EJRCITO B");
-		mostrarPorCreacion(armyBU);
+		showByCreation(armyBU);
 
 		System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando el tablero de juego");
-		miTablero(armyA, armyB);
+		myBoard(armyA, armyB);
 		/*
 		 * Soldier[] armyU = arrayUnidimensional(army);
 		 * miTablero(army);
@@ -107,7 +107,7 @@ public class VideoJuego3 {
 		return army;
 	}
 
-	public static void miTablero(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
+	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
 		String[][] tablero = new String[10][10];
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero[i].length; j++) {
@@ -142,7 +142,7 @@ public class VideoJuego3 {
 	}
 
 	// Se hará uso del ordenamiento por inserción
-	public static void mayorVida(Soldier[] s) {
+	public static void longerLife(Soldier[] s) {
 		int n = s.length;
 		for (int i = 1; i < n; i++) {
 			Soldier key = s[i];
@@ -155,7 +155,7 @@ public class VideoJuego3 {
 		}
 	}
 
-	public static void mostrarPorCreacion(ArrayList<Soldier> sol) {
+	public static void showByCreation(ArrayList<Soldier> sol) {
 		for (Soldier n : sol) {
 			System.out.println(n);
 		}
