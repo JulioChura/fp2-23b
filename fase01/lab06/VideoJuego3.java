@@ -118,9 +118,9 @@ public class VideoJuego3 {
 		}
 	}
 
-	public static void mostrarPorCreacion(Soldier[] sol) {
-		for (int i = 0; i < sol.length; i++) {
-			System.out.println(sol[i]);
+	public static void mostrarPorCreacion(ArrayList<Soldier> sol) {
+		for (Soldier n : sol) {
+			System.out.println(n);
 		}
 	}
 
