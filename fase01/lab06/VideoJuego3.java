@@ -10,6 +10,9 @@ public class VideoJuego3 {
 
 		ArrayList<ArrayList<Soldier>> armyA = generateArmy();
 		ArrayList<ArrayList<Soldier>> armyB = generateArmy();
+		ArrayList<Soldier> armyAU = arrayListUnidimensional(armyA);
+		ArrayList<Soldier> armyBU = arrayListUnidimensional(armyB);
+
 		System.out.println("oooooooooooooooo  FASE 1 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando estadisticas de cada ejercito" + "\n");
 
