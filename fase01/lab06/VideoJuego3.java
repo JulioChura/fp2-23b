@@ -9,7 +9,7 @@ public class VideoJuego3 {
 	public static void main(String[] args) {
 
 		ArrayList<ArrayList<Soldier>> armyA = generateArmy();
-		ArrayList<ArrayList<Soldier>> armyB = generateArmy();
+		ArrayList<ArrayList<Soldier>> armyB = generateArmyB(armyA);
 		ArrayList<Soldier> armyAU = arrayListUnidimensional(armyA);
 		ArrayList<Soldier> armyBU = arrayListUnidimensional(armyB);
 
