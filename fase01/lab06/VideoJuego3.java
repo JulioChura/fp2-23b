@@ -5,20 +5,25 @@
 
 import java.util.*;
 
-public class VideoJuego {
+public class VideoJuego3 {
 	public static void main(String[] args) {
 
-		Soldier[][] army = generateArmy();
-		Soldier[] armyU = arrayUnidimensional(army);
-		miTablero(army);
-		System.out.println("Mostrando soldados por orden de creacion");
-		mostrarPorCreacion(armyU);
-		mayorVida(armyU);	
-		System.out.println("El soldado con mayor vida: " + armyU[armyU.length - 1]);
-		totalLifeAndAverage(armyU);
-		System.out.println("Mostrando soldados por ranking de poder");
-		orderByPower(armyU);
-		
+		ArrayList<ArrayList<Soldier>> armyA = generateArmy();
+		ArrayList<ArrayList<Soldier>> armyB = generateArmy();
+		System.out.println("oooooooooooooooo  FASE 1 DE LA CONTIENDA  oooooooooooooooo");
+		System.out.println("Mostrando estadisticas de cada ejercito" + "\n");
+
+		/*
+		 * Soldier[] armyU = arrayUnidimensional(army);
+		 * miTablero(army);
+		 * System.out.println("Mostrando soldados por orden de creacion");
+		 * mostrarPorCreacion(armyU);
+		 * mayorVida(armyU);
+		 * System.out.println("El soldado con mayor vida: " + armyU[armyU.length - 1]);
+		 * totalLifeAndAverage(armyU);
+		 * System.out.println("Mostrando soldados por ranking de poder");
+		 * orderByPower(armyU);
+		 */
 	}
 
 	public static Soldier[] arrayUnidimensional(Soldier[][] s) {
@@ -44,29 +49,29 @@ public class VideoJuego {
 		return armyU;
 	}
 
-	public static Soldier[][] generateArmy() {
+	public static ArrayList<ArrayList<Soldier>> generateArmy() {
+		ArrayList<ArrayList<Soldier>> army = new ArrayList<ArrayList<Soldier>>(10);
 		Random random = new Random();
 		int amount = random.nextInt(10) + 1;
-		Soldier[][] myArmy = new Soldier[10][10];
-		int i = 0;
+		int n = 0;
 		do {
 			int row = random.nextInt(10);
 			int column = random.nextInt(10);
-			if (myArmy[row][column] == null) {
-				String name = "Soldier" + (i + 1);
+			if (army.get(row).get(column) == null) {
+				String name = "Soldier" + row + "x" + column;
 				int lifePoints = random.nextInt(5) + 1;
 
-				myArmy[row][column] = new Soldier();
+				Soldier sol = new Soldier();
 
-				myArmy[row][column].setLifePoints(lifePoints);
-				myArmy[row][column].setName(name);
-				myArmy[row][column].setColumn(column);
-				myArmy[row][column].setRow(row);
-
-				i++;
+				sol.setLifePoints(lifePoints);
+				sol.setName(name);
+				sol.setColumn(column);
+				sol.setRow(row);
+				army.get(row).set(column, sol);
+				n++;
 			}
-		} while (i < amount);
-		return myArmy;
+		} while (n < amount);
+		return army;
 	}
 
 	public static void miTablero(Soldier[][] a) {
