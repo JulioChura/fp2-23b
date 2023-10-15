@@ -18,25 +18,15 @@ public class VideoJuego3 {
 		System.out.println("Mostrando soldados por orden de creacion");
 		System.out.println("DATOS DEL DEL EJERCITO A");
 		showByCreation(armyAU);
-
+		System.out.println("Mayor vida en A: " + longerLife(armyAU));
 		System.out.println();
 		System.out.println("DATOS DEL EJRCITO B");
 		showByCreation(armyBU);
-
+		System.out.println("Mayor vida en A: " + longerLife(armyBU));
 		System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando el tablero de juego");
 		myBoard(armyA, armyB);
-		/*
-		 * Soldier[] armyU = arrayUnidimensional(army);
-		 * miTablero(army);
-		 * System.out.println("Mostrando soldados por orden de creacion");
-		 * mostrarPorCreacion(armyU);
-		 * mayorVida(armyU);
-		 * System.out.println("El soldado con mayor vida: " + armyU[armyU.length - 1]);
-		 * totalLifeAndAverage(armyU);
-		 * System.out.println("Mostrando soldados por ranking de poder");
-		 * orderByPower(armyU);
-		 */
+
 	}
 
 	public static ArrayList<Soldier> arrayListUnidimensional(ArrayList<ArrayList<Soldier>> s) {
