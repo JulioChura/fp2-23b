@@ -15,6 +15,13 @@ public class VideoJuego3 {
 
 		System.out.println("oooooooooooooooo  FASE 1 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando estadisticas de cada ejercito" + "\n");
+		System.out.println("Mostrando soldados por orden de creacion");
+		System.out.println("DATOS DEL DEL EJERCITO A");
+		mostrarPorCreacion(armyAU);
+
+		System.out.println();
+		System.out.println("DATOS DEL EJÉRCITO B");
+		mostrarPorCreacion(armyBU);
 
 		System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando el tablero de juego");
