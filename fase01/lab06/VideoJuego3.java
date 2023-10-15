@@ -142,17 +142,18 @@ public class VideoJuego3 {
 	}
 
 	// Se hará uso del ordenamiento por inserción
-	public static void longerLife(Soldier[] s) {
-		int n = s.length;
+	public static Soldier longerLife(ArrayList<Soldier> s) {
+		int n = s.size();
 		for (int i = 1; i < n; i++) {
-			Soldier key = s[i];
+			Soldier key = s.get(i);
 			int j = i - 1;
-			while (j >= 0 && s[j].getLifePoints() > key.getLifePoints()) {
-				s[j + 1] = s[j];
+			while (j >= 0 && s.get(j).getLifePoints() > key.getLifePoints()) {
+				s.set(j + 1, s.get(j));
 				j--;
 			}
-			s[j + 1] = key;
+			s.set(j + 1, key);
 		}
+		return s.get(s.size() - 1);
 	}
 
 	public static void showByCreation(ArrayList<Soldier> sol) {
