@@ -31,7 +31,7 @@ public class VideoJuego3 {
 		System.out.println("Mayor vida en B: " + longerLife(armyBU));
 		System.out.println("El total de vida del ejercito B es: " + totalLife(armyBU));
 		System.out.println("El promedio de vida del ejercito B es: " + (double) b / armyBU.size());
-		System.out.println("Mostrando soldados por ranking de poder de A");
+		System.out.println("Mostrando soldados por ranking de poder de B");
 		orderByPower(armyBU);
 
 		System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
