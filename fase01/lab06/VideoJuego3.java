@@ -168,23 +168,23 @@ public class VideoJuego3 {
 
 	// Por condiciones del problema se solicitan dos metodos de ordenamiento, por lo
 	// que este seria el segundo. Se usara el burbuja
-	public static void orderByPower(Soldier[] ar) {
+	public static void orderByPower(ArrayList<Soldier> sol) {
 		boolean swapped;
 		Soldier temp;
-		for (int i = 0; i < ar.length - 1; i++) {
+		for (int i = 0; i < sol.size() - 1; i++) {
 			swapped = false;
-			for (int j = 0; j < ar.length - 1 - i; j++) {
-				temp = ar[j];
-				ar[j] = ar[j + 1];
-				ar[j + 1] = temp;
+			for (int j = 0; j < sol.size() - 1 - i; j++) {
+				temp = sol.get(j);
+				sol.set(j, sol.get(j + 1));
+				sol.set(j + 1, temp);
 				swapped = true;
 			}
 			if (swapped == false) {
 				break;
 			}
 		}
-		for (int i = 0; i < ar.length; i++) {
-			System.out.println(ar[i]);
+		for (Soldier n : sol) {
+			System.out.println(n);
 		}
 	}
 
