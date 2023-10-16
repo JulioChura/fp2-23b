@@ -12,6 +12,8 @@ public class VideoJuego3 {
 		ArrayList<ArrayList<Soldier>> armyB = generateArmyB(armyA);
 		ArrayList<Soldier> armyAU = arrayListUnidimensional(armyA);
 		ArrayList<Soldier> armyBU = arrayListUnidimensional(armyB);
+		int a = totalLife(armyAU);
+		int b = totalLife(armyBU);
 
 		System.out.println("oooooooooooooooo  FASE 1 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando estadisticas de cada ejercito" + "\n");
@@ -20,11 +22,13 @@ public class VideoJuego3 {
 		showByCreation(armyAU);
 		System.out.println("Mayor vida en A: " + longerLife(armyAU));
 		System.out.println("El total de vida del ejercito A es: " + totalLife(armyAU));
+		System.out.println("El promedio de vida del ejercito A es: " + (double) a / armyAU.size());
 		System.out.println();
 		System.out.println("DATOS DEL EJRCITO B");
 		showByCreation(armyBU);
-		System.out.println("Mayor vida en A: " + longerLife(armyBU));
-		System.out.println("El total de vida del ejercito A es: " + totalLife(armyBU));
+		System.out.println("Mayor vida en B: " + longerLife(armyBU));
+		System.out.println("El total de vida del ejercito B es: " + totalLife(armyBU));
+		System.out.println("El promedio de vida del ejercito B es: " + (double) b / armyBU.size());
 		System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando el tablero de juego");
 		myBoard(armyA, armyB);
