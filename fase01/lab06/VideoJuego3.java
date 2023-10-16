@@ -152,13 +152,12 @@ public class VideoJuego3 {
 		}
 	}
 
-	public static void totalLifeAndAverage(Soldier[] sol) {
+	public static int totalLife(ArrayList<Soldier> sol) {
 		int addition = 0;
-		for (int i = 0; i < sol.length; i++) {
-			addition = addition + sol[i].getLifePoints();
+		for (Soldier n : sol) {
+			addition = addition + n.getLifePoints();
 		}
-		System.out.println("El promedio de vida del ejercito es: " + (double) addition / sol.length);
-		System.out.println("El total de vida del ejercito es: " + addition);
+		return addition;
 	}
 
 	// Por condiciones del problema se solicitan dos metodos de ordenamiento, por lo
