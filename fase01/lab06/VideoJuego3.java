@@ -33,11 +33,17 @@ public class VideoJuego3 {
 		System.out.println("El promedio de vida del ejercito B es: " + (double) b / armyBU.size());
 		System.out.println("Mostrando soldados por ranking de poder de B");
 		orderByPower(armyBU);
+		System.out.println();
 
 		System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando el tablero de juego");
 		myBoard(armyA, armyB);
+		System.out.println();
 
+		System.out.println("+++++++++++++++++   FASE 3 DE LA CONTIENDA  +++++++++++++++++");
+		System.out.println("El ganador se determina en base a los puntos de vida total");
+		System.out.println("Enfrentamiento");
+		theWinner(a, b);
 	}
 
 	public static ArrayList<Soldier> arrayListUnidimensional(ArrayList<ArrayList<Soldier>> s) {
@@ -87,7 +93,6 @@ public class VideoJuego3 {
 		for (int i = 0; i < 10; i++) {
 			army.add(new ArrayList<>(Collections.nCopies(10, null)));
 		}
-
 		do {
 			int row = random.nextInt(10);
 			int column = random.nextInt(10);
@@ -115,7 +120,6 @@ public class VideoJuego3 {
 				tablero[i][j] = "|___|";
 			}
 		}
-
 		for (int i = 0; i < a.size(); i++) {
 			for (int j = 0; j < a.get(i).size(); j++) {
 				if (a.get(i).get(j) != null) {
@@ -123,7 +127,6 @@ public class VideoJuego3 {
 				}
 			}
 		}
-
 		for (int i = 0; i < b.size(); i++) {
 			for (int j = 0; j < b.get(i).size(); j++) {
 				if (b.get(i).get(j) != null && tablero[i][j] != "s") {
@@ -131,7 +134,6 @@ public class VideoJuego3 {
 				}
 			}
 		}
-
 		System.out.print("    A    B    C    D    E   F    G    H    I    J \n");
 		for (int i = 0; i < tablero.length; i++) {
 			System.out.printf("%2d", (i + 1));
@@ -195,9 +197,11 @@ public class VideoJuego3 {
 
 	public static void theWinner(int a, int b) {
 		if (a < b) {
-			System.out.println("El ganador es el equipo S");
-		} else if (a > b) {
 			System.out.println("El ganador es el equipo B");
+			System.out.println("Ventaja de " + (b - a) + " puntos de vida");
+		} else if (a > b) {
+			System.out.println("El ganador es el equipo A");
+			System.out.println("Ventaja de " + (a - b) + " puntos de vida");
 		} else {
 			System.out.println("Fue un empate");
 		}
