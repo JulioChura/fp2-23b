@@ -23,12 +23,17 @@ public class VideoJuego3 {
 		System.out.println("Mayor vida en A: " + longerLife(armyAU));
 		System.out.println("El total de vida del ejercito A es: " + totalLife(armyAU));
 		System.out.println("El promedio de vida del ejercito A es: " + (double) a / armyAU.size());
+		System.out.println("Mostrando soldados por ranking de poder de A");
+		orderByPower(armyAU);
 		System.out.println();
 		System.out.println("DATOS DEL EJRCITO B");
 		showByCreation(armyBU);
 		System.out.println("Mayor vida en B: " + longerLife(armyBU));
 		System.out.println("El total de vida del ejercito B es: " + totalLife(armyBU));
 		System.out.println("El promedio de vida del ejercito B es: " + (double) b / armyBU.size());
+		System.out.println("Mostrando soldados por ranking de poder de A");
+		orderByPower(armyBU);
+
 		System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando el tablero de juego");
 		myBoard(armyA, armyB);
@@ -167,7 +172,7 @@ public class VideoJuego3 {
 	}
 
 	// Por condiciones del problema se solicitan dos metodos de ordenamiento, por lo
-	// que este seria el segundo. Se usara el burbuja
+	// que este seria el segundo. Se usara el burbuja.
 	public static void orderByPower(ArrayList<Soldier> sol) {
 		boolean swapped;
 		Soldier temp;
