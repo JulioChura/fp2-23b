@@ -193,4 +193,14 @@ public class VideoJuego3 {
 		}
 	}
 
+	public static void theWinner(int a, int b) {
+		if (a < b) {
+			System.out.println("El ganador es el equipo S");
+		} else if (a > b) {
+			System.out.println("El ganador es el equipo B");
+		} else {
+			System.out.println("Fue un empate");
+		}
+	}
+
 }
