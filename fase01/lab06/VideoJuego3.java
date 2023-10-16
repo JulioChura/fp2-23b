@@ -19,10 +19,12 @@ public class VideoJuego3 {
 		System.out.println("DATOS DEL DEL EJERCITO A");
 		showByCreation(armyAU);
 		System.out.println("Mayor vida en A: " + longerLife(armyAU));
+		System.out.println("El total de vida del ejercito A es: " + totalLife(armyAU));
 		System.out.println();
 		System.out.println("DATOS DEL EJRCITO B");
 		showByCreation(armyBU);
 		System.out.println("Mayor vida en A: " + longerLife(armyBU));
+		System.out.println("El total de vida del ejercito A es: " + totalLife(armyBU));
 		System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando el tablero de juego");
 		myBoard(armyA, armyB);
