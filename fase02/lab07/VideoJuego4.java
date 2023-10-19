@@ -212,7 +212,7 @@ public class VideoJuego4 {
 	public static boolean validation() {
 		Scanner sc = new Scanner(System.in);
 		do {
-			System.out.println("Desea jugar una ronda?");
+			System.out.println("¿Desea jugar una ronda?(si/no)");
 			String answer = sc.next();
 			if (answer.equalsIgnoreCase("Si")) {
 				return true;
