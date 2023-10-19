@@ -123,7 +123,7 @@ public class VideoJuego4 {
 		for (int i = 0; i < a.size(); i++) {
 			for (int j = 0; j < a.get(i).size(); j++) {
 				if (a.get(i).get(j) != null) {
-					String strA = "|_" + "a" + a.get(i).get(j).getLifePoints();
+					String strA = "|_" + "a" + a.get(i).get(j).getLifePoints()+ "_|";
 					tablero[i][j] = strA;
 				}
 			}
@@ -131,7 +131,7 @@ public class VideoJuego4 {
 		for (int i = 0; i < b.size(); i++) {
 			for (int j = 0; j < b.get(i).size(); j++) {
 				if (b.get(i).get(j) != null && tablero[i][j] != "s") {
-					String strB = "|_" + "b" + b.get(i).get(j).getLifePoints();
+					String strB = "|_" + "b" + b.get(i).get(j).getLifePoints()+ "_|";
 					tablero[i][j] = strB;
 				}
 			}
