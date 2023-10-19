@@ -117,20 +117,22 @@ public class VideoJuego4 {
 		String[][] tablero = new String[10][10];
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero[i].length; j++) {
-				tablero[i][j] = "|___|";
+				tablero[i][j] = "|____|";
 			}
 		}
 		for (int i = 0; i < a.size(); i++) {
 			for (int j = 0; j < a.get(i).size(); j++) {
 				if (a.get(i).get(j) != null) {
-					tablero[i][j] = "|_a_|";
+					String strA = "|_" + "a" + a.get(i).get(j).getLifePoints();
+					tablero[i][j] = strA;
 				}
 			}
 		}
 		for (int i = 0; i < b.size(); i++) {
 			for (int j = 0; j < b.get(i).size(); j++) {
 				if (b.get(i).get(j) != null && tablero[i][j] != "s") {
-					tablero[i][j] = "|_b_|";
+					String strB = "|_" + "b" + b.get(i).get(j).getLifePoints();
+					tablero[i][j] = strB;
 				}
 			}
 		}
