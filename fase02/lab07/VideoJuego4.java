@@ -123,7 +123,7 @@ public class VideoJuego4 {
 		for (int i = 0; i < a.size(); i++) {
 			for (int j = 0; j < a.get(i).size(); j++) {
 				if (a.get(i).get(j) != null) {
-					String strA = "|_" + "a" + a.get(i).get(j).getLifePoints()+ "_|";
+					String strA = "|_" + "a" + a.get(i).get(j).getLifePoints() + "_|";
 					tablero[i][j] = strA;
 				}
 			}
@@ -131,12 +131,12 @@ public class VideoJuego4 {
 		for (int i = 0; i < b.size(); i++) {
 			for (int j = 0; j < b.get(i).size(); j++) {
 				if (b.get(i).get(j) != null && tablero[i][j] != "s") {
-					String strB = "|_" + "b" + b.get(i).get(j).getLifePoints()+ "_|";
+					String strB = "|_" + "b" + b.get(i).get(j).getLifePoints() + "_|";
 					tablero[i][j] = strB;
 				}
 			}
 		}
-		System.out.print("    A    B    C    D    E   F    G    H    I    J \n");
+		System.out.print("   A     B     C     D     E    F     G     H     I     J \n");
 		for (int i = 0; i < tablero.length; i++) {
 			System.out.printf("%2d", (i + 1));
 			for (int j = 0; j < tablero[i].length; j++) {
