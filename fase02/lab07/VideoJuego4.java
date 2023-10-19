@@ -1,11 +1,11 @@
-// Laboratorio Nro 6
+// Laboratorio Nro 7
 // Autor: Julio
-// Tiempo: 5 horas
+// Tiempo: 
 // No hubo colaboradores
 
 import java.util.*;
 
-public class VideoJuego3 {
+public class VideoJuego4 {
 	public static void main(String[] args) {
 
 		ArrayList<ArrayList<Soldier>> armyA = generateArmy();
