@@ -209,4 +209,20 @@ public class VideoJuego4 {
 		}
 	}
 
+	public static boolean validation() {
+		Scanner sc = new Scanner(System.in);
+		do {
+			System.out.println("Desea jugar una ronda?");
+			String answer = sc.next();
+			if (answer.equalsIgnoreCase("Si")) {
+				return true;
+			} else if (answer.equalsIgnoreCase("No")) {
+				return false;
+			} else {
+				System.out.println("Respuesta no admsible");
+			}
+		} while (true);
+
+	}
+
 }
