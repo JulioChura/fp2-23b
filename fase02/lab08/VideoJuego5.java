@@ -22,23 +22,22 @@ public class VideoJuego5 {
 			System.out.println("Mayor vida en A: " + longerLife(armyA));
 			System.out.println("El total de vida del ejercito A es: " + a);
 			System.out.println("El promedio de vida del ejercito A es: " + (double) a / armyA.size());
+			System.out.println("Mostrando soldados por ranking de poder de A");
+			orderByPower(armyA);
 			System.out.println("DATOS DEL EJRCITO B");
 			showByCreation(armyB);
 			System.out.println("Mayor vida en B: " + longerLife(armyB));
 			System.out.println("El total de vida del ejercito B es: " + b);
 			System.out.println("El promedio de vida del ejercito B es: " + (double) b / armyB.size());
+			System.out.println("Mostrando soldados por ranking de poder de B");
+			orderByPower(armyB);
 			/*
-			 * armyAU.size());
-			 * System.out.println("Mostrando soldados por ranking de poder de A");
-			 * orderByPower(armyAU);
 			 * System.out.println("Ingrese el nombre del Soldier que desea buscar");
 			 * String nameA = sc.next();
 			 * binarySearchByName(armyAU, nameA);
 			 * System.out.println();
 			 * System.out.println("DATOS DEL EJRCITO B");
 			 * showByCreation(armyBU);
-			 * System.out.println("Mostrando soldados por ranking de poder de B");
-			 * orderByPower(armyBU);
 			 * System.out.println("Ingrese el nombre del Soldier que desea buscar");
 			 * String nameA = sc.next();
 			 * binarySearchByName(armyAU, nameA);
