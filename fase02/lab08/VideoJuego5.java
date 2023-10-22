@@ -1,4 +1,4 @@
-// Laboratorio Nro 7
+// Laboratorio Nro 8
 // Autor: Julio
 // Tiempo: 
 // No hubo colaboradores
@@ -18,8 +18,11 @@ public class VideoJuego5 {
 			System.out.println("Mostrando estadisticas de cada ejercito" + "\n");
 			System.out.println("Mostrando soldados por orden de creacion");
 			System.out.println("DATOS DEL DEL EJERCITO A");
+			showByCreation(armyA);
+
+			System.out.println("DATOS DEL EJRCITO B");
+			showByCreation(armyB);
 			/*
-			 * showByCreation(armyAU);
 			 * System.out.println("Mayor vida en A: " + longerLife(armyAU));
 			 * System.out.println("El total de vida del ejercito A es: " +
 			 * totalLife(armyAU));
@@ -112,9 +115,9 @@ public class VideoJuego5 {
 		return army;
 	}
 
-	public static void showByCreation(ArrayList<Soldier> sol) {
-		for (Soldier n : sol) {
-			System.out.println(n);
+	public static void showByCreation(HashMap<String, Soldier> army) {
+		for (String key : army.keySet()) {
+			System.out.println(key + ": " + army.get(key));
 		}
 	}
 
