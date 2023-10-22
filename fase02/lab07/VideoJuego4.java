@@ -7,7 +7,7 @@ import java.util.*;
 
 public class VideoJuego4 {
 	public static void main(String[] args) {
-
+		Scanner sc = new Scanner(System.in);
 		while (validation()) {
 			ArrayList<ArrayList<Soldier>> armyA = generateArmy();
 			ArrayList<ArrayList<Soldier>> armyB = generateArmyB(armyA);
@@ -26,6 +26,9 @@ public class VideoJuego4 {
 			System.out.println("El promedio de vida del ejercito A es: " + (double) a / armyAU.size());
 			System.out.println("Mostrando soldados por ranking de poder de A");
 			orderByPower(armyAU);
+			System.out.println("Ingrese el nombre del Soldier que desea buscar");
+			String nameA = sc.next();
+			binarySearchByName(armyA, nameA);
 			System.out.println();
 			System.out.println("DATOS DEL EJRCITO B");
 			showByCreation(armyBU);
@@ -34,6 +37,9 @@ public class VideoJuego4 {
 			System.out.println("El promedio de vida del ejercito B es: " + (double) b / armyBU.size());
 			System.out.println("Mostrando soldados por ranking de poder de B");
 			orderByPower(armyBU);
+			System.out.println("Ingrese el nombre del Soldier que desea buscar");
+			String nameB = sc.next();
+			sequenceSearchByName(armyB, nameB);
 			System.out.println();
 
 			System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
