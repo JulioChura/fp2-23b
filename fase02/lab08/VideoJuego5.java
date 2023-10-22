@@ -19,11 +19,11 @@ public class VideoJuego5 {
 			System.out.println("Mostrando soldados por orden de creacion");
 			System.out.println("DATOS DEL DEL EJERCITO A");
 			showByCreation(armyA);
-
+			System.out.println("Mayor vida en A: " + longerLife(armyA));
 			System.out.println("DATOS DEL EJRCITO B");
 			showByCreation(armyB);
+			System.out.println("Mayor vida en B: " + longerLife(armyB));
 			/*
-			 * System.out.println("Mayor vida en A: " + longerLife(armyAU));
 			 * System.out.println("El total de vida del ejercito A es: " +
 			 * totalLife(armyAU));
 			 * System.out.println("El promedio de vida del ejercito A es: " + (double) a /
@@ -36,9 +36,6 @@ public class VideoJuego5 {
 			 * System.out.println();
 			 * System.out.println("DATOS DEL EJRCITO B");
 			 * showByCreation(armyBU);
-			 * System.out.println("Mayor vida en B: " + longerLife(armyBU));
-			 * System.out.println("El total de vida del ejercito B es: " +
-			 * totalLife(armyBU));
 			 * System.out.println("El promedio de vida del ejercito B es: " + (double) b /
 			 * armyBU.size());
 			 * System.out.println("Mostrando soldados por ranking de poder de B");
@@ -122,18 +119,24 @@ public class VideoJuego5 {
 	}
 
 	// Se hará uso del ordenamiento por inserción
-	public static Soldier longerLife(ArrayList<Soldier> s) {
-		int n = s.size();
+	public static Soldier longerLife(HashMap<String, Soldier> hashMap) {
+		Soldier[] army = new Soldier[hashMap.size()];
+		int index = 0;
+		for (String key : hashMap.keySet()) {
+			army[index] = hashMap.get(key);
+			index++;
+		}
+		int n = army.length;
 		for (int i = 1; i < n; i++) {
-			Soldier key = s.get(i);
+			Soldier key = army[i];
 			int j = i - 1;
-			while (j >= 0 && s.get(j).getLifePoints() > key.getLifePoints()) {
-				s.set(j + 1, s.get(j));
+			while (j >= 0 && army[j].getLifePoints() > key.getLifePoints()) {
+				army[j + 1] = army[j];
 				j--;
 			}
-			s.set(j + 1, key);
+			army[j + 1] = key;
 		}
-		return s.get(s.size() - 1);
+		return army[army.length - 1];
 	}
 
 	public static int totalLife(ArrayList<Soldier> sol) {
