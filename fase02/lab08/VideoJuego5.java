@@ -10,7 +10,7 @@ public class VideoJuego5 {
 
 		while (validation()) {
 			HashMap<String, Soldier> armyA = generateArmy();
-			// HashMap<String, Soldier> armyB = generateArmyB(armyA);
+			HashMap<String, Soldier> armyB = generateArmyB(armyA);
 			// int a = totalLife(armyAU);
 			// int b = totalLife(armyBU);
 
@@ -87,29 +87,25 @@ public class VideoJuego5 {
 		return army;
 	}
 
-	public static ArrayList<ArrayList<Soldier>> generateArmyB(ArrayList<ArrayList<Soldier>> a) {
-		ArrayList<ArrayList<Soldier>> army = new ArrayList<ArrayList<Soldier>>(10);
+	public static HashMap<String, Soldier> generateArmyB(HashMap<String, Soldier> a) {
+		int rowBoard = 10;
+		int columnBoard = 10;
+		HashMap<String, Soldier> army = new HashMap<String, Soldier>();
 		Random random = new Random();
 		int amount = random.nextInt(10) + 1;
 		int n = 0;
-
-		for (int i = 0; i < 10; i++) {
-			army.add(new ArrayList<>(Collections.nCopies(10, null)));
-		}
 		do {
-			int row = random.nextInt(10);
-			int column = random.nextInt(10);
-			if (army.get(row).get(column) == null && a.get(row).get(column) == null) {
-				String name = "Soldier" + row + "x" + column;
+			int row = random.nextInt(rowBoard) + 1;
+			int column = random.nextInt(columnBoard) + 1;
+			String key = "Soldier" + row + "X" + column;
+			if (!army.containsKey(key) && !a.containsKey(key)) {
 				int lifePoints = random.nextInt(5) + 1;
-
-				Soldier sol = new Soldier();
-
-				sol.setLifePoints(lifePoints);
-				sol.setName(name);
-				sol.setColumn(column);
-				sol.setRow(row);
-				army.get(row).set(column, sol);
+				Soldier soldier = new Soldier();
+				soldier.setColumn(column);
+				soldier.setRow(row);
+				soldier.setLifePoints(lifePoints);
+				soldier.setName(key);
+				army.put(key, soldier);
 				n++;
 			}
 		} while (n < amount);
