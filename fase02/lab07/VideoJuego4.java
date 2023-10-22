@@ -28,7 +28,7 @@ public class VideoJuego4 {
 			orderByPower(armyAU);
 			System.out.println("Ingrese el nombre del Soldier que desea buscar");
 			String nameA = sc.next();
-			binarySearchByName(armyA, nameA);
+			binarySearchByName(armyAU, nameA);
 			System.out.println();
 			System.out.println("DATOS DEL EJRCITO B");
 			showByCreation(armyBU);
@@ -38,9 +38,9 @@ public class VideoJuego4 {
 			System.out.println("Mostrando soldados por ranking de poder de B");
 			orderByPower(armyBU);
 			System.out.println("Ingrese el nombre del Soldier que desea buscar");
-			String nameB = sc.next();
-			sequenceSearchByName(armyB, nameB);
-			System.out.println();
+			// String nameB = sc.next();
+			// sequenceSearchByName(armyB, nameB);
+			// System.out.println();
 
 			System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
 			System.out.println("Mostrando el tablero de juego");
@@ -232,6 +232,29 @@ public class VideoJuego4 {
 			}
 		} while (true);
 
+	}
+
+	public static void binarySearchByName(ArrayList<Soldier> armyA, String name) {
+		Collections.sort(armyA, new Comparator<Soldier>() {
+			public int compare(Soldier soldier1, Soldier soldier2) {
+				return soldier1.getName().compareTo(soldier2.getName());
+			}
+		});
+		int high = armyA.size() - 1;
+		int low = 0;
+		while (low <= high) {
+			int mid = (high + low) / 2;
+			Soldier soldier = armyA.get(mid);
+			if (name.equalsIgnoreCase(soldier.getName())) {
+				System.out.println("Se ha encontrado: " + soldier);
+				return;
+			} else if (name.compareTo(soldier.getName()) < 0) {
+				high = mid - 1;
+			} else {
+				low = mid + 1;
+			}
+		}
+		System.out.println("No fue encontrado");
 	}
 
 }
