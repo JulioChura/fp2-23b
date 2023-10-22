@@ -7,7 +7,7 @@ import java.util.*;
 
 public class VideoJuego5 {
 	public static void main(String[] args) {
-
+		Scanner sc = new Scanner(System.in);
 		while (validation()) {
 			HashMap<String, Soldier> armyA = generateArmy();
 			HashMap<String, Soldier> armyB = generateArmyB(armyA);
@@ -24,6 +24,9 @@ public class VideoJuego5 {
 			System.out.println("El promedio de vida del ejercito A es: " + (double) a / armyA.size());
 			System.out.println("Mostrando soldados por ranking de poder de A");
 			orderByPower(armyA);
+			System.out.println("Ingrese el nombre del Soldier que desea buscar");
+			String nameA = sc.next();
+			binarySearchByName(armyA, nameA);
 			System.out.println("DATOS DEL EJRCITO B");
 			showByCreation(armyB);
 			System.out.println("Mayor vida en B: " + longerLife(armyB));
@@ -31,16 +34,10 @@ public class VideoJuego5 {
 			System.out.println("El promedio de vida del ejercito B es: " + (double) b / armyB.size());
 			System.out.println("Mostrando soldados por ranking de poder de B");
 			orderByPower(armyB);
+			System.out.println("Ingrese el nombre del Soldier que desea buscar");
+			String nameB = sc.next();
+			binarySearchByName(armyB, nameB);
 			/*
-			 * System.out.println("Ingrese el nombre del Soldier que desea buscar");
-			 * String nameA = sc.next();
-			 * binarySearchByName(armyAU, nameA);
-			 * System.out.println();
-			 * System.out.println("DATOS DEL EJRCITO B");
-			 * showByCreation(armyBU);
-			 * System.out.println("Ingrese el nombre del Soldier que desea buscar");
-			 * String nameA = sc.next();
-			 * binarySearchByName(armyAU, nameA);
 			 * System.out.println();
 			 * System.out.
 			 * println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
