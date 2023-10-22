@@ -24,7 +24,7 @@ public class VideoJuego5 {
 			System.out.println("DATOS DEL EJRCITO B");
 			showByCreation(armyB);
 			System.out.println("Mayor vida en B: " + longerLife(armyB));
-			System.out.println("El total de vida del ejercito A es: " + totalLife(armyB));
+			System.out.println("El total de vida del ejercito B es: " + totalLife(armyB));
 			/*
 			 * armyAU.size());
 			 * System.out.println("Mostrando soldados por ranking de poder de A");
@@ -138,10 +138,10 @@ public class VideoJuego5 {
 		return army[army.length - 1];
 	}
 
-	public static int totalLife(ArrayList<Soldier> sol) {
+	public static int totalLife(HashMap<String, Soldier> army) {
 		int addition = 0;
-		for (Soldier n : sol) {
-			addition = addition + n.getLifePoints();
+		for (String key : army.keySet()) {
+			addition = addition + army.get(key).getLifePoints();
 		}
 		return addition;
 	}
