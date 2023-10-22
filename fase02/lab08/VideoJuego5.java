@@ -160,6 +160,28 @@ public class VideoJuego5 {
 
 	}
 
+	public static HashMap<String, Soldier> binarySearchByName(HashMap<String, Soldier> army, String name) {
+		ArrayList<Map.Entry<String, Soldier>> list = new ArrayList<>(army.entrySet());
+		Collections.sort(list, new Comparator<Map.Entry<String, Soldier>>() {
+			public int compare(Map.Entry<String, Soldier> o1, Map.Entry<String, Soldier> o2) {
+				return o1.getValue().getName().compareTo(o2.getValue().getName());
+			}
+		});
+		HashMap<String, Soldier> sortedMap = new LinkedHashMap<>();
+		for (Map.Entry<String, Soldier> entry : list) {
+			sortedMap.put(entry.getKey(), entry.getValue());
+		}
+		ArrayList<String> keys = new ArrayList<>(sortedMap.keySet());
+		int low = 0;
+		int high = keys.size()-1;
+		while (low <= high) {
+			int mid = (low + high)/2;
+			String str = a
+			if()
+		}
+		
+	}
+
 	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
 		String[][] tablero = new String[10][10];
 		for (int i = 0; i < tablero.length; i++) {
