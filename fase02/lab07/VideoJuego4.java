@@ -38,9 +38,9 @@ public class VideoJuego4 {
 			System.out.println("Mostrando soldados por ranking de poder de B");
 			orderByPower(armyBU);
 			System.out.println("Ingrese el nombre del Soldier que desea buscar");
-			// String nameB = sc.next();
-			// sequenceSearchByName(armyB, nameB);
-			// System.out.println();
+			String nameB = sc.next();
+			sequenceSearchByName(armyBU, nameB);
+			System.out.println();
 
 			System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
 			System.out.println("Mostrando el tablero de juego");
@@ -255,6 +255,16 @@ public class VideoJuego4 {
 			}
 		}
 		System.out.println("No fue encontrado");
+	}
+
+	public static void sequenceSearchByName(ArrayList<Soldier> armyB, String name) {
+		for (int i = 0; i < armyB.size(); i++) {
+			if (name.equalsIgnoreCase(armyB.get(i).getName())) {
+				System.out.println("Se ha encontrado: " + armyB.get(i));
+				return;
+			}
+		}
+		System.out.println("No se encontró");
 	}
 
 }
