@@ -121,39 +121,6 @@ public class VideoJuego5 {
 		}
 	}
 
-	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
-		String[][] tablero = new String[10][10];
-		for (int i = 0; i < tablero.length; i++) {
-			for (int j = 0; j < tablero[i].length; j++) {
-				tablero[i][j] = "|____|";
-			}
-		}
-		for (int i = 0; i < a.size(); i++) {
-			for (int j = 0; j < a.get(i).size(); j++) {
-				if (a.get(i).get(j) != null) {
-					String strA = "|_" + "a" + a.get(i).get(j).getLifePoints() + "_|";
-					tablero[i][j] = strA;
-				}
-			}
-		}
-		for (int i = 0; i < b.size(); i++) {
-			for (int j = 0; j < b.get(i).size(); j++) {
-				if (b.get(i).get(j) != null && tablero[i][j] != "s") {
-					String strB = "|_" + "b" + b.get(i).get(j).getLifePoints() + "_|";
-					tablero[i][j] = strB;
-				}
-			}
-		}
-		System.out.print("   A     B     C     D     E    F     G     H     I     J \n");
-		for (int i = 0; i < tablero.length; i++) {
-			System.out.printf("%2d", (i + 1));
-			for (int j = 0; j < tablero[i].length; j++) {
-				System.out.print(tablero[i][j]);
-			}
-			System.out.println();
-		}
-	}
-
 	// Se hará uso del ordenamiento por inserción
 	public static Soldier longerLife(ArrayList<Soldier> s) {
 		int n = s.size();
@@ -199,6 +166,39 @@ public class VideoJuego5 {
 		}
 	}
 
+	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
+		String[][] tablero = new String[10][10];
+		for (int i = 0; i < tablero.length; i++) {
+			for (int j = 0; j < tablero[i].length; j++) {
+				tablero[i][j] = "|____|";
+			}
+		}
+		for (int i = 0; i < a.size(); i++) {
+			for (int j = 0; j < a.get(i).size(); j++) {
+				if (a.get(i).get(j) != null) {
+					String strA = "|_" + "a" + a.get(i).get(j).getLifePoints() + "_|";
+					tablero[i][j] = strA;
+				}
+			}
+		}
+		for (int i = 0; i < b.size(); i++) {
+			for (int j = 0; j < b.get(i).size(); j++) {
+				if (b.get(i).get(j) != null && tablero[i][j] != "s") {
+					String strB = "|_" + "b" + b.get(i).get(j).getLifePoints() + "_|";
+					tablero[i][j] = strB;
+				}
+			}
+		}
+		System.out.print("   A     B     C     D     E    F     G     H     I     J \n");
+		for (int i = 0; i < tablero.length; i++) {
+			System.out.printf("%2d", (i + 1));
+			for (int j = 0; j < tablero[i].length; j++) {
+				System.out.print(tablero[i][j]);
+			}
+			System.out.println();
+		}
+	}
+
 	public static void theWinner(int a, int b) {
 		if (a < b) {
 			System.out.println("El ganador es el equipo B");
@@ -214,7 +214,7 @@ public class VideoJuego5 {
 	public static boolean validation() {
 		Scanner sc = new Scanner(System.in);
 		do {
-			System.out.println("¿Desea jugar una ronda?(si/no)");
+			System.out.println("Desea jugar una ronda?(si/no)");
 			String answer = sc.next();
 			if (answer.equalsIgnoreCase("Si")) {
 				return true;
