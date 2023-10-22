@@ -30,11 +30,11 @@ public class Soldier {
     }
 
     public void setRow(int row) {
-        this.row = row + 1;
+        this.row = row;
     }
 
     public void setColumn(int column) {
-        this.column = column + 1;
+        this.column = column;
     }
 
     public String toString() {
