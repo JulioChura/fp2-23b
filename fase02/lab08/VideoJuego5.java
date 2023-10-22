@@ -70,15 +70,16 @@ public class VideoJuego5 {
 		int amount = random.nextInt(10) + 1;
 		int n = 0;
 		do {
-			int row = random.nextInt(rowBoard);
-			int column = random.nextInt(columnBoard);
-			String key = "Soldier" + row + column;
+			int row = random.nextInt(rowBoard) + 1;
+			int column = random.nextInt(columnBoard) + 1;
+			String key = "Soldier" + row + "X" + column;
 			if (!army.containsKey(key)) {
 				int lifePoints = random.nextInt(5) + 1;
 				Soldier soldier = new Soldier();
 				soldier.setColumn(column);
 				soldier.setRow(row);
 				soldier.setLifePoints(lifePoints);
+				soldier.setName(key);
 				army.put(key, soldier);
 				n++;
 			}
