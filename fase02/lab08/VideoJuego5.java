@@ -20,13 +20,12 @@ public class VideoJuego5 {
 			System.out.println("DATOS DEL DEL EJERCITO A");
 			showByCreation(armyA);
 			System.out.println("Mayor vida en A: " + longerLife(armyA));
+			System.out.println("El total de vida del ejercito A es: " + totalLife(armyA));
 			System.out.println("DATOS DEL EJRCITO B");
 			showByCreation(armyB);
 			System.out.println("Mayor vida en B: " + longerLife(armyB));
+			System.out.println("El total de vida del ejercito A es: " + totalLife(armyB));
 			/*
-			 * System.out.println("El total de vida del ejercito A es: " +
-			 * totalLife(armyAU));
-			 * System.out.println("El promedio de vida del ejercito A es: " + (double) a /
 			 * armyAU.size());
 			 * System.out.println("Mostrando soldados por ranking de poder de A");
 			 * orderByPower(armyAU);
