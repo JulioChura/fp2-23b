@@ -221,7 +221,7 @@ public class VideoJuego4 {
 	public static boolean validation() {
 		Scanner sc = new Scanner(System.in);
 		do {
-			System.out.println("¿Desea jugar una ronda?(si/no)");
+			System.out.println("Desea jugar una ronda?(si/no)");
 			String answer = sc.next();
 			if (answer.equalsIgnoreCase("Si")) {
 				return true;
@@ -264,7 +264,7 @@ public class VideoJuego4 {
 				return;
 			}
 		}
-		System.out.println("No se encontró");
+		System.out.println("No se ha encontrado coincidencias");
 	}
 
 }
