@@ -146,24 +146,21 @@ public class VideoJuego5 {
 
 	// Por condiciones del problema se solicitan dos metodos de ordenamiento, por lo
 	// que este seria el segundo. Se usara el burbuja.
-	public static void orderByPower(ArrayList<Soldier> sol) {
-		boolean swapped;
-		Soldier temp;
-		for (int i = 0; i < sol.size() - 1; i++) {
-			swapped = false;
-			for (int j = 0; j < sol.size() - 1 - i; j++) {
-				temp = sol.get(j);
-				sol.set(j, sol.get(j + 1));
-				sol.set(j + 1, temp);
-				swapped = true;
+	public static void orderByPower(HashMap<String, Soldier> army) {
+		ArrayList<Map.Entry<String, Soldier>> list = new ArrayList<>(army.entrySet());
+		Collections.sort(list, new Comparator<Map.Entry<String, Soldier>>() {
+			public int compare(Map.Entry<String, Soldier> o1, Map.Entry<String, Soldier> o2) {
+				return Integer.compare(o1.getValue().getLifePoints(), o2.getValue().getLifePoints());
 			}
-			if (swapped == false) {
-				break;
-			}
+		});
+		HashMap<String, Soldier> sortedMap = new LinkedHashMap<>();
+		for (Map.Entry<String, Soldier> entry : list) {
+			sortedMap.put(entry.getKey(), entry.getValue());
 		}
-		for (Soldier n : sol) {
-			System.out.println(n);
+		for (String key : sortedMap.keySet()) {
+			System.out.println(key + ": " + sortedMap.get(key));
 		}
+
 	}
 
 	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
