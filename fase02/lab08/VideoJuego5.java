@@ -199,28 +199,28 @@ public class VideoJuego5 {
 		}
 	}
 
-	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
+	public static void myBoard(HashMap<String, Soldier> a, HashMap<String, Soldier> b) {
 		String[][] tablero = new String[10][10];
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero[i].length; j++) {
 				tablero[i][j] = "|____|";
 			}
 		}
-		for (int i = 0; i < a.size(); i++) {
-			for (int j = 0; j < a.get(i).size(); j++) {
-				if (a.get(i).get(j) != null) {
-					String strA = "|_" + "a" + a.get(i).get(j).getLifePoints() + "_|";
-					tablero[i][j] = strA;
-				}
-			}
+		for (String key : a.keySet()) {
+			Soldier soldier = a.get(key);
+			int lifePoints = soldier.getLifePoints();
+			int row = soldier.getRow() - 1;
+			int column = soldier.getColumn() - 1;
+			String str = "|_" + "a" + lifePoints + "_|";
+			tablero[row][column] = str;
 		}
-		for (int i = 0; i < b.size(); i++) {
-			for (int j = 0; j < b.get(i).size(); j++) {
-				if (b.get(i).get(j) != null && tablero[i][j] != "s") {
-					String strB = "|_" + "b" + b.get(i).get(j).getLifePoints() + "_|";
-					tablero[i][j] = strB;
-				}
-			}
+		for (String key : b.keySet()) {
+			Soldier soldier = b.get(key);
+			int lifePoints = soldier.getLifePoints();
+			int row = soldier.getRow() - 1;
+			int column = soldier.getColumn() - 1;
+			String str = "|_" + "b" + lifePoints + "_|";
+			tablero[row][column] = str;
 		}
 		System.out.print("   A     B     C     D     E    F     G     H     I     J \n");
 		for (int i = 0; i < tablero.length; i++) {
