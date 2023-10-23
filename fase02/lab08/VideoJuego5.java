@@ -37,14 +37,13 @@ public class VideoJuego5 {
 			System.out.println("Ingrese el nombre del Soldier que desea buscar");
 			String nameB = sc.next();
 			sequenceSearchByName(armyB, nameB);
+			System.out.println();
+
+			System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
+			System.out.println("Mostrando el tablero de juego");
+			myBoard(armyA, armyB);
+			System.out.println();
 			/*
-			 * System.out.println();
-			 * System.out.
-			 * println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
-			 * System.out.println("Mostrando el tablero de juego");
-			 * myBoard(armyA, armyB);
-			 * System.out.println();
-			 * 
 			 * System.out.
 			 * println("+++++++++++++++++   FASE 3 DE LA CONTIENDA  +++++++++++++++++");
 			 * System.out.
