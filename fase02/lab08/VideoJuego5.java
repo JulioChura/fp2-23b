@@ -160,7 +160,7 @@ public class VideoJuego5 {
 
 	}
 
-	public static HashMap<String, Soldier> binarySearchByName(HashMap<String, Soldier> army, String name) {
+	public static void binarySearchByName(HashMap<String, Soldier> army, String name) {
 		ArrayList<Map.Entry<String, Soldier>> list = new ArrayList<>(army.entrySet());
 		Collections.sort(list, new Comparator<Map.Entry<String, Soldier>>() {
 			public int compare(Map.Entry<String, Soldier> o1, Map.Entry<String, Soldier> o2) {
@@ -173,13 +173,21 @@ public class VideoJuego5 {
 		}
 		ArrayList<String> keys = new ArrayList<>(sortedMap.keySet());
 		int low = 0;
-		int high = keys.size()-1;
+		int high = keys.size() - 1;
 		while (low <= high) {
-			int mid = (low + high)/2;
-			String str = a
-			if()
+			int mid = (low + high) / 2;
+			String str = keys.get(mid);
+			if (str.equalsIgnoreCase(name)) {
+				System.out.println("Se ha encontrado: " + army.get(str));
+				return;
+			} else if (str.compareTo(name) < 0) {
+				low = mid + 1;
+			} else {
+				high = mid - 1;
+			}
 		}
-		
+		System.out.println("No se han encontrado coincidencias");
+
 	}
 
 	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
