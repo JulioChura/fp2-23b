@@ -222,7 +222,7 @@ public class VideoJuego5 {
 			String str = "|_" + "b" + lifePoints + "_|";
 			tablero[row][column] = str;
 		}
-		System.out.print("   A     B     C     D     E    F     G     H     I     J \n");
+		System.out.print("    A     B     C     D     E    F     G     H     I     J \n");
 		for (int i = 0; i < tablero.length; i++) {
 			System.out.printf("%2d", (i + 1));
 			for (int j = 0; j < tablero[i].length; j++) {
