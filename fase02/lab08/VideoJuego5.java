@@ -36,7 +36,7 @@ public class VideoJuego5 {
 			orderByPower(armyB);
 			System.out.println("Ingrese el nombre del Soldier que desea buscar");
 			String nameB = sc.next();
-			binarySearchByName(armyB, nameB);
+			sequenceSearchByName(armyB, nameB);
 			/*
 			 * System.out.println();
 			 * System.out.
@@ -188,6 +188,16 @@ public class VideoJuego5 {
 		}
 		System.out.println("No se han encontrado coincidencias");
 
+	}
+
+	public static void sequenceSearchByName(HashMap<String, Soldier> army, String name) {
+		ArrayList<String> keys = new ArrayList<>(army.keySet());
+		for (int i = 0; i < army.size(); i++) {
+			String myKey = keys.get(i);
+			if (name.equalsIgnoreCase(myKey)) {
+				System.out.println(army.get(myKey));
+			}
+		}
 	}
 
 	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
