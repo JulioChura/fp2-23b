@@ -43,14 +43,12 @@ public class VideoJuego5 {
 			System.out.println("Mostrando el tablero de juego");
 			myBoard(armyA, armyB);
 			System.out.println();
-			/*
-			 * System.out.
-			 * println("+++++++++++++++++   FASE 3 DE LA CONTIENDA  +++++++++++++++++");
-			 * System.out.
-			 * println("El ganador se determina en base a los puntos de vida total");
-			 * System.out.println("Enfrentamiento");
-			 * theWinner(a, b);
-			 */
+
+			System.out.println("+++++++++++++++++   FASE 3 DE LA CONTIENDA  +++++++++++++++++");
+			System.out.println("El ganador se determina en base a los puntos de vida total");
+			System.out.println("Enfrentamiento");
+			theWinner(a, b);
+
 		}
 
 	}
