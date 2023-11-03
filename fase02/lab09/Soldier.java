@@ -57,6 +57,14 @@ public class Soldier {
         }
     }
 
+    public void die() {
+        if (actualLife < 0) {
+            current = false;
+        } else {
+            current = true;
+        }
+    }
+
     public String getName() {
         return name;
     }
