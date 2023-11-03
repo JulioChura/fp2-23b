@@ -43,6 +43,11 @@ public class Soldier {
         advance();
     }
 
+    public void defend() {
+        attitude = "defensive";
+        speed = 0;
+    }
+
     public String getName() {
         return name;
     }
