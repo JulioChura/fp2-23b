@@ -39,7 +39,7 @@ public class Soldier {
     }
 
     public void attack() {
-        attitude = "attack";
+        attitude = "offensive";
         advance();
     }
 
