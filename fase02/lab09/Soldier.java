@@ -38,6 +38,11 @@ public class Soldier {
         speed++;
     }
 
+    public void attack() {
+        attitude = "attack";
+        advance();
+    }
+
     public String getName() {
         return name;
     }
