@@ -34,6 +34,10 @@ public class Soldier {
         this.current = current;
     }
 
+    public void advance() {
+        speed++;
+    }
+
     public String getName() {
         return name;
     }
