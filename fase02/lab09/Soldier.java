@@ -50,4 +50,10 @@ public class Soldier {
         return column;
     }
 
+    public String toString() {
+        return "Soldier [name=" + name + ", attackLevel=" + attackLevel + ", defenseLevel=" + defenseLevel
+                + ", lifePoints=" + lifePoints + ", actualLife=" + actualLife + ", speed=" + speed + ", attitude="
+                + attitude + ", current=" + current + "]";
+    }
+
 }
