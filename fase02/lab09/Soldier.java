@@ -51,9 +51,9 @@ public class Soldier {
     }
 
     public String toString() {
-        return "Soldier [name=" + name + ", attackLevel=" + attackLevel + ", defenseLevel=" + defenseLevel
-                + ", lifePoints=" + lifePoints + ", actualLife=" + actualLife + ", speed=" + speed + ", attitude="
-                + attitude + ", current=" + current + "]";
+        return "Soldier [name=" + name + ", row=" + row + ", column=" + column + ", attackLevel=" + attackLevel
+                + ", defenseLevel=" + defenseLevel + ", lifePoints=" + lifePoints + ", actualLife=" + actualLife
+                + ", speed=" + speed + ", attitude=" + attitude + ", current=" + current + "]";
     }
 
 }
