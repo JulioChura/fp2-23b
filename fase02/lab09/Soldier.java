@@ -50,19 +50,4 @@ public class Soldier {
         return column;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLifePoints(int lifePoints) {
-        this.lifePoints = lifePoints;
-    }
-
-    public void setRow(int row) {
-        this.row = row + 1;
-    }
-
-    public void setColumn(int column) {
-        this.column = column + 1;
-    }
 }
