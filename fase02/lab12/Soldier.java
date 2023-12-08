@@ -1,9 +1,15 @@
 public class Soldier {
 
     private String name;
-    private int lifePoints;
     private int row;
     private int column;
+    private int attackLevel;
+    private int defenseLevel;
+    private int lifePoints;
+    private int actualLife;
+    private int speed;
+    private String attitude;
+    private boolean current;
 
     public String getName() {
         return name;
