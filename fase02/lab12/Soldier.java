@@ -54,8 +54,16 @@ public class Soldier {
         } else if (speed == 0) {
             speed--;
         }
-    } 
-    
+    }
+
+    public void die() {
+        if (actualLife < 0) {
+            current = false;
+        } else {
+            current = true;
+        }
+    }
+
     public String getName() {
         return name;
     }
