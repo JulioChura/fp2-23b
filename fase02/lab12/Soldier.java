@@ -69,6 +69,10 @@ public class Soldier {
         die();
     }
 
+    public void scape() {
+        this.speed = this.speed + 2;
+    }
+
     public String getName() {
         return name;
     }
