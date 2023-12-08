@@ -80,6 +80,7 @@ public class Soldier {
     public void setActualLife(int actualLife) {
         this.actualLife = actualLife;
     }
+
     public String getName() {
         return name;
     }
@@ -102,6 +103,22 @@ public class Soldier {
 
     public void setColumn(int column) {
         this.column = column;
+    }
+
+    public int getAttackLevel() {
+        return attackLevel;
+    }
+
+    public void setAttackLevel(int attackLevel) {
+        this.attackLevel = attackLevel;
+    }
+
+    public int getDefenseLevel() {
+        return defenseLevel;
+    }
+
+    public void setDefenseLevel(int defenseLevel) {
+        this.defenseLevel = defenseLevel;
     }
 
     public String toString() {
