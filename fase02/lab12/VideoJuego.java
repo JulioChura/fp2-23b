@@ -10,6 +10,19 @@ public class VideoJuego {
 	public static final int ROW_BOARD = 10;
 	public static final int COLUMN_BOARD = 10;
 	public static void main(String[] args) {
+		//Maneja las opciones del Switch Case
+		int optionsDuringGameFast;
+
+		//Maneja el flujo general del juego (ir a juego rapido o personalizado)
+		boolean caseGeneral = true;
+
+		//Maneja la opcion de poder ir al menu principal 
+		boolean continueGame;
+
+		//Cuando hayamos presionado Juego personalizado y elijamos una opcion,  podremos 
+		//retornar a Juego personalizado y elegir otra de las opciones 
+		boolean returnMenuOption2 = true;
+		
 		while (validation()) {
 			ArrayList<ArrayList<Soldier>> armyA = generateArmy();
 			ArrayList<ArrayList<Soldier>> armyB = generateArmyB(armyA);
