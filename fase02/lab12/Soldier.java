@@ -146,7 +146,33 @@ public class Soldier {
         clon.column = this.column;
         return clon;
     }
-    
+    public void compareTo(Soldier s) {
+        if (this.attackLevel == s.getAttackLevel()) {
+            System.out.println("Tienen igual nivel de ataque");
+        } else {
+            System.out.println("Tienen distintos niveles de ataque");
+        }
+        if (this.defenseLevel == s.getDefenseLevel()) {
+            System.out.println("Tiene igual nivel de defensa");
+        } else {
+            System.out.println("Tienen diferente nivel de defensa");
+        }
+        if (this.actualLife == s.getActualLife()) {
+            System.out.println("Su vida actual de vida es actual");
+        } else {
+            System.out.println("Su vida actual son diferentes");
+        }
+        if (this.current && s.getCurrent()) {
+            System.out.println("Ambos viven");
+        } else {
+            System.out.println("El estado de si vive o no es distinto");
+        }
+        if (this.speed == s.getSpeed()) {
+            System.out.println("Tienen igual velocidad");
+        } else {
+            System.out.println("Tienen diferentes velocidades");
+        }
+    }
     public String toString() {
         return "Soldier [name=" + name + ", lifePoints=" + lifePoints + ", row=" + row + ", column=" + column + "]";
     }
