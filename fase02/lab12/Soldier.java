@@ -133,6 +133,19 @@ public class Soldier {
         return current;
     }
 
+    public Soldier clone() {
+        Soldier clon = new Soldier();
+        clon.name = this.name;
+        clon.attackLevel = this.attackLevel;
+        clon.defenseLevel = this.defenseLevel;
+        clon.actualLife = this.actualLife;
+        clon.speed = this.speed;
+        clon.attitude = this.attitude;
+        clon.current = this.current;
+        clon.row = this.row;
+        clon.column = this.column;
+        return clon;
+    }
     
     public String toString() {
         return "Soldier [name=" + name + ", lifePoints=" + lifePoints + ", row=" + row + ", column=" + column + "]";
