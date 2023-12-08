@@ -11,14 +11,13 @@ public class Soldier {
     private boolean current;
 
     public Soldier() {
-        this("NotFound", 0, 0, 0, 0, 
-        0, 0, "repose", true);
+        this("NotFound", 0, 0, 0, 0,
+                0, 0, "repose", true);
     }
 
-    public Soldier(String name, int row, int column, int attackLevel, int defenseLevel, int 
-        actualLife, int speed) {
+    public Soldier(String name, int row, int column, int attackLevel, int defenseLevel, int actualLife, int speed) {
         this(name, row, column, attackLevel, defenseLevel, actualLife, 0,
-         "Repose", true);
+                "Repose", true);
     }
 
     public Soldier(String name, int row, int column, int attackLevel, int defenseLevel, int actualLife,
@@ -32,6 +31,10 @@ public class Soldier {
         this.speed = speed;
         this.attitude = attitude;
         this.current = current;
+    }
+
+    public void advance() {
+        speed++;
     }
 
     public String getName() {
