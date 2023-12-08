@@ -121,6 +121,19 @@ public class Soldier {
         this.defenseLevel = defenseLevel;
     }
 
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public boolean getCurrent() {
+        return current;
+    }
+
+    
     public String toString() {
         return "Soldier [name=" + name + ", lifePoints=" + lifePoints + ", row=" + row + ", column=" + column + "]";
     }
