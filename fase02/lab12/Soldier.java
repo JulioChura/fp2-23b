@@ -5,18 +5,37 @@ public class Soldier {
     private int column;
     private int attackLevel;
     private int defenseLevel;
-    private int lifePoints;
     private int actualLife;
     private int speed;
     private String attitude;
     private boolean current;
 
-    public String getName() {
-        return name;
+    public Soldier() {
+        this("NotFound", 0, 0, 0, 0, 
+        0, 0, "repose", true);
     }
 
-    public int getLifePoints() {
-        return lifePoints;
+    public Soldier(String name, int row, int column, int attackLevel, int defenseLevel, int 
+        actualLife, int speed) {
+        this(name, row, column, attackLevel, defenseLevel, actualLife, 0,
+         "Repose", true);
+    }
+
+    public Soldier(String name, int row, int column, int attackLevel, int defenseLevel, int actualLife,
+            int speed, String attitude, boolean current) {
+        this.name = name;
+        this.row = row;
+        this.column = column;
+        this.attackLevel = attackLevel;
+        this.defenseLevel = defenseLevel;
+        this.actualLife = actualLife;
+        this.speed = speed;
+        this.attitude = attitude;
+        this.current = current;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getRow() {
@@ -29,10 +48,6 @@ public class Soldier {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setLifePoints(int lifePoints) {
-        this.lifePoints = lifePoints;
     }
 
     public void setRow(int row) {
