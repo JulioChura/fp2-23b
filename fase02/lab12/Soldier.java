@@ -73,6 +73,13 @@ public class Soldier {
         this.speed = this.speed + 2;
     }
 
+    public int getActualLife() {
+        return actualLife;
+    }
+
+    public void setActualLife(int actualLife) {
+        this.actualLife = actualLife;
+    }
     public String getName() {
         return name;
     }
