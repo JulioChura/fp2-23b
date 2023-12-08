@@ -171,7 +171,21 @@ public class Soldier {
             System.out.println("Tienen igual velocidad");
         } else {
             System.out.println("Tienen diferentes velocidades");
-        }
+        } 
+    }
+    
+    public Soldier mightySoldier(Soldier s) {
+        Soldier sol = new Soldier();
+        this.actualLife = this.actualLife + s.getActualLife();
+        this.attackLevel = this.attackLevel + s.getAttackLevel();
+        this.defenseLevel = this.defenseLevel + s.getDefenseLevel();
+        this.speed = this.speed + s.getSpeed();
+
+        sol.setActualLife(this.actualLife);
+        sol.setAttackLevel(this.attackLevel);
+        sol.setDefenseLevel(this.defenseLevel);
+        sol.setSpeed(this.speed);
+        return sol;
     }
     public String toString() {
         return "Soldier [name=" + name + ", lifePoints=" + lifePoints + ", row=" + row + ", column=" + column + "]";
