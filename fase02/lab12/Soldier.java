@@ -64,6 +64,11 @@ public class Soldier {
         }
     }
 
+    public void beAttacked(int damage) {
+        this.actualLife = this.actualLife - damage;
+        die();
+    }
+
     public String getName() {
         return name;
     }
