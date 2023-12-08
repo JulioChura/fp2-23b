@@ -46,6 +46,15 @@ public class Soldier {
         attitude = "defensive";
         speed = 0;
     }
+
+    public void back() {
+        if (speed > 0) {
+            speed = 0;
+            attitude = "defensive";
+        } else if (speed == 0) {
+            speed--;
+        }
+    } 
     
     public String getName() {
         return name;
