@@ -6,8 +6,10 @@
 import java.util.*;
 
 public class VideoJuego {
+	public static final Scanner sc = new Scanner(System.in);
+	public static final int ROW_BOARD = 10;
+	public static final int COLUMN_BOARD = 10;
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
 		while (validation()) {
 			ArrayList<ArrayList<Soldier>> armyA = generateArmy();
 			ArrayList<ArrayList<Soldier>> armyB = generateArmyB(armyA);
