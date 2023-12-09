@@ -9,30 +9,38 @@ public class VideoJuego {
 	public static final Scanner sc = new Scanner(System.in);
 	public static final int ROW_BOARD = 10;
 	public static final int COLUMN_BOARD = 10;
+
 	public static void main(String[] args) {
-		//Maneja las opciones del Switch Case
+		// Maneja las opciones del Switch Case
 		int option;
 
-		//Maneja el flujo general del juego (ir a juego rapido o personalizado)
+		// Maneja el flujo general del juego (ir a juego rapido o personalizado)
 		boolean caseGeneral = true;
 
-		//Maneja la opcion de poder ir al menu principal 
+		// Maneja la opcion de poder ir al menu principal
 		boolean continueGame;
 
-		//Cuando hayamos presionado Juego personalizado y elijamos una opcion,  podremos 
-		//retornar a Juego personalizado y elegir otra de las opciones 
+		// Cuando hayamos presionado Juego personalizado y elijamos una opcion, podremos
+		// retornar a Juego personalizado y elegir otra de las opciones
 		boolean returnMenuOption2 = true;
-		
-		//Estos ArrayList permitiran almancenar copias por ArrayList
+
+		// Estos ArrayList permitiran almancenar copias por ArrayList
 		ArrayList<ArrayList<Soldier>> copyB;
 		ArrayList<Soldier> copyU;
 		ArrayList<ArrayList<Soldier>> anotherCopyB;
 		ArrayList<Soldier> anotherCopyU;
 
-		
 		do {
 			System.out.println("1: Juego rapido\n2: Juego personalizado");
 			option = sc.nextInt();
+			ArrayList<ArrayList<Soldier>> empty = armyEmpty();
+			ArrayList<ArrayList<Soldier>> armyAEmpty = armyEmpty();
+			ArrayList<ArrayList<Soldier>> armyBEmpty = armyEmpty();
+			ArrayList<ArrayList<Soldier>> armyA = generateArmy(armyAEmpty, empty);
+			ArrayList<ArrayList<Soldier>> armyB = generateArmy(armyBEmpty, armyA);
+
+			ArrayList<Soldier> armyAU = arrayListUnidimensional(armyA);
+			ArrayList<Soldier> armyBU = arrayListUnidimensional(armyB);
 			switch (option) {
 				case 1:
 					continueGame = validation();
@@ -40,8 +48,48 @@ public class VideoJuego {
 						continue;
 					}
 					while (continueGame) {
+
+						int a = totalLife(armyAU);
+						int b = totalLife(armyBU);
+
+						System.out.println("oooooooooooooooo  FASE 1 DE LA CONTIENDA  oooooooooooooooo");
+						System.out.println("Mostrando estadisticas de cada ejercito" + "\n");
+						System.out.println("Mostrando soldados por orden de creacion");
+						System.out.println("DATOS DEL DEL EJERCITO A");
+						showByCreation(armyAU);
+						System.out.println("Mayor vida en A: " + longerLife(armyAU));
+						System.out.println("El total de vida del ejercito A es: " + totalLife(armyAU));
+						System.out.println("El promedio de vida del ejercito A es: " + (double) a / armyAU.size());
+						System.out.println("Mostrando soldados por ranking de poder de A");
+						orderByPower(armyAU);
+						System.out.println("Ingrese el nombre del Soldier que desea buscar");
+						String nameA = sc.next();
+						binarySearchByName(armyAU, nameA);
+						System.out.println();
+						System.out.println("DATOS DEL EJRCITO B");
+						showByCreation(armyBU);
+						System.out.println("Mayor vida en B: " + longerLife(armyBU));
+						System.out.println("El total de vida del ejercito B es: " + totalLife(armyBU));
+						System.out.println("El promedio de vida del ejercito B es: " + (double) b / armyBU.size());
+						System.out.println("Mostrando soldados por ranking de poder de B");
+						orderByPower(armyBU);
+						System.out.println("Ingrese el nombre del Soldier que desea buscar");
+						String nameB = sc.next();
+						sequenceSearchByName(armyBU, nameB);
+						System.out.println();
+
+						System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
+						System.out.println("Mostrando el tablero de juego");
+						myBoard(armyA, armyB);
+						System.out.println();
+
+						System.out.println("+++++++++++++++++   FASE 3 DE LA CONTIENDA  +++++++++++++++++");
+						System.out.println("El ganador se determina en base a los puntos de vida total");
+						System.out.println("Enfrentamiento");
+						theWinner(a, b);
+
 						continueGame = quickBattle(armyA, armyB);
-						
+
 					}
 					// Este bucle dentro del switch del case 2 hara que se pueda volver al menu
 					// principal
@@ -53,7 +101,7 @@ public class VideoJuego {
 						option = sc.nextInt();
 						// Este do while hace que el usuario elija el ejército a gestionar
 						do {
-							
+
 						} while (true);
 
 						do {
@@ -103,51 +151,6 @@ public class VideoJuego {
 					caseGeneral = false;
 			}
 		} while (caseGeneral);
-		
-		while (validation()) {
-			ArrayList<ArrayList<Soldier>> armyA = generateArmy();
-			ArrayList<ArrayList<Soldier>> armyB = generateArmyB(armyA);
-			ArrayList<Soldier> armyAU = arrayListUnidimensional(armyA);
-			ArrayList<Soldier> armyBU = arrayListUnidimensional(armyB);
-			int a = totalLife(armyAU);
-			int b = totalLife(armyBU);
-
-			System.out.println("oooooooooooooooo  FASE 1 DE LA CONTIENDA  oooooooooooooooo");
-			System.out.println("Mostrando estadisticas de cada ejercito" + "\n");
-			System.out.println("Mostrando soldados por orden de creacion");
-			System.out.println("DATOS DEL DEL EJERCITO A");
-			showByCreation(armyAU);
-			System.out.println("Mayor vida en A: " + longerLife(armyAU));
-			System.out.println("El total de vida del ejercito A es: " + totalLife(armyAU));
-			System.out.println("El promedio de vida del ejercito A es: " + (double) a / armyAU.size());
-			System.out.println("Mostrando soldados por ranking de poder de A");
-			orderByPower(armyAU);
-			System.out.println("Ingrese el nombre del Soldier que desea buscar");
-			String nameA = sc.next();
-			binarySearchByName(armyAU, nameA);
-			System.out.println();
-			System.out.println("DATOS DEL EJRCITO B");
-			showByCreation(armyBU);
-			System.out.println("Mayor vida en B: " + longerLife(armyBU));
-			System.out.println("El total de vida del ejercito B es: " + totalLife(armyBU));
-			System.out.println("El promedio de vida del ejercito B es: " + (double) b / armyBU.size());
-			System.out.println("Mostrando soldados por ranking de poder de B");
-			orderByPower(armyBU);
-			System.out.println("Ingrese el nombre del Soldier que desea buscar");
-			String nameB = sc.next();
-			sequenceSearchByName(armyBU, nameB);
-			System.out.println();
-
-			System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
-			System.out.println("Mostrando el tablero de juego");
-			myBoard(armyA, armyB);
-			System.out.println();
-
-			System.out.println("+++++++++++++++++   FASE 3 DE LA CONTIENDA  +++++++++++++++++");
-			System.out.println("El ganador se determina en base a los puntos de vida total");
-			System.out.println("Enfrentamiento");
-			theWinner(a, b);
-		}
 
 	}
 
