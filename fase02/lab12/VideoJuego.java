@@ -23,6 +23,13 @@ public class VideoJuego {
 		//retornar a Juego personalizado y elegir otra de las opciones 
 		boolean returnMenuOption2 = true;
 		
+		//Estos ArrayList permitiran almancenar copias por ArrayList
+		ArrayList<ArrayList<Soldier>> copyB;
+		ArrayList<Soldier> copyU;
+		ArrayList<ArrayList<Soldier>> anotherCopyB;
+		ArrayList<Soldier> anotherCopyU;
+
+		
 		do {
 			System.out.println("1: Juego rapido\n2: Juego personalizado");
 			option = sc.nextInt();
