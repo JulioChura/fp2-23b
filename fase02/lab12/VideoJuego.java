@@ -11,7 +11,7 @@ public class VideoJuego {
 	public static final int COLUMN_BOARD = 10;
 	public static void main(String[] args) {
 		//Maneja las opciones del Switch Case
-		int optionsDuringGameFast;
+		int option;
 
 		//Maneja el flujo general del juego (ir a juego rapido o personalizado)
 		boolean caseGeneral = true;
@@ -22,6 +22,80 @@ public class VideoJuego {
 		//Cuando hayamos presionado Juego personalizado y elijamos una opcion,  podremos 
 		//retornar a Juego personalizado y elegir otra de las opciones 
 		boolean returnMenuOption2 = true;
+		
+		do {
+			System.out.println("1: Juego rapido\n2: Juego personalizado");
+			option = sc.nextInt();
+			switch (option) {
+				case 1:
+					continueGame = validation();
+					if (!continueGame) {
+						continue;
+					}
+					while (continueGame) {
+						continueGame = quickBattle(armyA, armyB);
+						
+					}
+					// Este bucle dentro del switch del case 2 hara que se pueda volver al menu
+					// principal
+
+				case 2:
+					do {
+						System.out.println(
+								"1: Crear soldado\n2: Eliminar soldado\n3: Clonar soldado\n4: Modificar soldado\n5: Comparar Soldado\n6: Intercambiar soldado\n7: Ver soldado\n8: Ver ejercito\n9: Sumar niveles\n10: Jugar\n11: Volver al menu principal");
+						option = sc.nextInt();
+						// Este do while hace que el usuario elija el ejército a gestionar
+						do {
+							
+						} while (true);
+
+						do {
+							switch (option) {
+								case 1:
+									createSoldier(copyB, copyU, anotherCopyB);
+									break;
+								case 2:
+									System.out.println("Debe Eliminar un soldado");
+									myBoard(armyA, armyB);
+									removeSoldier(copyB, copyU);
+									break;
+								case 3:
+									cloneSoldier(copyB, copyU);
+									break;
+								case 4:
+									changeAttributes(copyB, copyU);
+									break;
+								case 5:
+									compareSoldier(copyB);
+									break;
+								case 6:
+									exchangePosition(copyB);
+									break;
+								case 7:
+									System.out.println("Ingrese el nombre del soldado a buscar");
+									String name = sc.next();
+									binarySearchByName(copyU, name);
+									break;
+								case 8:
+									showByCreation(copyU);
+									break;
+								case 9:
+									sumOfAttributes(copyB, copyU);
+									break;
+								case 10:
+									continueGame = quickBattle(copyB, anotherCopyB);
+									break;
+								case 11:
+									returnMenuOption2 = false;
+
+							}
+							returnMenuOption2 = false;
+						} while (returnMenuOption2);
+					} while (true);
+				case 3:
+					caseGeneral = false;
+			}
+		} while (caseGeneral);
 		
 		while (validation()) {
 			ArrayList<ArrayList<Soldier>> armyA = generateArmy();
