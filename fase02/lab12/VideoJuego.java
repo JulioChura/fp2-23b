@@ -108,7 +108,7 @@ public class VideoJuego {
 										removeSoldier(copyB, copyU);
 										break;
 									case 3:
-										// cloneSoldier(copyB, copyU);
+										cloneSoldier(copyB, copyU);
 										break;
 									case 4:
 										// changeAttributes(copyB, copyU);
@@ -624,4 +624,43 @@ public class VideoJuego {
 
 	}
 
+	// case 4: Este metodo modifica cualqueira de los atributos de un soldado
+	public static void changeAttributes(ArrayList<ArrayList<Soldier>> armyB, ArrayList<Soldier> armyU) {
+		System.out.println("Modificaremos un soldado!");
+		do {
+			int[] rowAndColumn = coordinate(armyB);
+			int row = rowAndColumn[0];
+			int column = rowAndColumn[1];
+			Soldier chosenSoldier = armyB.get(row).get(column);
+			if (chosenSoldier != null) {
+				System.out.println("1: Nivel de ataque\n2: Nivel de defensa\n3: Vida actual");
+				int option = sc.nextInt();
+				do {
+					System.out.println("Ingrese el valor (1-5)");
+					int value = sc.nextInt();
+					if (value <= 5 && value >= 1) {
+						switch (option) {
+							case 1:
+								chosenSoldier.setAttackLevel(value);
+								break;
+							case 2:
+								chosenSoldier.setDefenseLevel(value);
+								break;
+							case 3:
+								chosenSoldier.setActualLife(value);
+								break;
+						}
+						armyB.get(row).set(column, chosenSoldier);
+
+						return;
+
+					} else {
+						System.out.println("Valor no válido");
+					}
+				} while (true);
+			} else {
+				System.out.println("Soldado no encontrado!");
+			}
+		} while (true);
+	}
 }
