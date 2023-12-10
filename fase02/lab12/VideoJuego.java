@@ -52,11 +52,13 @@ public class VideoJuego {
 
 					while (continueGame) {
 						stagesOfWar(armyA, armyB, armyAU, armyBU);
-						if (quickBattle(armyA, armyB) == false) {
-							continueGame = false;
-						} else {
-							continue;
-						}
+						/*
+						 * if (quickBattle(armyA, armyB) == false) {
+						 * continueGame = false;
+						 * } else {
+						 * continue;
+						 * }
+						 */
 					}
 					break;
 				case 2:
@@ -98,7 +100,7 @@ public class VideoJuego {
 							do {
 								switch (optionsDuringGame) {
 									case 1:
-										// createSoldier(copyB, copyU, anotherCopyB);
+										createSoldier(copyB, copyU, anotherCopyB);
 										break;
 									case 2:
 										System.out.println("Debe Eliminar un soldado");
