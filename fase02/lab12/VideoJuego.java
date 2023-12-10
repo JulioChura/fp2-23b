@@ -155,6 +155,7 @@ public class VideoJuego {
 
 	}
 
+	// Transforma un ArrayList Bidimensional a Unidimensional
 	public static ArrayList<Soldier> arrayListUnidimensional(ArrayList<ArrayList<Soldier>> s) {
 		ArrayList<Soldier> armyUni = new ArrayList<Soldier>();
 		for (int i = 0; i < s.size(); i++) {
@@ -165,6 +166,15 @@ public class VideoJuego {
 			}
 		}
 		return armyUni;
+	}
+
+	// Genera un ArrayList bidimensional pero vacio
+	public static ArrayList<ArrayList<Soldier>> armyEmpty() {
+		ArrayList<ArrayList<Soldier>> army = new ArrayList<>(10);
+		for (int i = 0; i < 10; i++) {
+			army.add(new ArrayList<>(Collections.nCopies(10, null)));
+		}
+		return army;
 	}
 
 	public static ArrayList<ArrayList<Soldier>> generateArmy() {
@@ -182,7 +192,7 @@ public class VideoJuego {
 				String name = "Soldier" + row + "x" + column;
 				int lifePoints = random.nextInt(5) + 1;
 				Soldier sol = new Soldier();
-				sol.setLifePoints(lifePoints);
+				sol.setActualLife(lifePoints);
 				sol.setName(name);
 				sol.setColumn(column);
 				sol.setRow(row);
