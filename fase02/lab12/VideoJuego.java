@@ -177,31 +177,6 @@ public class VideoJuego {
 		return army;
 	}
 
-	public static ArrayList<ArrayList<Soldier>> generateArmy() {
-		ArrayList<ArrayList<Soldier>> army = new ArrayList<ArrayList<Soldier>>(10);
-		Random random = new Random();
-		int amount = random.nextInt(10) + 1;
-		int n = 0;
-		for (int i = 0; i < 10; i++) {
-			army.add(new ArrayList<>(Collections.nCopies(10, null)));
-		}
-		do {
-			int row = random.nextInt(10);
-			int column = random.nextInt(10);
-			if (army.get(row).get(column) == null) {
-				String name = "Soldier" + row + "x" + column;
-				int lifePoints = random.nextInt(5) + 1;
-				Soldier sol = new Soldier();
-				sol.setActualLife(lifePoints);
-				sol.setName(name);
-				sol.setColumn(column);
-				sol.setRow(row);
-				army.get(row).set(column, sol);
-				n++;
-			}
-		} while (n < amount);
-		return army;
-	}
 
 	public static ArrayList<ArrayList<Soldier>> generateArmyB(ArrayList<ArrayList<Soldier>> a) {
 		ArrayList<ArrayList<Soldier>> army = new ArrayList<ArrayList<Soldier>>(10);
