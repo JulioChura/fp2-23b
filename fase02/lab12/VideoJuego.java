@@ -501,4 +501,21 @@ public class VideoJuego {
 		}
 		return true;
 	}
+
+	// Determina al ganador de la contienda
+	public static boolean winnerBattle(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
+		boolean emptyInA = isEmpty(a);
+		boolean emptyInB = isEmpty(b);
+		if (emptyInA && emptyInB) {
+			System.out.println("EMPATE");
+			return false;
+		} else if (emptyInA) {
+			System.out.println("Ha ganado B");
+			return false;
+		} else if (emptyInB) {
+			System.out.println("Ha ganado A");
+			return false;
+		}
+		return true;
+	}
 }
