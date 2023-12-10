@@ -20,13 +20,15 @@ public class VideoJuego {
 		// Maneja el flujo general del juego (ir a juego rapido o personalizado)
 		boolean caseGeneral = true;
 
-		// Maneja la opcion de poder ir al menu principal
+		// Maneja la opcion de poder salir del modo rapido 
 		boolean continueGame;
 
 		// Cuando hayamos presionado Juego personalizado y elijamos una opcion, podremos
 		// retornar a Juego personalizado y elegir otra de las opciones
 		boolean returnMenuOption2 = true;
 
+		//este boolean permite salir de juego personalizado al menu principal
+		boolean exit = true;
 		// Estos ArrayList permitiran almancenar copias por ArrayList
 		ArrayList<ArrayList<Soldier>> copyB;
 		ArrayList<Soldier> copyU;
@@ -71,8 +73,19 @@ public class VideoJuego {
 
 						System.out.println(
 								"1: Crear soldado\n2: Eliminar soldado\n3: Clonar soldado\n4: Modificar soldado\n5: Comparar Soldado\n6: Intercambiar soldado\n7: Ver soldado\n8: Ver ejercito\n9: Sumar niveles\n10: Jugar\n11: Volver al menu principal");
-						option = sc.nextInt();
-						// Este do while hace que el usuario elija el ejército a gestionar
+						optionsDuringGame = sc.nextInt();
+						
+						if (optionsDuringGame>= 1 && optionsDuringGame <= 10) {
+
+
+						} else if (optionsDuringGame == 11) {
+							exit = false;
+						} else {
+							System.out.println("No valido!");
+							continue;
+						}
+
+						
 						do {
 
 						} while (true);
