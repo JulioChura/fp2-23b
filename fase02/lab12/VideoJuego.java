@@ -289,9 +289,8 @@ public class VideoJuego {
 			System.out.println(n);
 		}
 	}
-
+	//Pregunta al jugador si quiere jugar una ronda
 	public static boolean validation() {
-		Scanner sc = new Scanner(System.in);
 		do {
 			System.out.println("Desea jugar una ronda?(si/no)");
 			String answer = sc.next();
@@ -329,15 +328,6 @@ public class VideoJuego {
 		System.out.println("No fue encontrado");
 	}
 
-	public static void sequenceSearchByName(ArrayList<Soldier> armyB, String name) {
-		for (int i = 0; i < armyB.size(); i++) {
-			if (name.equalsIgnoreCase(armyB.get(i).getName())) {
-				System.out.println("Se ha encontrado: " + armyB.get(i));
-				return;
-			}
-		}
-		System.out.println("No se ha encontrado coincidencias");
-	}
 
 	public static void stagesOfWar(ArrayList<ArrayList<Soldier>> armyA,
 			ArrayList<ArrayList<Soldier>> armyB, ArrayList<Soldier> armyAU, ArrayList<Soldier> armyBU) {
