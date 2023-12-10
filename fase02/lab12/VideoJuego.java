@@ -77,10 +77,29 @@ public class VideoJuego {
 
 						if (optionsDuringGame >= 1 && optionsDuringGame <= 10) {
 							do {
+								System.out.println("Elija el ejercito que editara:\n1: Ejercito A\n2: Ejercito B");
+								option = sc.nextInt();
+								if (option == 1) {
+									copyB = armyA;
+									copyU = armyAU;
+									anotherCopyB = armyB;
+									anotherCopyU = armyBU;
+									break;
+								} else if (option == 2) {
+									copyB = armyB;
+									copyU = armyBU;
+									anotherCopyB = armyA;
+									anotherCopyU = armyAU;
+									break;
+
+								} else {
+									System.out.println("Opcion no valida!");
+									continue;
+								}
 
 							} while (true);
 							do {
-								switch (option) {
+								switch (optionsDuringGame) {
 									case 1:
 										createSoldier(copyB, copyU, anotherCopyB);
 										break;
