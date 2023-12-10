@@ -181,10 +181,10 @@ public class Soldier {
         this.defenseLevel = this.defenseLevel + s.getDefenseLevel();
         this.speed = this.speed + s.getSpeed();
 
-        sol.setActualLife(this.actualLife);
-        sol.setAttackLevel(this.attackLevel);
-        sol.setDefenseLevel(this.defenseLevel);
-        sol.setSpeed(this.speed);
+        setActualLife(this.actualLife);
+        setAttackLevel(this.attackLevel);
+        setDefenseLevel(this.defenseLevel);
+        setSpeed(this.speed);
         return sol;
     }
 
