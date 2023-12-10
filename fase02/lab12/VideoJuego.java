@@ -327,33 +327,13 @@ public class VideoJuego {
 
 	public static void stagesOfWar(ArrayList<ArrayList<Soldier>> armyA,
 			ArrayList<ArrayList<Soldier>> armyB, ArrayList<Soldier> armyAU, ArrayList<Soldier> armyBU) {
-		int a = totalLife(armyAU);
-		int b = totalLife(armyBU);
 
 		System.out.println("oooooooooooooooo  FASE 1 DE LA CONTIENDA  oooooooooooooooo");
 		System.out.println("Mostrando estadisticas de cada ejercito" + "\n");
-		System.out.println("Mostrando soldados por orden de creacion");
 		System.out.println("DATOS DEL DEL EJERCITO A");
 		showByCreation(armyAU);
-		System.out.println("Mayor vida en A: " + longerLife(armyAU));
-		System.out.println("El total de vida del ejercito A es: " + totalLife(armyAU));
-		System.out.println("El promedio de vida del ejercito A es: " + (double) a / armyAU.size());
-		System.out.println("Mostrando soldados por ranking de poder de A");
-		orderByPower(armyAU);
-		System.out.println("Ingrese el nombre del Soldier que desea buscar");
-		String nameA = sc.next();
-		binarySearchByName(armyAU, nameA);
-		System.out.println();
 		System.out.println("DATOS DEL EJRCITO B");
 		showByCreation(armyBU);
-		System.out.println("Mayor vida en B: " + longerLife(armyBU));
-		System.out.println("El total de vida del ejercito B es: " + totalLife(armyBU));
-		System.out.println("El promedio de vida del ejercito B es: " + (double) b / armyBU.size());
-		System.out.println("Mostrando soldados por ranking de poder de B");
-		orderByPower(armyBU);
-		System.out.println("Ingrese el nombre del Soldier que desea buscar");
-		String nameB = sc.next();
-		sequenceSearchByName(armyBU, nameB);
 		System.out.println();
 
 		System.out.println("oooooooooooooooo  FASE 2 DE LA CONTIENDA  oooooooooooooooo");
@@ -362,9 +342,6 @@ public class VideoJuego {
 		System.out.println();
 
 		System.out.println("+++++++++++++++++   FASE 3 DE LA CONTIENDA  +++++++++++++++++");
-		System.out.println("El ganador se determina en base a los puntos de vida total");
-		System.out.println("Enfrentamiento");
-		theWinner(a, b);
 
 	}
 
