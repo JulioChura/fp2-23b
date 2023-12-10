@@ -187,8 +187,13 @@ public class Soldier {
         sol.setSpeed(this.speed);
         return sol;
     }
+
+    @Override
     public String toString() {
-        return "Soldier [name=" + name + ", lifePoints=" + lifePoints + ", row=" + row + ", column=" + column + "]";
+        return "Soldier [name=" + name + ", row=" + row + ", column=" + column + ", attackLevel=" + attackLevel
+                + ", defenseLevel=" + defenseLevel + ", actualLife=" + actualLife + ", speed=" + speed + ", attitude="
+                + attitude + ", current=" + current + "]";
     }
+    
 
 }
