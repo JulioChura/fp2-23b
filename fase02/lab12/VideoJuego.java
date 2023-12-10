@@ -114,7 +114,7 @@ public class VideoJuego {
 										changeAttributes(copyB, copyU);
 										break;
 									case 5:
-										// compareSoldier(copyB);
+										compareSoldier(copyB);
 										break;
 									case 6:
 										// exchangePosition(copyB);
