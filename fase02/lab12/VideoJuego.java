@@ -111,7 +111,7 @@ public class VideoJuego {
 										cloneSoldier(copyB, copyU);
 										break;
 									case 4:
-										// changeAttributes(copyB, copyU);
+										changeAttributes(copyB, copyU);
 										break;
 									case 5:
 										// compareSoldier(copyB);
@@ -663,4 +663,31 @@ public class VideoJuego {
 			}
 		} while (true);
 	}
+
+	// CASE 5. Comparar soldados
+	public static void compareSoldier(ArrayList<ArrayList<Soldier>> army) {
+		int row1, column1, row2, column2;
+		Soldier s1, s2;
+		int[] rowAndColumn1, rowAndColumn2;
+		do {
+			rowAndColumn1 = coordinate(army);
+			row1 = rowAndColumn1[0];
+			column1 = rowAndColumn1[1];
+			s1 = army.get(row1).get(column1);
+
+			rowAndColumn2 = coordinate(army);
+			row2 = rowAndColumn2[0];
+			column2 = rowAndColumn2[1];
+			s2 = army.get(row2).get(column2);
+
+			if (s1 == null || s2 == null) {
+				System.out.println("No se puede comparar nada!");
+			} else {
+				s2.compareTo(s1);
+				return;
+			}
+
+		} while (true);
+	}
+
 }
