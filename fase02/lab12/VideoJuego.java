@@ -14,6 +14,9 @@ public class VideoJuego {
 		// Maneja las opciones del Switch Case
 		int option;
 
+		// Maneja las opciones de juego personalizado (exepto gestion de ejercitos)
+		int optionsDuringGame;
+
 		// Maneja el flujo general del juego (ir a juego rapido o personalizado)
 		boolean caseGeneral = true;
 
@@ -47,8 +50,14 @@ public class VideoJuego {
 					if (!continueGame) {
 						continue;
 					}
-					while (continueGame) {
 
+					while (continueGame) {
+						stagesOfWar(armyA, armyB, armyAU, armyBU);
+						if (quickBattle(armyA, armyB) == false) {
+							continueGame = false;
+						} else {
+							continue;
+						}
 					}
 					// Este bucle dentro del switch del case 2 hara que se pueda volver al menu
 					// principal
