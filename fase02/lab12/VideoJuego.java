@@ -98,24 +98,24 @@ public class VideoJuego {
 							do {
 								switch (optionsDuringGame) {
 									case 1:
-										createSoldier(copyB, copyU, anotherCopyB);
+										//createSoldier(copyB, copyU, anotherCopyB);
 										break;
 									case 2:
 										System.out.println("Debe Eliminar un soldado");
 										myBoard(armyA, armyB);
-										removeSoldier(copyB, copyU);
+										//removeSoldier(copyB, copyU);
 										break;
 									case 3:
-										cloneSoldier(copyB, copyU);
+										//cloneSoldier(copyB, copyU);
 										break;
 									case 4:
-										changeAttributes(copyB, copyU);
+										//changeAttributes(copyB, copyU);
 										break;
 									case 5:
-										compareSoldier(copyB);
+										//compareSoldier(copyB);
 										break;
 									case 6:
-										exchangePosition(copyB);
+										//exchangePosition(copyB);
 										break;
 									case 7:
 										System.out.println("Ingrese el nombre del soldado a buscar");
@@ -126,11 +126,11 @@ public class VideoJuego {
 										showByCreation(copyU);
 										break;
 									case 9:
-										sumOfAttributes(copyB, copyU);
+										//sumOfAttributes(copyB, copyU);
 										break;
 									case 10:
-										stagesOfWar(copyB, anotherCopyB, copyU, anotherCopyU);
-										quickBattle(copyB, anotherCopyB);
+										//stagesOfWar(copyB, anotherCopyB, copyU, anotherCopyU);
+										//quickBattle(copyB, anotherCopyB);
 										break;
 									case 11:
 										exit = false;
@@ -245,7 +245,7 @@ public class VideoJuego {
 		for (int i = 1; i < n; i++) {
 			Soldier key = s.get(i);
 			int j = i - 1;
-			while (j >= 0 && s.get(j).getLifePoints() > key.getLifePoints()) {
+			while (j >= 0 && s.get(j).getActualLife() > key.getActualLife()) {
 				s.set(j + 1, s.get(j));
 				j--;
 			}
@@ -264,7 +264,7 @@ public class VideoJuego {
 	public static int totalLife(ArrayList<Soldier> sol) {
 		int addition = 0;
 		for (Soldier n : sol) {
-			addition = addition + n.getLifePoints();
+			addition = addition + n.getActualLife();
 		}
 		return addition;
 	}
@@ -431,4 +431,60 @@ public class VideoJuego {
 
 	}
 
+	public static boolean moveSoldier(ArrayList<ArrayList<Soldier>> attack, ArrayList<ArrayList<Soldier>> repose,
+			String A) {
+		int[] coordinates = coordinate(attack);
+		int rowPosition = coordinates[0];
+		int columnPosition = coordinates[1];
+
+		// Se verifica que el usuario quiere o no seguir en el juego
+		if (rowPosition == -1) {
+			return false;
+		}
+		Soldier attackingSoldier = attack.get(rowPosition).get(columnPosition);
+		int[] rowAndColumn = newCoordinateToMove(rowPosition, columnPosition, attack);
+		int newRowPosition = rowAndColumn[0];
+		int newColumnPosition = rowAndColumn[1];
+
+		if (newRowPosition == -1) {
+			return false;
+		}
+
+		Soldier targetSoldier = repose.get(newRowPosition).get(newColumnPosition);
+		targetSoldier.advance();
+		if (targetSoldier != null) {
+
+			int actualLifeRepose = targetSoldier.getActualLife();
+			int actualLifeAAttack = attackingSoldier.getActualLife();
+			double totalLife = actualLifeAAttack + actualLifeRepose;
+			double probabilityAttack = 100 * actualLifeAAttack / totalLife;
+
+			double random = Math.random() * 101;
+			System.out.println("Estadisticas de batalla:\tSoldado de atacante: " + probabilityAttack
+					+ "%\tSoldado en reposo: " + Math.abs((100 - probabilityAttack)) + "\tSalio como aleatorio: "
+					+ random);
+			attackingSoldier.attack();
+			targetSoldier.attack();
+			System.out.println(targetSoldier + " \n " + attackingSoldier);
+			if (random < probabilityAttack) {
+				repose.get(newRowPosition).set(newColumnPosition, null);
+				attack.get(newRowPosition).set(newColumnPosition, attackingSoldier);
+				System.out.println(targetSoldier);
+				System.out.println("Ha ganado el soldado del ejército atacante");
+			} else if (random > probabilityAttack) {
+				System.out.println("Ha ganado el soldado en reposo");
+				System.out.println(attackingSoldier);
+			} else {
+				repose.get(newRowPosition).set(newColumnPosition, null);
+				System.out.println("EMPATE, ambos son destruidos");
+			}
+
+		} else {
+			attack.get(newRowPosition).set(newColumnPosition, attackingSoldier);
+			System.out.println("El soldado se ha movido.");
+		}
+		attack.get(rowPosition).set(columnPosition, null);
+		return true;
+
+	}
 }
