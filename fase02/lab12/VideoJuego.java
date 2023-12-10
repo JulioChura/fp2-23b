@@ -59,11 +59,16 @@ public class VideoJuego {
 							continue;
 						}
 					}
-					// Este bucle dentro del switch del case 2 hara que se pueda volver al menu
-					// principal
-
+					break;
 				case 2:
+
 					do {
+
+						System.out.println("DATOS DEL EJRCITO A");
+						showByCreation(armyAU);
+						System.out.println("DATOS DEL EJRCITO B");
+						showByCreation(armyBU);
+
 						System.out.println(
 								"1: Crear soldado\n2: Eliminar soldado\n3: Clonar soldado\n4: Modificar soldado\n5: Comparar Soldado\n6: Intercambiar soldado\n7: Ver soldado\n8: Ver ejercito\n9: Sumar niveles\n10: Jugar\n11: Volver al menu principal");
 						option = sc.nextInt();
