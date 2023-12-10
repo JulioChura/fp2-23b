@@ -9,6 +9,8 @@ public class VideoJuego {
 	public static final Scanner sc = new Scanner(System.in);
 	public static final int ROW_BOARD = 10;
 	public static final int COLUMN_BOARD = 10;
+	public static final int MAX_SOLDIER = 10;
+	public static final int MAX_VALUE = 5;
 
 	public static void main(String[] args) {
 		// Maneja las opciones del Switch Case
@@ -177,34 +179,30 @@ public class VideoJuego {
 		return army;
 	}
 
+	//Inicializa ArrayList con objetos de tipo Soldier
+	public static ArrayList<ArrayList<Soldier>> generateArmy(ArrayList<ArrayList<Soldier>> a,
+	ArrayList<ArrayList<Soldier>> b) {
 
-	public static ArrayList<ArrayList<Soldier>> generateArmyB(ArrayList<ArrayList<Soldier>> a) {
-		ArrayList<ArrayList<Soldier>> army = new ArrayList<ArrayList<Soldier>>(10);
 		Random random = new Random();
 		int amount = random.nextInt(10) + 1;
-		int n = 0;
-
-		for (int i = 0; i < 10; i++) {
-			army.add(new ArrayList<>(Collections.nCopies(10, null)));
-		}
+		int n = 0; 
+		int  row, column;
+		int lifePoints;
+		String name;
 		do {
-			int row = random.nextInt(10);
-			int column = random.nextInt(10);
-			if (army.get(row).get(column) == null && a.get(row).get(column) == null) {
-				String name = "Soldier" + row + "x" + column;
-				int lifePoints = random.nextInt(5) + 1;
-
-				Soldier sol = new Soldier();
-
-				sol.setLifePoints(lifePoints);
-				sol.setName(name);
-				sol.setColumn(column);
-				sol.setRow(row);
-				army.get(row).set(column, sol);
+			row = random.nextInt(ROW_BOARD);
+			column = random.nextInt(COLUMN_BOARD);
+			if (a.get(row).get(column) == null && b.get(row).get(column) == null) {
+				name = "Soldier" + (row + 1) + "x" + (column + 1);
+				lifePoints = random.nextInt(MAX_VALUE) + 1;
+				int attack = random.nextInt(MAX_VALUE) + 1;
+				int defense = random.nextInt(MAX_VALUE) + 1;
+				Soldier sol = new Soldier(name, row + 1, column + 1, attack, defense, lifePoints, 0);
+				a.get(row).set(column, sol);
 				n++;
 			}
 		} while (n < amount);
-		return army;
+		return a;
 	}
 
 	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
