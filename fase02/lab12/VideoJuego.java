@@ -105,7 +105,7 @@ public class VideoJuego {
 									case 2:
 										System.out.println("Debe Eliminar un soldado");
 										myBoard(armyA, armyB);
-										// removeSoldier(copyB, copyU);
+										removeSoldier(copyB, copyU);
 										break;
 									case 3:
 										// cloneSoldier(copyB, copyU);
@@ -558,5 +558,31 @@ public class VideoJuego {
 		} else {
 			System.out.println("Este ejército sobrepasó la cantidad permitida");
 		}
+	}
+
+	// Este metodo elimina un soldado
+	public static void removeSoldier(ArrayList<ArrayList<Soldier>> copyB, ArrayList<Soldier> copyU) {
+		showByCreation(copyU);
+		int row, column;
+		int[] position;
+		int size = copyU.size();
+		if (size == 1) {
+			return;
+		}
+		do {
+			position = coordinate(copyB);
+			row = position[0];
+			column = position[1];
+			Soldier temporary = copyB.get(row).get(column);
+			if (temporary != null) {
+				copyB.get(row).set(column, null);
+				copyU.remove(temporary);
+				break;
+			} else {
+				System.out.println("No existe ningun soldado en esa posicion!");
+				continue;
+			}
+		} while (true);
+
 	}
 }
