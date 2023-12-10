@@ -204,9 +204,9 @@ public class VideoJuego {
 		} while (n < amount);
 		return a;
 	}
-
+	//Este metodo genera el tablero y lo muestra
 	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
-		String[][] tablero = new String[10][10];
+		String[][] tablero = new String[ROW_BOARD][COLUMN_BOARD];
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero[i].length; j++) {
 				tablero[i][j] = "|____|";
@@ -215,7 +215,7 @@ public class VideoJuego {
 		for (int i = 0; i < a.size(); i++) {
 			for (int j = 0; j < a.get(i).size(); j++) {
 				if (a.get(i).get(j) != null) {
-					String strA = "|_" + "a" + a.get(i).get(j).getLifePoints() + "_|";
+					String strA = "|_" + "a" + a.get(i).get(j).getActualLife() + "_|";
 					tablero[i][j] = strA;
 				}
 			}
@@ -223,7 +223,7 @@ public class VideoJuego {
 		for (int i = 0; i < b.size(); i++) {
 			for (int j = 0; j < b.get(i).size(); j++) {
 				if (b.get(i).get(j) != null && tablero[i][j] != "s") {
-					String strB = "|_" + "b" + b.get(i).get(j).getLifePoints() + "_|";
+					String strB = "|_" + "b" + b.get(i).get(j).getActualLife() + "_|";
 					tablero[i][j] = strB;
 				}
 			}
