@@ -36,7 +36,7 @@ public class VideoJuego {
 		ArrayList<Soldier> anotherCopyU;
 
 		do {
-			System.out.println("1: Juego rapido\n2: Juego personalizado");
+			System.out.println("1: Juego rapido\n2: Juego personalizado\n3: Salir");
 			option = sc.nextInt();
 			ArrayList<ArrayList<Soldier>> empty = armyEmpty();
 			ArrayList<ArrayList<Soldier>> armyAEmpty = armyEmpty();
@@ -131,9 +131,11 @@ public class VideoJuego {
 							continue;
 						}
 
-					} while (true);
+					} while (exit);
+					break;
 				case 3:
 					caseGeneral = false;
+					break;
 			}
 		} while (caseGeneral);
 
