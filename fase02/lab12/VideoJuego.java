@@ -560,7 +560,7 @@ public class VideoJuego {
 		}
 	}
 
-	// Este metodo elimina un soldado
+	// case 2: Este metodo elimina un soldado
 	public static void removeSoldier(ArrayList<ArrayList<Soldier>> copyB, ArrayList<Soldier> copyU) {
 		showByCreation(copyU);
 		int row, column;
@@ -585,4 +585,43 @@ public class VideoJuego {
 		} while (true);
 
 	}
+
+	// Este metodo clona un soldado tal cual
+	public static void cloneSoldier(ArrayList<ArrayList<Soldier>> army, ArrayList<Soldier> armyUni) {
+		System.out.println("Ingrese el soldado a clonar");
+		int[] coordinates;
+		int row, column, i, j;
+		int size = armyUni.size();
+		Soldier clonedSoldier;
+		Soldier original;
+		if (size >= 10) {
+			System.out.println("Usted no puede agregar mas soldados");
+			return;
+		}
+		do {
+			coordinates = coordinate(army);
+			row = coordinates[0];
+			column = coordinates[1];
+			clonedSoldier = new Soldier();
+			original = army.get(row).get(column);
+
+			if (original != null) {
+				for (i = 0; i < army.size(); i++) {
+					ArrayList<Soldier> rowArrayList = army.get(i);
+					for (j = 0; j < rowArrayList.size(); j++) {
+						if (army.get(i).get(j) == null) {
+							clonedSoldier = original.clone();
+							clonedSoldier.setRow(row);
+							clonedSoldier.setColumn(column);
+							army.get(i).set(j, clonedSoldier);
+							armyUni.add(clonedSoldier);
+							return;
+						}
+					}
+				}
+			}
+		} while (true);
+
+	}
+
 }
