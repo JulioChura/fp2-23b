@@ -518,4 +518,43 @@ public class VideoJuego {
 		}
 		return true;
 	}
+
+	// Case 1: Crear soldier.
+	public static void createSoldier(ArrayList<ArrayList<Soldier>> army, ArrayList<Soldier> armyU,
+			ArrayList<ArrayList<Soldier>> enemy) {
+		int amount = armyU.size();
+		int row, column, attack, defense, life, speed;
+		String name;
+		if (amount <= 9) {
+			do {
+				System.out.println(" Ingrese la fila (ejm 1,2,3..10)");
+				row = sc.nextInt() - 1;
+				System.out.println("Ingrese la columna (ejm 1,2,3...10)");
+				column = sc.nextInt() - 1;
+				if (army.get(row).get(column) == null && enemy.get(row).get(column) == null) {
+					System.out.println("Ingrese el nivel de ataque");
+					attack = sc.nextInt();
+
+					System.out.println("Ingrese el nivel de defensa");
+					defense = sc.nextInt();
+
+					System.out.println("Ingrese el nivel de vida");
+					life = sc.nextInt();
+
+					System.out.println("Ingrese la velocidad");
+					speed = sc.nextInt();
+
+					name = "Soldier" + (row + 1) + "X" + (column + 1);
+
+					Soldier newSoldier = new Soldier(name, row + 1, column + 1, attack, defense, life, speed);
+					army.get(row).set(column, newSoldier);
+
+					armyU.add(newSoldier);
+					break;
+				}
+			} while (true);
+		} else {
+			System.out.println("Este ejército sobrepasó la cantidad permitida");
+		}
+	}
 }
