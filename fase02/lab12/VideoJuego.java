@@ -179,14 +179,14 @@ public class VideoJuego {
 		return army;
 	}
 
-	//Inicializa ArrayList con objetos de tipo Soldier
+	// Inicializa ArrayList con objetos de tipo Soldier
 	public static ArrayList<ArrayList<Soldier>> generateArmy(ArrayList<ArrayList<Soldier>> a,
-	ArrayList<ArrayList<Soldier>> b) {
+			ArrayList<ArrayList<Soldier>> b) {
 
 		Random random = new Random();
 		int amount = random.nextInt(10) + 1;
-		int n = 0; 
-		int  row, column;
+		int n = 0;
+		int row, column;
 		int lifePoints;
 		String name;
 		do {
@@ -204,7 +204,7 @@ public class VideoJuego {
 		} while (n < amount);
 		return a;
 	}
-	//Este metodo genera el tablero y lo muestra
+	//Este metodo genera el tablero y lo muestra 
 	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
 		String[][] tablero = new String[ROW_BOARD][COLUMN_BOARD];
 		for (int i = 0; i < tablero.length; i++) {
