@@ -253,7 +253,7 @@ public class VideoJuego {
 		}
 		return s.get(s.size() - 1);
 	}
-
+	//Imprime los soldier de acuerdo a su orden de creación
 	public static void showByCreation(ArrayList<Soldier> sol) {
 		for (Soldier n : sol) {
 			System.out.println(n);
@@ -287,18 +287,6 @@ public class VideoJuego {
 		}
 		for (Soldier n : sol) {
 			System.out.println(n);
-		}
-	}
-
-	public static void theWinner(int a, int b) {
-		if (a < b) {
-			System.out.println("El ganador es el equipo B");
-			System.out.println("Ventaja de " + (b - a) + " puntos de vida");
-		} else if (a > b) {
-			System.out.println("El ganador es el equipo A");
-			System.out.println("Ventaja de " + (a - b) + " puntos de vida");
-		} else {
-			System.out.println("Fue un empate");
 		}
 	}
 
