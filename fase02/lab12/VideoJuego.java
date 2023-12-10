@@ -98,24 +98,24 @@ public class VideoJuego {
 							do {
 								switch (optionsDuringGame) {
 									case 1:
-										//createSoldier(copyB, copyU, anotherCopyB);
+										// createSoldier(copyB, copyU, anotherCopyB);
 										break;
 									case 2:
 										System.out.println("Debe Eliminar un soldado");
 										myBoard(armyA, armyB);
-										//removeSoldier(copyB, copyU);
+										// removeSoldier(copyB, copyU);
 										break;
 									case 3:
-										//cloneSoldier(copyB, copyU);
+										// cloneSoldier(copyB, copyU);
 										break;
 									case 4:
-										//changeAttributes(copyB, copyU);
+										// changeAttributes(copyB, copyU);
 										break;
 									case 5:
-										//compareSoldier(copyB);
+										// compareSoldier(copyB);
 										break;
 									case 6:
-										//exchangePosition(copyB);
+										// exchangePosition(copyB);
 										break;
 									case 7:
 										System.out.println("Ingrese el nombre del soldado a buscar");
@@ -126,11 +126,11 @@ public class VideoJuego {
 										showByCreation(copyU);
 										break;
 									case 9:
-										//sumOfAttributes(copyB, copyU);
+										// sumOfAttributes(copyB, copyU);
 										break;
 									case 10:
-										//stagesOfWar(copyB, anotherCopyB, copyU, anotherCopyU);
-										//quickBattle(copyB, anotherCopyB);
+										// stagesOfWar(copyB, anotherCopyB, copyU, anotherCopyU);
+										// quickBattle(copyB, anotherCopyB);
 										break;
 									case 11:
 										exit = false;
@@ -431,6 +431,7 @@ public class VideoJuego {
 
 	}
 
+	// Hace que el soldier se mueve a otra casilla
 	public static boolean moveSoldier(ArrayList<ArrayList<Soldier>> attack, ArrayList<ArrayList<Soldier>> repose,
 			String A) {
 		int[] coordinates = coordinate(attack);
@@ -486,5 +487,18 @@ public class VideoJuego {
 		attack.get(rowPosition).set(columnPosition, null);
 		return true;
 
+	}
+
+	// Se encarga de revisar si un ejercito se ha quedado sin
+	public static boolean isEmpty(ArrayList<ArrayList<Soldier>> a) {
+		for (ArrayList<Soldier> row : a) {
+			for (Soldier soldier : row) {
+				if (soldier != null) {
+					return false;
+				}
+			}
+
+		}
+		return true;
 	}
 }
