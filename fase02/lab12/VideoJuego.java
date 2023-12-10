@@ -253,7 +253,8 @@ public class VideoJuego {
 		}
 		return s.get(s.size() - 1);
 	}
-	//Imprime los soldier de acuerdo a su orden de creación
+
+	// Imprime los soldier de acuerdo a su orden de creación
 	public static void showByCreation(ArrayList<Soldier> sol) {
 		for (Soldier n : sol) {
 			System.out.println(n);
@@ -289,7 +290,8 @@ public class VideoJuego {
 			System.out.println(n);
 		}
 	}
-	//Pregunta al jugador si quiere jugar una ronda
+
+	// Pregunta al jugador si quiere jugar una ronda
 	public static boolean validation() {
 		do {
 			System.out.println("Desea jugar una ronda?(si/no)");
@@ -328,7 +330,6 @@ public class VideoJuego {
 		System.out.println("No fue encontrado");
 	}
 
-
 	public static void stagesOfWar(ArrayList<ArrayList<Soldier>> armyA,
 			ArrayList<ArrayList<Soldier>> armyB, ArrayList<Soldier> armyAU, ArrayList<Soldier> armyBU) {
 
@@ -349,4 +350,35 @@ public class VideoJuego {
 
 	}
 
+	// Se encarga de devolver la coordenada del soldado que se quiere mover
+	public static int[] coordinate(ArrayList<ArrayList<Soldier>> army) {
+		int[] coordinate = new int[2];
+
+		do {
+
+			System.out.println("Ingrese las coordenadas");
+			String position = sc.next().toLowerCase();
+			int row;
+			int column;
+			if (position.length() == 2) {
+				row = Integer.parseInt(position.substring(0, 1));
+				column = position.charAt(1) - 'a' + 1;
+			} else if (position.length() == 3) {
+				row = Integer.parseInt(position.substring(0, 2));
+				column = position.charAt(2) - 'a' + 1;
+			} else if (position.equalsIgnoreCase("Salir")) {
+				coordinate[0] = -1;
+				coordinate[1] = -1;
+				return coordinate;
+			} else {
+				System.out.println("Coordenda no válida");
+				continue;
+			}
+			if (row >= 1 && row <= 10 && column <= 10 && column >= 1 && army.get(row - 1).get(column - 1) != null) {
+				coordinate[0] = row - 1;
+				coordinate[1] = column - 1;
+				return coordinate;
+			}
+		} while (true);
+	}
 }
