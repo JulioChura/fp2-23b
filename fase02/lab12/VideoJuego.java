@@ -204,7 +204,8 @@ public class VideoJuego {
 		} while (n < amount);
 		return a;
 	}
-	//Este metodo genera el tablero y lo muestra 
+
+	// Este metodo genera el tablero y lo muestra
 	public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
 		String[][] tablero = new String[ROW_BOARD][COLUMN_BOARD];
 		for (int i = 0; i < tablero.length; i++) {
