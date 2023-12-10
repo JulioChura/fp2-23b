@@ -13,20 +13,15 @@ public class VideoJuego {
 	public static void main(String[] args) {
 		// Maneja las opciones del Switch Case
 		int option;
-
 		// Maneja las opciones de juego personalizado (exepto gestion de ejercitos)
 		int optionsDuringGame;
-
 		// Maneja el flujo general del juego (ir a juego rapido o personalizado)
 		boolean caseGeneral = true;
-
 		// Maneja la opcion de poder salir del modo rapido
 		boolean continueGame;
-
 		// Cuando hayamos presionado Juego personalizado y elijamos una opcion, podremos
 		// retornar a Juego personalizado y elegir otra de las opciones
 		boolean returnMenuOption2 = true;
-
 		// este boolean permite salir de juego personalizado al menu principal
 		boolean exit = true;
 		// Estos ArrayList permitiran almancenar copias por ArrayList
