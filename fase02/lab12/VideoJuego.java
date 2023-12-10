@@ -20,14 +20,14 @@ public class VideoJuego {
 		// Maneja el flujo general del juego (ir a juego rapido o personalizado)
 		boolean caseGeneral = true;
 
-		// Maneja la opcion de poder salir del modo rapido 
+		// Maneja la opcion de poder salir del modo rapido
 		boolean continueGame;
 
 		// Cuando hayamos presionado Juego personalizado y elijamos una opcion, podremos
 		// retornar a Juego personalizado y elegir otra de las opciones
 		boolean returnMenuOption2 = true;
 
-		//este boolean permite salir de juego personalizado al menu principal
+		// este boolean permite salir de juego personalizado al menu principal
 		boolean exit = true;
 		// Estos ArrayList permitiran almancenar copias por ArrayList
 		ArrayList<ArrayList<Soldier>> copyB;
@@ -74,9 +74,55 @@ public class VideoJuego {
 						System.out.println(
 								"1: Crear soldado\n2: Eliminar soldado\n3: Clonar soldado\n4: Modificar soldado\n5: Comparar Soldado\n6: Intercambiar soldado\n7: Ver soldado\n8: Ver ejercito\n9: Sumar niveles\n10: Jugar\n11: Volver al menu principal");
 						optionsDuringGame = sc.nextInt();
-						
-						if (optionsDuringGame>= 1 && optionsDuringGame <= 10) {
 
+						if (optionsDuringGame >= 1 && optionsDuringGame <= 10) {
+							do {
+
+							} while (true);
+							do {
+								switch (option) {
+									case 1:
+										createSoldier(copyB, copyU, anotherCopyB);
+										break;
+									case 2:
+										System.out.println("Debe Eliminar un soldado");
+										myBoard(armyA, armyB);
+										removeSoldier(copyB, copyU);
+										break;
+									case 3:
+										cloneSoldier(copyB, copyU);
+										break;
+									case 4:
+										changeAttributes(copyB, copyU);
+										break;
+									case 5:
+										compareSoldier(copyB);
+										break;
+									case 6:
+										exchangePosition(copyB);
+										break;
+									case 7:
+										System.out.println("Ingrese el nombre del soldado a buscar");
+										String name = sc.next();
+										binarySearchByName(copyU, name);
+										break;
+									case 8:
+										showByCreation(copyU);
+										break;
+									case 9:
+										sumOfAttributes(copyB, copyU);
+										break;
+									case 10:
+										stagesOfWar(copyB, anotherCopyB, copyU, anotherCopyU);
+										quickBattle(copyB, anotherCopyB);
+										break;
+									case 11:
+										exit = false;
+										break;
+
+								}
+								returnMenuOption2 = false;
+							} while (returnMenuOption2);
 
 						} else if (optionsDuringGame == 11) {
 							exit = false;
@@ -85,53 +131,6 @@ public class VideoJuego {
 							continue;
 						}
 
-						
-						do {
-
-						} while (true);
-
-						do {
-							switch (option) {
-								case 1:
-									createSoldier(copyB, copyU, anotherCopyB);
-									break;
-								case 2:
-									System.out.println("Debe Eliminar un soldado");
-									myBoard(armyA, armyB);
-									removeSoldier(copyB, copyU);
-									break;
-								case 3:
-									cloneSoldier(copyB, copyU);
-									break;
-								case 4:
-									changeAttributes(copyB, copyU);
-									break;
-								case 5:
-									compareSoldier(copyB);
-									break;
-								case 6:
-									exchangePosition(copyB);
-									break;
-								case 7:
-									System.out.println("Ingrese el nombre del soldado a buscar");
-									String name = sc.next();
-									binarySearchByName(copyU, name);
-									break;
-								case 8:
-									showByCreation(copyU);
-									break;
-								case 9:
-									sumOfAttributes(copyB, copyU);
-									break;
-								case 10:
-									continueGame = quickBattle(copyB, anotherCopyB);
-									break;
-								case 11:
-									returnMenuOption2 = false;
-
-							}
-							returnMenuOption2 = false;
-						} while (returnMenuOption2);
 					} while (true);
 				case 3:
 					caseGeneral = false;
