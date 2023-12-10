@@ -146,6 +146,7 @@ public class Soldier {
         clon.column = this.column;
         return clon;
     }
+
     public void compareTo(Soldier s) {
         if (this.attackLevel == s.getAttackLevel()) {
             System.out.println("Tienen igual nivel de ataque");
@@ -171,9 +172,9 @@ public class Soldier {
             System.out.println("Tienen igual velocidad");
         } else {
             System.out.println("Tienen diferentes velocidades");
-        } 
+        }
     }
-    
+
     public Soldier mightySoldier(Soldier s) {
         Soldier sol = new Soldier();
         this.actualLife = this.actualLife + s.getActualLife();
@@ -181,10 +182,10 @@ public class Soldier {
         this.defenseLevel = this.defenseLevel + s.getDefenseLevel();
         this.speed = this.speed + s.getSpeed();
 
-        sol.setActualLife(this.actualLife);
-        sol.setAttackLevel(this.attackLevel);
-        sol.setDefenseLevel(this.defenseLevel);
-        sol.setSpeed(this.speed);
+        setActualLife(this.actualLife);
+        setAttackLevel(this.attackLevel);
+        setDefenseLevel(this.defenseLevel);
+        setSpeed(this.speed);
         return sol;
     }
 
@@ -194,6 +195,5 @@ public class Soldier {
                 + ", defenseLevel=" + defenseLevel + ", actualLife=" + actualLife + ", speed=" + speed + ", attitude="
                 + attitude + ", current=" + current + "]";
     }
-    
 
 }
