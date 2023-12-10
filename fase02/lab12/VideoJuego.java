@@ -168,14 +168,7 @@ public class VideoJuego {
 		return armyUni;
 	}
 
-	// Genera un ArrayList bidimensional pero vacio
-	public static ArrayList<ArrayList<Soldier>> armyEmpty() {
-		ArrayList<ArrayList<Soldier>> army = new ArrayList<>(10);
-		for (int i = 0; i < 10; i++) {
-			army.add(new ArrayList<>(Collections.nCopies(10, null)));
-		}
-		return army;
-	}
+	
 
 	public static ArrayList<ArrayList<Soldier>> generateArmy() {
 		ArrayList<ArrayList<Soldier>> army = new ArrayList<ArrayList<Soldier>>(10);
