@@ -381,4 +381,54 @@ public class VideoJuego {
 			}
 		} while (true);
 	}
+
+	/*
+	 * Se encarga de validar la nueva posicion del soldier retornando asi la nueva
+	 * coordenada (Solo se retorna dos enteros, siendo row y column)
+	 */
+	public static int[] newCoordinateToMove(int row, int column, ArrayList<ArrayList<Soldier>> attack) {
+		int[] rowAndColumn = new int[2];
+		do {
+			System.out.println("Hacia donde quiere mover? up(1), down(2), left(3), right(4), exit(5) ");
+			int direction = sc.nextInt();
+			int newRowPosition = row;
+			int newColumnPosition = column;
+
+			switch (direction) {
+				case 1: // arriba
+					newRowPosition--;
+					break;
+				case 2: // abajo
+					newRowPosition++;
+					break;
+				case 3: // izquierda
+					newColumnPosition--;
+					break;
+				case 4: // derecha
+					newColumnPosition++;
+					break;
+				case 5:
+					rowAndColumn[0] = -1;
+					rowAndColumn[1] = -1;
+					return rowAndColumn;
+				default:
+					System.out.println("Dirección no válida");
+					break;
+			}
+
+			if (newRowPosition < 0 || newRowPosition >= 10 || newColumnPosition < 0 || newColumnPosition >= 10) {
+				System.out.println("Movimiento fuera del tablero");
+				continue;
+			}
+			if (attack.get(newRowPosition).get(newColumnPosition) != null) {
+				System.out.println("No se puede mover a una posición ocupada por un soldado del mismo bando");
+				continue;
+			}
+			rowAndColumn[0] = newRowPosition;
+			rowAndColumn[1] = newColumnPosition;
+			return rowAndColumn;
+		} while (true);
+
+	}
+
 }
