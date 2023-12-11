@@ -52,13 +52,13 @@ public class VideoJuego {
 
 					while (continueGame) {
 						stagesOfWar(armyA, armyB, armyAU, armyBU);
-						/*
-						 * if (quickBattle(armyA, armyB) == false) {
-						 * continueGame = false;
-						 * } else {
-						 * continue;
-						 * }
-						 */
+
+						if (quickBattle(armyA, armyB) == false) {
+							continueGame = false;
+						} else {
+							continue;
+						}
+
 					}
 					break;
 				case 2:
@@ -738,7 +738,7 @@ public class VideoJuego {
 		System.out.println("Se ha creado a: " + soldierA);
 	}
 
-	//Este metodo permite jugar
+	// Este metodo permite jugar
 	public static boolean quickBattle(ArrayList<ArrayList<Soldier>> armyA,
 			ArrayList<ArrayList<Soldier>> armyB) {
 		boolean outPutOptions = true;
