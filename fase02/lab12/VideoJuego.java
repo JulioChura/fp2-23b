@@ -721,4 +721,20 @@ public class VideoJuego {
 		} while (true);
 	}
 
+	// Case 9: Se suman los atributos de tipo int, (menos speed), sin embargo no se
+	// agregara al ejercito dicho Soldie
+	public static void sumOfAttributes(ArrayList<ArrayList<Soldier>> armyB, ArrayList<Soldier> armyU) {
+		Soldier soldierA = new Soldier();
+		for (ArrayList<Soldier> row : armyB) {
+			for (Soldier soldier : row) {
+				if (soldier == null) {
+					continue;
+				} else {
+					soldierA.mightySoldier(soldier);
+				}
+
+			}
+		}
+		System.out.println("Se creó ha: " + soldierA);
+	}
 }
