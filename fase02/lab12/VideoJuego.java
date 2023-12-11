@@ -737,4 +737,44 @@ public class VideoJuego {
 		}
 		System.out.println("Se ha creado a: " + soldierA);
 	}
+
+	//Este metodo permite jugar
+	public static boolean quickBattle(ArrayList<ArrayList<Soldier>> armyA,
+			ArrayList<ArrayList<Soldier>> armyB) {
+		boolean outPutOptions = true;
+		int optionsDuringGameFast;
+		myBoard(armyA, armyB);
+		String str;
+		int i = 0;
+		do {
+			if (i % 2 == 0) {
+				str = "A";
+			} else {
+				str = "B";
+			}
+			System.out.println("Turno de " + str);
+
+			if (i % 2 == 0) {
+				outPutOptions = moveSoldier(armyA, armyB, str);
+			} else {
+				outPutOptions = moveSoldier(armyB, armyA, str);
+			}
+			myBoard(armyA, armyB);
+			if (!outPutOptions) {
+				System.out.println("1: Reinciar\n2: Volver al menú principal");
+				optionsDuringGameFast = sc.nextInt();
+				switch (optionsDuringGameFast) {
+					case 1:
+						return true;
+					case 2:
+						return false;
+				}
+				break;
+
+			}
+
+			i++;
+		} while (winnerBattle(armyA, armyB));
+		return false;
+	}
 }
