@@ -1,6 +1,6 @@
-// Laboratorio Nro 7
+// Laboratorio Nro 12
 // Autor: Julio
-// Tiempo: 3 horas
+// Tiempo: 6 horas
 // No hubo colaboradores
 
 import java.util.*;
