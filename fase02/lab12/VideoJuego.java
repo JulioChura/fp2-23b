@@ -131,8 +131,8 @@ public class VideoJuego {
 										sumOfAttributes(copyB, copyU);
 										break;
 									case 10:
-										// stagesOfWar(copyB, anotherCopyB, copyU, anotherCopyU);
-										// quickBattle(copyB, anotherCopyB);
+										stagesOfWar(copyB, anotherCopyB, copyU, anotherCopyU);
+										quickBattle(copyB, anotherCopyB);
 										break;
 									case 11:
 										exit = false;
