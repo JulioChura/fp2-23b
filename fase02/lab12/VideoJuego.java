@@ -690,4 +690,35 @@ public class VideoJuego {
 		} while (true);
 	}
 
+	// CASE 6: Este metodo intercambia las posiciones
+	public static void exchangePosition(ArrayList<ArrayList<Soldier>> army) {
+		int[] rowAndColumn1, rowAndColumn2;
+		int row1, row2, column1, column2;
+		Soldier s1, s2;
+
+		do {
+			System.out.println("Coordenadas del primer soldado");
+			rowAndColumn1 = coordinate(army);
+			row1 = rowAndColumn1[0];
+			column1 = rowAndColumn1[1];
+			System.out.println("Coordenadas del segundo soldado ");
+			rowAndColumn2 = coordinate(army);
+			row2 = rowAndColumn2[0];
+			column2 = rowAndColumn2[1];
+			s1 = army.get(row1).get(column1);
+			s2 = army.get(row2).get(column2);
+			if (s1 == null && s2 == null) {
+				System.out.println("No se puede intercambiar");
+			} else {
+				s1.setRow(row2 + 1);
+				s1.setColumn(column2 + 1);
+				s2.setRow(row1 + 1);
+				s2.setColumn(column1 + 1);
+				army.get(row1).set(column1, s2);
+				army.get(row2).set(column2, s1);
+				return;
+			}
+		} while (true);
+	}
+
 }
