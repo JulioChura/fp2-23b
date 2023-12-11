@@ -117,7 +117,7 @@ public class VideoJuego {
 										compareSoldier(copyB);
 										break;
 									case 6:
-										// exchangePosition(copyB);
+										exchangePosition(copyB);
 										break;
 									case 7:
 										System.out.println("Ingrese el nombre del soldado a buscar");
