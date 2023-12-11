@@ -128,7 +128,7 @@ public class VideoJuego {
 										showByCreation(copyU);
 										break;
 									case 9:
-										// sumOfAttributes(copyB, copyU);
+										sumOfAttributes(copyB, copyU);
 										break;
 									case 10:
 										// stagesOfWar(copyB, anotherCopyB, copyU, anotherCopyU);
@@ -735,6 +735,6 @@ public class VideoJuego {
 
 			}
 		}
-		System.out.println("Se creó ha: " + soldierA);
+		System.out.println("Se ha creado a: " + soldierA);
 	}
 }
