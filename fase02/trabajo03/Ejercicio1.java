@@ -26,21 +26,31 @@ class Punto {
 }
 
 class Circulo {
-    private Punto PuntoOrigen;
-    private Punto PuntoDestino;
-    private double distancia;
+    private Punto puntoOrigen;
+    private Punto puntoDestino;
+    private double radio;
 
     public Circulo (Punto p1, Punto p2) {
-        PuntoOrigen = p1;
-        PuntoDestino = p2;
+        puntoOrigen = p1;
+        puntoDestino = p2;
+    }
+    public double calcularRadio() {
+        this.radio = puntoOrigen.distancia(puntoDestino);
+        return this.radio;
+    }
+    public  String toString () {
+        return "Punto de Origen: "+ puntoDestino +
+         " Punto de Destino: "+ puntoDestino + " Radio: "+  radio;
     }
 }
 
 public class Ejercicio1 {
 
     public static void main(String[] args) {
-        Punto punto = new Punto(3, 4);
-        double distancia = punto.distancia(new Punto(0, 0));
+        Punto p1 = new Punto(3, 4);
+        Punto p2 = new Punto(0, 0);
+        Circulo circulo = new Circulo(p1, p2);
+        circulo.distancia();
         System.out.println("La distancia es: " + distancia);
 
     }
