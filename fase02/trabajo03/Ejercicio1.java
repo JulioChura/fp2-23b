@@ -19,14 +19,15 @@ public class Ejercicio1 {
             return y;
         }
 
-        public double distancia() {
-            return;
+        public double distancia(Punto p) {
+            return Math.sqrt(Math.pow(x - p.getX(), 2) + Math.pow(y - p.getY(), 2));
         }
     }
 
-    public class Circulo extends Punto {
-    }
+    //public class Circulo extends Punto {
+    //}
 
     public static void main(String[] args) {
+        Punto punto = new Punto(0, 0);
     }
 }
