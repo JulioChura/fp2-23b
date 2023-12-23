@@ -1,7 +1,7 @@
 class Punto {
     /*
-     * Se pone el nivel protected debido a que se
-     * aplicará herencia. Esta es la clase padre
+     * Se establecen como atributos dos valores de tipo
+     * double que seran una coordenada
      */
     private double x;
     private double y;
