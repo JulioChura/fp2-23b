@@ -1,7 +1,5 @@
-
 class Punto {
-    /*
-     * Se pone el nivel protected debido a que se 
+    /*Se pone el nivel protected debido a que se
      * aplicará herencia. Esta es la clase padre
      */
     protected double x;
@@ -21,20 +19,22 @@ class Punto {
     }
 
     public double distancia(Punto p) {
-        return Math.sqrt(Math.pow(x - p.getX(), 2) + Math.pow(y - p.getY(), 2));
+        return Math.sqrt(Math.pow(x - p.getX(), 2) +
+         Math.pow(y - p.getY(), 2));
     }
+
 }
 
-//class Circulo extends Punto {
-    
-//}
+class Circulo {
+
+}
 
 public class Ejercicio1 {
 
     public static void main(String[] args) {
-        Punto punto = new Punto(0, 0);
+        Punto punto = new Punto(3, 4);
+        double distancia = punto.distancia(new Punto(0, 0));
+        System.out.println("La distancia es: " + distancia);
+
     }
 }
-
-
-
