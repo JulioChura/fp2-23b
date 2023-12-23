@@ -1,18 +1,9 @@
 
-public class Ejercicio1 {
-    /*
-     * Se pone el nivel protected ya que se usará herencia
-     */
-
-    // public class Circulo extends Punto {
-    // }
-
-    public static void main(String[] args) {
-        Punto punto = new Punto(0, 0);
-    }
-}
-
 class Punto {
+    /*
+     * Se pone el nivel protected debido a que se 
+     * aplicará herencia. Esta es la clase padre
+     */
     protected double x;
     protected double y;
 
@@ -34,6 +25,16 @@ class Punto {
     }
 }
 
-class Circulo extends Punto {
+//class Circulo extends Punto {
     
+//}
+
+public class Ejercicio1 {
+
+    public static void main(String[] args) {
+        Punto punto = new Punto(0, 0);
+    }
 }
+
+
+
