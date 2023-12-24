@@ -61,6 +61,14 @@ public class Ejercicio2 {
 
     class Cilindro {
         private double altura;
+        private Circulo circulo;
+        public Cilindro (Circulo circulo, double altura) {
+            this.circulo = circulo;
+            this.altura = altura;
+        }
+        public double calcularSuperficie() {
+            return circulo.calcularPerimetro() * (circulo.getRadio() + altura);
+        }
 
     }
 }
