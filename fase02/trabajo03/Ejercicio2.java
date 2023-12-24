@@ -45,6 +45,18 @@ public class Ejercicio2 {
             this.radio = puntoOrigen.distancia(puntoDestino);
             return this.radio;
         }
+        /*
+         * Se crea el metodo que devuelve el perimetro del circulo
+         */
+        public double calcularPerimetro() {
+            return 2 * Math.PI * radio;
+        }
     
+    }
+
+    class Cilindro {
+        private double altura;
+
+        
     }
 }
