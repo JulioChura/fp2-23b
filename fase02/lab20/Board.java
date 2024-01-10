@@ -91,34 +91,44 @@ public class Board {
         }
     }
 
-    public static void myBoard(ArrayList<ArrayList<Soldier>> a, ArrayList<ArrayList<Soldier>> b) {
-        String[][] tablero = new String[ROW_BOARD][COLUMN_BOARD];
-        for (int i = 0; i < tablero.length; i++) {
-            for (int j = 0; j < tablero[i].length; j++) {
-                tablero[i][j] = "|____|";
+    public void generateMap() {
+
+        ArrayList<ArrayList<Soldier>> a = army1.getArmyInArrayListBi();
+        ArrayList<ArrayList<Soldier>> b = army2.getArmyInArrayListBi();
+
+        String charMap = battlefield();
+        map = new String[ROW][COLUMN];
+
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                map[i][j] = "|__________|";
             }
         }
+
         for (int i = 0; i < a.size(); i++) {
             for (int j = 0; j < a.get(i).size(); j++) {
                 if (a.get(i).get(j) != null) {
-                    String strA = "|_" + "a" + a.get(i).get(j).getActualLife() + "_|";
-                    tablero[i][j] = strA;
+                    String strA = "|_" + charMap + "*" + Board.kingdom(kingdom1) + typSoldier(a.get(i).get(j))
+                            + lifeInStringFormat(i, j, a) + "*" + charMap + "_|";
+                    map[i][j] = strA;
                 }
             }
         }
         for (int i = 0; i < b.size(); i++) {
             for (int j = 0; j < b.get(i).size(); j++) {
-                if (b.get(i).get(j) != null && tablero[i][j] != "s") {
-                    String strB = "|_" + "b" + b.get(i).get(j).getActualLife() + "_|";
-                    tablero[i][j] = strB;
+                if (b.get(i).get(j) != null && map[i][j] != "s") {
+                    String strB = "|_" + charMap + "*" + Board.kingdom(kingdom2) + typSoldier(b.get(i).get(j))
+                            + lifeInStringFormat(i, j, b) + "*" + charMap + "_|";
+                    map[i][j] = strB;
                 }
             }
         }
-        System.out.print("   A     B     C     D     E    F     G     H     I     J \n");
-        for (int i = 0; i < tablero.length; i++) {
+        System.out.print(
+                "      A        B           C          D            E           F             G        H       I       J \n");
+        for (int i = 0; i < map.length; i++) {
             System.out.printf("%2d", (i + 1));
-            for (int j = 0; j < tablero[i].length; j++) {
-                System.out.print(tablero[i][j]);
+            for (int j = 0; j < map[i].length; j++) {
+                System.out.print(map[i][j]);
             }
             System.out.println();
         }
