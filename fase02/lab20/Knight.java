@@ -33,6 +33,7 @@ public class Knight extends Soldier {
                 super.attack();
         else
             super.attack();
+			super.attack();
     }
 
     public void desmontar() {
@@ -61,6 +62,6 @@ public class Knight extends Soldier {
 
     @Override
     public String toString() {
-        return "Knight: "+ super.toString() + ", currentWeapon=" + currentWeapon + ", horseRiding=" + horseRiding + "]";
+        return "[Knight: "+ super.toString() + ", currentWeapon=" + currentWeapon + ", horseRiding=" + horseRiding + "]";
     }
 }
