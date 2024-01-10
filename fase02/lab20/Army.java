@@ -130,6 +130,45 @@ public class Army {
         for (int n : num) {
             total = total + n;
         }
+        num[4] = total;
+
+        System.out.print("Archer: " + num[0] + " ");
+        System.out.print("Knight: " + num[1] + " ");
+        System.out.print("Spearman: " + num[2] + " ");
+        System.out.print("Swordsman: " + num[3] + " ");
+        System.out.print("Total: " + num[4] + " ");
+        return num;
     }
 
+    // ordena un arreglo bidimensional
+    public void organize() {
+        int n = armyU.size();
+        for (int i = 1; i < n; i++) {
+            Soldier key = armyU.get(i);
+            int j = i - 1;
+            while (j >= 0 && armyU.get(j).getActualLife() > key.getActualLife()) {
+                armyU.set(j + 1, armyU.get(j));
+                j--;
+            }
+            armyU.set(j + 1, key);
+        }
+    }
+
+    // El soldado con mayor vida
+    public void longerLife() {
+        organize();
+        System.out.println(armyU.get(armyU.size() - 1));
+    }
+
+    // imprime ranking de poder
+    public void ranking() {
+        organize();
+        for (Soldier sol : armyU) {
+            System.out.println(sol);
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
 }
