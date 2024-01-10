@@ -17,6 +17,15 @@ public class Archer extends Soldier {
         this.arrows = arrows;
     }
 
-    
+    public void shoot() {
+        if (arrows > 0) {
+            arrows--;
+        } 
+    }
+
+    @Override
+    public String toString() {
+        return "[Archer: "+  super.toString()  +", arrows=" + arrows + "]";
+    }
     
 }
