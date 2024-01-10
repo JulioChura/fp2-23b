@@ -1,8 +1,8 @@
 public class Archer extends Soldier {
     private int arrows;
 
-    public Archer(int arroes) {
-        this.arrows = arroes;
+    public Archer(int arrows) {
+        this.arrows = arrows;
     }
 
     public Archer(String name, int row, int column, int attackLevel, int defenseLevel, int actualLife, int speed,
