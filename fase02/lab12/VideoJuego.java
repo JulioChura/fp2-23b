@@ -1,6 +1,6 @@
 // Laboratorio Nro 12
 // Autor: Julio
-// Tiempo: 6 horas
+// Tiempo: 
 // No hubo colaboradores
 
 import java.util.*;
@@ -624,7 +624,7 @@ public class VideoJuego {
 
 	}
 
-	// case 4: Este metodo modifica cualqueira de los atributos de un soldado
+	// case 4: Este metodo modifica cualquiera de los atributos de un soldado
 	public static void changeAttributes(ArrayList<ArrayList<Soldier>> armyB, ArrayList<Soldier> armyU) {
 		System.out.println("Modificaremos un soldado!");
 		do {

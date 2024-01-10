@@ -30,6 +30,7 @@ class Hidroavion implements Barco, Avion {
         this.lugarProcedencia = lugar;
     }
 
+    // En esta parte de editan los metodos de las interfaces
     public void navegar() {
         System.out.println("El HidroaviÓn está avanzando en el agua!");
     }
