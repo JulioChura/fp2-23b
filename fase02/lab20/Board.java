@@ -23,6 +23,72 @@ public class Board {
         this.kingdom2 = kingdom2;
     }
 
+    // 0:Bosque 1:Campo 2:Montania 3:Desierto 4: Playa
+    public String chooseBattleField() {
+        Random random = new Random();
+        int option = random.nextInt(5);
+        if (option == 0) {
+            typeTerritory = "Bosque";
+        } else if (option == 1) {
+            typeTerritory = "Campo";
+        } else if (option == 2) {
+            typeTerritory = "Montania";
+        } else if (option == 3) {
+            typeTerritory = "Desierto";
+        } else {
+            typeTerritory = "Playa";
+        }
+        return typeTerritory;
+    }
 
-    
+    public static String kingdom(String str) {
+        if (str.equalsIgnoreCase("Castilla")) {
+            return "C";
+        } else if (str.equalsIgnoreCase("Francia")) {
+            return "F";
+        } else if (str.equalsIgnoreCase("Moros")) {
+            return "M";
+        } else if (str.equalsIgnoreCase("Inglaterra")) {
+            return "I";
+        } else {
+            return "R";
+        }
+    }
+
+    public String battlefield() {
+        String charMap;
+        if (typeTerritory.equalsIgnoreCase("playa")) {
+            return "P";
+        } else if (typeTerritory.equalsIgnoreCase("montañana")) {
+            return "M";
+        } else if (typeTerritory.equalsIgnoreCase("desierto")) {
+            return "D";
+        } else if (typeTerritory.equalsIgnoreCase("Campo")) {
+            return "C";
+        } else {
+            return "B";
+        }
+    }
+
+    public String typSoldier(Soldier sol) {
+        if (sol instanceof Archer) {
+            return "a";
+        } else if (sol instanceof Knight) {
+            return "r";
+        } else if (sol instanceof Spearman) {
+            return "l";
+        } else {
+            return "e";
+        }
+    }
+
+    public String lifeInStringFormat(int row, int column, ArrayList<ArrayList<Soldier>> a) {
+        int life = a.get(row).get(column).getActualLife();
+        if (life < 10) {
+            return "0" + String.valueOf(life);
+        } else {
+            return String.valueOf(life);
+        }
+    }
+
 }
