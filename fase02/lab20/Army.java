@@ -91,4 +91,24 @@ public class Army {
         armyU = armyUni;
         return armyUni;
     }
+
+    public void showArmy() {
+        for (ArrayList<Soldier> row : army) {
+            for (Soldier soldier : row) {
+                if (soldier != null) {
+                    System.out.println(soldier);
+                }
+            }
+        }
+    }
+
+    public ArrayList<ArrayList<Soldier>> getArmyInArrayListBi() {
+        return army;
+    }
+
+    public ArrayList<Soldier> getArmyInArrayUni() {
+        return armyU;
+    }
+    
+
 }
