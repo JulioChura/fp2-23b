@@ -124,7 +124,7 @@ public class Board {
             }
         }
         System.out.print(
-                "      A        B           C          D            E           F             G        H       I       J \n");
+                "      A        B           C          D            E           F             G            H           I             J \n");
         for (int i = 0; i < map.length; i++) {
             System.out.printf("%2d", (i + 1));
             for (int j = 0; j < map[i].length; j++) {
