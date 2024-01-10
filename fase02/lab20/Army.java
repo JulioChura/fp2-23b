@@ -109,6 +109,27 @@ public class Army {
     public ArrayList<Soldier> getArmyInArrayUni() {
         return armyU;
     }
-    
+
+    // 0:archer 1:Knight 2:Spearman 3:Swordsman 5:total
+    // En la guia se nos pide contabilizar los objetos
+    public int[] count() {
+        converterToArrayUni();
+        int[] num = new int[5];
+        int total = 0;
+        for (Soldier sol : armyU) {
+            if (sol instanceof Archer) {
+                num[0]++;
+            } else if (sol instanceof Knight) {
+                num[1]++;
+            } else if (sol instanceof Spearman) {
+                num[2]++;
+            } else {
+                num[3]++;
+            }
+        }
+        for (int n : num) {
+            total = total + n;
+        }
+    }
 
 }
