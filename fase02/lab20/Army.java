@@ -77,17 +77,18 @@ public class Army {
         return a;
     }
 
-    // Para trabajar con ordenamientos, es necesario llevarlo asu forma
+    // Para trabajar con ordenamientos, es necesario llevarlo a su forma
     // bidimensioanl
-    public static ArrayList<Soldier> arrayListUnidimensional(ArrayList<ArrayList<Soldier>> s) {
+    public ArrayList<Soldier> converterToArrayUni() {
         ArrayList<Soldier> armyUni = new ArrayList<Soldier>();
-        for (int i = 0; i < s.size(); i++) {
-            for (int j = 0; j < s.get(i).size(); j++) {
-                if (s.get(i).get(j) != null) {
-                    armyUni.add(s.get(i).get(j));
+        for (int i = 0; i < army.size(); i++) {
+            for (int j = 0; j < army.get(i).size(); j++) {
+                if (army.get(i).get(j) != null) {
+                    armyUni.add(army.get(i).get(j));
                 }
             }
         }
+        armyU = armyUni;
         return armyUni;
     }
 }
