@@ -1,3 +1,8 @@
+// Laboratorio Nro 20
+// Autor: Julio
+// Tiempo: 6 horas
+// No hubo colaboradores
+
 import java.util.*;
 
 public class Aplicacion {
