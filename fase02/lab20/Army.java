@@ -57,8 +57,18 @@ public class Army {
                     sol = new Knight(name, row + 1, column + 1, attack, defense, lifePoints, 0, "sword", false);
 
                 } else if (optionSoldier == 2) {
+                    attack = 5;
+                    defense = 10;
+                    lifePoints = random.nextInt(4) + 5;
+                    name = "Spearman" + (row + 1) + "x" + (column + 1);
+                    sol = new Spearman(name, row + 1, column + 1, attack, defense, lifePoints, 0, 1);
 
                 } else {
+                    attack = 10;
+                    defense = 8;
+                    lifePoints = random.nextInt(3) + 8;
+                    name = "Swordsman" + (row + 1) + "x" + (column + 1);
+                    sol = new Swordsman(name, row + 1, column + 1, attack, defense, lifePoints, 0, 1, false);
                 }
                 a.setSoldier(row, column, a, sol);
                 n++;
