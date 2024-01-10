@@ -19,5 +19,17 @@ public class Swordsman extends Soldier {
         this.shieldWalls = shieldWalls;
     }
 	
-	
+	public void muroEscudos(){
+        if(shieldWalls==true) {
+            shieldWalls = false;
+        }  else {
+            shieldWalls = true;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Swordsman: "+ super.toString()+ ", longSnow=" + longSnow + ", shieldWalls=" + shieldWalls + "]";
+    }
+
 }
