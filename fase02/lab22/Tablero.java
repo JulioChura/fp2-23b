@@ -3,6 +3,9 @@ import java.util.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Panel;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+
 
 public class Tablero extends JFrame {
 
@@ -30,8 +33,10 @@ public class Tablero extends JFrame {
                 JButton boton;
                 if (a.get(i).get(j) != null) {
                     boton = new JButton("a");
+                    boton.setBorder(BorderFactory.createLineBorder(Color.RED));
                 } else if (b.get(i).get(j) != null) {
                     boton = new JButton("b");
+                    boton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
                 } else {
                     boton = new JButton();
                 }
