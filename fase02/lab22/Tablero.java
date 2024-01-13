@@ -3,7 +3,6 @@ import java.util.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Panel;
-import java.util.ArrayList;
 
 public class Tablero extends JFrame {
 
@@ -27,46 +26,20 @@ public class Tablero extends JFrame {
 
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
-                JButton boton = new JButton();
+
+                JButton boton;
+                if (a.get(i).get(j) != null) {
+                    boton = new JButton("a");
+                } else if (b.get(i).get(j) != null) {
+                    boton = new JButton("b");
+                } else {
+                    boton = new JButton();
+                }
+        
                 casillas[i][j] = boton;
                 add(boton);
             }
         }
-
-        for (int i = 0; i < a.size(); i++) {
-            for (int j = 0; j < a.get(i).size(); j++) {
-                if (a.get(i).get(j) != null) {
-                    JButton boton = new JButton("a");
-                    casillas[i][j] = boton;
-                    add(boton);
-                }
-            }
-        }
-        for (int i = 0; i < b.size(); i++) {
-            for (int j = 0; j < b.get(i).size(); j++) {
-                if (b.get(i).get(j) != null) {
-                    JButton boton = new JButton("b");
-                    casillas[i][j] = boton;
-                    add(boton);
-                }
-            }
-        }
-
-        /*
-         * System.out.print(
-                "      A        B           C          D            E           F             G            H           I             J \n");
-        for (int i = 0; i < map.length; i++) {
-            System.out.printf("%2d", (i + 1));
-            for (int j = 0; j < map[i].length; j++) {
-                System.out.print(map[i][j]);
-            }
-            System.out.println();
-        }
-         * 
-         * 
-         * 
-         */
-        
 
         setVisible(true);
     }
@@ -76,18 +49,23 @@ public class Tablero extends JFrame {
         String kingdom2;
         Scanner sc = new Scanner(System.in);
         System.out.println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
-            kingdom1 = sc.next();
+        kingdom1 = sc.next();
 
-            System.out.println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
-            kingdom2 = sc.next();
+        System.out.println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
+        kingdom2 = sc.next();
 
-            Army a = new Army(kingdom1);
-            Army b = new Army(kingdom2);
+        Army a = new Army(kingdom1);
+        Army b = new Army(kingdom2);
+        a.generateArmy(b);
+        b.generateArmy(a);
 
-            Tablero tab = new Tablero(a, b, kingdom1, kingdom2);
 
+        Tablero tab = new Tablero(a, b, kingdom1, kingdom2);
 
-
+        a.showArmy();
+        System.out.println();
+        b.showArmy();
+        System.out.println();
         
     }
     
