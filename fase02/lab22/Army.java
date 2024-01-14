@@ -144,9 +144,9 @@ public class Army {
     // 0:archer 1:Knight 2:Spearman 3:Swordsman 5:total
     // En la guia se nos pide contabilizar los objetos
     public static int typeSoldier(Soldier sol) {
-        if (sol instanceof Archer ) {
+        if (sol instanceof Archer) {
             return 0;
-        } else if (sol instanceof Knight ) {
+        } else if (sol instanceof Knight) {
             return 1;
         } else if (sol instanceof Spearman) {
             return 2;
@@ -198,5 +198,12 @@ public class Army {
         return sumLife;
     }
 
-    
+    public static Soldier searchSoldier(Army army, int row, int column) {
+        for (Soldier s : army.converterToArrayUni()) {
+            if (s.getRow() == row && s.getColumn() == column) {
+                return s;
+            }
+        }
+        return null;
+    }
 }
