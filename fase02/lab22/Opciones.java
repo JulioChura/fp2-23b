@@ -50,9 +50,6 @@ public class Opciones extends JFrame {
 
         oponente1 = new JComboBox<>(new String[] {"1: Inglaterra", "2: Moros", "3: Roma", "4: Castilla", "5: Francia" });
         oponente2 = new JComboBox<>(new String[] {"1: Inglaterra", "2: Moros", "3: Roma", "4: Castilla", "5: Francia" });
-
-
-
         
         
         arena = new JPanel();
