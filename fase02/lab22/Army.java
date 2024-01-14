@@ -206,4 +206,17 @@ public class Army {
         }
         return null;
     }
+
+    public static boolean validatePosition(Army ally, int rowOrigin, int columnOrigin,
+                            int rowDestination, int columnDestination) {
+        
+        if (searchSoldier(ally, rowOrigin, columnOrigin) != null ) {
+            JOptionPane.showMessageDialog(null, "No hay soldados de nuestro bando en esa posicion!");
+			return true;
+        } 
+        if (searchSoldier(ally, rowDestination, columnDestination) != null) {
+            JOptionPane.showMessageDialog(null, "El lugar de destino esta ocupado por soldados de nuestro bando!");
+        }
+        return false;
+    }
 }
