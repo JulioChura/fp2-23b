@@ -12,16 +12,21 @@ public class Aplicacion {
         String kingdom1;
         String kingdom2;
 
-        while (validation()) {
+        //while (validation()) {
 
-            System.out.println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
-            kingdom1 = sc.next();
+            /*
+             * System.out.
+             * println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
+             * kingdom1 = sc.next();
+             * 
+             * System.out.
+             * println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
+             * kingdom2 = sc.next();
+             */
+            
 
-            System.out.println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
-            kingdom2 = sc.next();
-
-            Army a = new Army(kingdom1);
-            Army b = new Army(kingdom2);
+            Army a = new Army("a");
+            Army b = new Army("b");
 
             a.generateArmy(b);
             b.generateArmy(a);
@@ -46,7 +51,7 @@ public class Aplicacion {
             System.out.println();
             GameFast gameFast = new GameFast(tablero, a, b, false);
             gameFast.winner();
-        }
+        //}
     }
 
     public static boolean validation() {

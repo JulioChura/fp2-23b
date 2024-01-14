@@ -7,6 +7,9 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.concurrent.CountDownLatch;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Tablero extends JFrame {
 
@@ -81,24 +84,14 @@ public class Tablero extends JFrame {
         }
     }
 
+    private int fila = -1;
+    private int columna = -1;
+    // Hace que debe esperar 1 evento
+    private CountDownLatch latch = new CountDownLatch(1);
+
     public class MyButtonListener implements ActionListener {
         private int row;
         private int column;
-
-        private int turnos = 1;
-
-        private int rowPast;
-        private int columnPast;
-
-        private boolean actualTurn = true;
-
-        private boolean primerClick = true;
-
-        private int lifeA;
-        private int lifeB;
-
-        private Soldier solA;
-        private Soldier solB;
 
         public MyButtonListener(int row, int column) {
             this.row = row;
@@ -106,105 +99,29 @@ public class Tablero extends JFrame {
         }
 
         public void actionPerformed(ActionEvent e) {
-            if (turnos % 2 != 0) {
-                if (primerClick && a.get(row).get(column) != null) {
-                    JOptionPane.showMessageDialog(null, "Selecciono correctamente la pieza Roja!");
+            fila = row;
+            columna = column;
+            latch.countDown();
 
-                    JOptionPane.showMessageDialog(null, "Ahora debe seleccionar una casilla");
-
-                    solA = a.get(row).get(column);
-                    lifeA = solA.getActualLife();
-                    primerClick = false;
-                    rowPast = row;
-                    columnPast = column;
-                    return;
-                } else if (primerClick == false) {
-                    JOptionPane.showMessageDialog(null, "Ahora debe seleccionar una casilla de destino");
-                    if (a.get(row).get(column) != null) {
-                        JOptionPane.showMessageDialog(null, "Seleccione otra casilla!");
-                        return;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Fase de batalla!");
-                        solB = b.get(row).get(column);
-                        if (solB != null) {
-                            lifeB = solB.getActualLife();
-                            if (lifeA > lifeB) {
-                                a.get(row).set(column, solA);
-                                a.get(rowPast).set(columnPast, null);
-                                b.get(row).set(column, null);
-                                System.out.println("Movimiento exitoso: Soldado A derrota a Soldado B");
-                            } else if (lifeB > lifeA) {
-                                a.get(rowPast).set(columnPast, null);
-                                System.out.println("Movimiento exitoso: Soldado A derrotado por Soldado B");
-                            } else {
-                                a.get(rowPast).set(columnPast, null);
-                                b.get(row).set(column, null);
-                                System.out.println("Movimiento exitoso: Ambos soldados eliminados");
-                            }
-                            turnos++;
-                            primerClick = true;
-                            repaint();
-                            return;
-                        } else {
-                            a.get(row).set(column, solA);
-                            a.get(rowPast).set(columnPast, null);
-                            System.out.println("Movimiento exitoso: Soldado A se mueve a nueva posición");
-                            turnos++;
-                            primerClick = true;
-                            repaint();
-                            return;
-                        }
-                    }
-                }
-
-            } else {
-                if (primerClick && isSoldierHereB(row, column) == 3) {
-                    solB = b.get(row).get(column);
-                    lifeB = solB.getActualLife();
-                    primerClick = false;
-                    rowPast = row;
-                    columnPast = column;
-                    return;
-                } else if (primerClick == false) {
-
-                    if (b.get(row).get(column) != null) {
-                        JOptionPane.showMessageDialog(null, "Seleccione otra casilla!");
-                        return;
-                    } else {
-                        solA = b.get(row).get(column);
-                        if (solA != null) {
-                            lifeA = solA.getActualLife();
-                            if (lifeB > lifeA) {
-                                b.get(row).set(column, solB);
-                                b.get(rowPast).set(columnPast, null);
-                                a.get(row).set(column, null);
-                                System.out.println("Movimiento exitoso: Soldado A derrota a Soldado B");
-                            } else if (lifeA > lifeB) {
-                                b.get(rowPast).set(columnPast, null);
-                                System.out.println("Movimiento exitoso: Soldado A derrotado por Soldado B");
-                            } else {
-                                b.get(rowPast).set(columnPast, null);
-                                a.get(row).set(column, null);
-                                System.out.println("Movimiento exitoso: Ambos soldados eliminados");
-                            }
-                            turnos--;
-                            primerClick = true;
-                            repaint();
-                            return;
-                        } else {
-                            a.get(row).set(column, solA);
-                            a.get(rowPast).set(columnPast, null);
-                            System.out.println("Movimiento exitoso: Soldado A se mueve a nueva posición");
-                            turnos--;
-                            primerClick = true;
-                            repaint();
-                            return;
-                        }
-                    }
-                }
-
-            }
         }
+    }
+
+    public int[] getCoordinates() {
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        int[] array = new int[2];
+        array[0] = fila + 1;
+        array[1] = columna + 1;
+        fila = -1;
+        columna = -1;
+
+        latch = new CountDownLatch(1);
+
+        return array;
+
     }
 
     public int isSoldierHereA(int row, int column) {
@@ -258,6 +175,13 @@ public class Tablero extends JFrame {
             ImageIcon resizedEspadachinIcon = new ImageIcon(espadachinImage);
             return resizedEspadachinIcon;
         }
+    }
+
+    public void repintarTablero() {
+        getContentPane().removeAll();
+        init();
+        revalidate();
+        repaint();
     }
 
     public static void main(String[] args) {

@@ -20,8 +20,8 @@ public class GameFast {
         Random random = new Random();
         int definitiveProbability = random.nextInt(100);
 
-        int total1 = totalLife(army1);
-        int total2 = totalLife(army2);
+        int total1 = army1.totalLife();
+        int total2 = army2.totalLife();
 
         double totalLife = total1 + total2;
         double probabilityAttack1 = 100 * total1 / totalLife;
@@ -40,11 +40,5 @@ public class GameFast {
         }
     }
 
-    public int totalLife(Army army) {
-        int sumLife = 0;
-        for (Soldier sol : army.getArmyInArrayUni()) {
-            sumLife = sumLife + sol.getActualLife();
-        }
-        return sumLife;
-    }
+    
 }

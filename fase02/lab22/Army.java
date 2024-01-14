@@ -1,4 +1,5 @@
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class Army {
 
@@ -78,7 +79,7 @@ public class Army {
     }
 
     // Para trabajar con ordenamientos, es necesario llevarlo a su forma
-    // bidimensioanl
+    // unidimensional
     public ArrayList<Soldier> converterToArrayUni() {
         ArrayList<Soldier> armyUni = new ArrayList<Soldier>();
         for (int i = 0; i < army.size(); i++) {
@@ -188,4 +189,14 @@ public class Army {
     public String getName() {
         return name;
     }
+
+    public int totalLife() {
+        int sumLife = 0;
+        for (Soldier sol : getArmyInArrayUni()) {
+            sumLife = sumLife + sol.getActualLife();
+        }
+        return sumLife;
+    }
+
+    
 }
