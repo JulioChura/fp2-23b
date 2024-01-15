@@ -222,7 +222,7 @@ public class Army {
             JOptionPane.showMessageDialog(null, "Coordenadas correctas!");
             return false;
         } else {
-            JOptionPane.showMessageDialog(null, "El lugar de destino esta ocupado por soldados de nuestro bando!");
+            JOptionPane.showMessageDialog(null, "Coordenadas no válidas!");
             return true;
         }
     }
@@ -272,15 +272,15 @@ public class Army {
         double probabilityAttack2 = 100 - probabilityAttack1;
 
         JOptionPane.showMessageDialog(null, "Estadísticas de batalla:\tSoldado atacante: " + probabilityAttack1
-                + "%\tSoldado en reposo: " + probabilityAttack2 + "%\tSalio como aleatorio: "
+                + "%\tSoldado en reposo: " + probabilityAttack2 + "%\t Salio como aleatorio: "
                 + definitiveProbability + "%");
 
         System.out.println();
 
-        if (definitiveProbability <= probabilityAttack1) {
+        if (definitiveProbability < probabilityAttack1) {
             JOptionPane.showMessageDialog(null, "Gano el soldado atacante");
             return 1;
-        } else if (definitiveProbability <= probabilityAttack2) {
+        } else if (definitiveProbability < probabilityAttack2) {
             JOptionPane.showMessageDialog(null, "Gano el soldado en reposo");
             return 2;
         } else {
@@ -288,4 +288,6 @@ public class Army {
             return 3;
         }
     }
+
+    public static 
 }
