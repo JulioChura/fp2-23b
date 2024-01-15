@@ -283,10 +283,11 @@ public class Army {
         } else if (definitiveProbability < probabilityAttack2) {
             JOptionPane.showMessageDialog(null, "Gano el soldado en reposo");
             return 2;
-        } else {
+        } else if (definitiveProbability == probabilityAttack1 || definitiveProbability == probabilityAttack2){
             JOptionPane.showMessageDialog(null, "Empate");
             return 3;
         }
+        return -1;
     }
 
     public static boolean winner(Army e1, Army e2){
