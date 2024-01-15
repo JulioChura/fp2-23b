@@ -281,17 +281,16 @@ public class Army {
         if (definitiveProbability < probabilityAttack1) {
             JOptionPane.showMessageDialog(null, "Gano el soldado atacante");
             return 1;
-        } else if (definitiveProbability < probabilityAttack2) {
+        } else if (definitiveProbability > probabilityAttack1) {
             JOptionPane.showMessageDialog(null, "Gano el soldado en reposo");
             return 2;
-        } else if (definitiveProbability == probabilityAttack1 || definitiveProbability == probabilityAttack2) {
+        } else  {
             JOptionPane.showMessageDialog(null, "Empate");
             return 3;
         }
-        return -1;
     }
 
-    public static boolean winner(Army e1, Army e2) {
+    public static boolean winnerDefinitive(Army e1, Army e2) {
         if (e2.converterToArrayUni().size() == 0) {
             JOptionPane.showMessageDialog(null, "Ganó " + e2.getName());
             return false;
