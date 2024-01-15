@@ -18,12 +18,12 @@ public class Tablero extends JFrame {
 
     private JButton[][] casillas;
 
-    private  ArrayList<ArrayList<Soldier>> a;
-    private  ArrayList<ArrayList<Soldier>> b;
+    private ArrayList<ArrayList<Soldier>> a;
+    private ArrayList<ArrayList<Soldier>> b;
 
     private Army army1;
     private Army army2;
-    
+
     public Tablero(Army army1, Army army2, String kingdom1, String kingdom2) {
 
         this.army1 = army1;
@@ -89,8 +89,8 @@ public class Tablero extends JFrame {
         }
     }
 
-    private int fila = -1;
-    private int columna = -1;
+    private int fila = 0;
+    private int columna = 0;
     // Hace que debe esperar 1 evento
     private CountDownLatch latch = new CountDownLatch(1);
 
@@ -118,43 +118,15 @@ public class Tablero extends JFrame {
             e.printStackTrace();
         }
         int[] array = new int[2];
-        array[0] = fila + 1;
-        array[1] = columna + 1;
-        fila = -1;
-        columna = -1;
+        array[0] = fila;
+        array[1] = columna;
+        fila = 0;
+        columna = 0;
 
         latch = new CountDownLatch(1);
 
         return array;
 
-    }
-
-    public int isSoldierHereA(int row, int column) {
-        // Turno rojo A es true
-        Soldier sol = a.get(row).get(column);
-
-        if (sol == null) {
-            JOptionPane.showMessageDialog(null, "Seleccione bien su ficha!");
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-
-    public int isSoldierHereB(int row, int column) {
-        // Turno rojo A es true
-        Soldier sol = b.get(row).get(column);
-
-        if (sol == null) {
-            JOptionPane.showMessageDialog(null, "Seleccione bien su ficha!");
-            return 1;
-        } else {
-            return 3;
-        }
-    }
-
-    public int getLife(Soldier sol) {
-        return sol.getActualLife();
     }
 
     public ImageIcon typeSoldierIcon(int option) {
@@ -196,7 +168,5 @@ public class Tablero extends JFrame {
     public Army getEjercito2() {
         return army2;
     }
-
-
 
 }
