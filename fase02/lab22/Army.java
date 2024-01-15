@@ -239,14 +239,32 @@ public class Army {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
             origin.getArmyInArrayListBi().get(rowDestination).set(columnDestination, originSoldier);
         } else {
-            battle(destination, origin, rowOrigin, columnOrigin, rowDestination, columnOrigin);
+            battle(destination, origin, rowOrigin, columnOrigin, rowDestination, columnOrigin, destinationSoldier,originSoldier);
         }
 
     }
 
     public static void battle(Army destination, Army origin, int rowOrigin, int columnOrigin,
-            int rowDestination, int columnDestination) {
+            int rowDestination, int columnDestination, Soldier destinationSoldier, Soldier originSoldier) {
+        int lifeDestination = destination.getArmyInArrayListBi().get(rowDestination).get(columnDestination)
+                .getActualLife();
+        int lifeOrigin = origin.getArmyInArrayListBi().get(rowOrigin).get(columnDestination).getActualLife();
 
+        int result = winner(lifeOrigin, lifeDestination);
+        if (1 == result) {
+            origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
+            origin.getArmyInArrayListBi().get(rowDestination).set(columnDestination, originSoldier);
+            destination.getArmyInArrayListBi().get(rowDestination).set(columnDestination, destinationSoldier);
+        } else if (2==result) {
+            origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
+        } else {
+            origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
+            destination.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
+        }
     }
 
+    public static int winner(int life1, int life2) {
+
+        
+    }
 }
