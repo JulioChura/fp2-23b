@@ -1,72 +1,132 @@
-// Laboratorio Nro 20
+// Laboratorio Nro 22
 // Autor: Julio
-// Tiempo: 6 horas
+// Tiempo: 8 horas
 // No hubo colaboradores
 
-import java.util.*;
+import java.util.Random;
+import javax.swing.JOptionPane;
 
 public class Aplicacion {
-    private static final Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) {
+		boolean exitRequested = false;
 
-    public static void main(String[] args) {
-        String kingdom1;
-        String kingdom2;
+		do {
 
-        //while (validation()) {
+			String kingdom1 = showDialogToChooseKingdom();
+			String kingdom2 = showDialogToChooseKingdom();
+			String battleField1 = showDialogToChooseBattleField();
+			String battleField2 = showDialogToChooseBattleField();
+			String definitiveBattlefield = randomBattlefield(battleField1, battleField2);
 
-            /*
-             * System.out.
-             * println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
-             * kingdom1 = sc.next();
-             * 
-             * System.out.
-             * println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
-             * kingdom2 = sc.next();
-             */
-            
+			Army a = new Army(kingdom1);
+			Army b = new Army(kingdom2);
+			a.generateArmy(b);
+			b.generateArmy(a);
 
-            Army a = new Army("a");
-            Army b = new Army("b");
+			Tablero tab = new Tablero(a, b, definitiveBattlefield);
+			juego(tab);
 
-            a.generateArmy(b);
-            b.generateArmy(a);
+			int option = JOptionPane.showConfirmDialog(null, "¿Desea jugar de nuevo?", "Reiniciar",
+					JOptionPane.YES_NO_OPTION);
 
-            a.showArmy();
-            System.out.println();
-            b.showArmy();
-            System.out.println();
+			if (option == JOptionPane.NO_OPTION) {
+				exitRequested = true;
+				tab.dispose(); //
+			}
 
-            Board tablero = new Board(a, b, "Castilla", "Francia");
-            tablero.generateMap();
+		} while (!exitRequested);
 
-            System.out.println("Contando los soldados");
-            System.out.println("Ejercito 1:" + a.count());
-            System.out.println("Ejercito 2:" + b.count());
-            System.out.println();
+		System.exit(0);
+	}
 
-            System.out.println("Datos de los soldados con mayor vida");
-            a.longerLife();
-            b.longerLife();
+	public static void juego(Tablero tabla) {
+		Army e1 = tabla.getEjercito1();
+		Army e2 = tabla.getEjercito2();
+		int turno = 0;
+		JOptionPane.showMessageDialog(null, "Bienvenidos a mi juego de guerra");
+		tabla.repintarTablero();
+		do {
+			if (turno % 2 == 0) {
+				int x = 0, y = 0, Dx = 0, Dy = 0;
+				do {
+					JOptionPane.showMessageDialog(null, "Turno del reino de " + e1.getName() + "(Azul)");
+					int arr[] = tabla.getCoordinates();
+					x = arr[0];
+					y = arr[1];
+					int toarr[] = tabla.getCoordinates();
+					Dx = toarr[0];
+					Dy = toarr[1];
+				} while (Army.validatePosition(e2, x, y, Dx, y));
+				Army.moveSoldier(e1, e2, x, y, Dx, Dy);
+			} else {
+				int x = 0, y = 0, Dx = 0, Dy = 0;
+				do {
+					JOptionPane.showMessageDialog(null, "Turno del reino de " + e2.getName() + "(Rojo)");
+					int arr[] = tabla.getCoordinates();
+					x = arr[0];
+					y = arr[1];
 
-            System.out.println();
-            GameFast gameFast = new GameFast(tablero, a, b, false);
-            gameFast.winner();
-        //}
-    }
+					int toarr[] = tabla.getCoordinates();
+					Dx = toarr[0];
+					Dy = toarr[1];
+				} while (Army.validatePosition(e1, x, y, Dx, Dy));
+				Army.moveSoldier(e2, e1, x, y, Dx, Dy);
+			}
+			tabla.repintarTablero();
+			turno++;
+		} while (Army.winnerDefinitive(e1, e2));
+	}
 
-    public static boolean validation() {
-        do {
-            System.out.println("Desea jugar una ronda?(si/no)");
-            String answer = sc.next();
-            if (answer.equalsIgnoreCase("Si")) {
-                return true;
-            } else if (answer.equalsIgnoreCase("No")) {
-                return false;
-            } else {
-                System.out.println("Respuesta no admsible");
-            }
-        } while (true);
+	public static String showDialogToChooseKingdom() {
+		String[] kingdoms = { "Francia", "Inglaterra", "Castilla", "Romanos", "Moros" };
+		String seleccion = (String) JOptionPane.showInputDialog(
+				null,
+				"Seleccigona una opción:",
+				"Elegir Opción",
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				kingdoms,
+				kingdoms[0]);
 
-    }
+		// Verifica si el usuario seleccionó una opción
+		if (seleccion != null) {
+			JOptionPane.showMessageDialog(null, "Seleccionaste: " + seleccion);
+		} else {
+			JOptionPane.showMessageDialog(null, "No seleccionaste ninguna opción");
+		}
 
+		return seleccion;
+	}
+
+	public static String showDialogToChooseBattleField() {
+		String userInput = JOptionPane.showInputDialog(null,
+				"Ingrese alguna:",
+				"Registro de arena",
+				JOptionPane.PLAIN_MESSAGE);
+
+		if (userInput != null && !userInput.isEmpty()) {
+			JOptionPane.showMessageDialog(
+					null,
+					"Arena propuesta: " + userInput,
+					"Resultado",
+					JOptionPane.INFORMATION_MESSAGE);
+		} else {
+			JOptionPane.showMessageDialog(
+					null,
+					"No se ingresó ninguna arena",
+					"Resultado",
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+		return userInput;
+	}
+
+	public static String randomBattlefield(String battleField1, String battleField2) {
+		Random random = new Random();
+		int selection = random.nextInt(2);
+		if (0 == selection) {
+			return battleField1;
+		} else {
+			return battleField2;
+		}
+	}
 }

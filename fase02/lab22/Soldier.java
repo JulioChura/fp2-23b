@@ -196,4 +196,7 @@ public class Soldier {
                 + attitude + ", current=" + current;
     }
 
+    public String getLabelLife() {
+        return actualLife+"";
+    }
 }
