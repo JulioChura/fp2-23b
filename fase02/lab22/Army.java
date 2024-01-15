@@ -158,7 +158,7 @@ public class Army {
 
     }
 
-    // ordena un arreglo bidimensional
+    // ordena un arreglo ubidimensional
     public void organize() {
         int n = armyU.size();
         for (int i = 1; i < n; i++) {
@@ -218,15 +218,13 @@ public class Army {
     public static boolean validatePosition(Army ally, int rowOrigin, int columnOrigin,
             int rowDestination, int columnDestination) {
 
-        if (searchSoldier(ally, rowOrigin, columnOrigin) != null) {
-            JOptionPane.showMessageDialog(null, "No hay soldados de nuestro bando en esa posicion!");
-            return true;
-        }
-        if (searchSoldier(ally, rowDestination, columnDestination) != null) {
+        if (searchSoldier(ally, rowOrigin, columnOrigin) != null && searchSoldier(ally, rowDestination, columnDestination) == null) {
+            JOptionPane.showMessageDialog(null, "Coordenadas correctas!");
+            return false;
+        } else {
             JOptionPane.showMessageDialog(null, "El lugar de destino esta ocupado por soldados de nuestro bando!");
             return true;
         }
-        return false;
     }
 
     // Hace la simulacion de mover un soldado, pero en realidad actualiza la
@@ -240,7 +238,7 @@ public class Army {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
             origin.getArmyInArrayListBi().get(rowDestination).set(columnDestination, originSoldier);
         } else {
-            battle(destination, origin, rowOrigin, columnOrigin, rowDestination, columnOrigin, destinationSoldier,
+            battle(destination, origin, rowOrigin, columnOrigin, rowDestination, columnDestination, destinationSoldier,
                     originSoldier);
         }
 
