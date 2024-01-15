@@ -11,14 +11,14 @@ public class test {
 
 		
 
-		String kigdom1 = showDialogToChooseKingdom();
+		String kingdom1 = showDialogToChooseKingdom();
 		String kingdom2 = showDialogToChooseKingdom();
 		String battleField1 = showDialogToChooseBattleField();
 		String battleField2 = showDialogToChooseBattleField();
 		String definitiveBattlefield = randomBattlefield(battleField1, battleField2);
 		
-		Army a = new Army("a");
-		Army b = new Army("b");
+		Army a = new Army(kingdom1);
+		Army b = new Army(kingdom2);
 		a.generateArmy(b);
 		b.generateArmy(a);
 
@@ -72,7 +72,7 @@ public class test {
 			}
 			tabla.repintarTablero();
 			turno++;
-		} while (true);
+		} while (Army.winner(e1, e2));
 	}
 
 	public static String showDialogToChooseKingdom() {
