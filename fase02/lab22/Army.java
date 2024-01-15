@@ -48,28 +48,28 @@ public class Army {
                     defense = 3;
                     lifePoints = random.nextInt(5) + 3;
                     name = "Archer" + (row + 1) + "x" + (column + 1);
-                    sol = new Archer(name, row + 1, column + 1, attack, defense, lifePoints, 0, 5);
+                    sol = new Archer(name, row, column, attack, defense, lifePoints, 0, 5);
 
                 } else if (optionSoldier == 1) {
                     attack = 13;
                     defense = 7;
                     lifePoints = random.nextInt(3) + 10;
                     name = "Knight" + (row + 1) + "x" + (column + 1);
-                    sol = new Knight(name, row + 1, column + 1, attack, defense, lifePoints, 0, "sword", false);
+                    sol = new Knight(name, row, column, attack, defense, lifePoints, 0, "sword", false);
 
                 } else if (optionSoldier == 2) {
                     attack = 5;
                     defense = 10;
                     lifePoints = random.nextInt(4) + 5;
                     name = "Spearman" + (row + 1) + "x" + (column + 1);
-                    sol = new Spearman(name, row + 1, column + 1, attack, defense, lifePoints, 0, 1);
+                    sol = new Spearman(name, row, column, attack, defense, lifePoints, 0, 1);
 
                 } else {
                     attack = 10;
                     defense = 8;
                     lifePoints = random.nextInt(3) + 8;
                     name = "Swordsman" + (row + 1) + "x" + (column + 1);
-                    sol = new Swordsman(name, row + 1, column + 1, attack, defense, lifePoints, 0, 1, false);
+                    sol = new Swordsman(name, row, column, attack, defense, lifePoints, 0, 1, false);
                 }
                 a.setSoldier(row, column, a, sol);
                 n++;
