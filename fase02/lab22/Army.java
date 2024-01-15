@@ -218,7 +218,8 @@ public class Army {
     public static boolean validatePosition(Army ally, int rowOrigin, int columnOrigin,
             int rowDestination, int columnDestination) {
 
-        if (searchSoldier(ally, rowOrigin, columnOrigin) != null && searchSoldier(ally, rowDestination, columnDestination) == null) {
+        if (searchSoldier(ally, rowOrigin, columnOrigin) != null
+                && searchSoldier(ally, rowDestination, columnDestination) == null) {
             JOptionPane.showMessageDialog(null, "Coordenadas correctas!");
             return false;
         } else {
@@ -253,12 +254,12 @@ public class Army {
         if (1 == result) {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
             origin.getArmyInArrayListBi().get(rowDestination).set(columnDestination, originSoldier);
-            destination.getArmyInArrayListBi().get(rowDestination).set(columnDestination, destinationSoldier);
+            destination.getArmyInArrayListBi().get(rowDestination).set(columnDestination, null);
         } else if (2 == result) {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
         } else {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
-            destination.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
+            destination.getArmyInArrayListBi().get(rowDestination).set(columnDestination, null);
         }
     }
 
@@ -272,7 +273,7 @@ public class Army {
         double probabilityAttack2 = 100 - probabilityAttack1;
 
         JOptionPane.showMessageDialog(null, "Estadísticas de batalla:\tSoldado atacante: " + probabilityAttack1
-                + "%\tSoldado en reposo: " + probabilityAttack2 + "%\t Salio como aleatorio: "
+                + "%\t Soldado en reposo: " + probabilityAttack2 + "%\t Salio como aleatorio: "
                 + definitiveProbability + "%");
 
         System.out.println();
@@ -283,23 +284,23 @@ public class Army {
         } else if (definitiveProbability < probabilityAttack2) {
             JOptionPane.showMessageDialog(null, "Gano el soldado en reposo");
             return 2;
-        } else if (definitiveProbability == probabilityAttack1 || definitiveProbability == probabilityAttack2){
+        } else if (definitiveProbability == probabilityAttack1 || definitiveProbability == probabilityAttack2) {
             JOptionPane.showMessageDialog(null, "Empate");
             return 3;
         }
         return -1;
     }
 
-    public static boolean winner(Army e1, Army e2){
-		if(e2.converterToArrayUni().size() == 0){
-			JOptionPane.showMessageDialog(null, "Ganó "+ e2.getName());
-			return false;
-		}
-		if(e1.converterToArrayUni().size() == 0){
-			JOptionPane.showMessageDialog(null,  "Ganó "+ e1.getName());
-			return false;
-		}
-		return true;
-	}
-    
+    public static boolean winner(Army e1, Army e2) {
+        if (e2.converterToArrayUni().size() == 0) {
+            JOptionPane.showMessageDialog(null, "Ganó " + e2.getName());
+            return false;
+        }
+        if (e1.converterToArrayUni().size() == 0) {
+            JOptionPane.showMessageDialog(null, "Ganó " + e1.getName());
+            return false;
+        }
+        return true;
+    }
+
 }
