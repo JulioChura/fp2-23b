@@ -289,5 +289,16 @@ public class Army {
         }
     }
 
-    public static 
+    public static boolean winner(Army e1, Army e2){
+		if(e2.converterToArrayUni().size() == 0){
+			JOptionPane.showMessageDialog(null, "Ganó "+ e2.getName());
+			return false;
+		}
+		if(e1.converterToArrayUni().size() == 0){
+			JOptionPane.showMessageDialog(null,  "Ganó "+ e1.getName());
+			return false;
+		}
+		return true;
+	}
+    
 }
