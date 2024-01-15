@@ -265,6 +265,28 @@ public class Army {
 
     public static int winner(int life1, int life2) {
 
-        
+        Random random = new Random();
+        int definitiveProbability = random.nextInt(100);
+
+        double totalLife = life1 + life2;
+        double probabilityAttack1 = 100 * life1 / totalLife;
+        double probabilityAttack2 = 100 - probabilityAttack1;
+
+        JOptionPane.showMessageDialog(null, "Estadísticas de batalla:\tSoldado atacante: " + probabilityAttack1
+                + "%\tSoldado en reposo: " + probabilityAttack2 + "%\tSalio como aleatorio: "
+                + definitiveProbability + "%");
+
+        System.out.println();
+
+        if (definitiveProbability <= probabilityAttack1) {
+            JOptionPane.showMessageDialog(null, "Gano el soldado atacante");
+            return 1;
+        } else if (definitiveProbability <= probabilityAttack2) {
+            JOptionPane.showMessageDialog(null, "Gano el soldado en reposo");
+            return 2;
+        } else {
+            JOptionPane.showMessageDialog(null, "Empate");
+            return 3;
+        }
     }
 }
