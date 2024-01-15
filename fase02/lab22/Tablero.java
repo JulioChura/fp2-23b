@@ -1,10 +1,5 @@
 import javax.swing.*;
 import java.util.*;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.Panel;
-import java.awt.Color;
-import java.awt.Image;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.CountDownLatch;
@@ -15,6 +10,8 @@ public class Tablero extends JFrame {
 
     private static final int COLUMN = 10;
     private static final int ROW = 10;
+    private static int WIDTH = 900;
+    private static int HEIGHT = 900;
 
     private JButton[][] casillas;
 
@@ -24,19 +21,26 @@ public class Tablero extends JFrame {
     private Army army1;
     private Army army2;
 
-    public Tablero(Army army1, Army army2, String kingdom1, String kingdom2) {
+    private String battleField;
+
+    public Tablero(Army army1, Army army2, String battlefield) {
+
+        army1.getName();
+        army2.getName();
 
         this.army1 = army1;
         this.army2 = army2;
+        this.battleField = battlefield;
 
         a = army1.getArmyInArrayListBi();
         b = army2.getArmyInArrayListBi();
 
         casillas = new JButton[ROW][COLUMN];
-        setSize(500, 500);
+        setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Tablero de Juego");
+        setTitle(army1.getName() + " VS " + army2.getName() + ": Combate en: " + battlefield);
         setLayout(new GridLayout(ROW, COLUMN));
+        setResizable(false);
 
         init();
 
@@ -49,12 +53,18 @@ public class Tablero extends JFrame {
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
                 JButton boton;
-
+                String label;
                 // 0:archer 1:Knight 2:Spearman 3:Swordsman 5:total
                 // En la guia se nos pide contabilizar los objetos
                 if (a.get(i).get(j) != null) {
                     Soldier sol = a.get(i).get(j);
-                    boton = new JButton();
+
+                    label = sol.getLabelLife();
+
+                    boton = new JButton(label);
+                    boton.setVerticalTextPosition(SwingConstants.CENTER);
+                    boton.setHorizontalTextPosition(SwingConstants.CENTER);
+
                     if (0 == Army.typeSoldier(sol)) {
                         boton.setIcon(typeSoldierIcon(0));
                     } else if (1 == Army.typeSoldier(sol)) {
@@ -66,8 +76,14 @@ public class Tablero extends JFrame {
                     }
                     boton.setBackground(Color.red);
                 } else if (b.get(i).get(j) != null) {
+
                     Soldier sol = b.get(i).get(j);
-                    boton = new JButton();
+
+                    label = sol.getLabelLife();
+
+                    boton = new JButton(label);
+                    boton.setVerticalTextPosition(SwingConstants.CENTER);
+                    boton.setHorizontalTextPosition(SwingConstants.CENTER);
                     if (0 == Army.typeSoldier(sol)) {
                         boton.setIcon(typeSoldierIcon(0));
                     } else if (1 == Army.typeSoldier(sol)) {
@@ -81,6 +97,10 @@ public class Tablero extends JFrame {
                 } else {
                     boton = new JButton();
                 }
+
+                boton.setForeground(Color.WHITE);
+                Font font = new Font("Arial", Font.BOLD, 32);
+                boton.setFont(font);
 
                 MyButtonListener buttonListener = new MyButtonListener(i, j);
                 boton.addActionListener(buttonListener);
