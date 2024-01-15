@@ -207,16 +207,46 @@ public class Army {
         return null;
     }
 
+    /*
+     * Valida la posicion de un soldado de un ejercito. Verifica que estemos
+     * seleccionando en la coordenada de
+     * origen un soldado de nuestro bando, ademas en las coordenadas de destino se
+     * verifica si hay presencia de
+     * de soldados aliados, si es asi, nos muestra un mensaje que indica que de
+     * nuevo debemos ingresar la posicion de destino
+     */
     public static boolean validatePosition(Army ally, int rowOrigin, int columnOrigin,
-                            int rowDestination, int columnDestination) {
-        
-        if (searchSoldier(ally, rowOrigin, columnOrigin) != null ) {
+            int rowDestination, int columnDestination) {
+
+        if (searchSoldier(ally, rowOrigin, columnOrigin) != null) {
             JOptionPane.showMessageDialog(null, "No hay soldados de nuestro bando en esa posicion!");
-			return true;
-        } 
+            return true;
+        }
         if (searchSoldier(ally, rowDestination, columnDestination) != null) {
             JOptionPane.showMessageDialog(null, "El lugar de destino esta ocupado por soldados de nuestro bando!");
         }
         return false;
     }
+
+    // Hace la simulacion de mover un soldado, pero en realidad actualiza la
+    // posicion dentro del Array
+    public static void moveSoldier(Army destination, Army origin, int rowOrigin, int columnOrigin,
+            int rowDestination, int columnDestination) {
+        Soldier destinationSoldier = searchSoldier(destination, rowDestination, columnDestination);
+        Soldier originSoldier = searchSoldier(origin, rowOrigin, columnOrigin);
+
+        if (destinationSoldier == null) {
+            origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
+            origin.getArmyInArrayListBi().get(rowDestination).set(columnDestination, originSoldier);
+        } else {
+            battle(destination, origin, rowOrigin, columnOrigin, rowDestination, columnOrigin);
+        }
+
+    }
+
+    public static void battle(Army destination, Army origin, int rowOrigin, int columnOrigin,
+            int rowDestination, int columnDestination) {
+
+    }
+
 }
