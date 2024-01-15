@@ -6,13 +6,13 @@ public class test {
      public static void main(String[] args) {
         
 
+
         Army a = new Army("a");
         Army b = new Army("b");
         a.generateArmy(b);
         b.generateArmy(a);
 
         Tablero tab = new Tablero(a, b, "a", "b");
-
         juego(tab);
 
         a.showArmy();
@@ -40,12 +40,13 @@ public class test {
 				do{
 					JOptionPane.showMessageDialog(null, "Turno del reino Azul");
 					int arr[] = tabla.getCoordinates();
-					x = arr[0];
+					x = arr[0] ;
 					y = arr[1];
 					int toarr[] = tabla.getCoordinates();
 					tox = toarr[0];
 					toy = toarr[1];
-				}while(Army.validatePosition(e1,  x,y,tox,toy));
+					System.out.println("Coordenadas obtenidas: x=" + x+ ", y=" + y +"\n"+ tox+" "+toy  );
+				}while(Army.validatePosition(e2,  x,y,tox,toy));
 				Army.moveSoldier(e1, e2, x,y,tox, toy);
 			}else{
 				int x=0, y=0, tox=0, toy=0;
@@ -57,7 +58,8 @@ public class test {
 					int toarr[] = tabla.getCoordinates();
 					tox = toarr[0];
 					toy = toarr[1];		
-				}while(Army.validatePosition(e2, x,y,tox,toy));
+					System.out.println("Coordenadas obtenidas: x=" + x+ ", y=" + y +"\n"+ tox+" "+toy  );
+				}while(Army.validatePosition(e1, x,y,tox,toy));
 				Army.moveSoldier(e2, e1, x, y, tox, toy);   
 			}
 			tabla.repintarTablero();
