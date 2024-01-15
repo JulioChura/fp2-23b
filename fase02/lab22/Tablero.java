@@ -18,10 +18,16 @@ public class Tablero extends JFrame {
 
     private JButton[][] casillas;
 
-    private static ArrayList<ArrayList<Soldier>> a;
-    private static ArrayList<ArrayList<Soldier>> b;
+    private  ArrayList<ArrayList<Soldier>> a;
+    private  ArrayList<ArrayList<Soldier>> b;
 
+    private Army army1;
+    private Army army2;
+    
     public Tablero(Army army1, Army army2, String kingdom1, String kingdom2) {
+
+        this.army1 = army1;
+        this.army2 = army2;
 
         a = army1.getArmyInArrayListBi();
         b = army2.getArmyInArrayListBi();
@@ -58,7 +64,7 @@ public class Tablero extends JFrame {
                     } else if (3 == Army.typeSoldier(sol)) {
                         boton.setIcon(typeSoldierIcon(3));
                     }
-                    boton.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    boton.setBackground(Color.red);
                 } else if (b.get(i).get(j) != null) {
                     Soldier sol = b.get(i).get(j);
                     boton = new JButton();
@@ -71,14 +77,13 @@ public class Tablero extends JFrame {
                     } else if (3 == Army.typeSoldier(sol)) {
                         boton.setIcon(typeSoldierIcon(3));
                     }
-                    boton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+                    boton.setBackground(Color.blue);
                 } else {
                     boton = new JButton();
                 }
 
                 MyButtonListener buttonListener = new MyButtonListener(i, j);
                 boton.addActionListener(buttonListener);
-                casillas[i][j] = boton;
                 add(boton);
             }
         }
@@ -184,32 +189,14 @@ public class Tablero extends JFrame {
         repaint();
     }
 
-    public static void main(String[] args) {
-        String kingdom1;
-        String kingdom2;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
-        kingdom1 = sc.next();
-
-        System.out.println("Elija su reino (Francia, Inglaterra, Moros, Roma, Castilla)");
-        kingdom2 = sc.next();
-
-        Army a = new Army(kingdom1);
-        Army b = new Army(kingdom2);
-        a.generateArmy(b);
-        b.generateArmy(a);
-
-        Tablero tab = new Tablero(a, b, kingdom1, kingdom2);
-
-        a.showArmy();
-        System.out.println();
-        b.showArmy();
-        System.out.println();
-
-        tab.init();
-        tab.init();
-        tab.init();
-
+    public Army getEjercito1() {
+        return army1;
     }
+
+    public Army getEjercito2() {
+        return army2;
+    }
+
+
 
 }
