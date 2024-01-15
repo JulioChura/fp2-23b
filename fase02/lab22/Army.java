@@ -237,7 +237,7 @@ public class Army {
         if (destinationSoldier == null) {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
             origin.getArmyInArrayListBi().get(rowDestination).set(columnDestination, originSoldier);
-        } else {
+        } else if (destinationSoldier != null) {
             battle(destination, origin, rowOrigin, columnOrigin, rowDestination, columnDestination, destinationSoldier,
                     originSoldier);
         }
@@ -246,9 +246,8 @@ public class Army {
 
     public static void battle(Army destination, Army origin, int rowOrigin, int columnOrigin,
             int rowDestination, int columnDestination, Soldier destinationSoldier, Soldier originSoldier) {
-        int lifeDestination = destination.getArmyInArrayListBi().get(rowDestination).get(columnDestination)
-                .getActualLife();
-        int lifeOrigin = origin.getArmyInArrayListBi().get(rowOrigin).get(columnDestination).getActualLife();
+        int lifeDestination = destinationSoldier.getActualLife();
+        int lifeOrigin = originSoldier.getActualLife();
 
         int result = winner(lifeOrigin, lifeDestination);
         if (1 == result) {
