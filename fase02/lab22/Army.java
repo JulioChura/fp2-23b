@@ -199,12 +199,12 @@ public class Army {
     }
 
     public static Soldier searchSoldier(Army army, int row, int column) {
-        for (Soldier s : army.converterToArrayUni()) {
-            if (s.getRow() == row && s.getColumn() == column) {
-                return s;
-            }
+        Soldier sol = army.getArmyInArrayListBi().get(row).get(column);
+        if (sol == null) {
+            return null;
+        } else {
+            return sol;
         }
-        return null;
     }
 
     /*
@@ -224,6 +224,7 @@ public class Army {
         }
         if (searchSoldier(ally, rowDestination, columnDestination) != null) {
             JOptionPane.showMessageDialog(null, "El lugar de destino esta ocupado por soldados de nuestro bando!");
+            return true;
         }
         return false;
     }
@@ -239,7 +240,8 @@ public class Army {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
             origin.getArmyInArrayListBi().get(rowDestination).set(columnDestination, originSoldier);
         } else {
-            battle(destination, origin, rowOrigin, columnOrigin, rowDestination, columnOrigin, destinationSoldier,originSoldier);
+            battle(destination, origin, rowOrigin, columnOrigin, rowDestination, columnOrigin, destinationSoldier,
+                    originSoldier);
         }
 
     }
@@ -255,7 +257,7 @@ public class Army {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
             origin.getArmyInArrayListBi().get(rowDestination).set(columnDestination, originSoldier);
             destination.getArmyInArrayListBi().get(rowDestination).set(columnDestination, destinationSoldier);
-        } else if (2==result) {
+        } else if (2 == result) {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
         } else {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
