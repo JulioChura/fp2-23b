@@ -1,3 +1,4 @@
+//Este guerrero le pertenece al reino de Inglaterra
 public class RoyalSwordsman extends Swordsman implements SpecialUnit {
     private int knives = 10;
     private int levelEvolution = 1;
