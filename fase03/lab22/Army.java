@@ -302,4 +302,11 @@ public class Army {
         return true;
     }
 
+    public void increaseLife() {
+        for (ArrayList<Soldier> row : army) {
+            for (Soldier sol: row) {
+                sol.setActualLife(sol.getActualLife() + 1);;
+            }
+        }
+    }
 }
