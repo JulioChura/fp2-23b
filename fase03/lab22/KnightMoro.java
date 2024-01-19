@@ -49,8 +49,4 @@ public class KnightMoro extends Soldier implements SpecialUnit {
     
     }
 
-    public void charge() {
-
-    }
-
 }
