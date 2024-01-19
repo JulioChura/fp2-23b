@@ -6,12 +6,14 @@ public class RoyalSwordsman extends Swordsman implements SpecialUnit {
     public RoyalSwordsman(String name, int row, int column, int attackLevel, int defenseLevel, int actualLife,
             int speed, String attitude, boolean current, double longSnow, int levelEvolution) {
         super(name, row, column, attackLevel, defenseLevel, actualLife, speed, attitude, current, longSnow);
+        actualLife = 12;
 
     }
 
     public RoyalSwordsman(String name, int row, int column, int attackLevel, int defenseLevel, int actualLife,
             int speed, double longSnow, boolean shieldWalls, int levelEvolution) {
         super(name, row, column, attackLevel, defenseLevel, actualLife, speed, longSnow, shieldWalls);
+        actualLife = 12;
     }
 
     public void throwObjects() {
