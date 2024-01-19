@@ -9,6 +9,7 @@ public class Soldier {
     private int speed;
     private String attitude;
     private boolean current;
+    protected int levelEvolution = 1;
 
     public Soldier() {
         this("NotFound", 0, 0, 0, 0,

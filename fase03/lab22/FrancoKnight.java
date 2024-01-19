@@ -1,7 +1,6 @@
 public class FrancoKnight extends Soldier implements SpecialUnit {
 
     private int spears = 10;
-    private int levelEvolution = 1;
     private boolean defTor = false;
 
     public FrancoKnight(String name, int row, int column, int attackLevel, int defenseLevel, int actualLife, int speed,
