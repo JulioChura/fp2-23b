@@ -31,14 +31,14 @@ public class Tablero extends JFrame {
         this.army2 = army2;
         this.battleField = battlefield;
         this.battleField = battlefield;
-        
+
         a = army1.getArmyInArrayListBi();
         b = army2.getArmyInArrayListBi();
 
         casillas = new JButton[ROW][COLUMN];
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle(army1.getName() + " (Azul )" + " VS " + army2.getName() +" (Rojo )" + ": Combate en: " + battlefield);
+        setTitle(army1.getName() + " (Azul )" + " VS " + army2.getName() + " (Rojo )" + ": Combate en: " + battlefield);
         setLayout(new GridLayout(ROW, COLUMN));
         setResizable(false);
 
@@ -49,7 +49,6 @@ public class Tablero extends JFrame {
 
     public void init() {
         casillas = new JButton[ROW][COLUMN];
-
 
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
@@ -188,6 +187,34 @@ public class Tablero extends JFrame {
 
     public Army getEjercito2() {
         return army2;
+    }
+
+    public void increaseLife() {
+        String name1 = army1.getName();
+        String name2 = army2.getName();
+        if (battleField.equalsIgnoreCase("bosque") || name1.equals("Inglaterra")) {
+            army1.increaseLife();
+        } else if (battleField.equalsIgnoreCase("bosque") || name2.equals("Inglaterra")) {
+            army2.increaseLife();
+        } else if (battleField.equalsIgnoreCase("Campo Abierto") || name1.equalsIgnoreCase("Francia")) {
+            army1.increaseLife();
+        } else if (battleField.equalsIgnoreCase("Campo Abierto") || name2.equalsIgnoreCase("Francia")) {
+            army2.increaseLife();
+        } else if (battleField.equalsIgnoreCase("Montaña") || name1.equalsIgnoreCase("Castilla-Aragón")) {
+            army1.increaseLife();
+        } else if (battleField.equalsIgnoreCase("Montaña") || name2.equalsIgnoreCase("Castilla-Aragón")) {
+            army2.increaseLife();
+        } else if (battleField.equalsIgnoreCase("desierto") || name1.equalsIgnoreCase("Moros")) {
+            army1.increaseLife();
+        } else if (battleField.equalsIgnoreCase("desierto") || name2.equalsIgnoreCase("Moros")) {
+            army2.increaseLife();
+        } else if (battleField.equalsIgnoreCase("bosque") && battleField.equalsIgnoreCase("campo abierto")
+                && battleField.equalsIgnoreCase("playa") || name1.equalsIgnoreCase("Sacro Imperio Romano")) {
+            army1.increaseLife();
+        } else if (battleField.equalsIgnoreCase("bosque") && battleField.equalsIgnoreCase("campo abierto")
+                && battleField.equalsIgnoreCase("playa") || name2.equalsIgnoreCase("Sacro Imperio Romano")) {
+            army2.increaseLife();
+        } 
     }
 
 }
