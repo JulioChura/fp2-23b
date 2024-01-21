@@ -39,4 +39,8 @@ public class ConquerorSwordsman extends Swordsman implements SpecialUnit {
         }
     }
 
+    public String toString() {
+        return "Espadachin Conquistador, Hachas: " + axes +  super.display();
+    }
+    
 }

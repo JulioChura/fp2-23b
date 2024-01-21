@@ -32,6 +32,6 @@ public class RoyalSwordsman extends Swordsman implements SpecialUnit {
     }
 
     public String toString() {
-        return "Caballero Real, " + " Cuchillas: " + knives + super.display();
+        return "Caballero Real," + " Cuchillas: " + knives + super.display();
     }
 }

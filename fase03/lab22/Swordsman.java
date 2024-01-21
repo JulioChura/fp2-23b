@@ -29,7 +29,7 @@ public class Swordsman extends Soldier {
 
     @Override
     public String toString() {
-        return "Espadachin, " + super.display() + ", Longitud de espada" + longSwords + ", Muros de espada=" + shieldWalls;
+        return "Espadachin " + super.display() + ", Longitud de espada" + longSwords + ", Muros de espada=" + shieldWalls;
     }
 
 }

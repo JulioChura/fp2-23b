@@ -44,7 +44,7 @@ public class KnightMoro extends Knight implements SpecialUnit {
     }
 
     public String toString() {
-        return "Caballero Moro, "+ ", Flechas: "+ arrows +  super.display();
+        return "Caballero Moro "+ ", Flechas: "+ arrows +  super.display();
     }
 
 }
