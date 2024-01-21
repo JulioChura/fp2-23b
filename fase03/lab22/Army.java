@@ -93,14 +93,18 @@ public class Army {
         return armyUni;
     }
 
-    public void showArmy() {
+    public String showArmy() {
+        String str = "";
         for (ArrayList<Soldier> row : army) {
             for (Soldier soldier : row) {
                 if (soldier != null) {
-                    System.out.println(soldier);
+                    System.out.println(soldier.display());
+                    str = str + "\n" + soldier;
+
                 }
             }
         }
+        return str;
     }
 
     public ArrayList<ArrayList<Soldier>> getArmyInArrayListBi() {
@@ -284,7 +288,7 @@ public class Army {
         } else if (definitiveProbability > probabilityAttack1) {
             JOptionPane.showMessageDialog(null, "Gano el soldado en reposo");
             return 2;
-        } else  {
+        } else {
             JOptionPane.showMessageDialog(null, "Empate");
             return 3;
         }
@@ -304,8 +308,9 @@ public class Army {
 
     public void increaseLife() {
         for (ArrayList<Soldier> row : army) {
-            for (Soldier sol: row) {
-                sol.setActualLife(sol.getActualLife() + 1);;
+            for (Soldier sol : row) {
+                sol.setActualLife(sol.getActualLife() + 1);
+                ;
             }
         }
     }

@@ -1,35 +1,35 @@
 public class Swordsman extends Soldier {
-    private double longSnow;
+    private double longSwords;
     private boolean shieldWalls = false;
 
-    public Swordsman(double longSnow) {
-        this.longSnow = longSnow;
+    public Swordsman(double longSwords) {
+        this.longSwords = longSwords;
     }
 
     public Swordsman(String name, int row, int column, int attackLevel, int defenseLevel, int actualLife, int speed,
-            String attitude, boolean current, double longSnow) {
+            String attitude, boolean current, double longSwords) {
         super(name, row, column, attackLevel, defenseLevel, actualLife, speed, attitude, current);
-        this.longSnow = longSnow;
+        this.longSwords = longSwords;
     }
 
     public Swordsman(String name, int row, int column, int attackLevel, int defenseLevel, int actualLife, int speed,
-            double longSnow, boolean shieldWalls) {
+            double longSwords, boolean shieldWalls) {
         super(name, row, column, attackLevel, defenseLevel, actualLife, speed);
-        this.longSnow = longSnow;
+        this.longSwords = longSwords;
         this.shieldWalls = shieldWalls;
     }
-	
-	public void muroEscudos(){
-        if(shieldWalls==true) {
+
+    public void muroEscudos() {
+        if (shieldWalls == true) {
             shieldWalls = false;
-        }  else {
+        } else {
             shieldWalls = true;
         }
     }
 
     @Override
     public String toString() {
-        return "Swordsman: "+ super.toString()+ ", longSnow=" + longSnow + ", shieldWalls=" + shieldWalls + "]";
+        return "Espadachin, " + super.display() + ", Longitud de espada" + longSwords + ", Muros de espada=" + shieldWalls;
     }
 
 }

@@ -1,7 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
 import java.awt.*;
 
 public class InformationFrame extends JFrame {

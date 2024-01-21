@@ -62,6 +62,6 @@ public class Knight extends Soldier {
 
     @Override
     public String toString() {
-        return "[Knight: "+ super.toString() + ", currentWeapon=" + currentWeapon + ", horseRiding=" + horseRiding + "]";
+        return "Caballero: "+ super.toString() + ", Arma actual: " + currentWeapon;
     }
 }

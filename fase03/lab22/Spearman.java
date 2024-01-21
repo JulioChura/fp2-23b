@@ -26,7 +26,7 @@ public class Spearman extends Soldier {
 
     @Override
     public String toString() {
-        return "Spearman: "+ super.toString() +", lonLance=" + lonLance + "]";
+        return "Lancero, "+ super.display() +", Longitud de lanza: " + lonLance;
     }
     
 }

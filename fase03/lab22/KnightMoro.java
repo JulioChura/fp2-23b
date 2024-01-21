@@ -1,8 +1,5 @@
 public class KnightMoro extends Knight implements SpecialUnit {
     private int arrows = 10;
-    private int levelEvolution = 1;
-
-    
 
     public KnightMoro(String name, int row, int column, int attackLevel, int defenseLevel, int actualLife, int speed,
             String attitude, boolean current, int arroes, String weapon, boolean riding, int arrows,
@@ -44,6 +41,10 @@ public class KnightMoro extends Knight implements SpecialUnit {
             arrows += 10;
         }
 
+    }
+
+    public String toString() {
+        return "Caballero Moro, "+ ", Flechas: "+ arrows +  super.display();
     }
 
 }

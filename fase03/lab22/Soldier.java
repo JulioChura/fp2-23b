@@ -198,6 +198,12 @@ public class Soldier {
     }
 
     public String getLabelLife() {
-        return actualLife+"";
+        return actualLife + "";
+    }
+
+    public String display() {
+        return ", Nombre: " + name + ", Fila: " + (row + 1) + ", Columna: " + (column + 1) + ", Vida Actual: " + actualLife
+                + ", Ataque: " +
+                attackLevel + ", Defensa: " + defenseLevel;
     }
 }

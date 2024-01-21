@@ -29,4 +29,8 @@ public class FrancoKnight extends Soldier implements SpecialUnit {
             System.out.println("Maximo nivel");
         }
     }
+
+    public String toString() {
+        return "Caballero Franco, "+ ", Lanzas: " + super.display();
+    }
 }
