@@ -41,6 +41,7 @@ public class Tablero extends JPanel{
         setVisible(true);
     }
 
+    //Para crear una matriz de botones sin diseños 
     public void initButtons() {
         casillas = new JButton[ROW][COLUMN];
         JButton boton;
@@ -57,6 +58,22 @@ public class Tablero extends JPanel{
             }
         }
     } 
+
+    //Para pintar el tablero al estilo ajedrez y quitar adornos a las casillas
+    public void initColors() {
+        for ( int i = 0; i < casillas.length; i++) {
+            for (int j = 0; j < casillas[i].length; j++) {
+                casillas[i][j].setIcon(null);
+                casillas[i][j].setText("");
+                if ( (i+j)%2 == 0 ) {
+                    casillas[i][j].setBackground(new Color(139, 69, 19));
+                } else {
+                    casillas[i][j].setBackground(new Color(255, 253, 208));
+                }
+
+            }
+        }
+    }
 
     public void init() {
         casillas = new JButton[ROW][COLUMN];
