@@ -1,11 +1,13 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.util.*;
 import java.awt.*;
 import java.util.concurrent.CountDownLatch;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Tablero extends JPanel{
+public class Tablero extends JPanel {
 
     private static final int COLUMN = 10;
     private static final int ROW = 10;
@@ -41,13 +43,13 @@ public class Tablero extends JPanel{
         setVisible(true);
     }
 
-    //Para crear una matriz de botones sin diseños 
+    // Para crear una matriz de botones sin diseños
     public void initButtons() {
         casillas = new JButton[ROW][COLUMN];
         JButton boton;
         setLayout(new GridLayout(10, 10));
 
-        for ( int i = 0; i < casillas.length; i++) {
+        for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
                 boton = new JButton();
                 MyButtonListener buttonListener = new MyButtonListener(i, j);
@@ -57,15 +59,15 @@ public class Tablero extends JPanel{
 
             }
         }
-    } 
+    }
 
-    //Para pintar el tablero al estilo ajedrez y quitar adornos a las casillas
+    // Para pintar el tablero al estilo ajedrez y quitar adornos a las casillas
     public void initColors() {
-        for ( int i = 0; i < casillas.length; i++) {
+        for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
                 casillas[i][j].setIcon(null);
                 casillas[i][j].setText("");
-                if ( (i+j)%2 == 0 ) {
+                if ((i + j) % 2 == 0) {
                     casillas[i][j].setBackground(new Color(139, 69, 19));
                 } else {
                     casillas[i][j].setBackground(new Color(255, 253, 208));
@@ -75,64 +77,54 @@ public class Tablero extends JPanel{
         }
     }
 
-    public void init() {
-        casillas = new JButton[ROW][COLUMN];
+    // Pone encima los iconos
+    public void setIconsSoldier(Soldier sol, JButton[][] arreglo, int i, int j) {
+        if (0 == Army.typeSoldier(sol)) {
+            arreglo[i][j].setIcon(typeSoldierIcon(0));
+        } else if (1 == Army.typeSoldier(sol)) {
+            arreglo[i][j].setIcon(typeSoldierIcon(1));
+        } else if (2 == Army.typeSoldier(sol)) {
+            arreglo[i][j].setIcon(typeSoldierIcon(2));
+        } else if (3 == Army.typeSoldier(sol)) {
+            arreglo[i][j].setIcon(typeSoldierIcon(3));
+        } else if (4 == Army.typeSoldier(sol)) {
+            arreglo[i][j].setIcon(typeSoldierIcon(3));
+        } else if (5 == Army.typeSoldier(sol)) {
+            arreglo[i][j].setIcon(typeSoldierIcon(1));
+        } else if (6 == Army.typeSoldier(sol)) {
+            arreglo[i][j].setIcon(typeSoldierIcon(3));
+        } else if (7 == Army.typeSoldier(sol)) {
+            arreglo[i][j].setIcon(typeSoldierIcon(1));
+        } else if (8 == Army.typeSoldier(sol)) {
+            arreglo[i][j].setIcon(typeSoldierIcon(3));
+        }
+    }
 
+    //Le da el fondo, pone iconos y letra al boton
+    public void init() {
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
-                JButton boton;
                 String label;
-                // 0:archer 1:Knight 2:Spearman 3:Swordsman 5:total
-                // En la guia se nos pide contabilizar los objetos
                 if (a.get(i).get(j) != null) {
                     Soldier sol = a.get(i).get(j);
-
                     label = sol.getLabelLife();
-
-                    boton = new JButton(label);
-                    boton.setVerticalTextPosition(SwingConstants.CENTER);
-                    boton.setHorizontalTextPosition(SwingConstants.CENTER);
-
-                    if (0 == Army.typeSoldier(sol)) {
-                        boton.setIcon(typeSoldierIcon(0));
-                    } else if (1 == Army.typeSoldier(sol)) {
-                        boton.setIcon(typeSoldierIcon(1));
-                    } else if (2 == Army.typeSoldier(sol)) {
-                        boton.setIcon(typeSoldierIcon(2));
-                    } else if (3 == Army.typeSoldier(sol)) {
-                        boton.setIcon(typeSoldierIcon(3));
-                    }
-                    boton.setBackground(Color.red);
+                    casillas[i][j].setText(label);
+                    casillas[i][j].setVerticalTextPosition(SwingConstants.CENTER);
+                    casillas[i][j].setHorizontalTextPosition(SwingConstants.CENTER);
+                    casillas[i][j].setBackground(Color.red);
+                    setIconsSoldier(sol, casillas, i, j);
                 } else if (b.get(i).get(j) != null) {
-
                     Soldier sol = b.get(i).get(j);
-
                     label = sol.getLabelLife();
-
-                    boton = new JButton(label);
-                    boton.setVerticalTextPosition(SwingConstants.CENTER);
-                    boton.setHorizontalTextPosition(SwingConstants.CENTER);
-                    if (0 == Army.typeSoldier(sol)) {
-                        boton.setIcon(typeSoldierIcon(0));
-                    } else if (1 == Army.typeSoldier(sol)) {
-                        boton.setIcon(typeSoldierIcon(1));
-                    } else if (2 == Army.typeSoldier(sol)) {
-                        boton.setIcon(typeSoldierIcon(2));
-                    } else if (3 == Army.typeSoldier(sol)) {
-                        boton.setIcon(typeSoldierIcon(3));
-                    }
-                    boton.setBackground(Color.blue);
-                } else {
-                    boton = new JButton();
+                    casillas[i][j].setVerticalTextPosition(SwingConstants.CENTER);
+                    casillas[i][j].setHorizontalTextPosition(SwingConstants.CENTER);
+                    casillas[i][j].setBackground(Color.blue);
+                    setIconsSoldier(sol, casillas, i, j);
                 }
 
-                boton.setForeground(Color.WHITE);
+                casillas[i][j].setForeground(Color.WHITE);
                 Font font = new Font("Arial", Font.BOLD, 32);
-                boton.setFont(font);
-
-                MyButtonListener buttonListener = new MyButtonListener(i, j);
-                boton.addActionListener(buttonListener);
-                add(boton);
+                casillas[i][j].setFont(font);
             }
         }
     }
@@ -242,7 +234,7 @@ public class Tablero extends JPanel{
         } else if (battleField.equalsIgnoreCase("bosque") && battleField.equalsIgnoreCase("campo abierto")
                 && battleField.equalsIgnoreCase("playa") || name2.equalsIgnoreCase("Sacro Imperio Romano")) {
             army2.increaseLife();
-        } 
+        }
     }
 
 }
