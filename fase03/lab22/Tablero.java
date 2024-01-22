@@ -37,9 +37,26 @@ public class Tablero extends JPanel{
         initButtons();
         initColors();
         init();
-        
+
         setVisible(true);
     }
+
+    public void initButtons() {
+        casillas = new JButton[ROW][COLUMN];
+        JButton boton;
+        setLayout(new GridLayout(10, 10));
+
+        for ( int i = 0; i < casillas.length; i++) {
+            for (int j = 0; j < casillas[i].length; j++) {
+                boton = new JButton();
+                MyButtonListener buttonListener = new MyButtonListener(i, j);
+                boton.addActionListener(buttonListener);
+                add(boton);
+                casillas[i][j] = boton;
+
+            }
+        }
+    } 
 
     public void init() {
         casillas = new JButton[ROW][COLUMN];
