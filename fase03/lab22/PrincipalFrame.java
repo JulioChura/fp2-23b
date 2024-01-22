@@ -38,6 +38,8 @@ public class PrincipalFrame extends JFrame {
         initFrame();
 
     }
+
+    //Inicia los componentes del JFrame
     public void initFrame() {
         setLayout(new GridLayout(1,3,-43,4));
 
@@ -60,5 +62,15 @@ public class PrincipalFrame extends JFrame {
         add(panel);
 
         setVisible(true);
+    }
+
+    //Repinta el tablero en cada turno
+    public void repintarTablero() {
+        getContentPane().
+        removeAll();
+        initFrame();
+        tablero.repintarTablero();
+        revalidate();
+        repaint();
     }
 }
