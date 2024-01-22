@@ -129,6 +129,31 @@ public class Tablero extends JPanel {
         }
     }
 
+    public ImageIcon typeSoldierIcon(int option) {
+        // Iconos para diferentes tipos de soldados
+        if (option == 0) {
+            ImageIcon arqueroIcon = new ImageIcon("img/arquero.png");
+            Image arqueroImage = arqueroIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            ImageIcon resizedArqueroIcon = new ImageIcon(arqueroImage);
+            return resizedArqueroIcon;
+        } else if (option == 1) {
+            ImageIcon caballeroIcon = new ImageIcon("img/caballero.png");
+            Image caballeroImage = caballeroIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            ImageIcon resizedCaballeroIcon = new ImageIcon(caballeroImage);
+            return resizedCaballeroIcon;
+        } else if (option == 2) {
+            ImageIcon lanceroIcon = new ImageIcon("img/lancero.png");
+            Image lanceroImage = lanceroIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            ImageIcon resizedLanceroIcon = new ImageIcon(lanceroImage);
+            return resizedLanceroIcon;
+        } else {
+            ImageIcon espadachinIcon = new ImageIcon("img/espadachin.png");
+            Image espadachinImage = espadachinIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            ImageIcon resizedEspadachinIcon = new ImageIcon(espadachinImage);
+            return resizedEspadachinIcon;
+        }
+    }
+
     private int fila = 0;
     private int columna = 0;
     // Hace que debe esperar 1 evento
@@ -169,30 +194,7 @@ public class Tablero extends JPanel {
 
     }
 
-    public ImageIcon typeSoldierIcon(int option) {
-        // Iconos para diferentes tipos de soldados
-        if (option == 0) {
-            ImageIcon arqueroIcon = new ImageIcon("img/arquero.png");
-            Image arqueroImage = arqueroIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-            ImageIcon resizedArqueroIcon = new ImageIcon(arqueroImage);
-            return resizedArqueroIcon;
-        } else if (option == 1) {
-            ImageIcon caballeroIcon = new ImageIcon("img/caballero.png");
-            Image caballeroImage = caballeroIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-            ImageIcon resizedCaballeroIcon = new ImageIcon(caballeroImage);
-            return resizedCaballeroIcon;
-        } else if (option == 2) {
-            ImageIcon lanceroIcon = new ImageIcon("img/lancero.png");
-            Image lanceroImage = lanceroIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-            ImageIcon resizedLanceroIcon = new ImageIcon(lanceroImage);
-            return resizedLanceroIcon;
-        } else {
-            ImageIcon espadachinIcon = new ImageIcon("img/espadachin.png");
-            Image espadachinImage = espadachinIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-            ImageIcon resizedEspadachinIcon = new ImageIcon(espadachinImage);
-            return resizedEspadachinIcon;
-        }
-    }
+    
 
     public void repintarTablero() {
         getContentPane().removeAll();
