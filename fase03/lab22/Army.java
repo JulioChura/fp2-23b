@@ -274,6 +274,8 @@ public class Army {
         if (destinationSoldier == null) {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
             origin.getArmyInArrayListBi().get(rowDestination).set(columnDestination, originSoldier);
+            originSoldier.setRow(rowDestination);
+            originSoldier.setColumn(columnDestination);
         } else if (destinationSoldier != null) {
             battle(destination, origin, rowOrigin, columnOrigin, rowDestination, columnDestination, destinationSoldier,
                     originSoldier);
@@ -291,6 +293,8 @@ public class Army {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
             origin.getArmyInArrayListBi().get(rowDestination).set(columnDestination, originSoldier);
             destination.getArmyInArrayListBi().get(rowDestination).set(columnDestination, null);
+            originSoldier.setRow(rowDestination);
+            originSoldier.setColumn(columnDestination);
         } else if (2 == result) {
             origin.getArmyInArrayListBi().get(rowOrigin).set(columnOrigin, null);
         } else {
@@ -345,5 +349,9 @@ public class Army {
                 ;
             }
         }
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

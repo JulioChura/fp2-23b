@@ -34,7 +34,7 @@ public class PrincipalFrame extends JFrame {
         String name2 = armyRed.getName();
 
         setSize(HEIGHT, WIDTH);
-        setTitle(name1+ " (Azul) vs "+ name2 +" (Rojo)" + ": Combate en: "+ field);
+        setTitle(name2 +" (Azul) vs "+ name1 +" (Rojo)" + ": Combate en: "+ field);
         initFrame();
 
     }

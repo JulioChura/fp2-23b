@@ -24,9 +24,11 @@ public class Tablero extends JPanel {
 
     public Tablero(Army army1, Army army2, String battlefield) {
 
-        army1.getName();
-        army2.getName();
+        String name1 = army1.getName();
+        army1.setName(name1);
 
+        String name2 = army2.getName();
+        army2.setName(name2);
         this.army1 = army1;
         this.army2 = army2;
         this.battleField = battlefield;
