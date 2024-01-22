@@ -190,10 +190,8 @@ public class Tablero extends JPanel {
 
     }
 
-    
-
     public void repintarTablero() {
-        getContentPane().removeAll();
+        initColors();
         init();
         revalidate();
         repaint();
