@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class Aplicacion {
 	public static void main(String[] args) {
 		boolean exitRequested = false;
-		
+
 		do {
 
 			String kingdom1 = showDialogToChooseKingdom();
@@ -23,23 +23,22 @@ public class Aplicacion {
 			a.generateArmy(b);
 			b.generateArmy(a);
 
-			Tablero tab = new Tablero(a, b, definitiveBattlefield);
-			juego(tab);
-
+			Tablero tablero = new Tablero(a, b, definitiveBattlefield);
+			PrincipalFrame juego = new PrincipalFrame(a, b, definitiveBattlefield, tablero);
 			int option = JOptionPane.showConfirmDialog(null, "¿Desea jugar de nuevo?", "Reiniciar",
 					JOptionPane.YES_NO_OPTION);
 
 			if (option == JOptionPane.NO_OPTION) {
 				exitRequested = true;
-				tab.dispose(); //
 			}
+			juego.dispose();
 
 		} while (!exitRequested);
 
 		System.exit(0);
 	}
 
-	public static void juego(Tablero tabla) {
+	public static void juego(Tablero tabla, PrincipalFrame pane) {
 		Army e1 = tabla.getEjercito1();
 		Army e2 = tabla.getEjercito2();
 		int turno = 0;
@@ -58,7 +57,6 @@ public class Aplicacion {
 					Dy = toarr[1];
 				} while (Army.validatePosition(e2, x, y, Dx, y));
 				Army.moveSoldier(e1, e2, x, y, Dx, Dy);
-				InformationFrame info = new InformationFrame(e1, e2);
 			} else {
 				int x = 0, y = 0, Dx = 0, Dy = 0;
 				do {
@@ -73,7 +71,7 @@ public class Aplicacion {
 				} while (Army.validatePosition(e1, x, y, Dx, Dy));
 				Army.moveSoldier(e2, e1, x, y, Dx, Dy);
 			}
-			tabla.repintarTablero();
+			pane.repintarTablero();
 			turno++;
 		} while (Army.winnerDefinitive(e1, e2));
 	}
