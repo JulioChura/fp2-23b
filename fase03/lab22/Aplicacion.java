@@ -25,6 +25,7 @@ public class Aplicacion {
 
 			Tablero tablero = new Tablero(a, b, definitiveBattlefield);
 			PrincipalFrame juego = new PrincipalFrame(a, b, definitiveBattlefield, tablero);
+			jugar(tablero, juego);
 			int option = JOptionPane.showConfirmDialog(null, "¿Desea jugar de nuevo?", "Reiniciar",
 					JOptionPane.YES_NO_OPTION);
 
@@ -38,42 +39,41 @@ public class Aplicacion {
 		System.exit(0);
 	}
 
-	public static void juego(Tablero tabla, PrincipalFrame pane) {
+	public static void jugar(Tablero tabla, PrincipalFrame pane) {
 		Army e1 = tabla.getEjercito1();
 		Army e2 = tabla.getEjercito2();
 		int turno = 0;
 		JOptionPane.showMessageDialog(null, "Bienvenidos a mi juego de guerra");
 		tabla.repintarTablero();
-		do {
-			if (turno % 2 == 0) {
-				int x = 0, y = 0, Dx = 0, Dy = 0;
-				do {
-					JOptionPane.showMessageDialog(null, "Turno del reino de " + e1.getName() + "(Azul)");
-					int arr[] = tabla.getCoordinates();
-					x = arr[0];
-					y = arr[1];
-					int toarr[] = tabla.getCoordinates();
-					Dx = toarr[0];
-					Dy = toarr[1];
-				} while (Army.validatePosition(e2, x, y, Dx, y));
-				Army.moveSoldier(e1, e2, x, y, Dx, Dy);
-			} else {
-				int x = 0, y = 0, Dx = 0, Dy = 0;
-				do {
-					JOptionPane.showMessageDialog(null, "Turno del reino de " + e2.getName() + "(Rojo)");
-					int arr[] = tabla.getCoordinates();
-					x = arr[0];
-					y = arr[1];
 
-					int toarr[] = tabla.getCoordinates();
-					Dx = toarr[0];
-					Dy = toarr[1];
-				} while (Army.validatePosition(e1, x, y, Dx, Dy));
-				Army.moveSoldier(e2, e1, x, y, Dx, Dy);
-			}
-			pane.repintarTablero();
-			turno++;
-		} while (Army.winnerDefinitive(e1, e2));
+		if (turno % 2 == 0) {
+			int x = 0, y = 0, Dx = 0, Dy = 0;
+			do {
+				JOptionPane.showMessageDialog(null, "Turno del reino de " + e1.getName() + "(Azul)");
+				int arr[] = tabla.getCoordinates();
+				x = arr[0];
+				y = arr[1];
+				int toarr[] = tabla.getCoordinates();
+				Dx = toarr[0];
+				Dy = toarr[1];
+			} while (Army.validatePosition(e2, x, y, Dx, y));
+			Army.moveSoldier(e1, e2, x, y, Dx, Dy);
+		} else {
+			int x = 0, y = 0, Dx = 0, Dy = 0;
+			do {
+				JOptionPane.showMessageDialog(null, "Turno del reino de " + e2.getName() + "(Rojo)");
+				int arr[] = tabla.getCoordinates();
+				x = arr[0];
+				y = arr[1];
+
+				int toarr[] = tabla.getCoordinates();
+				Dx = toarr[0];
+				Dy = toarr[1];
+			} while (Army.validatePosition(e1, x, y, Dx, Dy));
+			Army.moveSoldier(e2, e1, x, y, Dx, Dy);
+		}
+		pane.repintarTablero();
+		turno++;
 	}
 
 	public static String showDialogToChooseKingdom() {
