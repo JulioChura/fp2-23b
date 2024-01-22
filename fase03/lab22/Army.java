@@ -179,13 +179,22 @@ public class Army {
             return 2;
         } else if (sol instanceof Swordsman) {
             return 3;
+        } else if (sol instanceof ConquerorSwordsman) {
+            return 4;
+        } else if (sol instanceof FrancoKnight) {
+            return 5;
+        } else if (sol instanceof GermanSwordsman) {
+            return 6;
+        } else if (sol instanceof KnightMoro) {
+            return 7;
         } else {
-            return -1;
+            return 8;
         }
+
 
     }
 
-    // ordena un arreglo ubidimensional
+    // ordena un arreglo unidimensional
     public void organize() {
         int n = armyU.size();
         for (int i = 1; i < n; i++) {
