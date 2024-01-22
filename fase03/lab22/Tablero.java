@@ -5,12 +5,10 @@ import java.util.concurrent.CountDownLatch;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Tablero extends JFrame {
+public class Tablero extends JPanel{
 
     private static final int COLUMN = 10;
     private static final int ROW = 10;
-    private static int WIDTH = 900;
-    private static int HEIGHT = 900;
 
     private JButton[][] casillas;
 
@@ -30,20 +28,16 @@ public class Tablero extends JFrame {
         this.army1 = army1;
         this.army2 = army2;
         this.battleField = battlefield;
-        this.battleField = battlefield;
 
         a = army1.getArmyInArrayListBi();
         b = army2.getArmyInArrayListBi();
 
-        casillas = new JButton[ROW][COLUMN];
-        setSize(WIDTH, HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle(army1.getName() + " (Azul )" + " VS " + army2.getName() + " (Rojo )" + ": Combate en: " + battlefield);
         setLayout(new GridLayout(ROW, COLUMN));
-        setResizable(false);
 
+        initButtons();
+        initColors();
         init();
-
+        
         setVisible(true);
     }
 
