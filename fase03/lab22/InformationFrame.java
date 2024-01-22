@@ -6,25 +6,16 @@ public class InformationFrame extends JPanel {
     private JTextArea area;
     private Army army;
     
-    public InformationFrame(Army army1, Army army2)  {
-        this.arm1 = army1;
-        this.army2 = army2;
-        setTitle("Informacion del combate");
+    public InformationFrame(Army army)  {
+        this.army = army;
        
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new FlowLayout());
+        area = new JTextArea();
+        area.setEditable(false);
 
-
-        area1 = new JTextArea();
-        area1.setEditable(false);
-        area2 = new JTextArea();
-        area2.setEditable(false);
-
-        area1.append(arm1.showArmy());
-        area2.append(army2.showArmy());
-        add(area1);
-        add(area2);
+        area.append(army.getName() + army.showArmy());
+        add(area);
 
         setVisible(true);
+
     }
 }
