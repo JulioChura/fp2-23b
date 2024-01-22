@@ -212,22 +212,22 @@ public class Tablero extends JPanel {
             army1.increaseLife();
         } else if (battleField.equalsIgnoreCase("bosque") || name2.equals("Inglaterra")) {
             army2.increaseLife();
-        } else if (battleField.equalsIgnoreCase("Campo Abierto") || name1.equalsIgnoreCase("Francia")) {
+        } else if (battleField.equalsIgnoreCase("Campo") || name1.equalsIgnoreCase("Francia")) {
             army1.increaseLife();
-        } else if (battleField.equalsIgnoreCase("Campo Abierto") || name2.equalsIgnoreCase("Francia")) {
+        } else if (battleField.equalsIgnoreCase("Campo") || name2.equalsIgnoreCase("Francia")) {
             army2.increaseLife();
-        } else if (battleField.equalsIgnoreCase("Montaña") || name1.equalsIgnoreCase("Castilla-Aragón")) {
+        } else if (battleField.equalsIgnoreCase("Montaña") || name1.equalsIgnoreCase("Castilla-Aragon")) {
             army1.increaseLife();
-        } else if (battleField.equalsIgnoreCase("Montaña") || name2.equalsIgnoreCase("Castilla-Aragón")) {
+        } else if (battleField.equalsIgnoreCase("Montaña") || name2.equalsIgnoreCase("Castilla-Aragon")) {
             army2.increaseLife();
         } else if (battleField.equalsIgnoreCase("desierto") || name1.equalsIgnoreCase("Moros")) {
             army1.increaseLife();
         } else if (battleField.equalsIgnoreCase("desierto") || name2.equalsIgnoreCase("Moros")) {
             army2.increaseLife();
-        } else if (battleField.equalsIgnoreCase("bosque") && battleField.equalsIgnoreCase("campo abierto")
+        } else if (battleField.equalsIgnoreCase("bosque") && battleField.equalsIgnoreCase("campo")
                 && battleField.equalsIgnoreCase("playa") || name1.equalsIgnoreCase("Sacro Imperio Romano")) {
             army1.increaseLife();
-        } else if (battleField.equalsIgnoreCase("bosque") && battleField.equalsIgnoreCase("campo abierto")
+        } else if (battleField.equalsIgnoreCase("bosque") && battleField.equalsIgnoreCase("campo")
                 && battleField.equalsIgnoreCase("playa") || name2.equalsIgnoreCase("Sacro Imperio Romano")) {
             army2.increaseLife();
         }

@@ -81,7 +81,7 @@ public class Aplicacion {
 	}
 
 	public static String showDialogToChooseKingdom() {
-		String[] kingdoms = { "Francia", "Inglaterra", "Castilla", "Romanos", "Moros" };
+		String[] kingdoms = { "Francia", "Inglaterra", "Castilla-Aragon", "Sacro Imperio Romano", "Moros" };
 		String seleccion = (String) JOptionPane.showInputDialog(
 				null,
 				"Seleccigona una opción:",
@@ -102,25 +102,24 @@ public class Aplicacion {
 	}
 
 	public static String showDialogToChooseBattleField() {
-		String userInput = JOptionPane.showInputDialog(null,
-				"Ingrese alguna:",
-				"Registro de arena",
-				JOptionPane.PLAIN_MESSAGE);
+		String[] fields = { "Bosque", "Campo", "Montaña", "Desierto", "Playa" };
+		String seleccion = (String) JOptionPane.showInputDialog(
+				null,
+				"Seleccigona una opción:",
+				"Elegir Opción",
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				fields,
+				fields[0]);
 
-		if (userInput != null && !userInput.isEmpty()) {
-			JOptionPane.showMessageDialog(
-					null,
-					"Arena propuesta: " + userInput,
-					"Resultado",
-					JOptionPane.INFORMATION_MESSAGE);
+		// Verifica si el usuario seleccionó una opción
+		if (seleccion != null) {
+			JOptionPane.showMessageDialog(null, "Seleccionaste: " + seleccion);
 		} else {
-			JOptionPane.showMessageDialog(
-					null,
-					"No se ingresó ninguna arena",
-					"Resultado",
-					JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "No seleccionaste ninguna opción");
 		}
-		return userInput;
+
+		return seleccion;
 	}
 
 	public static String randomBattlefield(String battleField1, String battleField2) {
