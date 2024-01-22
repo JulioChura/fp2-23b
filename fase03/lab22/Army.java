@@ -153,29 +153,18 @@ public class Army {
     // En la guia se nos pide contabilizar los objetos
     public int[] count() {
         converterToArrayUni();
-        int[] num = new int[5];
+        int[] num = new int[10];
         int total = 0;
         for (Soldier sol : armyU) {
-            if (sol instanceof Archer) {
-                num[0]++;
-            } else if (sol instanceof Knight) {
-                num[1]++;
-            } else if (sol instanceof Spearman) {
-                num[2]++;
-            } else {
-                num[3]++;
-            }
+            int typeSol = typeSoldier(sol);
+
+            num[typeSol]++;
         }
         for (int n : num) {
             total = total + n;
         }
-        num[4] = total;
-
-        System.out.print("Archer: " + num[0] + " ");
-        System.out.print("Knight: " + num[1] + " ");
-        System.out.print("Spearman: " + num[2] + " ");
-        System.out.print("Swordsman: " + num[3] + " ");
-        System.out.print("Total: " + num[4] + " ");
+        num[9] = total;
+;
         return num;
     }
 
