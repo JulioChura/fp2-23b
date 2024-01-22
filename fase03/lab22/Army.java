@@ -47,30 +47,64 @@ public class Army {
                     attack = 7;
                     defense = 3;
                     lifePoints = random.nextInt(5) + 3;
-                    name = "Archer" + (row + 1) + "x" + (column + 1);
+                    name = "Arquero" + (row + 1) + "x" + (column + 1);
                     sol = new Archer(name, row, column, attack, defense, lifePoints, 0, 5);
 
                 } else if (optionSoldier == 1) {
                     attack = 13;
                     defense = 7;
                     lifePoints = random.nextInt(3) + 10;
-                    name = "Knight" + (row + 1) + "x" + (column + 1);
+                    name = "Caballero" + (row + 1) + "x" + (column + 1);
                     sol = new Knight(name, row, column, attack, defense, lifePoints, 0, "sword", false);
 
                 } else if (optionSoldier == 2) {
                     attack = 5;
                     defense = 10;
                     lifePoints = random.nextInt(4) + 5;
-                    name = "Spearman" + (row + 1) + "x" + (column + 1);
+                    name = "Lancero" + (row + 1) + "x" + (column + 1);
                     sol = new Spearman(name, row, column, attack, defense, lifePoints, 0, 1);
 
-                } else {
+                
+                } else if (optionSoldier == 3) {
                     attack = 10;
                     defense = 8;
                     lifePoints = random.nextInt(3) + 8;
-                    name = "Swordsman" + (row + 1) + "x" + (column + 1);
+                    name = "Espad" + (row + 1) + "x" + (column + 1);
                     sol = new Swordsman(name, row, column, attack, defense, lifePoints, 0, 1, false);
+                } else if (optionSoldier == 4) {
+                    attack = 13;
+                    defense = 7;
+                    lifePoints = 15;
+                    name = "C.Franco" + (row + 1) + "x" + (column + 1);
+                    sol = new FrancoKnight(name, row, column, attack, defense, defense, lifePoints, optionSoldier, n,
+                            false);
+                } else if (optionSoldier == 5) {
+                    attack = 10;
+                    defense = 8;
+                    lifePoints = 14;
+                    name = "Esp.Conq" + (row + 1) + "x" + (column + 1);
+                    sol = new ConquerorSwordsman(name, row, column, attack, defense, defense, lifePoints, n, false,
+                            optionSoldier);
+                } else if (optionSoldier == 6) {
+                    attack = 10;
+                    defense = 8;
+                    lifePoints = 13;
+                    name = "Esp.Teu" + (row + 1) + "x" + (column + 1);
+                    sol = new GermanSwordsman(name, row, column, attack, defense, lifePoints, optionSoldier, n, false, n);
+                } else if (optionSoldier == 7) {
+                    attack = 13;
+                    defense = 7;
+                    lifePoints = 13;
+                    name = "C.Moro" + (row + 1) + "x" + (column + 1);
+                    sol = new Soldier(name, row, column, attack, defense, lifePoints, optionSoldier);
+                } else  {
+                    attack = 10;
+                    defense = 8;
+                    lifePoints = 13;
+                    name = "R.Espad"+(row+1)+"x"+(column+1);
+                    sol = new RoyalSwordsman(name, row, column, attack, defense, lifePoints, optionSoldier, n, false, n);
                 }
+
                 a.setSoldier(row, column, a, sol);
                 n++;
             }
