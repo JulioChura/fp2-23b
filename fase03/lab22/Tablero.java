@@ -116,6 +116,7 @@ public class Tablero extends JPanel {
                 } else if (b.get(i).get(j) != null) {
                     Soldier sol = b.get(i).get(j);
                     label = sol.getLabelLife();
+                    casillas[i][j].setText(label);
                     casillas[i][j].setVerticalTextPosition(SwingConstants.CENTER);
                     casillas[i][j].setHorizontalTextPosition(SwingConstants.CENTER);
                     casillas[i][j].setBackground(Color.blue);
@@ -131,27 +132,22 @@ public class Tablero extends JPanel {
 
     public ImageIcon typeSoldierIcon(int option) {
         // Iconos para diferentes tipos de soldados
+        String solIcon;
+        ImageIcon icon;
         if (option == 0) {
-            ImageIcon arqueroIcon = new ImageIcon("img/arquero.png");
-            Image arqueroImage = arqueroIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-            ImageIcon resizedArqueroIcon = new ImageIcon(arqueroImage);
-            return resizedArqueroIcon;
+            solIcon = "arquero";
         } else if (option == 1) {
-            ImageIcon caballeroIcon = new ImageIcon("img/caballero.png");
-            Image caballeroImage = caballeroIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-            ImageIcon resizedCaballeroIcon = new ImageIcon(caballeroImage);
-            return resizedCaballeroIcon;
+            solIcon = "caballero"; 
         } else if (option == 2) {
-            ImageIcon lanceroIcon = new ImageIcon("img/lancero.png");
-            Image lanceroImage = lanceroIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-            ImageIcon resizedLanceroIcon = new ImageIcon(lanceroImage);
-            return resizedLanceroIcon;
+            solIcon = "lancero";
         } else {
-            ImageIcon espadachinIcon = new ImageIcon("img/espadachin.png");
-            Image espadachinImage = espadachinIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-            ImageIcon resizedEspadachinIcon = new ImageIcon(espadachinImage);
-            return resizedEspadachinIcon;
+            solIcon = "espadachin";
         }
+        
+        icon  = new ImageIcon("img/"+solIcon+".png");
+        Image editedIcon = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        ImageIcon resizedEspadachinIcon = new ImageIcon(editedIcon);
+        return resizedEspadachinIcon;
     }
 
     private int fila = 0;
