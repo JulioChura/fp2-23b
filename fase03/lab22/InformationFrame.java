@@ -1,18 +1,10 @@
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import java.awt.*;
 
-public class InformationFrame extends JFrame {
-    private static final  int HEIGHT = 400;
-    private static final int WIDTH = 400;
+public class InformationFrame extends JPanel {
 
     private JTextArea area;
-    private JScrollPane scoll;
-    private Army arm1;
-    private Army army2;
-    private JTextArea area1;
-    private JTextArea area2;
+    private Army army;
     
     public InformationFrame(Army army1, Army army2)  {
         this.arm1 = army1;
@@ -34,16 +26,5 @@ public class InformationFrame extends JFrame {
         add(area2);
 
         setVisible(true);
-    }
-    public static void main(String[] args) {
-            Army a = new Army("sd");
-            Army b = new Army("sa");
-            a.generateArmy(b);
-            b.generateArmy(a);
-
-            InformationFrame info = new InformationFrame(a, b);
-            String str = a.showArmy();
-            System.out.println(str);
-      
     }
 }
