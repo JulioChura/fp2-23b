@@ -202,7 +202,7 @@ public class Soldier {
     }
 
     public String display() {
-        return ", Nombre: " + name + ", Fila: " + (row + 1) + ", Columna: " + (column + 1) + ", Vida Actual: " + actualLife
+        return ", Nombre: " + name + "\nFila: " + (row + 1) + ", Columna: " + (column + 1) + ", Vida Actual: " + actualLife
                 + ", Ataque: " +
                 attackLevel + ", Defensa: " + defenseLevel;
     }

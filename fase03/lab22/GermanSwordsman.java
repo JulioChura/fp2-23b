@@ -41,7 +41,7 @@ public class GermanSwordsman extends Swordsman implements SpecialUnit {
     }
 
     public String toString() {
-        return "Espadachin Germano, " + " Javalinas: " + javelin + super.display();
+        return " # Esp. Germano ->" + " Javalinas: " + javelin + super.display();
     }
 
 }

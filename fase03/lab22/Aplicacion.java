@@ -60,6 +60,7 @@ public class Aplicacion {
 					Dy = toarr[1];
 				} while (Army.validatePosition(e2, x, y, Dx, y));
 				Army.moveSoldier(e1, e2, x, y, Dx, Dy);
+				InformationFrame info = new InformationFrame(e1, e2);
 			} else {
 				int x = 0, y = 0, Dx = 0, Dy = 0;
 				do {

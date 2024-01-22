@@ -25,7 +25,7 @@ public class Archer extends Soldier {
 
     @Override
     public String toString() {
-        return "Arquero "+  super.display()  +", Flechas: " + arrows;
+        return " # Arquero ->  Flechas: " + arrows + super.display();
     }
     
 }

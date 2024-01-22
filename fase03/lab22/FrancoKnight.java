@@ -31,6 +31,6 @@ public class FrancoKnight extends Soldier implements SpecialUnit {
     }
 
     public String toString() {
-        return "Caballero Franco "+ ", Lanzas: " + super.display();
+        return " # C. Franco ->"+ ", Lanzas: " + spears + super.display();
     }
 }
