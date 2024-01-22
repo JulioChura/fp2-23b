@@ -9,8 +9,6 @@ import javax.swing.JOptionPane;
 public class Aplicacion {
 	public static void main(String[] args) {
 		boolean exitRequested = false;
-
-
 		
 		do {
 
