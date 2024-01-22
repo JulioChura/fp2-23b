@@ -20,8 +20,9 @@ public class PrincipalFrame extends JFrame {
     private JPanel panelData;
 
     /*
-     * En el constructor se pudo solo obtener solo el tablero y desde el constructor extraer
-     * los ejercitos, pero se aprovechara los objetos que fueron creados en la clase 
+     * En el constructor se pudo solo obtener solo el tablero y desde el constructor
+     * extraer
+     * los ejercitos, pero se aprovechara los objetos que fueron creados en la clase
      * Aplicacion.java
      */
 
@@ -34,14 +35,14 @@ public class PrincipalFrame extends JFrame {
         String name2 = armyRed.getName();
 
         setSize(HEIGHT, WIDTH);
-        setTitle(name2 +" (Azul) vs "+ name1 +" (Rojo)" + ": Combate en: "+ field);
+        setTitle(name2 + " (Azul) vs " + name1 + " (Rojo)" + ": Combate en: " + field);
         initFrame();
 
     }
 
-    //Inicia los componentes del JFrame
+    // Inicia los componentes del JFrame
     public void initFrame() {
-        setLayout(new GridLayout(1,3,-43,4));
+        setLayout(new GridLayout(1, 3, -43, 4));
 
         panelBlue = new InformationFrame(armyBlue);
 
@@ -50,24 +51,23 @@ public class PrincipalFrame extends JFrame {
         panel = new JPanel();
 
         panelData = new JPanel();
-        panelData.setLayout(new GridLayout(1,2));
+        panelData.setLayout(new GridLayout(1, 2));
         panelImg = new ImagePanel(field);
         panelData.add(panelBlue);
         panelData.add(panelRed);
 
         panel.add(panelData);
         panel.add(panelImg);
-        
+
         add(tablero);
         add(panel);
 
         setVisible(true);
     }
 
-    //Repinta el tablero en cada turno
+    // Repinta el tablero en cada turno
     public void repintarTablero() {
-        getContentPane().
-        removeAll();
+        getContentPane().removeAll();
         initFrame();
         tablero.repintarTablero();
         revalidate();

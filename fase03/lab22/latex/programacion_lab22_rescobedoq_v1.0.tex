@@ -464,7 +464,7 @@
 	
 	
 	\begin{itemize}
-		\item Debido a que en laboratorios pasados que no fueron realizados se pedía el uso de interfaces mejor elaboradas, para este se decide incluirlo,pero de una manera más simple. Se incluye la interfaz SpecialUnit y como clase que la implementa es  FrancoKnight que para el juego con con interfaz gráfica no se empleará
+		\item Se incluye la interfaz SpecialUnit y como clase que la implementa es  FrancoKnight
 	\end{itemize}
 	
 	
@@ -472,7 +472,234 @@
 	
 	
 	
+	\begin{lstlisting}[language=bash,caption={Commit: 7b08c6a9f49ffb37c5cbc874838d632493097c57 }][H]
+		code KnightMoro.java
+		git add KnightMoro.java
+		git commit -m "Ahora KnightMoro hereda de clase Knight y no directamente de Soldier"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Inicialmente se planteó la idea de que la clase MoroKnight herede de Soldier, sin embargo no era la mejor opción ya que se tenía disponible la clase Knight la cual ya heredaba de la clase Soldier, por lo que se opta por la segunda opción
+	\end{itemize}
+	
+	
+	\begin{lstlisting}[language=bash,caption={Commit: 9690a266c6e653a2360b420441c38eb2c0023e14 }][H]
+		code RoyalSwordsman.java
+		git add RoyalSwordsman.java
+		git commit -m "Se agrega un comentario a la clase RoyalSwordsman"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Siguiendo con la creación de clases que heredan de otra clase y que también implementan un tipo de herencia abstracta se crea RoyalSwordsman con las especificaciones de la guía 21 de laboratorio
+	\end{itemize}
+	
+	
+	
+	
+	\begin{lstlisting}[language=bash,caption={Commit: 3fcd4f05f464148bacda87a70b2afdeab3f54e6e }][H]
+		code .
+		git add .
+		git commit -m "El atributo levelEvolution es quitada de todas las clases y se pone a la clase Soldier"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Hasta este punto me di cuenta que las nuevas clases que estaba creando tenían como punto en común el atributo levelEvolution, por lo que se decide poner este atributo en la clase Soldier la cual es la clase padre 
+	\end{itemize}
+	
+	
+	\begin{lstlisting}[language=bash,caption={Commit: 4a8f2a43331921fd43e829c6fb3bd28c43b76541 }][H]
+		code GermanSwordsman.java
+		git add GermanSwordsman.java
+		git commit -m "Se termina de crear la clase GermanSwordsman"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Se crea la clase GermanSwordsman ya con las especificaciones y las correcciones. Un commit más antes se me olvidó de establecer los puntos de vida de las unidades especiales.
+	\end{itemize}
+	
+	
+	
+	
+	
+	\begin{lstlisting}[language=bash,caption={Commit: b02c4acf5ddd4c26ec86c9d801b0d81d7eb15181 }][H]
+		code ConquerorSwordsman.java
+		git add ConquerorSwordsman.java
+		git commit -m "Se termina de crear la clase ConquerorSwordsman"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Esta sería la última clase de las unidades especiales en implementarse, ahora se deben agregar al tablero. Más adelante se modifica el método de impresión de los datos de los objetos.
+	\end{itemize}
+	
+	
+	
 
+	
+	
+	\begin{lstlisting}[language=bash,caption={Commit: 60918b188c5e10cdbbd6a472afc8566e4e81809d }][H]
+		code Tablero.java
+		git add Tablero.java
+		git commit -m "Se crea el metodo increaseActualLife dentro de la clase Tablero"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Según indicaciones de un laboratorio se debe aumentar la vida en uno de los soldados según el campo de batalla. Para ello se crean dos método para poder hacer el incremento, el primero se hace en la clase Army el cual solo se limita a incrementar en uno la vida, mientra el de la clase Tablero se encarga de hacer el filtro de aquel ejército que se hará acreedor de los puntos adicionales. 
+	\end{itemize}
+	
+	
+	
+	
+
+	\begin{lstlisting}[language=bash,caption={Commit: 7cc884fd2bbcc1e6c3621af503bf8bb82c9f1c10 }][H]
+		code Tablero.java
+		git add Tablero.java
+		git commit -m "Se crea la clase informationFrame para poder dar a conocer al jugador sobre las estadisticas de batlla, esta es la primera version"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Para poder guiar a los jugadores se decide hacer un panel que muestre en tiempo real las estadísticas de los soldados, sin embargo esta primera versión no es funcional todavía. 
+	\end{itemize}
+	
+	
+	
+	
+		\begin{lstlisting}[language=bash,caption={Commit: d97f98a464bcbfa84a41475f9c93c0a7e9f256d8 }][H]
+		code .
+		git add .
+		git commit -m "En todas clase hijas se crea o aumenta cosas en el metodo display"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Para que el texto ocupe de forma ordenada el espacio dentro del panel, se modifica la forma en la que se imprimen los datos del objeto y se crea el método display . 
+	\end{itemize}
+	
+	
+	
+	
+	
+		\begin{lstlisting}[language=bash,caption={Commit: 41fbe7f6cfb6f3a9ed93e734cc1129615769a755 }][H]
+		code .
+		git add .
+		git commit -m "Se modifica el constructor, ahora tablero sera un JPanel y no Jframe"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item La mayor parte del juego se ejecutará dentro de una ventana, por lo que el tablero ahora pasa a ser panel y ya no un Frame 
+	\end{itemize}
+	
+	
+	
+			\begin{lstlisting}[language=bash,caption={Commit: d3787c582e7fe78b29932efece993e15635d97cb }][H]
+		code Tablero.java
+		git add Tablero.java
+		git commit -m "Se modifica el constructor, ahora tablero sera un JPanel y no Jframe"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Hasta este commit, la lógica de la impresión de los botones del tablero cambió, el método init se dividió en varios métodos, un método se encarga de generar el tablero y agregar los ActionListenner (initButtons), otro se encarga de darle al tablero diseños básicos que son el color de las casillas y de quitar iconos y fondos (initColors), otro método se encargará de establecer los respectivos íconos al tablero  y por último el método init ahora se encargará solo usar los otros métodos y establecer los elementos en sus respectivas posiciones
+	\end{itemize}
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	\begin{lstlisting}[language=bash,caption={Commit: 7643af42beb4ad24f21cb0a786e1c33378d0d40c }][H]
+		code Army.java
+		git add Army.java
+		git commit -m "Se aumentan casos en el metodo generateArmy"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Debido a la inclusión de nuevas clases que ahora formarán parte de la clase Army, se deben generar nuevos objetos en el ejército
+	\end{itemize}
+	
+	
+	
+	
+		\begin{lstlisting}[language=bash,caption={Commit: 7da45c482b6b48a6732670061ff74b805bbb918b }][H]
+		code ImagePanel.java
+		git add ImagePanel.java
+		git commit -m "Se crea una clase que guarda un panel con la imagen del terreno de juego"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Para una mejor vista del juego y para que la inclusión del terreno de juego se haga ás evidente se decide crear un panel que contenga la imagen del terreno de juego
+	\end{itemize}
+	
+	
+	
+		\begin{lstlisting}[language=bash,caption={Commit: 9b77c00a6e01010ff2d606dede8ea4c308d9d171 }][H]
+		code InformationPanel.java
+		git add InformationPanel.java
+		git commit -m "Se termina de crear la clase InformationFrame"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Como ya lo indiqué antes, esta clase brindará información de las fichas del juego. Para implementar esta clase, se tuvo que ajustar el método showArmy de la clase Army, ahora el método retorna un String  lo que posibilita el uso del método append que es propio del componente TextArea
+	\end{itemize}
+
+
+
+	
+			\begin{lstlisting}[language=bash,caption={Commit: dfb62d171edfd03b8e1722678caa25077d55fb89 }][H]
+		code PrincipalFrame.java
+		git add PrincipalFrame.java
+		git commit -m "En PrincipalFrame se crea el metodo repintarTablero"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Más antes ya se había trabajado este método, pero para el Tablero que más antes era un JFrame, pero ahora que el JFrame es otra clase, se debió ajustar este método y es por eso que se desglosó el método init de Tablero para evitar que en cada turno se tengan que instanciar los botones para generar el tablero. 
+	\end{itemize}
+	
+	
+	
+	
+	\begin{lstlisting}[language=bash,caption={Commit: 664ff566e31489f0451de0caaae62cb852a9ffb8 }][H]
+		code .
+		git add .
+		git commit -m "Se corrigen errores en la asignacion de turnos y ahora el panel que muestra las estadisticas se actualiza correctamente"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	
+	\begin{itemize}
+		\item Se tenía problemas en los turnos y en el panel en el que se mostraba los datos de los ejércitos, el error era una mala asignación en los parámetros y llamadas de métodos, ademñas de que hacen pequeños cambios en las demás clases 
+	\end{itemize}
+	
+	
 	\subsection{Métodos que generan el movimiento}
 	
 	
@@ -565,7 +792,7 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\textwidth,keepaspectratio]{img/tree.jpg}
+		\includegraphics[width=0.6\textwidth,keepaspectratio]{img/tree.jpg}
 		%\includesvg{img/automata.svg}
 		%\label{img:mot2}
 		%\caption{Product backlog.}
