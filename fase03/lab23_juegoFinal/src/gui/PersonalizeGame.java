@@ -1,5 +1,7 @@
 package gui;
 
+import javax.swing.JOptionPane;
+import logica.ConjuntoJugadores;
 import logica.Player;
 import persistencia.Conectar;
 
@@ -8,13 +10,12 @@ import persistencia.Conectar;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author USUARIO
  */
 public class PersonalizeGame extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form PersonalizeGame
      */
@@ -23,6 +24,10 @@ public class PersonalizeGame extends javax.swing.JFrame {
     protected String password;
     protected Player player1;
     protected Player player2;
+    protected int victorias;
+    protected String estado;
+    protected boolean proseguir;
+
     public PersonalizeGame() {
         initComponents();
     }
@@ -93,6 +98,8 @@ public class PersonalizeGame extends javax.swing.JFrame {
             }
         });
 
+        estado1.setEditable(false);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -150,6 +157,13 @@ public class PersonalizeGame extends javax.swing.JFrame {
         entrar2.setBackground(new java.awt.Color(204, 0, 0));
         entrar2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         entrar2.setText("Entrar");
+        entrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entrar2ActionPerformed(evt);
+            }
+        });
+
+        estado2.setEditable(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -266,25 +280,57 @@ public class PersonalizeGame extends javax.swing.JFrame {
 
     private void dirigirOpcionesParaJuegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dirigirOpcionesParaJuegarActionPerformed
         // TODO add your handling code here:
-        QuickGameWindows optionWindows = new QuickGameWindows();
-        optionWindows.setVisible(true);
-        this.dispose();
+
+        if (estado1.equals("Se encontró jugador") && estado2.equals("Se encontró jugador")) {
+            QuickGameWindows optionWindows = new QuickGameWindows();
+            optionWindows.setVisible(true);
+            ConjuntoJugadores jugadores = new ConjuntoJugadores(player1, player2);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Complete los formularios!");
+        }
     }//GEN-LAST:event_dirigirOpcionesParaJuegarActionPerformed
 
     private void entrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrar1ActionPerformed
         // TODO add your handling code here:
         conectar = Conectar.obtenerInstancia();
-        String nombre = nombre1.getText();
-        String password = nombre2.getText();
-        estado1.setText(conectar.realizarConsulta(nombre, password));
-        
-       // player1 = new Player(nombre, password);
-        
+
+        nombre = nombre1.getText();
+        password = contraseña1.getText();
+
+        estado = conectar.realizarConsulta(nombre, password);
+
+        if (estado.equals("Se encontró jugador")) {
+            estado1.setText(estado);
+            victorias = conectar.victorias(nombre, password);
+            player1 = new Player(nombre, password, victorias);
+        } else {
+            estado1.setText(estado);
+        }
+
     }//GEN-LAST:event_entrar1ActionPerformed
 
     private void nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombre1ActionPerformed
+
+    private void entrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrar2ActionPerformed
+        // TODO add your handling code here:
+        conectar = Conectar.obtenerInstancia();
+
+        nombre = nombre2.getText();
+        password = contraseña2.getText();
+
+        estado = conectar.realizarConsulta(nombre, password);
+
+        if (estado.equals("Se encontró jugador")) {
+            estado2.setText(estado);
+            victorias = conectar.victorias(nombre, password);
+            player2 = new Player(nombre, password, victorias);
+        } else {
+            estado2.setText(estado);
+        }
+    }//GEN-LAST:event_entrar2ActionPerformed
 
     /**
      * @param args the command line arguments
