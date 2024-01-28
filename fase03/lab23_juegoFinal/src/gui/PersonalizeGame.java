@@ -280,8 +280,8 @@ public class PersonalizeGame extends javax.swing.JFrame {
 
     private void dirigirOpcionesParaJuegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dirigirOpcionesParaJuegarActionPerformed
         // TODO add your handling code here:
-
-        if (estado1.equals("Se encontró jugador") && estado2.equals("Se encontró jugador")) {
+       
+        if (estado1.getText().equals("Se encontró jugador") && estado2.getText().equals("Se encontró jugador")) {
             QuickGameWindows optionWindows = new QuickGameWindows();
             optionWindows.setVisible(true);
             ConjuntoJugadores jugadores = new ConjuntoJugadores(player1, player2);
