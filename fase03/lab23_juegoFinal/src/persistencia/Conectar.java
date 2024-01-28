@@ -1,6 +1,5 @@
 package persistencia;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Conectar {
+
     private static Conectar instancia;
     private Connection sqlConexion;
     private String host = "localhost";
@@ -35,37 +35,66 @@ public class Conectar {
     }
 
     // Método para realizar una consulta
-
-    public String registrar(String nombre, int password) {
+    public String registrar(String nombre, String password) {
         PreparedStatement prepareConsulta = null;
         ResultSet result = null;
         String mensaje = "";
-    
+
         try {
+            // Verificar si el jugador ya existe
             prepareConsulta = sqlConexion.prepareStatement("SELECT * FROM jugadores WHERE Nombre=?");
             prepareConsulta.setString(1, nombre);
             result = prepareConsulta.executeQuery();
-    
+
             if (!result.next()) {
                 // El jugador no existe, realizar la inserción
-                PreparedStatement prepareInsercion = null;
-    
+                PreparedStatement prepareInsercionJugador = null;
                 try {
-                    prepareInsercion = sqlConexion.prepareStatement("INSERT INTO jugadores(Nombre, Contraseña) VALUES (?, ?)");
-                    prepareInsercion.setString(1, nombre);
-                    prepareInsercion.setInt(2, password);
-    
-                    int filasAfectadas = prepareInsercion.executeUpdate();
-    
-                    if (filasAfectadas > 0) {
-                        mensaje = "Se registró correctamente";
-                    } else {
-                        mensaje = "No se registró correctamente";
+                    // Insertar en la tabla 'jugadores'
+                    prepareInsercionJugador = sqlConexion.prepareStatement("INSERT INTO jugadores(Nombre, Contraseña) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+                    prepareInsercionJugador.setString(1, nombre);
+                    prepareInsercionJugador.setString(2, password);
+                    int filasAfectadasJugador = prepareInsercionJugador.executeUpdate();
+
+                    // Obtener el ID del jugador recién insertado
+                    ResultSet generatedKeysJugador = prepareInsercionJugador.getGeneratedKeys();
+                    int jugadorID = -1;
+                    if (generatedKeysJugador.next()) {
+                        jugadorID = generatedKeysJugador.getInt(1);
                     }
+
+                    if (filasAfectadasJugador > 0) {
+                        // Insertar en la tabla 'partidas'
+                        PreparedStatement prepareInsercionPartida = sqlConexion.prepareStatement("INSERT INTO partidas(Jugador_Nombre, RachaVictorias) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+                        prepareInsercionPartida.setString(1, nombre);
+                        prepareInsercionPartida.setInt(2, 0);
+                        int filasAfectadasPartida = prepareInsercionPartida.executeUpdate();
+
+                        // Obtener el ID de la última partida insertada
+                        ResultSet generatedKeysPartida = prepareInsercionPartida.getGeneratedKeys();
+                        int partidaID = -1;
+                        if (generatedKeysPartida.next()) {
+                            partidaID = generatedKeysPartida.getInt(1);
+                        }
+
+                        if (filasAfectadasPartida > 0) {
+                            // Insertar en la tabla 'ejercitos'
+                            PreparedStatement prepareInsercionEjercito = sqlConexion.prepareStatement("INSERT INTO ejercitos(Partida_ID) VALUES (?)");
+                            prepareInsercionEjercito.setInt(1, partidaID);
+                            prepareInsercionEjercito.executeUpdate();
+                        } else {
+                            // Manejar error en la inserción en 'partidas'
+                            mensaje = "Error al insertar en la tabla 'partidas'";
+                        }
+                    } else {
+                        // Manejar error en la inserción en 'jugadores'
+                        mensaje = "Error al insertar en la tabla 'jugadores'";
+                    }
+                    mensaje = "Se registró satisfactoriamente";
                 } finally {
-                    // Cerrar recursos de la inserción
-                    if (prepareInsercion != null) {
-                        prepareInsercion.close();
+                    // Cerrar recursos de la inserción del jugador
+                    if (prepareInsercionJugador != null) {
+                        prepareInsercionJugador.close();
                     }
                 }
             } else {
@@ -89,36 +118,37 @@ public class Conectar {
             }
         }
         return mensaje;
+
     }
-    
-    
-  
+
     public String realizarConsulta(String nombre, String contraseña) {
         PreparedStatement prepare = null;
         ResultSet result = null;
-        String mensaje ="";
+        String mensaje = "";
         try {
             prepare = sqlConexion.prepareStatement("SELECT * FROM jugadores WHERE Nombre=? AND Contraseña=?");
             prepare.setString(1, nombre);
             prepare.setString(1, contraseña);
             result = prepare.executeQuery();
 
-            if (result == null ) {
+            if (result == null) {
                 mensaje = "No se registró correctamente, intente de nuevo";
             } else {
                 mensaje = "Se registró correctamente";
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
             // Manejar la excepción según tus necesidades
         } finally {
             // Cerrar recursos
             try {
-                if (result != null)
+                if (result != null) {
                     result.close();
-                if (prepare != null)
+                }
+                if (prepare != null) {
                     prepare.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -135,42 +165,5 @@ public class Conectar {
             e.printStackTrace();
         }
     }
-    
-    
-    public int rachaVictorias(String nombre) {
-    PreparedStatement prepare = null;
-    ResultSet result = null;
-    int rachaVictorias = -1;  // Valor predeterminado en caso de que no haya resultados
-
-    try {
-        prepare = sqlConexion.prepareStatement("SELECT RachaVictorias FROM partidas WHERE Jugador_Nombre=?");
-        prepare.setString(1, nombre);
-        result = prepare.executeQuery();
-
-        if (result.next()) {
-            // Si hay resultados, obtener el valor de RachaVictorias
-            rachaVictorias = result.getInt("RachaVictorias");
-        } else {
-            // No se encontraron resultados
-            System.out.println("No se encontró");
-        }
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-        // Manejar la excepción según tus necesidades
-    } finally {
-        // Cerrar recursos
-        try {
-            if (result != null)
-                result.close();
-            if (prepare != null)
-                prepare.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    return rachaVictorias;
-}
 
 }

@@ -13,7 +13,7 @@ import persistencia.Conectar;
  */
 public class Login extends javax.swing.JFrame {
     String nombre;
-    int password;
+    String password;
     Conectar conectar;
     /**
      * Creates new form Login
@@ -184,7 +184,7 @@ public class Login extends javax.swing.JFrame {
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         // TODO add your handling code here:
         nombre = textRegistrarNombre.getText();
-        password = Integer.parseInt(textRegistrarPassword.getText());
+        password = textRegistrarPassword.getText();
         conectar = Conectar.obtenerInstancia();
         mostrarEstadoRegistro.setText(conectar.registrar(nombre, password));
         
