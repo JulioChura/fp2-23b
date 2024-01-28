@@ -66,7 +66,6 @@ public class Army {
                     name = "Lancero" + (row + 1) + "x" + (column + 1);
                     sol = new Spearman(name, row, column, attack, defense, lifePoints, 0, 1);
 
-                
                 } else if (optionSoldier == 3) {
                     attack = 10;
                     defense = 8;
@@ -99,11 +98,11 @@ public class Army {
                     lifePoints = 13;
                     name = "C.Moro" + (row + 1) + "x" + (column + 1);
                     sol = new Soldier(name, row, column, attack, defense, lifePoints, optionSoldier);
-                } else  {
+                } else {
                     attack = 10;
                     defense = 8;
                     lifePoints = 13;
-                    name = "R.Espad"+(row+1)+"x"+(column+1);
+                    name = "R.Espad" + (row + 1) + "x" + (column + 1);
                     sol = new RoyalSwordsman(name, row, column, attack, defense, lifePoints, optionSoldier, n, false, n);
                 }
 
@@ -166,7 +165,7 @@ public class Army {
             total = total + n;
         }
         num[9] = total;
-;
+        ;
         return num;
     }
 
@@ -192,7 +191,6 @@ public class Army {
         } else {
             return 8;
         }
-
 
     }
 

@@ -8,10 +8,10 @@ public class InformationFrame extends JPanel {
 
     private JTextArea area;
     private Army army;
-    
-    public InformationFrame(Army army)  {
+
+    public InformationFrame(Army army) {
         this.army = army;
-       
+
         area = new JTextArea();
         area.setEditable(false);
 

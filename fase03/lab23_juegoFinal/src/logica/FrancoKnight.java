@@ -1,8 +1,5 @@
 package logica;
 
-
-import logica.Soldier;
-
 public class FrancoKnight extends Soldier implements SpecialUnit {
 
     private int spears = 10;

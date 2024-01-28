@@ -1,8 +1,5 @@
 package logica;
 
-
-import logica.Soldier;
-
 public class Knight extends Soldier {
     private String currentWeapon;
     private boolean horseRiding;

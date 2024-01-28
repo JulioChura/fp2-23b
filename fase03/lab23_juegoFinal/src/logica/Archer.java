@@ -1,6 +1,7 @@
 package logica;
 
 public class Archer extends Soldier {
+
     private int arrows;
 
     public Archer(int arrows) {
@@ -22,11 +23,12 @@ public class Archer extends Soldier {
     public void shoot() {
         if (arrows > 0) {
             arrows--;
-        } 
+        }
     }
 
+    @Override
     public String toString() {
         return " # Arquero ->  Flechas: " + arrows + super.display();
     }
-    
+
 }

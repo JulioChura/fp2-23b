@@ -1,4 +1,4 @@
-package logica;
+package gui;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -8,6 +8,8 @@ import java.awt.*;
 import java.util.concurrent.CountDownLatch;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import logica.Army;
+import logica.Soldier;
 
 public class Tablero extends JPanel {
 
@@ -141,14 +143,14 @@ public class Tablero extends JPanel {
         if (option == 0) {
             solIcon = "arquero";
         } else if (option == 1) {
-            solIcon = "caballero"; 
+            solIcon = "caballero";
         } else if (option == 2) {
             solIcon = "lancero";
         } else {
             solIcon = "espadachin";
         }
-        
-        icon  = new ImageIcon("img/"+solIcon+".png");
+
+        icon = new ImageIcon("img/" + solIcon + ".png");
         Image editedIcon = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         ImageIcon resizedEspadachinIcon = new ImageIcon(editedIcon);
         return resizedEspadachinIcon;
@@ -160,6 +162,7 @@ public class Tablero extends JPanel {
     private CountDownLatch latch = new CountDownLatch(1);
 
     public class MyButtonListener implements ActionListener {
+
         private int row;
         private int column;
 

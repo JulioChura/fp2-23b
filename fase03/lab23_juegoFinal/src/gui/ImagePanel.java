@@ -19,7 +19,7 @@ public class ImagePanel extends JPanel {
 
         // Crea el JLabel con el nuevo ImageIcon
         JLabel label = new JLabel(iconRedimensionado);
-        setLayout(new GridLayout(1,0));
+        setLayout(new GridLayout(1, 0));
         // Agrega el JLabel al panel
         add(label);
     }

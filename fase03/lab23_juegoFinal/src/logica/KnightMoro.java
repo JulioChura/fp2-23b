@@ -1,5 +1,9 @@
 package logica;
 
+
+import logica.SpecialUnit;
+
+
 public class KnightMoro extends Knight implements SpecialUnit {
     private int arrows = 10;
 

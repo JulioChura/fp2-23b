@@ -1,9 +1,9 @@
 package gui;
 
+
 import javax.swing.*;
 import java.awt.*;
 import logica.Army;
-import logica.Tablero;
 
 public class PrincipalFrame extends JFrame {
     private static int HEIGHT = 1500;

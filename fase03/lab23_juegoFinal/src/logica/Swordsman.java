@@ -1,8 +1,5 @@
 package logica;
 
-
-import logica.Soldier;
-
 public class Swordsman extends Soldier {
     private double longSwords;
     private boolean shieldWalls = false;

@@ -5,6 +5,7 @@ package logica;
 // Tiempo: 8 horas
 // No hubo colaboradores
 import gui.PrincipalFrame;
+import gui.Tablero;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
