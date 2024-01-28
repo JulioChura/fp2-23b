@@ -65,9 +65,8 @@ public class Conectar {
 
                     if (filasAfectadasJugador > 0) {
                         // Insertar en la tabla 'partidas'
-                        PreparedStatement prepareInsercionPartida = sqlConexion.prepareStatement("INSERT INTO partidas(Jugador_Nombre, RachaVictorias) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+                        PreparedStatement prepareInsercionPartida = sqlConexion.prepareStatement("INSERT INTO partidas(Jugador_Nombre) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
                         prepareInsercionPartida.setString(1, nombre);
-                        prepareInsercionPartida.setInt(2, 0);
                         int filasAfectadasPartida = prepareInsercionPartida.executeUpdate();
 
                         // Obtener el ID de la última partida insertada
@@ -102,7 +101,6 @@ public class Conectar {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Manejar la excepción según tus necesidades
             mensaje = "Error en la operación";
         } finally {
             // Cerrar recursos de la consulta
@@ -128,18 +126,17 @@ public class Conectar {
         try {
             prepare = sqlConexion.prepareStatement("SELECT * FROM jugadores WHERE Nombre=? AND Contraseña=?");
             prepare.setString(1, nombre);
-            prepare.setString(1, contraseña);
+            prepare.setString(2, contraseña);
             result = prepare.executeQuery();
 
-            if (result == null) {
-                mensaje = "No se registró correctamente, intente de nuevo";
+            if (result.next()) {
+                mensaje = "Se encontró jugador";
             } else {
-                mensaje = "Se registró correctamente";
+                mensaje = "No hay registro";
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Manejar la excepción según tus necesidades
         } finally {
             // Cerrar recursos
             try {
@@ -154,6 +151,46 @@ public class Conectar {
             }
         }
         return mensaje;
+    }
+
+    public int victorias(String nombre, String contraseña) {
+        if (nombre == null || contraseña == null || nombre.isEmpty() || contraseña.isEmpty()) {
+            System.out.println("Nombre y contraseña no pueden ser nulos o vacíos");
+            return 0; // O cualquier otro valor predeterminado según tu lógica de negocio
+        }
+        PreparedStatement prepare = null;
+        ResultSet result = null;
+        int victorias = 0;
+        try {
+            prepare = sqlConexion.prepareStatement("SELECT Victorias FROM jugadores "
+                    + "WHERE Nombre=? AND Contraseña=?");
+            prepare.setString(1, nombre);
+            prepare.setString(2, contraseña);
+            result = prepare.executeQuery();
+
+            if (result.next()) { // Verificar si hay resultados antes de intentar obtener el valor
+                victorias = result.getInt("Victorias");
+            } else {
+                // No hay resultados, podrías lanzar un mensaje o hacer algo en consecuencia
+                System.out.println("No hay resultados para la consulta.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar recursos
+            try {
+                if (result != null) {
+                    result.close();
+                }
+                if (prepare != null) {
+                    prepare.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return victorias;
     }
 
     private void cerrarConexion() {
