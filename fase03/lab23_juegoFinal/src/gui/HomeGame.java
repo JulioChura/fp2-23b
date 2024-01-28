@@ -23,19 +23,17 @@ public class HomeGame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         quickGame = new javax.swing.JButton();
         personalizeGame = new javax.swing.JButton();
-        personalizeGame1 = new javax.swing.JButton();
+        registar = new javax.swing.JButton();
         personalizeGame2 = new javax.swing.JButton();
+        personalizeGame3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/interfaz/thane.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         quickGame.setBackground(new java.awt.Color(200, 150, 41));
         quickGame.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -59,14 +57,14 @@ public class HomeGame extends javax.swing.JFrame {
             }
         });
 
-        personalizeGame1.setBackground(new java.awt.Color(200, 150, 41));
-        personalizeGame1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        personalizeGame1.setForeground(new java.awt.Color(0, 0, 0));
-        personalizeGame1.setText("Cargar última partida");
-        personalizeGame1.setBorder(new javax.swing.border.MatteBorder(null));
-        personalizeGame1.addActionListener(new java.awt.event.ActionListener() {
+        registar.setBackground(new java.awt.Color(200, 150, 41));
+        registar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        registar.setForeground(new java.awt.Color(0, 0, 0));
+        registar.setText("Registrar Retadores");
+        registar.setBorder(new javax.swing.border.MatteBorder(null));
+        registar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                personalizeGame1ActionPerformed(evt);
+                registarActionPerformed(evt);
             }
         });
 
@@ -81,47 +79,65 @@ public class HomeGame extends javax.swing.JFrame {
             }
         });
 
+        personalizeGame3.setBackground(new java.awt.Color(200, 150, 41));
+        personalizeGame3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        personalizeGame3.setForeground(new java.awt.Color(0, 0, 0));
+        personalizeGame3.setText("Cargar última partida");
+        personalizeGame3.setBorder(new javax.swing.border.MatteBorder(null));
+        personalizeGame3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personalizeGame3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(126, 126, 126)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(quickGame, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(personalizeGame, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(personalizeGame2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(personalizeGame1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE))
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(quickGame, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(personalizeGame, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(personalizeGame2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(registar, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(personalizeGame3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addComponent(quickGame, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(69, 69, 69)
-                                .addComponent(personalizeGame, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(68, 68, 68)
-                                .addComponent(personalizeGame1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(72, 72, 72)
-                                .addComponent(personalizeGame2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(quickGame, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(personalizeGame, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(personalizeGame3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(registar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(personalizeGame2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thane.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,13 +153,20 @@ public class HomeGame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_personalizeGameActionPerformed
 
-    private void personalizeGame1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalizeGame1ActionPerformed
+    private void registarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_personalizeGame1ActionPerformed
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registarActionPerformed
 
     private void personalizeGame2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalizeGame2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_personalizeGame2ActionPerformed
+
+    private void personalizeGame3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalizeGame3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_personalizeGame3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,8 +207,9 @@ public class HomeGame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton personalizeGame;
-    private javax.swing.JButton personalizeGame1;
     private javax.swing.JButton personalizeGame2;
+    private javax.swing.JButton personalizeGame3;
     private javax.swing.JButton quickGame;
+    private javax.swing.JButton registar;
     // End of variables declaration//GEN-END:variables
 }
