@@ -135,5 +135,42 @@ public class Conectar {
             e.printStackTrace();
         }
     }
+    
+    
+    public int rachaVictorias(String nombre) {
+    PreparedStatement prepare = null;
+    ResultSet result = null;
+    int rachaVictorias = -1;  // Valor predeterminado en caso de que no haya resultados
+
+    try {
+        prepare = sqlConexion.prepareStatement("SELECT RachaVictorias FROM partidas WHERE Jugador_Nombre=?");
+        prepare.setString(1, nombre);
+        result = prepare.executeQuery();
+
+        if (result.next()) {
+            // Si hay resultados, obtener el valor de RachaVictorias
+            rachaVictorias = result.getInt("RachaVictorias");
+        } else {
+            // No se encontraron resultados
+            System.out.println("No se encontró");
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Manejar la excepción según tus necesidades
+    } finally {
+        // Cerrar recursos
+        try {
+            if (result != null)
+                result.close();
+            if (prepare != null)
+                prepare.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    return rachaVictorias;
+}
 
 }
