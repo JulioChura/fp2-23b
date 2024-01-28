@@ -10,5 +10,12 @@ public class Player {
     protected Army army;
     protected int victorias;
     protected int estado;
+
+    public Player(String nombre, String password, int victorias) {
+        this.nombre = nombre;
+        this.password = password;
+        this.victorias = victorias;
+    }
+    
     
 }
