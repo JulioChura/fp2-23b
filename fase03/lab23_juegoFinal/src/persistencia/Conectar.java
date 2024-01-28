@@ -90,13 +90,13 @@ public class Conectar {
         }
         return mensaje;
     }
-
-
+    
+    
+  
     public void realizarConsulta(int cod) {
         PreparedStatement prepare = null;
         ResultSet result = null;
         String mensaje;
-
         try {
             prepare = sqlConexion.prepareStatement("SELECT * FROM owners WHERE id=?");
             prepare.setInt(1, cod);
@@ -106,7 +106,7 @@ public class Conectar {
                 prepare = sqlConexion.prepareStatement("INSERT INTO jugadores(nombre, password) VALUES (?, ?)");
                 mensaje = "Se registró correctamente";
             } else {
-                mensaje = "No se registró correctamente";
+                mensaje = "No se registró correctamente, intente de nuevo";
             }
             
         } catch (SQLException e) {
