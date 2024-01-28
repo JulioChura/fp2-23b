@@ -93,20 +93,20 @@ public class Conectar {
     
     
   
-    public void realizarConsulta(int cod) {
+    public String realizarConsulta(String nombre, String contraseña) {
         PreparedStatement prepare = null;
         ResultSet result = null;
-        String mensaje;
+        String mensaje ="";
         try {
-            prepare = sqlConexion.prepareStatement("SELECT * FROM owners WHERE id=?");
-            prepare.setInt(1, cod);
+            prepare = sqlConexion.prepareStatement("SELECT * FROM jugadores WHERE Nombre=? AND Contraseña=?");
+            prepare.setString(1, nombre);
+            prepare.setString(1, contraseña);
             result = prepare.executeQuery();
 
             if (result == null ) {
-                prepare = sqlConexion.prepareStatement("INSERT INTO jugadores(nombre, password) VALUES (?, ?)");
-                mensaje = "Se registró correctamente";
-            } else {
                 mensaje = "No se registró correctamente, intente de nuevo";
+            } else {
+                mensaje = "Se registró correctamente";
             }
             
         } catch (SQLException e) {
@@ -123,6 +123,7 @@ public class Conectar {
                 e.printStackTrace();
             }
         }
+        return mensaje;
     }
 
     private void cerrarConexion() {
