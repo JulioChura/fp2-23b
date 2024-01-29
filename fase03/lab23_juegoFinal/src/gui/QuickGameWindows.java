@@ -3,6 +3,7 @@ package gui;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import logica.Army;
+import logica.Player;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -32,6 +33,15 @@ public class QuickGameWindows extends javax.swing.JFrame {
     
     protected Random aleatorio = new Random();
     protected int opcion;
+    
+    protected Player playerRed;
+    protected Player playerBlue;
+    
+    public QuickGameWindows(Player player1, Player player2) {
+        playerRed = player1;
+        playerBlue = player2;
+        initComponents();
+    }
     
     public QuickGameWindows() {
         initComponents();
@@ -63,8 +73,8 @@ public class QuickGameWindows extends javax.swing.JFrame {
         reinos2 = new javax.swing.JList<>();
         dirigirTablero = new javax.swing.JButton();
         generarEjercitos = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jugadorBlue = new javax.swing.JTextField();
+        jugadorRed = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -238,11 +248,11 @@ public class QuickGameWindows extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setEditable(false);
-        jTextField1.setText("Esperando");
+        jugadorBlue.setEditable(false);
+        jugadorBlue.setText("Esperando");
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("Esperando");
+        jugadorRed.setEditable(false);
+        jugadorRed.setText("Esperando");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,9 +277,9 @@ public class QuickGameWindows extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(103, 103, 103)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jugadorRed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jugadorBlue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(175, 175, 175))
         );
         layout.setVerticalGroup(
@@ -279,8 +289,8 @@ public class QuickGameWindows extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jugadorRed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jugadorBlue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,7 +315,6 @@ public class QuickGameWindows extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Genere los ejércitos!");
             return;
         }
-        QuickGameWindows optionWindows = new QuickGameWindows();
         Tablero tab = new Tablero(rojo, rojo, arenaFija);
         tab.setVisible(true);
         this.dispose();
@@ -323,6 +332,17 @@ public class QuickGameWindows extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Seleccione un reino!");
             return;
         }
+        
+        
+        
+        if (playerRed == null || playerBlue   == null) {
+            jugadorRed.setText(reino1);
+            jugadorBlue.setText(reino2);
+        } else {
+            jugadorRed.setText(playerRed.getNombre());
+            jugadorBlue.setText(playerBlue.getNombre());
+        }
+        
         rojo = new Army(reino1);
         azul = new Army(reino2);
         rojo.generateArmy(azul);
@@ -409,8 +429,8 @@ public class QuickGameWindows extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jugadorBlue;
+    private javax.swing.JTextField jugadorRed;
     private javax.swing.JList<String> reinos1;
     private javax.swing.JList<String> reinos2;
     // End of variables declaration//GEN-END:variables
