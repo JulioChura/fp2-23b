@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
+import persistencia.Conectar;
 
 public class Jugar {
 
@@ -30,8 +31,22 @@ public class Jugar {
         SwingWorker<Void, Void> gameWorker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-                PrincipalFrame principal = new PrincipalFrame(blue, red, arena, tablero);
+                PrincipalFrame principal = new PrincipalFrame(blue, red, arena, tablero, playerBlue, playerRed);
                 jugarTurnos(tablero, principal);
+
+                if (playerRed == null || playerBlue == null) {
+                    //
+                } else {
+                    Conectar conectar = Conectar.obtenerInstancia(); 
+                    if (blue.converterToArrayUni() == null) {
+                        conectar.registrarVictoria(playerRed.getNombre(), playerRed.getPassword());
+                        JOptionPane.showMessageDialog(principal, "Se registró la victoria");
+                    } else {
+                        conectar.registrarVictoria(playerBlue.getNombre(), playerBlue.getPassword());
+                        JOptionPane.showMessageDialog(principal, "Se registró la victoria");
+                    }
+                }
+                
                 principal.dispose();
                 HomeGame home = new HomeGame();
                 home.setVisible(true);
@@ -77,5 +92,6 @@ public class Jugar {
             SwingUtilities.invokeLater(() -> pane.repintarTablero()); // Actualiza el GUI en el EDT
             turno++;
         } while (Army.winnerDefinitive(e1, e2));
+
     }
 }

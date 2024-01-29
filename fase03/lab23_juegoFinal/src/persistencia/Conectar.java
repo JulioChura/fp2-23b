@@ -193,6 +193,52 @@ public class Conectar {
         return victorias;
     }
 
+    public void registrarVictoria(String nombre, String contraseña) {
+        PreparedStatement prepare = null;
+        ResultSet result = null;
+        int victorias = 0;
+
+        try {
+            // Obtener el número actual de victorias
+            prepare = sqlConexion.prepareStatement("SELECT Victorias FROM jugadores "
+                    + "WHERE Nombre=? AND Contraseña=?");
+            prepare.setString(1, nombre);
+            prepare.setString(2, contraseña);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                victorias = result.getInt("Victorias");
+                victorias++;
+
+                // Actualizar el número de victorias en la base de datos
+                prepare = sqlConexion.prepareStatement("UPDATE jugadores SET Victorias=? "
+                        + "WHERE Nombre=? AND Contraseña=?");
+                prepare.setInt(1, victorias);
+                prepare.setString(2, nombre);
+                prepare.setString(3, contraseña);
+                prepare.executeUpdate();
+            } else {
+                // No hay resultados, podrías lanzar un mensaje o hacer algo en consecuencia
+                System.out.println("No hay resultados para la consulta.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar recursos
+            try {
+                if (result != null) {
+                    result.close();
+                }
+                if (prepare != null) {
+                    prepare.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void cerrarConexion() {
         try {
             if (sqlConexion != null && !sqlConexion.isClosed()) {

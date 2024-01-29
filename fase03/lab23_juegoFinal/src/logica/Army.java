@@ -346,7 +346,6 @@ public class Army {
         for (ArrayList<Soldier> row : army) {
             for (Soldier sol : row) {
                 sol.setActualLife(sol.getActualLife() + 1);
-                ;
             }
         }
     }

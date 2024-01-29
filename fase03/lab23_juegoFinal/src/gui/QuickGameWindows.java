@@ -3,6 +3,7 @@ package gui;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import logica.Army;
+import logica.Jugar;
 import logica.Player;
 
 /*
@@ -315,12 +316,13 @@ public class QuickGameWindows extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Genere los ejércitos!");
             return;
         }
-        Tablero tab = new Tablero(rojo, azul, arenaFija);
-        PrincipalFrame principal = new PrincipalFrame(azul, rojo, reino1, tab);
-        
-        principal.setVisible(true);
-        principal.jugar();
         this.dispose();
+        Tablero tab = new Tablero(rojo, azul, arenaFija);
+        
+        Jugar jugar = new Jugar( tab, rojo, azul, reino1, playerRed, playerBlue);
+        
+        jugar.game();
+        
         
     }//GEN-LAST:event_dirigirTableroActionPerformed
 

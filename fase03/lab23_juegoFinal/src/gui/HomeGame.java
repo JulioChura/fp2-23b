@@ -11,6 +11,7 @@ public class HomeGame extends javax.swing.JFrame {
     /**
      * Creates new form HomeGame
      */
+    
     public HomeGame() {
         initComponents();
     }
@@ -148,7 +149,7 @@ public class HomeGame extends javax.swing.JFrame {
 
     private void partidaRapidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partidaRapidaActionPerformed
         // TODO add your handling code here:
-        QuickGameWindows quick = new QuickGameWindows();
+        QuickGameWindows quick = new QuickGameWindows(null, null);
         quick.setVisible(true);
         this.dispose();
         
