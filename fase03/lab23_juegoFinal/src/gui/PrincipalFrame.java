@@ -54,6 +54,9 @@ public class PrincipalFrame extends JFrame {
         panelData = new JPanel();
         panelData.setLayout(new GridLayout(1, 2));
         panelImg = new ImagePanel(field);
+        
+        System.out.println(field);
+        
         panelData.add(panelBlue);
         panelData.add(panelRed);
 

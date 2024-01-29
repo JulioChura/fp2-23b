@@ -319,7 +319,7 @@ public class QuickGameWindows extends javax.swing.JFrame {
         this.dispose();
         Tablero tab = new Tablero(rojo, azul, arenaFija);
         
-        Jugar jugar = new Jugar( tab, rojo, azul, reino1, playerRed, playerBlue);
+        Jugar jugar = new Jugar( tab, rojo, azul, arenaFija, playerRed, playerBlue);
         
         jugar.game();
         
@@ -354,6 +354,11 @@ public class QuickGameWindows extends javax.swing.JFrame {
         azul.generateArmy(rojo);
         
         opcion = aleatorio.nextInt(2);
+        if (opcion == 0){
+            arenaFija = terreno1;
+        } else {
+            arenaFija = terreno2;
+        }
         azul.showArmy();
         rojo.showArmy();
         generarEjercitos.setEnabled(false);
