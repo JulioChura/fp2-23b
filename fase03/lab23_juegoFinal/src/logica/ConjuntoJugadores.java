@@ -12,4 +12,14 @@ public class ConjuntoJugadores {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
     }
+
+    public Player getJugador1() {
+        return jugador1;
+    }
+
+    public Player getJugador2() {
+        return jugador2;
+    }
+    
+    
 }

@@ -277,10 +277,10 @@ public class QuickGameWindows extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(103, 103, 103)
-                .addComponent(jugadorRed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jugadorRed, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jugadorBlue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(175, 175, 175))
+                .addComponent(jugadorBlue, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,8 +315,11 @@ public class QuickGameWindows extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Genere los ejércitos!");
             return;
         }
-        Tablero tab = new Tablero(rojo, rojo, arenaFija);
-        tab.setVisible(true);
+        Tablero tab = new Tablero(rojo, azul, arenaFija);
+        PrincipalFrame principal = new PrincipalFrame(azul, rojo, reino1, tab);
+        
+        principal.setVisible(true);
+        principal.jugar();
         this.dispose();
         
     }//GEN-LAST:event_dirigirTableroActionPerformed
@@ -333,9 +336,9 @@ public class QuickGameWindows extends javax.swing.JFrame {
             return;
         }
         
+
         
-        
-        if (playerRed == null || playerBlue   == null) {
+        if (playerRed == null || playerBlue == null) {
             jugadorRed.setText(reino1);
             jugadorBlue.setText(reino2);
         } else {
@@ -356,7 +359,8 @@ public class QuickGameWindows extends javax.swing.JFrame {
         System.out.println(rojo.getName( ));
        
     }//GEN-LAST:event_generarEjercitosActionPerformed
-
+    
+    
     private void reinos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reinos1MouseClicked
         // TODO add your handling code here:
         reino1 = reinos1.getSelectedValue();
