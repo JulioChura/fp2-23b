@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.Random;
+import javax.swing.JOptionPane;
 import logica.Army;
 
 /*
@@ -16,6 +18,21 @@ public class QuickGameWindows extends javax.swing.JFrame {
     /**
      * Creates new form QuickGameWindows
      */
+    
+    protected String reino1 = "";
+    protected String terreno1 = "";
+    
+    protected String reino2 = "";
+    protected String terreno2 = "";
+    
+    protected Army rojo;
+    protected Army azul;
+
+    protected String arenaFija;
+    
+    protected Random aleatorio = new Random();
+    protected int opcion;
+    
     public QuickGameWindows() {
         initComponents();
     }
@@ -29,25 +46,28 @@ public class QuickGameWindows extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        arenas1 = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        reinos1 = new javax.swing.JList<>();
+        jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
+        arenas2 = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList<>();
-        jLabel5 = new javax.swing.JLabel();
+        reinos2 = new javax.swing.JList<>();
         dirigirTablero = new javax.swing.JButton();
+        generarEjercitos = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 153));
 
@@ -55,29 +75,39 @@ public class QuickGameWindows extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Elija la arena");
 
-        jList1.setBackground(new java.awt.Color(255, 153, 153));
-        jList1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jList1.setForeground(new java.awt.Color(0, 0, 0));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        arenas1.setBackground(new java.awt.Color(255, 153, 153));
+        arenas1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        arenas1.setForeground(new java.awt.Color(0, 0, 0));
+        arenas1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Montaña", "Bosque", "Playa", "Desierto", "Campo" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        arenas1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                arenas1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(arenas1);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Elija Reino");
 
-        jList2.setBackground(new java.awt.Color(255, 153, 153));
-        jList2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jList2.setForeground(new java.awt.Color(0, 0, 0));
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        reinos1.setBackground(new java.awt.Color(255, 153, 153));
+        reinos1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        reinos1.setForeground(new java.awt.Color(0, 0, 0));
+        reinos1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Sacro Imperio Romano", "Castilla-Aragón", "Inglaterra", "Moros", "Francia" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList2);
+        reinos1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reinos1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(reinos1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -111,37 +141,49 @@ public class QuickGameWindows extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/arthur.jpg"))); // NOI18N
+
         jPanel3.setBackground(new java.awt.Color(102, 102, 255));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Elija la arena");
 
-        jList3.setBackground(new java.awt.Color(102, 102, 255));
-        jList3.setBorder(null);
-        jList3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jList3.setForeground(new java.awt.Color(0, 0, 0));
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
+        arenas2.setBackground(new java.awt.Color(102, 102, 255));
+        arenas2.setBorder(null);
+        arenas2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        arenas2.setForeground(new java.awt.Color(0, 0, 0));
+        arenas2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Montaña", "Bosque", "Playa", "Desierto", "Campo" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList3);
+        arenas2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                arenas2MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(arenas2);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Elija Reino");
 
-        jList4.setBackground(new java.awt.Color(102, 102, 255));
-        jList4.setBorder(null);
-        jList4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jList4.setForeground(new java.awt.Color(0, 0, 0));
-        jList4.setModel(new javax.swing.AbstractListModel<String>() {
+        reinos2.setBackground(new java.awt.Color(102, 102, 255));
+        reinos2.setBorder(null);
+        reinos2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        reinos2.setForeground(new java.awt.Color(0, 0, 0));
+        reinos2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Sacro Imperio Romano", "Castilla-Aragón", "Inglaterra", "Moros", "Francia" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(jList4);
+        reinos2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reinos2MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(reinos2);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -156,28 +198,28 @@ public class QuickGameWindows extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/arthur.jpg"))); // NOI18N
-
-        dirigirTablero.setBackground(new java.awt.Color(51, 51, 255));
+        dirigirTablero.setBackground(new java.awt.Color(153, 0, 0));
         dirigirTablero.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         dirigirTablero.setText("Jugar");
         dirigirTablero.addActionListener(new java.awt.event.ActionListener() {
@@ -186,52 +228,71 @@ public class QuickGameWindows extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel5)
-                        .addGap(63, 63, 63))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dirigirTablero)
-                        .addGap(121, 121, 121)))
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(74, 74, 74)
-                            .addComponent(dirigirTablero))
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47))
-        );
+        generarEjercitos.setBackground(new java.awt.Color(0, 51, 0));
+        generarEjercitos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        generarEjercitos.setForeground(new java.awt.Color(255, 255, 255));
+        generarEjercitos.setText("Generar Ejércitos");
+        generarEjercitos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarEjercitosActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setEditable(false);
+        jTextField1.setText("Esperando");
+
+        jTextField2.setEditable(false);
+        jTextField2.setText("Esperando");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dirigirTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(458, 458, 458))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(generarEjercitos, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(175, 175, 175))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(generarEjercitos)))
+                .addGap(29, 29, 29)
+                .addComponent(dirigirTablero)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -239,17 +300,63 @@ public class QuickGameWindows extends javax.swing.JFrame {
 
     private void dirigirTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dirigirTableroActionPerformed
         // TODO add your handling code here:
+        
+        if (generarEjercitos.isEnabled()){
+            JOptionPane.showMessageDialog(rootPane, "Genere los ejércitos!");
+            return;
+        }
         QuickGameWindows optionWindows = new QuickGameWindows();
         optionWindows.setVisible(true);
         this.dispose();
-        Army a = new Army("Francia");
-        Army b = new Army("Inglaterra");
-        a.generateArmy(b);
-        b.generateArmy(a);
-        Tablero tab = new Tablero(a, b, "bosque");
-        PrincipalFrame p = new PrincipalFrame(b, a, "bosque", tab);
+        
     }//GEN-LAST:event_dirigirTableroActionPerformed
 
+    private void generarEjercitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarEjercitosActionPerformed
+        // TODO add your handling code here:
+        if (terreno1.equals("") || terreno1.equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Seleccione la arena de juego!");
+            return;
+        }
+        
+        if (reino1.equals("") || reino2.equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Seleccione un reino!");
+            return;
+        }
+        rojo = new Army(reino1);
+        azul = new Army(reino2);
+        rojo.generateArmy(azul);
+        azul.generateArmy(rojo);
+        
+        opcion = aleatorio.nextInt(2);
+        azul.showArmy();
+        rojo.showArmy();
+        generarEjercitos.setEnabled(false);
+        System.out.println(azul.getName( ));
+        System.out.println(rojo.getName( ));
+       
+    }//GEN-LAST:event_generarEjercitosActionPerformed
+
+    private void reinos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reinos1MouseClicked
+        // TODO add your handling code here:
+        reino1 = reinos1.getSelectedValue();
+    }//GEN-LAST:event_reinos1MouseClicked
+
+    private void arenas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arenas1MouseClicked
+        // TODO add your handling code here:
+        terreno1 = arenas1.getSelectedValue();
+        System.out.println(terreno1);
+    }//GEN-LAST:event_arenas1MouseClicked
+
+    private void reinos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reinos2MouseClicked
+        // TODO add your handling code here:
+        reino2 = reinos2.getSelectedValue();
+    }//GEN-LAST:event_reinos2MouseClicked
+
+    private void arenas2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arenas2MouseClicked
+        // TODO add your handling code here:
+        terreno2 = arenas2.getSelectedValue();
+    }//GEN-LAST:event_arenas2MouseClicked
+    
     /**
      * @param args the command line arguments
      */
@@ -286,22 +393,24 @@ public class QuickGameWindows extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> arenas1;
+    private javax.swing.JList<String> arenas2;
     private javax.swing.JButton dirigirTablero;
+    private javax.swing.JButton generarEjercitos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
-    private javax.swing.JList<String> jList4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JList<String> reinos1;
+    private javax.swing.JList<String> reinos2;
     // End of variables declaration//GEN-END:variables
 }
