@@ -73,7 +73,7 @@ public class PrincipalFrame extends JFrame {
         JMenu archivoMenu = new JMenu("Archivo");
 
         // Se agrega guardar
-        ImageIcon iconoGuardar = new ImageIcon("img/save.png");
+        ImageIcon iconoGuardar = new ImageIcon(getClass().getResource("/img/save.png"));
         JMenuItem guardarItem = new JMenuItem("Guardar", iconoGuardar);
         guardarItem.addActionListener(new ActionListener() {
             @Override
@@ -91,7 +91,7 @@ public class PrincipalFrame extends JFrame {
         archivoMenu.add(guardarItem);
         
         //Opcion para ir a home
-        ImageIcon iconoHome = new ImageIcon("img/home.png");
+        ImageIcon iconoHome = new ImageIcon(getClass().getResource("/img/home.png"));;
         JMenuItem homeItem = new JMenuItem("Ir al menú principal", iconoHome);
         homeItem.addActionListener(new ActionListener() {
             @Override
@@ -103,7 +103,7 @@ public class PrincipalFrame extends JFrame {
         });
         archivoMenu.add(homeItem);
         
-        ImageIcon iconoSalir = new ImageIcon("img/quit.png");
+        ImageIcon iconoSalir = new ImageIcon(getClass().getResource("/img/quit.png"));
         JMenuItem salirItem = new JMenuItem("Salir", iconoSalir);
         salirItem.addActionListener(new ActionListener() {
             @Override

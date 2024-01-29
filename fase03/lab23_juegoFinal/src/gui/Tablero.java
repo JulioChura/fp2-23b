@@ -150,7 +150,7 @@ public class Tablero extends JPanel {
             solIcon = "espadachin";
         }
 
-        icon = new ImageIcon("img/" + solIcon + ".png");
+        icon = new ImageIcon(getClass().getResource("/img/"+solIcon+".png"));
         Image editedIcon = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         ImageIcon resizedEspadachinIcon = new ImageIcon(editedIcon);
         return resizedEspadachinIcon;

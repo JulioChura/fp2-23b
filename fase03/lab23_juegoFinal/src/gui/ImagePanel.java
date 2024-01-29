@@ -7,7 +7,7 @@ public class ImagePanel extends JPanel {
 
     public ImagePanel(String field) {
         
-        ImageIcon imageIcon = new ImageIcon("img/campos/" + field.toLowerCase() + ".jpg");
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/img/"+field.toLowerCase()+".jpg"));
         System.out.println("Arena: "+ imageIcon.getDescription());
         // Obtener la imagen del ImageIcon
         Image imagenOriginal = imageIcon.getImage();
