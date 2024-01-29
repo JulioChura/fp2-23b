@@ -330,13 +330,13 @@ public class Army {
         }
     }
 
-    public static boolean winnerDefinitive(Army e1, Army e2) {
+    public static boolean winnerDefinitive(Army e2, Army e1) {
         if (e2.converterToArrayUni().size() == 0) {
-            JOptionPane.showMessageDialog(null, "Ganó " + e2.getName());
+            JOptionPane.showMessageDialog(null, "Ganó " + e1.getName());
             return false;
         }
         if (e1.converterToArrayUni().size() == 0) {
-            JOptionPane.showMessageDialog(null, "Ganó " + e1.getName());
+            JOptionPane.showMessageDialog(null, "Ganó " + e2.getName());
             return false;
         }
         return true;

@@ -18,7 +18,7 @@ public class Jugar {
     protected Player playerRed;
     protected Player playerBlue;
 
-    public Jugar(Tablero tab, Army red, Army blue, String arena, Player playerRed, Player playerBlue) {
+    public Jugar(Tablero tab, Army blue, Army red, String arena, Player playerRed, Player playerBlue) {
         this.tablero = tab;
         this.red = red;
         this.blue = blue;
@@ -40,10 +40,10 @@ public class Jugar {
                     Conectar conectar = Conectar.obtenerInstancia(); 
                     if (blue.converterToArrayUni() == null) {
                         conectar.registrarVictoria(playerRed.getNombre(), playerRed.getPassword());
-                        JOptionPane.showMessageDialog(principal, "Se registró la victoria");
+                        JOptionPane.showMessageDialog(principal, "Se registró la victoria "+ playerRed.getNombre());
                     } else {
                         conectar.registrarVictoria(playerBlue.getNombre(), playerBlue.getPassword());
-                        JOptionPane.showMessageDialog(principal, "Se registró la victoria");
+                        JOptionPane.showMessageDialog(principal, "Se registró la victoria de "+ playerBlue.getNombre());
                     }
                 }
                 
@@ -91,7 +91,7 @@ public class Jugar {
             }
             SwingUtilities.invokeLater(() -> pane.repintarTablero()); // Actualiza el GUI en el EDT
             turno++;
-        } while (Army.winnerDefinitive(e1, e2));
+        } while (Army.winnerDefinitive(e2, e1));
 
     }
 }
