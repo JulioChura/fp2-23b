@@ -1,6 +1,6 @@
 package gui;
 
-import logica.Aplicacion;
+import persistencia.Conectar;
 
 /**
  *
@@ -11,7 +11,7 @@ public class HomeGame extends javax.swing.JFrame {
     /**
      * Creates new form HomeGame
      */
-    
+    Conectar conectar;
     public HomeGame() {
         initComponents();
     }
@@ -170,6 +170,8 @@ public class HomeGame extends javax.swing.JFrame {
 
     private void personalizeGame2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalizeGame2ActionPerformed
         // TODO add your handling code here:
+        conectar = Conectar.obtenerInstancia();
+        conectar.mostrarTablaJugadores();
     }//GEN-LAST:event_personalizeGame2ActionPerformed
 
     private void personalizeGame3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalizeGame3ActionPerformed
