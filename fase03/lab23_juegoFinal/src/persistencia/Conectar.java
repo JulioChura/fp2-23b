@@ -1,10 +1,15 @@
 package persistencia;
 
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Conectar {
 
@@ -238,6 +243,45 @@ public class Conectar {
             }
         }
     }
+    
+    public void mostrarTablaJugadores() {
+        try {
+            String consultaSQL = "SELECT Nombre, Victorias FROM jugadores";
+            PreparedStatement preparedStatement = sqlConexion.prepareStatement(consultaSQL);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            DefaultTableModel tableModel = new DefaultTableModel();
+            tableModel.addColumn("Jugador");
+            tableModel.addColumn("Partidas Ganadas");
+
+            //Se llena la tabla con los resultados de la consulta
+            while (resultSet.next()) {
+                String jugador = resultSet.getString("Nombre");
+                int victorias = resultSet.getInt("Victorias");
+                Object[] rowData = {jugador, victorias};
+                tableModel.addRow(rowData);
+            }
+
+            // Crear la tabla y configurar el modelo
+            JTable table = new JTable(tableModel);
+
+            // Añadir la tabla a un JScrollPane para permitir desplazarse por los resultados
+            JScrollPane scrollPane = new JScrollPane(table);
+
+            // Crear un JFrame para mostrar la tabla
+            JFrame frame = new JFrame("Tabla de Jugadores");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+            frame.setSize(400, 300);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+     
 
     private void cerrarConexion() {
         try {
