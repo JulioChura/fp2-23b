@@ -306,7 +306,8 @@ public class QuickGameWindows extends javax.swing.JFrame {
             return;
         }
         QuickGameWindows optionWindows = new QuickGameWindows();
-        optionWindows.setVisible(true);
+        Tablero tab = new Tablero(rojo, rojo, arenaFija);
+        tab.setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_dirigirTableroActionPerformed

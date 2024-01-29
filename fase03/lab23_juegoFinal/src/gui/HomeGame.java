@@ -1,5 +1,7 @@
 package gui;
 
+import logica.Aplicacion;
+
 /**
  *
  * @author USUARIO
@@ -23,7 +25,7 @@ public class HomeGame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        quickGame = new javax.swing.JButton();
+        partidaRapida = new javax.swing.JButton();
         personalizeGame = new javax.swing.JButton();
         registar = new javax.swing.JButton();
         personalizeGame2 = new javax.swing.JButton();
@@ -35,14 +37,14 @@ public class HomeGame extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        quickGame.setBackground(new java.awt.Color(200, 150, 41));
-        quickGame.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        quickGame.setForeground(new java.awt.Color(0, 0, 0));
-        quickGame.setText("Partida Rápida");
-        quickGame.setBorder(new javax.swing.border.MatteBorder(null));
-        quickGame.addActionListener(new java.awt.event.ActionListener() {
+        partidaRapida.setBackground(new java.awt.Color(200, 150, 41));
+        partidaRapida.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        partidaRapida.setForeground(new java.awt.Color(0, 0, 0));
+        partidaRapida.setText("Partida Rápida");
+        partidaRapida.setBorder(new javax.swing.border.MatteBorder(null));
+        partidaRapida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quickGameActionPerformed(evt);
+                partidaRapidaActionPerformed(evt);
             }
         });
 
@@ -99,7 +101,7 @@ public class HomeGame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(quickGame, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(partidaRapida, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(personalizeGame, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(personalizeGame2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(registar, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,7 +114,7 @@ public class HomeGame extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(93, 93, 93)
-                .addComponent(quickGame, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(partidaRapida, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(personalizeGame, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
@@ -144,9 +146,13 @@ public class HomeGame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void quickGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quickGameActionPerformed
+    private void partidaRapidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partidaRapidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_quickGameActionPerformed
+        QuickGameWindows quick = new QuickGameWindows();
+        quick.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_partidaRapidaActionPerformed
 
     private void personalizeGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalizeGameActionPerformed
         PersonalizeGame juegoPersonalizado = new PersonalizeGame();
@@ -202,15 +208,18 @@ public class HomeGame extends javax.swing.JFrame {
                 new HomeGame().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton partidaRapida;
     private javax.swing.JButton personalizeGame;
     private javax.swing.JButton personalizeGame2;
     private javax.swing.JButton personalizeGame3;
-    private javax.swing.JButton quickGame;
     private javax.swing.JButton registar;
     // End of variables declaration//GEN-END:variables
+    
 }

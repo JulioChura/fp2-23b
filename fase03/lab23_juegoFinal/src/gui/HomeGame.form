@@ -55,7 +55,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="126" pref="126" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="quickGame" min="-2" pref="263" max="-2" attributes="0"/>
+                      <Component id="partidaRapida" min="-2" pref="263" max="-2" attributes="0"/>
                       <Component id="personalizeGame" min="-2" pref="263" max="-2" attributes="0"/>
                       <Component id="personalizeGame2" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
                       <Component id="registar" min="-2" pref="263" max="-2" attributes="0"/>
@@ -71,7 +71,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                  <Component id="quickGame" min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="partidaRapida" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="personalizeGame" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -90,7 +90,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="quickGame">
+        <Component class="javax.swing.JButton" name="partidaRapida">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="29" green="96" red="c8" type="rgb"/>
@@ -109,7 +109,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quickGameActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="partidaRapidaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="personalizeGame">

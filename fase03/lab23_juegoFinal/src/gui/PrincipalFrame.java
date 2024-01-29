@@ -1,8 +1,9 @@
 package gui;
 
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import logica.Army;
 
 public class PrincipalFrame extends JFrame {
@@ -14,6 +15,7 @@ public class PrincipalFrame extends JFrame {
     private Tablero panelGame;
 
     private JPanel panel;
+
     private ImagePanel panelImg;
 
     private Army armyBlue;
@@ -22,13 +24,6 @@ public class PrincipalFrame extends JFrame {
     private Tablero tablero;
 
     private JPanel panelData;
-
-    /*
-     * En el constructor se pudo solo obtener solo el tablero y desde el constructor
-     * extraer
-     * los ejercitos, pero se aprovechara los objetos que fueron creados en la clase
-     * Aplicacion.java
-     */
 
     public PrincipalFrame(Army armyBlue, Army armyRed, String field, Tablero tablero) {
         this.armyBlue = armyBlue;
@@ -41,15 +36,12 @@ public class PrincipalFrame extends JFrame {
         setSize(HEIGHT, WIDTH);
         setTitle(name2 + " (Azul) vs " + name1 + " (Rojo)" + ": Combate en: " + field);
         initFrame();
-
     }
 
-    // Inicia los componentes del JFrame
     public void initFrame() {
         setLayout(new GridLayout(1, 3, -43, 4));
 
         panelBlue = new InformationFrame(armyBlue);
-
         panelRed = new InformationFrame(armyRed);
 
         panel = new JPanel();
@@ -66,10 +58,43 @@ public class PrincipalFrame extends JFrame {
         add(tablero);
         add(panel);
 
+        // Crear barra de menú
+        JMenuBar menuBar = new JMenuBar();
+
+        // Crear menú "Archivo"
+        JMenu archivoMenu = new JMenu("Archivo");
+
+        // Agregar opción "Guardar"
+        JMenuItem guardarItem = new JMenuItem("Guardar");
+        guardarItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para guardar
+                System.out.println("Guardar");
+            }
+        });
+        archivoMenu.add(guardarItem);
+
+        // Agregar opción "Salir"
+        JMenuItem salirItem = new JMenuItem("Salir");
+        salirItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para salir
+                System.exit(0);
+            }
+        });
+        archivoMenu.add(salirItem);
+
+        // Agregar menú "Archivo" a la barra de menú
+        menuBar.add(archivoMenu);
+
+        // Establecer la barra de menú en el JFrame
+        setJMenuBar(menuBar);
+
         setVisible(true);
     }
 
-    // Repinta el tablero en cada turno
     public void repintarTablero() {
         getContentPane().removeAll();
         initFrame();

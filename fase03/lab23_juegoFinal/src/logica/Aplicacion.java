@@ -4,6 +4,7 @@ package logica;
 // Autor: Julio
 // Tiempo: 8 horas
 // No hubo colaboradores
+import gui.HomeGame;
 import gui.PrincipalFrame;
 import gui.Tablero;
 import java.util.Random;
@@ -13,7 +14,9 @@ public class Aplicacion {
 
     public static void main(String[] args) {
         boolean exitRequested = false;
-
+        
+        HomeGame home = new HomeGame();
+        home.setVisible(true);
         do {
 
             String kingdom1 = showDialogToChooseKingdom();
