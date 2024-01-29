@@ -1,5 +1,6 @@
 package gui;
 
+import javax.swing.JOptionPane;
 import persistencia.Conectar;
 
 /**
@@ -28,10 +29,11 @@ public class HomeGame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         partidaRapida = new javax.swing.JButton();
         personalizeGame = new javax.swing.JButton();
-        registar = new javax.swing.JButton();
-        personalizeGame2 = new javax.swing.JButton();
-        personalizeGame3 = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
+        verListaJugadores = new javax.swing.JButton();
+        cargarUltimaPartida = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        registar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,40 +62,51 @@ public class HomeGame extends javax.swing.JFrame {
             }
         });
 
-        registar.setBackground(new java.awt.Color(200, 150, 41));
-        registar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        registar.setForeground(new java.awt.Color(0, 0, 0));
-        registar.setText("Registrar Retadores");
-        registar.setBorder(new javax.swing.border.MatteBorder(null));
-        registar.addActionListener(new java.awt.event.ActionListener() {
+        salir.setBackground(new java.awt.Color(200, 150, 41));
+        salir.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        salir.setForeground(new java.awt.Color(0, 0, 0));
+        salir.setText("Salir del juego");
+        salir.setBorder(new javax.swing.border.MatteBorder(null));
+        salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registarActionPerformed(evt);
+                salirActionPerformed(evt);
             }
         });
 
-        personalizeGame2.setBackground(new java.awt.Color(200, 150, 41));
-        personalizeGame2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        personalizeGame2.setForeground(new java.awt.Color(0, 0, 0));
-        personalizeGame2.setText("Ver lista de jugadores");
-        personalizeGame2.setBorder(new javax.swing.border.MatteBorder(null));
-        personalizeGame2.addActionListener(new java.awt.event.ActionListener() {
+        verListaJugadores.setBackground(new java.awt.Color(200, 150, 41));
+        verListaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        verListaJugadores.setForeground(new java.awt.Color(0, 0, 0));
+        verListaJugadores.setText("Ver lista de jugadores");
+        verListaJugadores.setBorder(new javax.swing.border.MatteBorder(null));
+        verListaJugadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                personalizeGame2ActionPerformed(evt);
+                verListaJugadoresActionPerformed(evt);
             }
         });
 
-        personalizeGame3.setBackground(new java.awt.Color(200, 150, 41));
-        personalizeGame3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        personalizeGame3.setForeground(new java.awt.Color(0, 0, 0));
-        personalizeGame3.setText("Cargar última partida");
-        personalizeGame3.setBorder(new javax.swing.border.MatteBorder(null));
-        personalizeGame3.addActionListener(new java.awt.event.ActionListener() {
+        cargarUltimaPartida.setBackground(new java.awt.Color(200, 150, 41));
+        cargarUltimaPartida.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        cargarUltimaPartida.setForeground(new java.awt.Color(0, 0, 0));
+        cargarUltimaPartida.setText("Cargar última partida");
+        cargarUltimaPartida.setBorder(new javax.swing.border.MatteBorder(null));
+        cargarUltimaPartida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                personalizeGame3ActionPerformed(evt);
+                cargarUltimaPartidaActionPerformed(evt);
             }
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thane.jpg"))); // NOI18N
+
+        registar1.setBackground(new java.awt.Color(200, 150, 41));
+        registar1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        registar1.setForeground(new java.awt.Color(0, 0, 0));
+        registar1.setText("Registrar Retadores");
+        registar1.setBorder(new javax.swing.border.MatteBorder(null));
+        registar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -104,9 +117,10 @@ public class HomeGame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(partidaRapida, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(personalizeGame, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(personalizeGame2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(registar, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(personalizeGame3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(verListaJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cargarUltimaPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(registar1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -114,20 +128,22 @@ public class HomeGame extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(partidaRapida, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
+                .addComponent(partidaRapida, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(personalizeGame, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(personalizeGame3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(registar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(personalizeGame2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(cargarUltimaPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(registar1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(verListaJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,22 +177,28 @@ public class HomeGame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_personalizeGameActionPerformed
 
-    private void registarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registarActionPerformed
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
+
+    private void verListaJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verListaJugadoresActionPerformed
+        // TODO add your handling code here:
+        conectar = Conectar.obtenerInstancia();
+        conectar.mostrarTablaJugadores();
+    }//GEN-LAST:event_verListaJugadoresActionPerformed
+
+    private void cargarUltimaPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarUltimaPartidaActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Función no agregada!");
+    }//GEN-LAST:event_cargarUltimaPartidaActionPerformed
+
+    private void registar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registar1ActionPerformed
         // TODO add your handling code here:
         Login login = new Login();
         login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_registarActionPerformed
-
-    private void personalizeGame2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalizeGame2ActionPerformed
-        // TODO add your handling code here:
-        conectar = Conectar.obtenerInstancia();
-        conectar.mostrarTablaJugadores();
-    }//GEN-LAST:event_personalizeGame2ActionPerformed
-
-    private void personalizeGame3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalizeGame3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_personalizeGame3ActionPerformed
+    }//GEN-LAST:event_registar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,13 +238,14 @@ public class HomeGame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cargarUltimaPartida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton partidaRapida;
     private javax.swing.JButton personalizeGame;
-    private javax.swing.JButton personalizeGame2;
-    private javax.swing.JButton personalizeGame3;
-    private javax.swing.JButton registar;
+    private javax.swing.JButton registar1;
+    private javax.swing.JButton salir;
+    private javax.swing.JButton verListaJugadores;
     // End of variables declaration//GEN-END:variables
     
 }

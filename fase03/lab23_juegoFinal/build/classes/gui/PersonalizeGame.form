@@ -186,6 +186,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Limpiar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limpiar1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="entrar1">
               <Properties>
@@ -302,6 +305,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Limpiar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limpiar2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="entrar2">
               <Properties>

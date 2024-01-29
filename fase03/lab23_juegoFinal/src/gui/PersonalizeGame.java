@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.JOptionPane;
-import logica.ConjuntoJugadores;
 import logica.Player;
 import persistencia.Conectar;
 
@@ -88,6 +87,11 @@ public class PersonalizeGame extends javax.swing.JFrame {
         limpiar1.setBackground(new java.awt.Color(204, 0, 0));
         limpiar1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         limpiar1.setText("Limpiar");
+        limpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiar1ActionPerformed(evt);
+            }
+        });
 
         entrar1.setBackground(new java.awt.Color(204, 0, 0));
         entrar1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -153,6 +157,11 @@ public class PersonalizeGame extends javax.swing.JFrame {
         limpiar2.setBackground(new java.awt.Color(204, 0, 0));
         limpiar2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         limpiar2.setText("Limpiar");
+        limpiar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiar2ActionPerformed(evt);
+            }
+        });
 
         entrar2.setBackground(new java.awt.Color(204, 0, 0));
         entrar2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -284,7 +293,6 @@ public class PersonalizeGame extends javax.swing.JFrame {
         if (estado1.getText().equals("Se encontró jugador") && estado2.getText().equals("Se encontró jugador")) {
             QuickGameWindows optionWindows = new QuickGameWindows(player1, player2);
             optionWindows.setVisible(true);
-            ConjuntoJugadores jugadores = new ConjuntoJugadores(player1, player2);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Complete los formularios!");
@@ -331,6 +339,18 @@ public class PersonalizeGame extends javax.swing.JFrame {
             estado2.setText(estado);
         }
     }//GEN-LAST:event_entrar2ActionPerformed
+
+    private void limpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiar1ActionPerformed
+        // TODO add your handling code here:
+        nombre1.setText("");
+        contraseña1.setText("");
+    }//GEN-LAST:event_limpiar1ActionPerformed
+
+    private void limpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiar2ActionPerformed
+        // TODO add your handling code here:
+        nombre2.setText("");
+        contraseña2.setText("");
+    }//GEN-LAST:event_limpiar2ActionPerformed
 
     /**
      * @param args the command line arguments

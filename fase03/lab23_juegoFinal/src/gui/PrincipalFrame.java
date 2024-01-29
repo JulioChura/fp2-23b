@@ -45,7 +45,7 @@ public class PrincipalFrame extends JFrame {
 
     public void initFrame() {
         setLayout(new GridLayout(1, 3, -43, 4));
-
+        
         panelBlue = new InformationFrame(armyBlue);
         panelRed = new InformationFrame(armyRed);
 
@@ -55,7 +55,7 @@ public class PrincipalFrame extends JFrame {
         panelData.setLayout(new GridLayout(1, 2));
         panelImg = new ImagePanel(field);
         
-        System.out.println(field);
+        //System.out.println(field);
         
         panelData.add(panelBlue);
         panelData.add(panelRed);
@@ -66,14 +66,15 @@ public class PrincipalFrame extends JFrame {
         add(tablero);
         add(panel);
 
-        // Crear barra de menú
+        // Se crea una barra de menu
         JMenuBar menuBar = new JMenuBar();
 
-        // Crear menú "Archivo"
+        // Crea un  menú llamado "Archivo"
         JMenu archivoMenu = new JMenu("Archivo");
 
-        // Agregar opción "Guardar"
-        JMenuItem guardarItem = new JMenuItem("Guardar");
+        // Se agrega guardar
+        ImageIcon iconoGuardar = new ImageIcon("img/save.png");
+        JMenuItem guardarItem = new JMenuItem("Guardar", iconoGuardar);
         guardarItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,26 +85,40 @@ public class PrincipalFrame extends JFrame {
                 } else {
                     //Deberia implementarse la funcion de poder guardar el estado actual, pero por falta de tiempo se omite                    
                 }
-                System.out.println("Guardar");
+                //System.out.println("Guardar");
             }
         });
         archivoMenu.add(guardarItem);
-
-        // Agregar opción "Salir"
-        JMenuItem salirItem = new JMenuItem("Salir");
+        
+        //Opcion para ir a home
+        ImageIcon iconoHome = new ImageIcon("img/home.png");
+        JMenuItem homeItem = new JMenuItem("Ir al menú principal", iconoHome);
+        homeItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                HomeGame home = new HomeGame();
+                home.setVisible(true);
+                dispose();
+            }
+        });
+        archivoMenu.add(homeItem);
+        
+        ImageIcon iconoSalir = new ImageIcon("img/quit.png");
+        JMenuItem salirItem = new JMenuItem("Salir", iconoSalir);
         salirItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Lógica para salir
                 System.exit(0);
             }
         });
         archivoMenu.add(salirItem);
+        
+        
 
-        // Agregar menú "Archivo" a la barra de menú
+        // Se agrega el menu "Archico" a la barra de menu
         menuBar.add(archivoMenu);
 
-        // Establecer la barra de menú en el JFrame
+        // Permite visualizar la barra
         setJMenuBar(menuBar);
 
         setVisible(true);

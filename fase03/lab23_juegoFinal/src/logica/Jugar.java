@@ -28,6 +28,8 @@ public class Jugar {
     }
 
     public void game() {
+        
+        //Para evitar el congelamiento del programa se haec uso de hilos
         SwingWorker<Void, Void> gameWorker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {

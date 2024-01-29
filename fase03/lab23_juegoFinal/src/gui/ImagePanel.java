@@ -6,6 +6,7 @@ import java.awt.*;
 public class ImagePanel extends JPanel {
 
     public ImagePanel(String field) {
+        
         ImageIcon imageIcon = new ImageIcon("img/campos/" + field.toLowerCase() + ".jpg");
         System.out.println("Arena: "+ imageIcon.getDescription());
         // Obtener la imagen del ImageIcon

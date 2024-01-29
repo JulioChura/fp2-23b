@@ -187,7 +187,8 @@ public class Login extends javax.swing.JFrame {
         password = textRegistrarPassword.getText();
         conectar = Conectar.obtenerInstancia();
         mostrarEstadoRegistro.setText(conectar.registrar(nombre, password));
-        
+        textRegistrarNombre.setText("");
+        textRegistrarPassword.setText("");
     }//GEN-LAST:event_registrarActionPerformed
 
     /**

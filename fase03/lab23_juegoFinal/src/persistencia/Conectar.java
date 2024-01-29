@@ -6,7 +6,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -28,6 +30,7 @@ public class Conectar {
             Class.forName(driver);
             sqlConexion = DriverManager.getConnection(dbURL, usuario, pass);
         } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "La conexion no se pudo establecer");
             e.printStackTrace();
         }
     }
@@ -223,7 +226,6 @@ public class Conectar {
                 prepare.setString(3, contraseña);
                 prepare.executeUpdate();
             } else {
-                // No hay resultados, podrías lanzar un mensaje o hacer algo en consecuencia
                 System.out.println("No hay resultados para la consulta.");
             }
 
@@ -245,6 +247,7 @@ public class Conectar {
     }
     
     public void mostrarTablaJugadores() {
+              
         try {
             String consultaSQL = "SELECT Nombre, Victorias FROM jugadores";
             PreparedStatement preparedStatement = sqlConexion.prepareStatement(consultaSQL);
