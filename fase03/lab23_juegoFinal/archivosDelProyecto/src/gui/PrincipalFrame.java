@@ -138,7 +138,11 @@ public class PrincipalFrame extends JFrame {
 
         setVisible(true);
     }
-
+    
+    public void savePartidaActual() {
+        
+    }
+    
     public void repintarTablero() {
         getContentPane().removeAll();
         initFrame();
@@ -146,5 +150,7 @@ public class PrincipalFrame extends JFrame {
         revalidate();
         repaint();
     }
+    
+    
     
 }

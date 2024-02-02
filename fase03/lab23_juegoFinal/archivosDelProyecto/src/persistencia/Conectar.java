@@ -19,9 +19,9 @@ public class Conectar {
     private Connection sqlConexion;
     private String host = "localhost";
     private String port = "3306";
-    private String nameDB = "juego";
-    private String usuario = "root";
-    private String pass = "";
+    private String nameDB = "fp2_23b";
+    private String usuario = "fp2_23b";
+    private String pass = "12345678";
     private String driver = "com.mysql.cj.jdbc.Driver";
     private String dbURL = "jdbc:mysql://" + host + ":" + port + "/" + nameDB + "?useSSL=false";
 
@@ -50,7 +50,7 @@ public class Conectar {
 
         try {
             // Verificar si el jugador ya existe
-            prepareConsulta = sqlConexion.prepareStatement("SELECT * FROM jugadores WHERE Nombre=?");
+            prepareConsulta = sqlConexion.prepareStatement("SELECT * FROM jugadores WHERE id_jugador=?");
             prepareConsulta.setString(1, nombre);
             result = prepareConsulta.executeQuery();
 
@@ -59,44 +59,12 @@ public class Conectar {
                 PreparedStatement prepareInsercionJugador = null;
                 try {
                     // Insertar en la tabla 'jugadores'
-                    prepareInsercionJugador = sqlConexion.prepareStatement("INSERT INTO jugadores(Nombre, Contraseña) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+                    prepareInsercionJugador = sqlConexion.prepareStatement("INSERT INTO jugadores(id_jugador, password) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
                     prepareInsercionJugador.setString(1, nombre);
                     prepareInsercionJugador.setString(2, password);
                     int filasAfectadasJugador = prepareInsercionJugador.executeUpdate();
 
-                    // Obtener el ID del jugador recién insertado
-                    ResultSet generatedKeysJugador = prepareInsercionJugador.getGeneratedKeys();
-                    int jugadorID = -1;
-                    if (generatedKeysJugador.next()) {
-                        jugadorID = generatedKeysJugador.getInt(1);
-                    }
-
-                    if (filasAfectadasJugador > 0) {
-                        // Insertar en la tabla 'partidas'
-                        PreparedStatement prepareInsercionPartida = sqlConexion.prepareStatement("INSERT INTO partidas(Jugador_Nombre) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
-                        prepareInsercionPartida.setString(1, nombre);
-                        int filasAfectadasPartida = prepareInsercionPartida.executeUpdate();
-
-                        // Obtener el ID de la última partida insertada
-                        ResultSet generatedKeysPartida = prepareInsercionPartida.getGeneratedKeys();
-                        int partidaID = -1;
-                        if (generatedKeysPartida.next()) {
-                            partidaID = generatedKeysPartida.getInt(1);
-                        }
-
-                        if (filasAfectadasPartida > 0) {
-                            // Insertar en la tabla 'ejercitos'
-                            PreparedStatement prepareInsercionEjercito = sqlConexion.prepareStatement("INSERT INTO ejercitos(Partida_ID) VALUES (?)");
-                            prepareInsercionEjercito.setInt(1, partidaID);
-                            prepareInsercionEjercito.executeUpdate();
-                        } else {
-                            // Manejar error en la inserción en 'partidas'
-                            mensaje = "Error al insertar en la tabla 'partidas'";
-                        }
-                    } else {
-                        // Manejar error en la inserción en 'jugadores'
-                        mensaje = "Error al insertar en la tabla 'jugadores'";
-                    }
+                    
                     mensaje = "Se registró satisfactoriamente";
                 } finally {
                     // Cerrar recursos de la inserción del jugador
@@ -132,7 +100,7 @@ public class Conectar {
         ResultSet result = null;
         String mensaje = "";
         try {
-            prepare = sqlConexion.prepareStatement("SELECT * FROM jugadores WHERE Nombre=? AND Contraseña=?");
+            prepare = sqlConexion.prepareStatement("SELECT * FROM jugadores WHERE id_jugador=? AND password=?");
             prepare.setString(1, nombre);
             prepare.setString(2, contraseña);
             result = prepare.executeQuery();
@@ -170,8 +138,8 @@ public class Conectar {
         ResultSet result = null;
         int victorias = 0;
         try {
-            prepare = sqlConexion.prepareStatement("SELECT Victorias FROM jugadores "
-                    + "WHERE Nombre=? AND Contraseña=?");
+            prepare = sqlConexion.prepareStatement("SELECT racha_victorias FROM jugadores "
+                    + "WHERE id_jugador=? AND password=?");
             prepare.setString(1, nombre);
             prepare.setString(2, contraseña);
             result = prepare.executeQuery();
@@ -208,8 +176,8 @@ public class Conectar {
 
         try {
             // Obtener el número actual de victorias
-            prepare = sqlConexion.prepareStatement("SELECT Victorias FROM jugadores "
-                    + "WHERE Nombre=? AND Contraseña=?");
+            prepare = sqlConexion.prepareStatement("SELECT racha_victorias FROM jugadores "
+                    + "WHERE id_jugador=? AND password=?");
             prepare.setString(1, nombre);
             prepare.setString(2, contraseña);
             result = prepare.executeQuery();
@@ -219,8 +187,8 @@ public class Conectar {
                 victorias++;
 
                 // Actualizar el número de victorias en la base de datos
-                prepare = sqlConexion.prepareStatement("UPDATE jugadores SET Victorias=? "
-                        + "WHERE Nombre=? AND Contraseña=?");
+                prepare = sqlConexion.prepareStatement("UPDATE jugadores SET racha_victorias=? "
+                        + "WHERE id_jugador=? AND password=?");
                 prepare.setInt(1, victorias);
                 prepare.setString(2, nombre);
                 prepare.setString(3, contraseña);
@@ -249,7 +217,7 @@ public class Conectar {
     public void mostrarTablaJugadores() {
               
         try {
-            String consultaSQL = "SELECT Nombre, Victorias FROM jugadores";
+            String consultaSQL = "SELECT id_jugador, racha_victorias FROM jugadores";
             PreparedStatement preparedStatement = sqlConexion.prepareStatement(consultaSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -295,5 +263,9 @@ public class Conectar {
             e.printStackTrace();
         }
     }
-
+    
+    
+    public void guardarPartida() {
+        
+    }
 }
