@@ -232,10 +232,10 @@ public class HomeGame extends javax.swing.JFrame {
             public void run() {
                 new HomeGame().setVisible(true);
             }
-        });
-        
-        
+        });   
     }
+    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cargarUltimaPartida;

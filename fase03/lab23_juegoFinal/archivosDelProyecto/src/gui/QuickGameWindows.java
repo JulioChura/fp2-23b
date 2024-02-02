@@ -4,13 +4,13 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import logica.Army;
 import logica.Jugar;
+import logica.Partida;
 import logica.Player;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author USUARIO
@@ -20,30 +20,34 @@ public class QuickGameWindows extends javax.swing.JFrame {
     /**
      * Creates new form QuickGameWindows
      */
-    
     protected String reino1 = "";
     protected String terreno1 = "";
-    
+
     protected String reino2 = "";
     protected String terreno2 = "";
-    
+
     protected Army rojo;
     protected Army azul;
 
     protected String arenaFija;
-    
+
     protected Random aleatorio = new Random();
     protected int opcion;
-    
+
     protected Player playerRed;
     protected Player playerBlue;
     
-    public QuickGameWindows(Player player1, Player player2) {
-        playerRed = player1;
-        playerBlue = player2;
+    protected Partida partida;
+    
+    protected Jugar jugar;
+
+    public QuickGameWindows(Player playerRed, Player playerBlue) {
+        playerRed = playerRed;
+        playerBlue = playerBlue;
+
         initComponents();
     }
-    
+
     public QuickGameWindows() {
         initComponents();
     }
@@ -311,20 +315,22 @@ public class QuickGameWindows extends javax.swing.JFrame {
 
     private void dirigirTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dirigirTableroActionPerformed
         // TODO add your handling code here:
-        
-        if (generarEjercitos.isEnabled()){
+
+        if (generarEjercitos.isEnabled()) {
             JOptionPane.showMessageDialog(rootPane, "Genere los ejércitos!");
             return;
         }
         this.dispose();
         Tablero tab = new Tablero(rojo, azul, arenaFija);
         
-        Jugar jugar = new Jugar( tab, rojo, azul, arenaFija, playerRed, playerBlue);
-        
+        if (playerRed == null || playerBlue == null){
+            jugar = new Jugar(tab, rojo, azul, arenaFija, playerRed, playerBlue);
+        } else {
+            jugar = new Jugar(partida);
+        }
         jugar.game();
-        
-        
     }//GEN-LAST:event_dirigirTableroActionPerformed
+
 
     private void generarEjercitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarEjercitosActionPerformed
         // TODO add your handling code here:
@@ -332,14 +338,12 @@ public class QuickGameWindows extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Seleccione la arena de juego!");
             return;
         }
-        
+
         if (reino1.equals("") || reino2.equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Seleccione un reino!");
             return;
         }
-        
 
-        
         if (playerRed == null || playerBlue == null) {
             jugadorRed.setText(reino1);
             jugadorBlue.setText(reino2);
@@ -347,27 +351,37 @@ public class QuickGameWindows extends javax.swing.JFrame {
             jugadorRed.setText(playerRed.getNombre());
             jugadorBlue.setText(playerBlue.getNombre());
         }
-        
+
         rojo = new Army(reino1);
         azul = new Army(reino2);
         rojo.generateArmy(azul);
         azul.generateArmy(rojo);
+
         
+
         opcion = aleatorio.nextInt(2);
-        if (opcion == 0){
+        if (opcion == 0) {
             arenaFija = terreno1;
         } else {
             arenaFija = terreno2;
         }
         azul.showArmy();
         rojo.showArmy();
+        
+        if (playerBlue != null || playerRed != null) {
+            playerBlue.setArmy(rojo);
+            playerRed.setArmy(azul);
+            partida = new Partida(playerRed, playerBlue, arenaFija);
+            
+        }
+
         generarEjercitos.setEnabled(false);
-        System.out.println(azul.getName( ));
-        System.out.println(rojo.getName( ));
-       
+        System.out.println(azul.getName());
+        System.out.println(rojo.getName());
+
     }//GEN-LAST:event_generarEjercitosActionPerformed
-    
-    
+
+
     private void reinos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reinos1MouseClicked
         // TODO add your handling code here:
         reino1 = reinos1.getSelectedValue();
@@ -388,7 +402,7 @@ public class QuickGameWindows extends javax.swing.JFrame {
         // TODO add your handling code here:
         terreno2 = arenas2.getSelectedValue();
     }//GEN-LAST:event_arenas2MouseClicked
-    
+
     /**
      * @param args the command line arguments
      */
