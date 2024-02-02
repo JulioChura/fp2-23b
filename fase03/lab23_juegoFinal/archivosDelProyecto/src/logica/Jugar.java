@@ -7,7 +7,6 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
-import javax.swing.text.TabExpander;
 import persistencia.Conectar;
 
 public class Jugar {
@@ -16,34 +15,22 @@ public class Jugar {
     protected Army red;
     protected Army blue;
     protected String arena;
-
     protected Player playerRed;
     protected Player playerBlue;
 
-    protected Boolean isTherePlayers = false;
-
     public Jugar(Tablero tab, Army blue, Army red, String arena, Player playerRed, Player playerBlue) {
-
         this.tablero = tab;
         this.red = red;
         this.blue = blue;
         this.arena = arena;
         this.playerRed = playerRed;
         this.playerBlue = playerBlue;
-        this.tablero = tablero;
-    }
-
-    public Jugar(Partida partida) {
-        playerRed = partida.getPlayerRed();
-        playerBlue = partida.getPlayerBlue();
-        red = playerRed.getArmy();
-        blue = playerBlue.getArmy();
-        arena = partida.getArena();
-        tablero = new Tablero(red, blue, arena);
     }
 
     public void game() {
-
+        
+        System.out.println(playerBlue.getNombre());
+        
         //Para evitar el congelamiento del programa se haec uso de hilos
         SwingWorker<Void, Void> gameWorker = new SwingWorker<Void, Void>() {
             @Override
@@ -54,16 +41,16 @@ public class Jugar {
                 if (playerRed == null || playerBlue == null) {
                     //
                 } else {
-                    Conectar conectar = Conectar.obtenerInstancia();
+                    Conectar conectar = Conectar.obtenerInstancia(); 
                     if (blue.converterToArrayUni() == null) {
                         conectar.registrarVictoria(playerRed.getNombre(), playerRed.getPassword());
-                        JOptionPane.showMessageDialog(principal, "Se registró la victoria " + playerRed.getNombre());
+                        JOptionPane.showMessageDialog(principal, "Se registró la victoria "+ playerRed.getNombre());
                     } else {
                         conectar.registrarVictoria(playerBlue.getNombre(), playerBlue.getPassword());
-                        JOptionPane.showMessageDialog(principal, "Se registró la victoria de " + playerBlue.getNombre());
+                        JOptionPane.showMessageDialog(principal, "Se registró la victoria de "+ playerBlue.getNombre());
                     }
                 }
-
+                
                 principal.dispose();
                 HomeGame home = new HomeGame();
                 home.setVisible(true);

@@ -30,14 +30,23 @@ public class PrincipalFrame extends JFrame {
 
     private JPanel panelData;
 
-    public PrincipalFrame(Army armyBlue, Army armyRed, String field, Tablero tablero, Player playerBlue, Player playerRed) {
+    public PrincipalFrame(Army armyRed, Army armyBlue, String field, Tablero tablero, Player playerBlue, Player playerRed) {
+        
+        if (playerBlue != null || playerRed !=null) {
+            playerBlue.setArmy(armyBlue);
+            playerRed.setArmy(armyRed);
+        } 
+        
         this.armyBlue = armyBlue;
         this.armyRed = armyRed;
         this.field = field;
         this.tablero = tablero;
         String name1 = armyBlue.getName();
         String name2 = armyRed.getName();
-
+        
+        this.playerBlue = playerBlue;
+        this.playerRed = playerRed;
+        
         setSize(HEIGHT, WIDTH);
         setTitle(name2 + " (Azul) vs " + name1 + " (Rojo)" + ": Combate en: " + field);
         initFrame();
@@ -83,6 +92,12 @@ public class PrincipalFrame extends JFrame {
                     JOptionPane.showMessageDialog(rootPane, "No puede guardar porque está en modo partida"
                             + " rápida, regístrese primero!");
                 } else {
+                    // se esta haciendo un metodo
+                    System.out.println(",Mostrando datos");
+                    
+                    playerBlue.getArmy().showArmy();
+                    
+                    JOptionPane.showMessageDialog(rootPane, "Se guardó");
                     //Deberia implementarse la funcion de poder guardar el estado actual, pero por falta de tiempo se omite                    
                 }
                 //System.out.println("Guardar");

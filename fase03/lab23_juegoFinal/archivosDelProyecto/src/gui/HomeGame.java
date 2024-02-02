@@ -15,8 +15,7 @@ public class HomeGame extends javax.swing.JFrame {
     Conectar conectar;
     public HomeGame() {
         initComponents();
-    }
-
+    }                                                                                                                                                            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -232,10 +231,10 @@ public class HomeGame extends javax.swing.JFrame {
             public void run() {
                 new HomeGame().setVisible(true);
             }
-        });   
+        });
+        
+        
     }
-    
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cargarUltimaPartida;

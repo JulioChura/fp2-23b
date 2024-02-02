@@ -288,9 +288,10 @@ public class PersonalizeGame extends javax.swing.JFrame {
     }//GEN-LAST:event_volverHomeGameActionPerformed
 
     private void dirigirOpcionesParaJuegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dirigirOpcionesParaJuegarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:    
        
         if (estado1.getText().equals("Se encontró jugador") && estado2.getText().equals("Se encontró jugador")) {
+            System.out.println("\n\n\nEl nombre es:" + player1.getNombre());
             QuickGameWindows optionWindows = new QuickGameWindows(player1, player2);
             optionWindows.setVisible(true);
             this.dispose();
@@ -312,6 +313,7 @@ public class PersonalizeGame extends javax.swing.JFrame {
             estado1.setText(estado);
             victorias = conectar.victorias(nombre, password);
             player1 = new Player(nombre, password, victorias);
+            
         } else {
             estado1.setText(estado);
         }
