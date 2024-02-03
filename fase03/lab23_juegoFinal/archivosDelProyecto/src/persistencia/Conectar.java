@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import logica.Army;
+import logica.Soldier;
 
 public class Conectar {
 
@@ -64,7 +66,6 @@ public class Conectar {
                     prepareInsercionJugador.setString(2, password);
                     int filasAfectadasJugador = prepareInsercionJugador.executeUpdate();
 
-                    
                     mensaje = "Se registró satisfactoriamente";
                 } finally {
                     // Cerrar recursos de la inserción del jugador
@@ -213,9 +214,9 @@ public class Conectar {
             }
         }
     }
-    
+
     public void mostrarTablaJugadores() {
-              
+
         try {
             String consultaSQL = "SELECT id_jugador, racha_victorias FROM jugadores";
             PreparedStatement preparedStatement = sqlConexion.prepareStatement(consultaSQL);
@@ -251,8 +252,6 @@ public class Conectar {
             e.printStackTrace();
         }
     }
-    
-     
 
     private void cerrarConexion() {
         try {
@@ -263,9 +262,105 @@ public class Conectar {
             e.printStackTrace();
         }
     }
-    
-    
-    public void guardarPartida() {
-        
+
+    public void guardarPartida(String id_PlayerRed, String id_PlayerBlue, Army armyBlue, Army armyRed, int turno, String arena) {
+
+        PreparedStatement preparePartida = null;
+        PreparedStatement prepareSoldados = null;
+
+        try {
+            // Insertar en la tabla 'partidas'
+            preparePartida = sqlConexion.prepareStatement("INSERT INTO partidas(id_jugador1, id_jugador2, estado, arena) VALUES (?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            preparePartida.setString(1, id_PlayerRed);
+            preparePartida.setString(2, id_PlayerBlue);
+            preparePartida.setInt(3, 1);
+            preparePartida.setString(4, arena);
+            int filasAfectadasPartida = preparePartida.executeUpdate();
+
+            // Obtener el id_partida generado
+            ResultSet generatedKeys = preparePartida.getGeneratedKeys();
+            int idPartida = 0;
+            if (generatedKeys.next()) {
+                idPartida = generatedKeys.getInt(1);
+            }
+
+            // Insertar en la tabla 'soldados' para el armyRed
+            prepareSoldados = sqlConexion.prepareStatement("INSERT INTO soldados(id_partida, id_jugador, fila, columna, nombre,"
+                    + " tipo, ataque, defensa, vida) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            
+            insertarSoldadoes(prepareSoldados, armyRed, idPartida, id_PlayerRed);
+            insertarSoldadoes(prepareSoldados, armyBlue, idPartida, id_PlayerBlue);
+            
+            
+            // Cerrar recursos
+            if (preparePartida != null) {
+                preparePartida.close();
+            }
+            if (prepareSoldados != null) {
+                prepareSoldados.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
+
+    public void insertarSoldadoes(PreparedStatement prepare, Army army, int idPartida, String id_Player) throws SQLException {
+        int fila;
+        int columna;
+        int vida;
+        String nombre;
+        String tipo;
+        int opcion;
+        int ataque;
+        int defensa;
+        //"INSERT INTO soldados(id_partida, id_jugador, fila, otra_columna) VALUES (?, ?, ?, ?)");
+        for (Soldier sol : army.converterToArrayUni()) {
+            
+            
+            fila = sol.getRow();
+            columna = sol.getColumn();
+            nombre = sol.getName();
+            opcion = Army.typeSoldier( sol);
+            ataque = sol.getAttackLevel();
+            defensa = sol.getDefenseLevel();
+            vida = sol.getActualLife();
+            
+            if (opcion == 0) {
+                tipo = "Arquero";
+            } else if (opcion == 1) {
+                tipo = "Caballero";
+            } else if (opcion == 2) {
+                tipo = "Spearman";
+            } else if (opcion == 3) {
+                tipo = "Espadachin";
+            } else if (opcion == 4) {
+                tipo = "EspadachinConquistador";
+            } else if (opcion == 5) {
+                tipo = "CaballeroFranco";
+            } else if (opcion ==6) {
+                tipo = "EspadachinGermano";
+            } else if (opcion == 7) {
+                tipo = "EspadachinMoro";
+            } else {
+                tipo = "EspadachinReal";
+            }
+            
+            
+            prepare.setInt(1, idPartida);
+            prepare.setString(2, id_Player);
+            prepare.setInt(3, fila);
+            prepare.setInt(4, columna);
+            prepare.setString(5, nombre);
+            prepare.setString(6, tipo);
+            prepare.setInt(7, ataque);
+            prepare.setInt(8, defensa);
+            prepare.setInt(9, vida);
+            
+            prepare.executeUpdate();
+            prepare.clearParameters();
+        }
+    }
+
 }

@@ -38,6 +38,10 @@ public class QuickGameWindows extends javax.swing.JFrame {
     protected Player playerRed;
     protected Player playerBlue;
     
+  
+    
+    
+    
     public QuickGameWindows(Player player1, Player player2) {
         playerRed = player1;
         playerBlue = player2;

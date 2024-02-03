@@ -7,8 +7,10 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import logica.Army;
 import logica.Player;
+import persistencia.Conectar;
 
 public class PrincipalFrame extends JFrame {
+
     private static int HEIGHT = 1500;
     private static int WIDTH = 900;
 
@@ -24,29 +26,41 @@ public class PrincipalFrame extends JFrame {
     private Army armyRed;
     private String field;
     private Tablero tablero;
-    
+
     private Player playerBlue;
     private Player playerRed;
 
     private JPanel panelData;
 
+    
+    private Conectar conectar;
+    
+    
+    protected String passwordBlue;
+    protected String nameBlue;
+
+    protected String passwordRed;
+    protected String nameRed;
+    
+    
+
     public PrincipalFrame(Army armyRed, Army armyBlue, String field, Tablero tablero, Player playerBlue, Player playerRed) {
-        
-        if (playerBlue != null || playerRed !=null) {
+
+        if (playerBlue != null || playerRed != null) {
             playerBlue.setArmy(armyBlue);
             playerRed.setArmy(armyRed);
-        } 
-        
+        }
+
         this.armyBlue = armyBlue;
         this.armyRed = armyRed;
         this.field = field;
         this.tablero = tablero;
         String name1 = armyBlue.getName();
         String name2 = armyRed.getName();
-        
+
         this.playerBlue = playerBlue;
         this.playerRed = playerRed;
-        
+
         setSize(HEIGHT, WIDTH);
         setTitle(name2 + " (Azul) vs " + name1 + " (Rojo)" + ": Combate en: " + field);
         initFrame();
@@ -54,7 +68,7 @@ public class PrincipalFrame extends JFrame {
 
     public void initFrame() {
         setLayout(new GridLayout(1, 3, -43, 4));
-        
+
         panelBlue = new InformationFrame(armyBlue);
         panelRed = new InformationFrame(armyRed);
 
@@ -63,9 +77,8 @@ public class PrincipalFrame extends JFrame {
         panelData = new JPanel();
         panelData.setLayout(new GridLayout(1, 2));
         panelImg = new ImagePanel(field);
-        
+
         //System.out.println(field);
-        
         panelData.add(panelBlue);
         panelData.add(panelRed);
 
@@ -88,23 +101,32 @@ public class PrincipalFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Lógica para guardar
-                if (playerBlue==null || playerRed==null) {
+                if (playerBlue == null || playerRed == null) {
                     JOptionPane.showMessageDialog(rootPane, "No puede guardar porque está en modo partida"
                             + " rápida, regístrese primero!");
                 } else {
                     // se esta haciendo un metodo
                     System.out.println(",Mostrando datos");
-                    
+
                     playerBlue.getArmy().showArmy();
-                    
+
                     JOptionPane.showMessageDialog(rootPane, "Se guardó");
-                    //Deberia implementarse la funcion de poder guardar el estado actual, pero por falta de tiempo se omite                    
+                    //Deberia implementarse la funcion de poder guardar el estado actual, pero por falta de tiempo se omite    
+                    nameBlue = playerBlue.getNombre();
+                    nameRed = playerRed.getNombre();
+                            
+                    
+                    conectar = Conectar.obtenerInstancia();
+                    conectar.guardarPartida(nameRed, nameBlue, armyBlue, armyRed, 1, field);
+                    
+                    
+                    
                 }
                 //System.out.println("Guardar");
             }
         });
         archivoMenu.add(guardarItem);
-        
+
         //Opcion para ir a home
         ImageIcon iconoHome = new ImageIcon(getClass().getResource("/img/home.png"));;
         JMenuItem homeItem = new JMenuItem("Ir al menú principal", iconoHome);
@@ -117,7 +139,7 @@ public class PrincipalFrame extends JFrame {
             }
         });
         archivoMenu.add(homeItem);
-        
+
         ImageIcon iconoSalir = new ImageIcon(getClass().getResource("/img/quit.png"));
         JMenuItem salirItem = new JMenuItem("Salir", iconoSalir);
         salirItem.addActionListener(new ActionListener() {
@@ -127,8 +149,6 @@ public class PrincipalFrame extends JFrame {
             }
         });
         archivoMenu.add(salirItem);
-        
-        
 
         // Se agrega el menu "Archico" a la barra de menu
         menuBar.add(archivoMenu);
@@ -138,11 +158,9 @@ public class PrincipalFrame extends JFrame {
 
         setVisible(true);
     }
+
     
-    public void savePartidaActual() {
-        
-    }
-    
+
     public void repintarTablero() {
         getContentPane().removeAll();
         initFrame();
@@ -150,7 +168,5 @@ public class PrincipalFrame extends JFrame {
         revalidate();
         repaint();
     }
-    
-    
-    
+
 }
