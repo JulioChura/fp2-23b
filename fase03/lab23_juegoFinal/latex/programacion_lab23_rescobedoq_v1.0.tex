@@ -439,6 +439,42 @@
 	
 	
 	
+	\begin{lstlisting}[language=bash,caption={Commit: 89ff6b1edf4542deb3ff42f005f490882c63ed89 }][H]
+		git add .
+		git commit -m "Se recupera la version anterior y se hace los cambios en las clases para poder implementar guardar, ahora falta hacer la consulta a la base de datos"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	\begin{itemize}	
+		\item Como nos falta crear la opción de cargar partida se decide crear la clase Partida la cual tendrá los atributos necesarios para reanudar el juego.
+	\end{itemize}
+	
+	
+	
+	
+		\begin{lstlisting}[language=bash,caption={Commit: e24b6eb460d4e868fad82818e2b735efea714c23 }][H]
+		git add .
+		git commit -m "Se crea el metodo guardarPartida"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	\begin{itemize}	
+		\item En la clase Conectar se implementa la lógica y la clase PrincipalFrame la llama cuando se da click al botón guardar.
+	\end{itemize}
+	
+	
+			\begin{lstlisting}[language=bash,caption={Commit: c15b7d87562a4a723111d504c4ae5b4a27526f91 }][H]
+		git add .
+		git commit -m "Se crea la opcion de cargar partida"			
+		git push -u origin main
+	\end{lstlisting}
+	
+	\begin{itemize}	
+		\item En la clase HomeGame se implementa la acción de poder cargar la última partida.
+	\end{itemize}
+	
+	
+	
 	\begin{lstlisting}[language=bash,caption={Interfaz del juego}][H]
 		javac HomeGame.java
 		java HomeGame

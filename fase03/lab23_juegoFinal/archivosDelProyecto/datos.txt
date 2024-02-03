@@ -1,0 +1,45 @@
+Jugador: a
+Victorias: 0
+
+Jugador: b
+Victorias: 0
+
+Jugador: julio
+Victorias: 0
+
+Jugador: Lorena
+Victorias: 0
+
+Jugador: Ruben
+Victorias: 0
+
+Jugador: a
+Victorias: 0
+
+Jugador: b
+Victorias: 0
+
+Jugador: julio
+Victorias: 0
+
+Jugador: Lorena
+Victorias: 0
+
+Jugador: Ruben
+Victorias: 0
+
+Jugador: a
+Victorias: 0
+
+Jugador: b
+Victorias: 0
+
+Jugador: julio
+Victorias: 0
+
+Jugador: Lorena
+Victorias: 0
+
+Jugador: Ruben
+Victorias: 0
+

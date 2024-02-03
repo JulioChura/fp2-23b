@@ -1,6 +1,9 @@
 package persistencia;
 
 import java.awt.BorderLayout;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -237,13 +240,14 @@ public class Conectar {
             DefaultTableModel tableModel = new DefaultTableModel();
             tableModel.addColumn("Jugador");
             tableModel.addColumn("Partidas Ganadas");
-
+            
             //Se llena la tabla con los resultados de la consulta
             while (resultSet.next()) {
-                String jugador = resultSet.getString("Nombre");
-                int victorias = resultSet.getInt("Victorias");
+                String jugador = resultSet.getString("id_jugador");
+                int victorias = resultSet.getInt("racha_victorias");
                 Object[] rowData = {jugador, victorias};
                 tableModel.addRow(rowData);
+                guardarEnArchivo(jugador, victorias);
             }
 
             // Crear la tabla y configurar el modelo
@@ -511,5 +515,19 @@ public class Conectar {
 
         return army;
     }
+    
+    
+   private void guardarEnArchivo(String jugador, int victorias) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("datos.txt", true))) {
+            writer.println("Jugador: " + jugador);
+            writer.println("Victorias: " + victorias);
+            writer.println();  // Agregar una línea en blanco para separar cada conjunto de resultados
+            System.out.println("Resultados guardados en datos.txt.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
 
 }
