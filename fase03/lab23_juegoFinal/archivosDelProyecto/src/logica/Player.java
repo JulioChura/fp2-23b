@@ -11,6 +11,11 @@ public class Player {
     protected int victorias;
     protected int estado;
 
+    
+    public Player(String nombre, Army army) {
+        this.nombre = nombre;
+        this.army = army;
+    }
     public Player(String nombre, String password, int victorias) {
         this.nombre = nombre;
         this.password = password;

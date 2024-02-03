@@ -18,6 +18,26 @@ public class Jugar {
     protected Player playerRed;
     protected Player playerBlue;
 
+    public Jugar(Partida partida) {
+        
+        Player redT = partida.getPlayerRed();
+        Player blueT = partida.getPlayerBlue();
+        
+        Army armyRedT = redT.getArmy();
+        Army armyBlueT = blueT.getArmy();
+        String arenaT = partida.getArena();
+        Tablero tabT = new Tablero(armyRedT, armyBlueT, arenaT);
+        
+        this.tablero = tabT;
+        this.red = armyRedT;
+        this.blue = armyBlueT;
+        this.arena = arenaT;
+        this.playerBlue = blueT;
+        this.playerRed = redT;
+            
+    }
+             
+    
     public Jugar(Tablero tab, Army blue, Army red, String arena, Player playerRed, Player playerBlue) {
         this.tablero = tab;
         this.red = red;

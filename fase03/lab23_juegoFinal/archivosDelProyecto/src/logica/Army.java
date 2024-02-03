@@ -21,6 +21,12 @@ public class Army {
         this.name = name;
     }
 
+    public Army(ArrayList<ArrayList<Soldier>> army, String nombre) {
+        this.army = army;
+        this.name = nombre;
+    }
+    
+
     public Soldier getSoldier(int row, int column) {
         return army.get(row).get(column);
     }
@@ -77,33 +83,33 @@ public class Army {
                     defense = 7;
                     lifePoints = 15;
                     name = "C.Franco" + (row + 1) + "x" + (column + 1);
-                    sol = new FrancoKnight(name, row, column, attack, defense, defense, lifePoints, optionSoldier, n,
+                    sol = new FrancoKnight(name, row, column, attack, defense, defense, lifePoints, 2, 1,
                             false);
                 } else if (optionSoldier == 5) {
                     attack = 10;
                     defense = 8;
                     lifePoints = 14;
                     name = "Esp.Conq" + (row + 1) + "x" + (column + 1);
-                    sol = new ConquerorSwordsman(name, row, column, attack, defense, defense, lifePoints, n, false,
-                            optionSoldier);
+                    sol = new ConquerorSwordsman(name, row, column, attack, defense, defense, lifePoints, 4, false,
+                            5);
                 } else if (optionSoldier == 6) {
                     attack = 10;
                     defense = 8;
                     lifePoints = 13;
                     name = "Esp.Teu" + (row + 1) + "x" + (column + 1);
-                    sol = new GermanSwordsman(name, row, column, attack, defense, lifePoints, optionSoldier, n, false, n);
+                    sol = new GermanSwordsman(name, row, column, attack, defense, lifePoints, 0, 4, false, 3);
                 } else if (optionSoldier == 7) {
                     attack = 13;
                     defense = 7;
                     lifePoints = 13;
                     name = "C.Moro" + (row + 1) + "x" + (column + 1);
-                    sol = new Soldier(name, row, column, attack, defense, lifePoints, optionSoldier);
+                    sol = new KnightMoro(name, row, column, attack, defense, attack, 0, "lanza", false, 10, 1);
                 } else {
                     attack = 10;
                     defense = 8;
                     lifePoints = 13;
                     name = "R.Espad" + (row + 1) + "x" + (column + 1);
-                    sol = new RoyalSwordsman(name, row, column, attack, defense, lifePoints, optionSoldier, n, false, n);
+                    sol = new RoyalSwordsman(name, row, column, attack, defense, lifePoints, 0, 4, false, 1);
                 }
 
                 a.setSoldier(row, column, a, sol);
@@ -352,5 +358,9 @@ public class Army {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setSoldier(Soldier soldier) {
+        armyU.add(soldier);
     }
 }

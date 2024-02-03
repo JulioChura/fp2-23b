@@ -1,6 +1,8 @@
 package gui;
 
 import javax.swing.JOptionPane;
+import logica.Jugar;
+import logica.Partida;
 import persistencia.Conectar;
 
 /**
@@ -189,7 +191,15 @@ public class HomeGame extends javax.swing.JFrame {
 
     private void cargarUltimaPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarUltimaPartidaActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Función no agregada!");
+        Jugar juego;
+        Partida partida;
+        conectar = Conectar.obtenerInstancia();
+        
+        partida = conectar.obtenerUltima();
+        
+        juego = new Jugar(partida);
+        juego.game();
+        this.dispose();
     }//GEN-LAST:event_cargarUltimaPartidaActionPerformed
 
     private void registar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registar1ActionPerformed
